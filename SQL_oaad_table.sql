@@ -1,4 +1,4 @@
-﻿
+﻿use master;
 drop database QuanLyHoKhau;
 create database QuanLyHoKhau;
 go
