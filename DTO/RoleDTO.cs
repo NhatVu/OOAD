@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class Role
+    class RoleDTO
     {
         public string Id { get; set; }
         public string RoleName { get; set; }
 
-        public Role() { }
+        public RoleDTO() { }
 
-        public Role(string id, string roleName)
+        public RoleDTO(string id, string roleName)
         {
             Id = id;
             RoleName = roleName;
