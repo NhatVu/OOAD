@@ -39,9 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ChiTietHoKhauDTO.cs" />
+    <Compile Include="ChuyenKhauDTO.cs" />
+    <Compile Include="CongDanDTO.cs" />
+    <Compile Include="DanTocDTO.cs" />
+    <Compile Include="HoKhauDTO.cs" />
+    <Compile Include="KhaiSinhDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Role.cs" />
+    <Compile Include="RoleDTO.cs" />
+    <Compile Include="TamVangDTO.cs" />
+    <Compile Include="TienAnDTO.cs" />
+    <Compile Include="TomTatBanThanDTO.cs" />
+    <Compile Include="UserManagementDTO.cs" />
+    <Compile Include="VaiTroSoHoKhauDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
