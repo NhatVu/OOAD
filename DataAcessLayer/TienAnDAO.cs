@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace DataAcessLayer
 {
-    public class TienAn : DBConnection
+    public class TienAnDAO : DBConnection
     {
-        public TienAn() : base() { }
+        public TienAnDAO() : base() { }
 
         public bool insertTienAn(TienAnDTO dto)
         {

@@ -39,8 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ChiTietHoKhauBUS.cs" />
+    <Compile Include="ChuyenKhauBUS.cs" />
+    <Compile Include="CongDanBUS.cs" />
+    <Compile Include="DanTocBUS.cs" />
+    <Compile Include="HoKhauBUS.cs" />
+    <Compile Include="KhaiSinhBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleBUS.cs" />
+    <Compile Include="TamVangBUS.cs" />
+    <Compile Include="TienAnBUS.cs" />
+    <Compile Include="TomTatBanThanBUS.cs" />
+    <Compile Include="UserManagementBUS.cs" />
+    <Compile Include="VaiTroSoHoKhauBUS.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAcessLayer\DataAcessLayer.csproj">
