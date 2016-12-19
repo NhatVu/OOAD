@@ -1,0 +1,29 @@
+﻿<Application
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:HouseholdManagement"
+             xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="HouseholdManagement.App"
+             StartupUri="Windows/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.LightBlue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Red.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <System:String x:Key="login_screen">Đăng nhập</System:String>
+            <System:String x:Key="app_name">Quản lý hộ khẩu</System:String>
+            <System:String x:Key="name_hint">Tên</System:String>
+            <System:String x:Key="password_hint">Mật khẩu</System:String>
+            <System:String x:Key="version">Version: 1.0</System:String>
+            <System:String x:Key="add_hokhau">Thêm hộ khẩu</System:String>
+            <System:String x:Key="add_tamtru_nganhan">Thêm giấy tạm trú ngắn hạn</System:String>
+            <System:String x:Key="add_tamtru_daihan">Thêm giấy tạm trú dài hạn</System:String>
+            <System:String x:Key="add_tamvang">Thêm giấy tạm vắng</System:String>
+            <SolidColorBrush x:Key="primary_color" Color="#235183"/>
+            <SolidColorBrush x:Key="accent_color" Color="#FC5357"/>
+            <System:Double x:Key="drawer_left_width">250</System:Double>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

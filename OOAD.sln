@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOAD", "OOAD\OOAD.csproj", "{BD015442-7F6E-411F-B320-6C68D7DD0BBB}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAcessLayer", "DataAcessLayer\DataAcessLayer.csproj", "{FD033276-162B-4910-9F13-7F1FF04BC1A9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{65D8E0C8-44B3-497C-8428-B46A7CA9895D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseholdManagement", "HouseholdManagement\HouseholdManagement.csproj", "{70BE98BF-E077-4984-AE75-A563E5C98B68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{65D8E0C8-44B3-497C-8428-B46A7CA9895D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65D8E0C8-44B3-497C-8428-B46A7CA9895D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65D8E0C8-44B3-497C-8428-B46A7CA9895D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70BE98BF-E077-4984-AE75-A563E5C98B68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70BE98BF-E077-4984-AE75-A563E5C98B68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70BE98BF-E077-4984-AE75-A563E5C98B68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70BE98BF-E077-4984-AE75-A563E5C98B68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
