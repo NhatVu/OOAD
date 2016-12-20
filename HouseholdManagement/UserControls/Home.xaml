@@ -1,0 +1,219 @@
+﻿<UserControl x:Class="HouseholdManagement.UserControls.Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HouseholdManagement.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="800"
+             d:DesignWidth="1100"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+             TextElement.FontSize="14">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.Green.Named.Primary.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}">
+                <Setter Property="Margin" Value="56,40,56,0" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+            <Style TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource MaterialDesignPasswordBox}">
+                <Setter Property="Margin" Value="56,40,56,0" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <DockPanel LastChildFill="True">
+        <materialDesign:ColorZone Width="{DynamicResource drawer_left_width}"
+                                  VerticalAlignment="Stretch"
+                                  materialDesign:ShadowAssist.ShadowDepth="Depth4" 
+                                  Mode="Light"
+                                  DockPanel.Dock="Left">
+            <DockPanel LastChildFill="False">
+                <StackPanel Orientation="Vertical"
+                            DockPanel.Dock="Top">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="56" 
+                           Height="56"
+                           Margin="16,16,0,16"
+                           Source="/HouseholdManagement;component/Resource/home_icon.png">
+                        </Image>
+
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
+                           TextWrapping="Wrap"
+                           TextAlignment="Left"
+                           FontSize="18"
+                           Foreground="Black"
+                           Margin="12,2"
+                           FontWeight="Light"
+                           Text="{DynamicResource app_name}"/>
+                            <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
+                           TextWrapping="Wrap"
+                           TextAlignment="Left"
+                           FontSize="18"
+                           Foreground="Black"
+                           Margin="12,2"
+                           FontWeight="Light"
+                           Text="{DynamicResource version}"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                                              Background="{DynamicResource primary_color}">
+                            <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
+                           TextWrapping="Wrap"
+                           TextAlignment="Left"
+                           FontSize="24"
+                           Foreground="White"
+                           Margin="12"
+                           FontWeight="Light"
+                           Typography.Capitals="AllSmallCaps"        
+                           Text="Tài khoản"/>
+                        </materialDesign:ColorZone>
+                        <ListBox x:Name="listbox_profile" 
+                             Margin="0,8"
+                             ItemsSource="{Binding ProfileItems}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate DataType="/HouseholdManagement/Models:ManagementItem">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Viewbox Width="24" Height="24" Margin="12,0">
+                                            <Canvas Width="24" Height="24">
+                                                <Path Data="{Binding Path}"
+                                          Fill="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=Foreground}" />
+                                            </Canvas>
+                                        </Viewbox>
+                                        <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
+                                               TextWrapping="Wrap"
+                                               TextAlignment="Left"
+                                               FontSize="18"
+                                               Foreground="Black"
+                                               Margin="12,8"
+                                               FontWeight="Light" 
+                                               Opacity="0.8"
+                                               Text="{Binding Name}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                                              Background="{DynamicResource primary_color}">
+                            <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
+                           TextWrapping="Wrap"
+                           TextAlignment="Left"
+                           FontSize="24"
+                           Foreground="White"
+                           Margin="12"
+                           FontWeight="Light"
+                           Typography.Capitals="AllSmallCaps"        
+                           Text="Nghiệp vụ chính"/>
+                        </materialDesign:ColorZone>
+                        <ListBox x:Name="listbox_management" 
+                             Margin="0,8"
+                             ItemsSource="{Binding ManagementItems}"
+                             SelectedIndex="0">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate DataType="/HouseholdManagement/Models:ManagementItem">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Viewbox Width="24" Height="24" Margin="12,0">
+                                            <Canvas Width="24" Height="24">
+                                                <Path Data="{Binding Path}"
+                                          Fill="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=Foreground}" />
+                                            </Canvas>
+                                        </Viewbox>
+                                        <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
+                                               TextWrapping="Wrap"
+                                               TextAlignment="Left"
+                                               FontSize="18"
+                                               Foreground="Black"
+                                               Margin="12,8"
+                                               FontWeight="Light"
+                                               Text="{Binding Name}" Opacity="0.8"/>
+                                    </StackPanel>
+
+
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </StackPanel>
+                <DockPanel DockPanel.Dock="Bottom" 
+                           LastChildFill="True"
+                           Margin="0 18">
+                    <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
+                                               TextWrapping="Wrap"
+                                               TextAlignment="Center"
+                                               FontSize="18"
+                                               Foreground="Black"
+                                               Margin="24,0"
+                                               FontWeight="Light"
+                                               Text="Term" Opacity="0.8"
+                                               DockPanel.Dock="Left"/>
+                    <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
+                                               TextWrapping="Wrap"
+                                               TextAlignment="Center"
+                                               FontSize="18"
+                                               Foreground="Black"
+                                               Margin="24,0"
+                                               FontWeight="Light"
+                                               Text="About" Opacity="0.8"
+                                               DockPanel.Dock="Right"/>
+                    <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
+                                               TextWrapping="Wrap"
+                                               TextAlignment="Center"
+                                               FontSize="18"
+                                               Foreground="Black"
+                                               Margin="12,0"
+                                               FontWeight="Light"
+                                               Text="Help" Opacity="0.8"
+                                               />
+
+
+                </DockPanel>
+            </DockPanel>
+
+        </materialDesign:ColorZone>
+        <DockPanel Margin="16">
+            <ContentControl Content="{Binding ElementName=listbox_management,Path=SelectedItem.Content}"/>
+            <materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
+                                 HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                     Background="{DynamicResource primary_color}"
+                                     Foreground="White"
+                                 Margin="16">
+                <StackPanel>
+                    <Button ToolTip="{DynamicResource add_tamtru_nganhan}"
+                        Background="white"
+                        Foreground="{DynamicResource primary_color}">
+                        <materialDesign:PackIcon Kind="Store" />
+                    </Button>
+                    <Button ToolTip="{DynamicResource add_tamtru_daihan}"
+                        Background="white"
+                        Foreground="{DynamicResource primary_color}">
+                        <materialDesign:PackIcon Kind="Book" />
+                    </Button>
+                    <Button ToolTip="{DynamicResource add_tamvang}"
+                        Background="white"
+                        Foreground="{DynamicResource primary_color}">
+                        <materialDesign:PackIcon Kind="Run" />
+                    </Button>
+                    <Button ToolTip="{DynamicResource add_hokhau}"
+                        Background="white"
+                        Foreground="{DynamicResource primary_color}">
+                        <materialDesign:PackIcon Kind="Home" />
+                    </Button>
+                </StackPanel>
+            </materialDesign:PopupBox>
+        </DockPanel>
+    </DockPanel>
+</UserControl>

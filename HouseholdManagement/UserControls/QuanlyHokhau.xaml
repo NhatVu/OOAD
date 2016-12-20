@@ -1,0 +1,100 @@
+﻿<UserControl x:Class="HouseholdManagement.UserControls.QuanlyHokhau"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HouseholdManagement.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="800"
+             d:DesignWidth="1100"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+             TextElement.FontSize="14">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}">
+                <Setter Property="Margin" Value="56,40,56,0" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+            <Style TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource MaterialDesignPasswordBox}">
+                <Setter Property="Margin" Value="56,40,56,0" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid DockPanel.Dock="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:ColorZone Mode="Light" 
+                                      Width="400"
+                                      Grid.Column="0"
+                                  materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                                  Margin="24,16">
+                <Border Background="White" 
+                        BorderBrush="Silver"
+                        BorderThickness="1 1 1 1"
+                        MaxHeight="48" 
+                        CornerRadius="6"
+                        ToolTip="Enter to search, ignore case">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Style="{DynamicResource MaterialDesignToolButton}" 
+                                Command="{Binding SearchCommand}" x:Name="SearchButton"
+                                CommandParameter="{Binding ElementName=SearchBox, Path=Text}"
+                                Height="24" Width="24">
+                            <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
+                        </Button>
+                        <TextBox Grid.Column="1" Margin="5 0 0 0" KeyDown="Search_OnKeyDown"
+                             FontSize="24"
+                             materialDesign:HintAssist.Hint="Search" x:Name="SearchBox"
+                             materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"
+                             MinWidth="200" VerticalAlignment="Center" />
+                    </Grid>
+                </Border>
+
+            </materialDesign:ColorZone>
+            <StackPanel Grid.Column="2"
+                        Orientation="Horizontal"
+                        Margin="24,16">
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            		Background="White"
+            		Margin="16 0"
+            		Foreground="{DynamicResource primary_color}"
+            		ToolTip="MaterialDesignFloatingActionMiniLightButton">
+                    <materialDesign:PackIcon Kind="Plus" Height="24" Width="24"/>
+                </Button>
+
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            		Background="{DynamicResource accent_color}"
+            		Margin="16 0"
+            		Foreground="White"
+            		ToolTip="MaterialDesignFloatingActionMiniLightButton">
+                    <materialDesign:PackIcon Kind="WindowClose" Height="24" Width="24"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <DockPanel Grid.Row="1">
+            
+        </DockPanel>
+    </Grid>
+
+</UserControl>

@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="HouseholdManagement.Login"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HouseholdManagement"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" 
+             d:DesignWidth="1100" 
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+             TextElement.FontSize="14">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}">
+                <Setter Property="Margin" Value="56,40,56,0" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+            <Style TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource MaterialDesignPasswordBox}">
+                <Setter Property="Margin" Value="56,40,56,0" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <materialDesign:ColorZone DockPanel.Dock="Top"
+                                  Height="300"
+                                  materialDesign:ShadowAssist.ShadowDepth="Depth2" 
+                                  Background="{DynamicResource primary_color}"/>
+        <ItemsControl>
+            <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.5}">
+                <materialDesign:ColorZone DockPanel.Dock="Top"
+                                  Padding="0,0,0,0"
+                                  Margin="300,-150,300,0"
+                                  materialDesign:ShadowAssist.ShadowDepth="Depth3" 
+                                  Mode="Light">
+                    <StackPanel Orientation="Vertical">
+                        <Image Height="100"
+                       Source="/HouseholdManagement;component/Resource/home_icon.png"
+                       Margin="198,32,197,0"/>
+                        <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"
+                           FontSize="32"
+                           Margin="0,16,0,0"
+                           FontWeight="Light"
+                           Text="{DynamicResource app_name}"/>
+                        <TextBox x:Name="textbox_name"
+                         materialDesign:HintAssist.Hint="{DynamicResource name_hint}"
+                         materialDesign:ColorZoneAssist.Mode="Dark"/>
+                        <PasswordBox x:Name="textbox_password"
+                             materialDesign:HintAssist.Hint="{DynamicResource password_hint}"/>
+                        <CheckBox 
+                          x:Name="checkbox_remember_password"
+                          Style="{StaticResource MaterialDesignCheckBox}" Margin="56,20,56,0" 
+                          FontSize="18"
+                          Content="Ghi nhớ tài khoản"/>
+                        <Button x:Name="button_login"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Margin="56,40,56,32"
+                        Height="56"
+                        Background="{DynamicResource primary_color}"
+                        FontSize="20"
+                        Foreground="White"
+                        FontWeight="Light"
+                        HorizontalAlignment="Stretch"
+                        Content="{DynamicResource login_screen}"/>
+                    </StackPanel>
+                </materialDesign:ColorZone>
+            </materialDesign:TransitioningContent>
+        </ItemsControl>
+    </DockPanel>
+</UserControl>
