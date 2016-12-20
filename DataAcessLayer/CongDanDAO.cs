@@ -26,7 +26,7 @@ namespace DataAcessLayer
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter[] parameter;
-                parameter = new SqlParameter[11];
+                parameter = new SqlParameter[13];
                 parameter[0] = new SqlParameter("@idKhaiSinh", dto.IdKhaiSinh);
                 parameter[1] = new SqlParameter("@cmnd", dto.Cmnd);
                 parameter[2] = new SqlParameter("@tonGiao", dto.TonGiao);
@@ -38,7 +38,8 @@ namespace DataAcessLayer
                 parameter[8] = new SqlParameter("@trinhDoHocVan", dto.TrinhDoHocVan);
                 parameter[9] = new SqlParameter("@trinhDoChuyenMon", dto.TrinhDoChuyenMon);
                 parameter[10] = new SqlParameter("@trinhDoNgoaiNgu", dto.TrinhDoNgoaiNgu);
-
+                parameter[11] = new SqlParameter("@ghiChu", dto.GhiChu);
+                parameter[12] = new SqlParameter("@active", dto.Active);
 
 
                 command.Parameters.AddRange(parameter);
@@ -66,7 +67,7 @@ namespace DataAcessLayer
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter[] parameter;
-                parameter = new SqlParameter[12];
+                parameter = new SqlParameter[14];
                 parameter[0] = new SqlParameter("@id", dto.Id);
                 parameter[1] = new SqlParameter("@idKhaiSinh", dto.IdKhaiSinh);
                 parameter[2] = new SqlParameter("@cmnd", dto.Cmnd);
@@ -79,7 +80,8 @@ namespace DataAcessLayer
                 parameter[9] = new SqlParameter("@trinhDoHocVan", dto.TrinhDoHocVan);
                 parameter[10] = new SqlParameter("@trinhDoChuyenMon", dto.TrinhDoChuyenMon);
                 parameter[11] = new SqlParameter("@trinhDoNgoaiNgu", dto.TrinhDoNgoaiNgu);
-
+                parameter[12] = new SqlParameter("@ghiChu", dto.GhiChu);
+                parameter[13] = new SqlParameter("@active", dto.Active);
 
                 command.Parameters.AddRange(parameter);
                 command.ExecuteNonQuery();

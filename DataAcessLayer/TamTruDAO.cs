@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace DataAcessLayer
 {
-    public class TamVangDAO : DBConnection
+    public class TamTruDAO : DBConnection
     {
-        public TamVangDAO() : base() { }
+        public TamTruDAO() : base() { }
 
-        public bool insertTamVang(TamVangDTO dto)
+        public bool insertTamTru(TamTruDTO dto)
         {
             try
             {
@@ -23,7 +23,7 @@ namespace DataAcessLayer
                     connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = "TamVang_Insert";
+                command.CommandText = "TamTru_Insert";
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter[] parameter;
@@ -51,7 +51,7 @@ namespace DataAcessLayer
             }
         }
 
-        public bool updateTamVang(TamVangDTO dto)
+        public bool updateTamTru(TamTruDTO dto)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace DataAcessLayer
                     connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = "TamVang_UpdateById";
+                command.CommandText = "TamTru_UpdateById";
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter[] parameter;
@@ -88,7 +88,7 @@ namespace DataAcessLayer
             }
         }
 
-        public bool deleteTamVang(int id)
+        public bool deleteTamTru(int id)
         {
             try
             {
@@ -96,7 +96,7 @@ namespace DataAcessLayer
                     connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = "TamVang_DeleteById";
+                command.CommandText = "TamTru_DeleteById";
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter[] parameter;

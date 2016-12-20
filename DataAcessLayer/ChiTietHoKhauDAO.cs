@@ -27,10 +27,13 @@ namespace DataAcessLayer
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter[] parameter;
-                parameter = new SqlParameter[4];
+                parameter = new SqlParameter[6];
                 parameter[0] = new SqlParameter("@idHoKhau", dto.IdHoKhau);
-                parameter[1] = new SqlParameter("@idThanhVien", dto.IdCDThanhVien);
+                parameter[1] = new SqlParameter("@idCDThanhVien", dto.IdCDThanhVien);
                 parameter[2] = new SqlParameter("@idVaiTroSoHoKhau", dto.IdVaiTroSoHoKhau);
+                parameter[3] = new SqlParameter("@ghiChu", dto.GhiChu);
+                parameter[4] = new SqlParameter("@active", dto.Active);
+                parameter[5] = new SqlParameter("@idKSThanhVien", dto.IDKSThanhVien);
 
                 command.Parameters.AddRange(parameter);
                 command.ExecuteNonQuery();
@@ -57,11 +60,14 @@ namespace DataAcessLayer
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter[] parameter;
-                parameter = new SqlParameter[4];
+                parameter = new SqlParameter[7];
                 parameter[0] = new SqlParameter("@id", dto.Id);
                 parameter[1] = new SqlParameter("@idHoKhau", dto.IdHoKhau);
-                parameter[2] = new SqlParameter("@idThanhVien", dto.IdThanhVien);
+                parameter[2] = new SqlParameter("@idCDThanhVien", dto.IdCDThanhVien);
                 parameter[3] = new SqlParameter("@idVaiTroSoHoKhau", dto.IdVaiTroSoHoKhau);
+                parameter[4] = new SqlParameter("@idKSThanhVIen", dto.IDKSThanhVien);
+                parameter[5] = new SqlParameter("@ghiChu", dto.GhiChu);
+                parameter[6] = new SqlParameter("@active", dto.Active);
 
                 command.Parameters.AddRange(parameter);
                 command.ExecuteNonQuery();

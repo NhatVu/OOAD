@@ -49,6 +49,7 @@
     <Compile Include="KhaiSinhDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleDAO.cs" />
+    <Compile Include="TamTruDAO.cs" />
     <Compile Include="TamVangDAO.cs" />
     <Compile Include="TienAnDAO.cs" />
     <Compile Include="TomTatBanThan.cs" />
