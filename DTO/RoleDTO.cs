@@ -10,13 +10,15 @@ namespace DTO
     {
         public string Id { get; set; }
         public string RoleName { get; set; }
-
+        public string GhiChu { get; set; }
+        public int Active { get; set; }
         public RoleDTO() { }
 
-        public RoleDTO(string id, string roleName)
+        public RoleDTO(string roleName, string ghiChu, int active)
         {
-            Id = id;
-            RoleName = roleName;
+            this.RoleName = roleName;
+            this.GhiChu = ghiChu;
+            this.Active = active;
         }
     }
 }

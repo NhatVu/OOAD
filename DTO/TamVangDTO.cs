@@ -17,9 +17,12 @@ namespace DTO
         public string DiaChiDen { get; set; }
         public DateTime NgayLamDon { get; set; }
 
+        public string GhiChu { get; set; }
+        public int Active { get; set; }
+
         public TamVangDTO() { }
         public TamVangDTO(int idCongDan, int idTruongCongAn, DateTime ngayBatDau, DateTime ngayKetThuc, string lyDo,
-            string diaChiDen, DateTime ngayLamDon)
+            string diaChiDen, DateTime ngayLamDon,string ghiChu, int active)
         {
             this.IdCongDan = idCongDan;
             this.IdTruongCongAn = idTruongCongAn;
@@ -28,6 +31,8 @@ namespace DTO
             this.LyDo = lyDo;
             this.DiaChiDen = diaChiDen;
             this.NgayLamDon = ngayLamDon;
+            this.GhiChu = ghiChu;
+            this.Active = active;
         }
     }
 }

@@ -27,9 +27,10 @@ namespace DataAcessLayer
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter[] parameter;
-                parameter = new SqlParameter[1];
+                parameter = new SqlParameter[3];
                 parameter[0] = new SqlParameter("@tenVaiTro", dto.TenVaiTro);
-                
+                parameter[1] = new SqlParameter("@ghiChu", dto.GhiChu);
+                parameter[2] = new SqlParameter("@active", dto.Active);
 
                 command.Parameters.AddRange(parameter);
                 command.ExecuteNonQuery();
@@ -56,9 +57,11 @@ namespace DataAcessLayer
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter[] parameter;
-                parameter = new SqlParameter[2];
+                parameter = new SqlParameter[4];
                 parameter[0] = new SqlParameter("@id", dto.Id);
                 parameter[1] = new SqlParameter("@tenVaiTro", dto.TenVaiTro);
+                parameter[2] = new SqlParameter("@ghiChu", dto.GhiChu);
+                parameter[3] = new SqlParameter("@active", dto.Active);
 
                 command.Parameters.AddRange(parameter);
                 command.ExecuteNonQuery();

@@ -15,15 +15,18 @@ namespace DTO
         public int GioiTinh { get; set; }
         public string QueQuan { get; set; }
         public string QuocTich { get; set; }
-        public int IdKhaiSinhCha { get; set; }
-        public int IdKhaiSinhMe { get; set; }
+        public int IdCDCha { get; set; }
+        public int IdCDMe { get; set; }
         public string NoiDangKy { get; set; }
         public DateTime NgayDangKy { get; set; }
         public int IdNguoiLamDon { get; set; }
-        public int idNguoiKy { get; set; }
+        public int idCDNguoiKy { get; set; }
+
+        public string GhiChu { get; set; }
+        public int Active { get; set; }
         public KhaiSinhDTO() { }
-        public KhaiSinhDTO(int idDanToc, string hoTen, DateTime ngaySinh, int gioiTinh, string queQuan, string quocTich, int idKhaiSinhCha,
-        int idKhaiSinhMe, string noiDangKy, DateTime NgayDangKy, int idNguoiLamDon, int idNguoiKy)
+        public KhaiSinhDTO(int idDanToc, string hoTen, DateTime ngaySinh, int gioiTinh, string queQuan, string quocTich, int idCDCha,
+        int idCDMe, string noiDangKy, DateTime NgayDangKy, int idNguoiLamDon, int idCDNguoiKy, string ghiChu, int active)
         {
             this.IdDanToc = idDanToc;
             this.HoTen = hoTen;
@@ -31,11 +34,13 @@ namespace DTO
             this.GioiTinh = gioiTinh;
             this.QueQuan = queQuan;
             this.QuocTich = quocTich;
-            this.IdKhaiSinhCha = idKhaiSinhCha;
-            this.IdKhaiSinhMe = idKhaiSinhMe;
+            this.IdCDCha = idCDCha;
+            this.IdCDMe = idCDMe;
             this.NoiDangKy = noiDangKy;
             this.IdNguoiLamDon = idNguoiLamDon;
-            this.idNguoiKy = idNguoiKy;
+            this.idCDNguoiKy = idCDNguoiKy;
+            this.GhiChu = ghiChu;
+            this.Active = active;
         }
     }
 }

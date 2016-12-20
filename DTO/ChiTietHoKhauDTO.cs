@@ -10,16 +10,24 @@ namespace DTO
     {
         public int Id { get; set; }
         public int IdHoKhau { get; set; }
-        public int IdThanhVien { get; set; }
+        public int IdCDThanhVien { get; set; }
+
+        public int IDKSThanhVien { get; set; }
         public int IdVaiTroSoHoKhau { get; set; }
+
+        public string GhiChu { get; set; }
+        public int Active { get; set; }
 
         public ChiTietHoKhauDTO() { }
 
-        public ChiTietHoKhauDTO(int idHoKhau, int idThanhVien, int idVaiTroSoHoKhau)
+        public ChiTietHoKhauDTO(int idHoKhau, int idCDThanhVien, int idKSThanhVien, int idVaiTroSoHoKhau, string ghiChu, int active)
         {
             this.IdHoKhau = idHoKhau;
-            this.IdThanhVien = idThanhVien;
+            this.IdCDThanhVien = idCDThanhVien;
             this.IdVaiTroSoHoKhau = idVaiTroSoHoKhau;
+            this.IDKSThanhVien = idKSThanhVien;
+            this.GhiChu = ghiChu;
+            this.Active = active;
         }
     }
 }

@@ -10,11 +10,15 @@ namespace DTO
     {
         public int Id { get; set; }
         public string TenDanToc { get; set; }
+        public string GhiChu { get; set; }
+        public int Active { get; set; }
 
         public DanTocDTO() { }
-        public DanTocDTO(string tenDanToc)
+        public DanTocDTO(string tenDanToc, string ghiChu, int active)
         {
             this.TenDanToc = tenDanToc;
+            this.GhiChu = ghiChu;
+            this.Active = active;
         }
     }
 }

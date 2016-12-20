@@ -27,20 +27,21 @@ namespace DataAcessLayer
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter[] parameter;
-                parameter = new SqlParameter[12];
+                parameter = new SqlParameter[14];
                 parameter[0] = new SqlParameter("@idDanToc", dto.IdDanToc);
                 parameter[1] = new SqlParameter("@hoTen", dto.HoTen);
                 parameter[2] = new SqlParameter("@ngaySinh", dto.NgaySinh);
                 parameter[3] = new SqlParameter("@gioiTinh", dto.GioiTinh);
                 parameter[4] = new SqlParameter("@queQuan", dto.QueQuan);
                 parameter[5] = new SqlParameter("@quocTich", dto.QuocTich);
-                parameter[6] = new SqlParameter("@idKhaiSinhCha", dto.IdKhaiSinhCha);
-                parameter[7] = new SqlParameter("@idKhaiSinhMe", dto.IdKhaiSinhMe);
+                parameter[6] = new SqlParameter("@idCDCha", dto.IdCDCha);
+                parameter[7] = new SqlParameter("@idCDMe", dto.IdCDMe);
                 parameter[8] = new SqlParameter("@noiDangKy", dto.NoiDangKy);
                 parameter[9] = new SqlParameter("@ngayDangKy", dto.NgayDangKy);
                 parameter[10] = new SqlParameter("@idNguoiLamDon", dto.IdNguoiLamDon);
-                parameter[11] = new SqlParameter("@idNguoiKy", dto.idNguoiKy);
-
+                parameter[11] = new SqlParameter("@idCDNguoiKy", dto.idCDNguoiKy);
+                parameter[12] = new SqlParameter("@ghiChu", dto.GhiChu);
+                parameter[13] = new SqlParameter("@active", dto.Active);
 
                 command.Parameters.AddRange(parameter);
                 command.ExecuteNonQuery();
@@ -67,7 +68,7 @@ namespace DataAcessLayer
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter[] parameter;
-                parameter = new SqlParameter[13];
+                parameter = new SqlParameter[15];
                 parameter[0] = new SqlParameter("@id", dto.Id);
                 parameter[1] = new SqlParameter("@idDanToc", dto.IdDanToc);
                 parameter[2] = new SqlParameter("@hoTen", dto.HoTen);
@@ -75,12 +76,14 @@ namespace DataAcessLayer
                 parameter[4] = new SqlParameter("@gioiTinh", dto.GioiTinh);
                 parameter[5] = new SqlParameter("@queQuan", dto.QueQuan);
                 parameter[6] = new SqlParameter("@quocTich", dto.QuocTich);
-                parameter[7] = new SqlParameter("@idKhaiSinhCha", dto.IdKhaiSinhCha);
-                parameter[8] = new SqlParameter("@idKhaiSinhMe", dto.IdKhaiSinhMe);
+                parameter[7] = new SqlParameter("@idCDCha", dto.IdCDCha);
+                parameter[8] = new SqlParameter("@idCDhMe", dto.IdCDMe);
                 parameter[9] = new SqlParameter("@noiDangKy", dto.NoiDangKy);
                 parameter[10] = new SqlParameter("@ngayDangKy", dto.NgayDangKy);
                 parameter[11] = new SqlParameter("@idNguoiLamDon", dto.IdNguoiLamDon);
-                parameter[12] = new SqlParameter("@idNguoiKy", dto.idNguoiKy);
+                parameter[12] = new SqlParameter("@idCDNguoiKy", dto.idCDNguoiKy);
+                parameter[13] = new SqlParameter("@ghiChu", dto.GhiChu);
+                parameter[14] = new SqlParameter("@active", dto.Active);
 
                 command.Parameters.AddRange(parameter);
                 command.ExecuteNonQuery();

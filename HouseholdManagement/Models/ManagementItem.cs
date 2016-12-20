@@ -7,8 +7,17 @@ using System.Threading.Tasks;
 
 namespace HouseholdManagement.Models
 {
-    class ManagementItem
+    class ManagementItem :INotifyPropertyChanged
     {
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private Action<PropertyChangedEventArgs> RaisePropertyChanged()
+        {
+            return args => PropertyChanged.Invoke(this, args);
+        }
+
 
         public ManagementItem()
         {

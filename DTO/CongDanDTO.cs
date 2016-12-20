@@ -21,9 +21,13 @@ namespace DTO
         public string TrinhDoChuyenMon { get; set; }
         public string TrinhDoNgoaiNgu { get; set; }
 
+        public string GhiChu { get; set; }
+        public int Active { get; set; }
+
         public CongDanDTO() { }
         public CongDanDTO(int idKhaiSinh, int cmnd, string tonGiao, string ngheNghiep, string noiLamViec, DateTime ngayCapCMND, string noiCap,
-            string diaChiThuongTru, string trinhDoHocVan, string trinhDoChuyenMon, string trinhDoNgoaiNgu)
+            string diaChiThuongTru, string trinhDoHocVan, string trinhDoChuyenMon, string trinhDoNgoaiNgu, string ghiChu,
+            int active)
         {
             this.IdKhaiSinh = idKhaiSinh;
             this.Cmnd = cmnd;
@@ -36,6 +40,8 @@ namespace DTO
             this.TrinhDoHocVan = trinhDoHocVan;
             this.TrinhDoChuyenMon = trinhDoChuyenMon;
             this.TrinhDoNgoaiNgu = trinhDoNgoaiNgu;
+            this.GhiChu = ghiChu;
+            this.Active = active;
         }
     }
 }
