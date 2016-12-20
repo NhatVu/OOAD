@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HouseholdManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,11 +29,10 @@ namespace HouseholdManagement.UserControls
         public QuanlyHokhau()
         {
             InitializeComponent();
+            DataContext = new QuanlyHokhauViewModel();
         }
 
-        private void Search_OnKeyDown(object sender, KeyEventArgs e)
-        {
-            
-        }
+        
+
     }
 }

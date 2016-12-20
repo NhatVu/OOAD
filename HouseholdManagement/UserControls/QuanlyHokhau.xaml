@@ -28,73 +28,80 @@
                 <Setter Property="Margin" Value="56,40,56,0" />
                 <Setter Property="FontSize" Value="20" />
             </Style>
+
+
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid DockPanel.Dock="Top">
+    <Grid Margin="16">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <materialDesign:ColorZone Mode="Light" 
-                                      Width="400"
-                                      Grid.Column="0"
-                                  materialDesign:ShadowAssist.ShadowDepth="Depth0"
-                                  Margin="24,16">
-                <Border Background="White" 
-                        BorderBrush="Silver"
-                        BorderThickness="1 1 1 1"
-                        MaxHeight="48" 
-                        CornerRadius="6"
-                        ToolTip="Enter to search, ignore case">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Button Style="{DynamicResource MaterialDesignToolButton}" 
-                                Command="{Binding SearchCommand}" x:Name="SearchButton"
-                                CommandParameter="{Binding ElementName=SearchBox, Path=Text}"
-                                Height="24" Width="24">
-                            <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
-                        </Button>
-                        <TextBox Grid.Column="1" Margin="5 0 0 0" KeyDown="Search_OnKeyDown"
-                             FontSize="24"
-                             materialDesign:HintAssist.Hint="Search" x:Name="SearchBox"
-                             materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"
-                             MinWidth="200" VerticalAlignment="Center" />
-                    </Grid>
-                </Border>
 
-            </materialDesign:ColorZone>
-            <StackPanel Grid.Column="2"
-                        Orientation="Horizontal"
-                        Margin="24,16">
-                <Button Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-            		Background="White"
-            		Margin="16 0"
-            		Foreground="{DynamicResource primary_color}"
-            		ToolTip="MaterialDesignFloatingActionMiniLightButton">
-                    <materialDesign:PackIcon Kind="Plus" Height="24" Width="24"/>
-                </Button>
+        <Border Grid.Row="0"
+                CornerRadius="6"
+                Background="#F7F9FA"
+                Padding="0,16"
+                BorderBrush="Silver" 
+                BorderThickness="0.5 0.5 0.5 0.5 ">
+            <TextBlock Text="{Binding ElementName=table_household, Path=SelectedItem.Name}"
+                       FontWeight="Medium"
+                       HorizontalAlignment="Center"></TextBlock>
+        </Border>
+        <DataGrid Grid.Row="1"
+                  ItemsSource="{Binding HouseholdItems}" 
+                  SelectedItem="{Binding Path=SelectedHousehold, Mode=TwoWay}"
+                  CanUserSortColumns="True" 
+                  CanUserAddRows="False" 
+                  AutoGenerateColumns="False"
+                  x:Name="table_household"
+                  materialDesign:DataGridAssist.CellPadding="16 12">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn     Selector.IsSelected="False"
+                                            ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+                                            EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
+                                            >
+                    <DataGridCheckBoxColumn.Header>
+                        <!--padding to allow hit test to pass thru for sorting -->
+                        <Border Background="Transparent" Padding="12 0" HorizontalAlignment="Center">
+                            <CheckBox HorizontalAlignment="Center"                                               
+                                          DataContext="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext}"
+                                          IsChecked="{Binding isAllHouseholdSelected}" />
+                        </Border>
+                    </DataGridCheckBoxColumn.Header>
+                </DataGridCheckBoxColumn>
+                <DataGridTextColumn Binding="{Binding Id}"
+                                        Header="Số hộ khẩu"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
+                <materialDesign:MaterialDataGridTextColumn Binding="{Binding Name}"
+                                                           Header="Tên chủ hộ"                                                        
+                                                           EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" 
+                                                           MinWidth="150"
+                                                           MaxLength="50"
+                                                               />
+                <!-- set a max length to get an indicator in the editor -->
+                <materialDesign:MaterialDataGridTextColumn Binding="{Binding Address}"
+                                                           Header="Địa chỉ thường chú"  
+                                                           MinWidth="250"
+                                                           MaxLength="300" 
+                                                           EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"  />
+                <DataGridTemplateColumn Header="Thời gian">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DateTime}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding DateTime, StringFormat=dd/MM/yyyy}"
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
 
-                <Button Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
-            		Background="{DynamicResource accent_color}"
-            		Margin="16 0"
-            		Foreground="White"
-            		ToolTip="MaterialDesignFloatingActionMiniLightButton">
-                    <materialDesign:PackIcon Kind="WindowClose" Height="24" Width="24"/>
-                </Button>
-            </StackPanel>
-        </Grid>
-        <DockPanel Grid.Row="1">
-            
-        </DockPanel>
     </Grid>
 
 </UserControl>

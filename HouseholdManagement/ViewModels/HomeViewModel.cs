@@ -23,24 +23,32 @@ namespace HouseholdManagement
         private readonly static String QLTV_STRING = "Quản lý tạm vắng";
         private readonly static String TK_STRING = "Thống kê";
 
+        private readonly static String QLHK_STRING_DETAIL = "Danh sách sổ hộ khẩu";
+        private readonly static String QLTT_STRING_DETAIL = "Danh sách giấy tạm trú";
+        private readonly static String QLTV_STRING_DETAIL = "Danh sách giấy tạm vắng";
+        private readonly static String THONGKE_DETAIL = "Danh sách thống kê";
+
         private readonly static String THONGTIN_STRING = "Thông tin tài khoản";
-        private readonly static String DOIMATKHAU_STRING = "Đổi mật khẩu";
+        private readonly static String DOIMATKHAU_STRING = "Thay đổi mật khẩu";
         private readonly static String DANGXUAT_STRING = "Đăng xuất";
+
+        private readonly static String THONGTIN_STRING_DETAIL = "Thông tin tài khoản";
+        private readonly static String DOIMATKHAU_STRING_DETAIL = "Thay đổi mật khẩu";
         public HomeViewModel()
         {
             ManagementItems = new[]
             {
-                new ManagementItem(QLHK_STRING,QuanlyHokhau.createInstance(),QUANLY_HOKHAU_PATH_DATA),
-                new ManagementItem(QLTT_STRING,QuanlyTamTru.createInstance(),QUANLY_TAMTRU_PATH_DATA),
-                new ManagementItem(QLTV_STRING,QuanlyTamVang.createInstance(),QUANLY_TAMVANG_PATH_DATA),
-                new ManagementItem(TK_STRING,Thongke.createInstance(),THONGKE_PATH_DATA)
+                new ManagementItem(QLHK_STRING,QuanlyHokhau.createInstance(),QUANLY_HOKHAU_PATH_DATA,QLHK_STRING_DETAIL),
+                new ManagementItem(QLTT_STRING,QuanlyTamTru.createInstance(),QUANLY_TAMTRU_PATH_DATA, QLTT_STRING_DETAIL),
+                new ManagementItem(QLTV_STRING,QuanlyTamVang.createInstance(),QUANLY_TAMVANG_PATH_DATA, QLTV_STRING_DETAIL),
+                new ManagementItem(TK_STRING,Thongke.createInstance(),THONGKE_PATH_DATA, THONGKE_DETAIL)
             };
 
             ProfileItems = new[]
             {
-                new ManagementItem(THONGTIN_STRING, ProfileOverview.createInstance(), THONGTIN_PATH_DATA),
-                new ManagementItem(DOIMATKHAU_STRING, ChangePassword.createInstance(), THAY_MATKHAU_PATH_DATA),
-                new ManagementItem(DANGXUAT_STRING, null, DANGXUAT_PATH_DATA)
+                new ManagementItem(THONGTIN_STRING, ProfileOverview.createInstance(), THONGTIN_PATH_DATA, THONGTIN_STRING_DETAIL),
+                new ManagementItem(DOIMATKHAU_STRING, ChangePassword.createInstance(), THAY_MATKHAU_PATH_DATA, DOIMATKHAU_STRING_DETAIL),
+                new ManagementItem(DANGXUAT_STRING, null, DANGXUAT_PATH_DATA,null)
             };
         }
 

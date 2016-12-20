@@ -7,35 +7,37 @@ using System.Threading.Tasks;
 
 namespace HouseholdManagement.Models
 {
-    class ManagementItem : INotifyPropertyChanged
+    class ManagementItem
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private Action<PropertyChangedEventArgs> RaisePropertyChanged()
-        {
-            return args => PropertyChanged?.Invoke(this, args);
-        }
 
         public ManagementItem()
         {
 
         }
 
-        public ManagementItem(String name, Object content, String pathData)
+        public ManagementItem(String name, Object content, String pathData, String detail)
         {
             mName = name;
             mContent = content;
             mPathData = pathData;
+            mDetail = detail;
         }
         
 
         private String mName;
         private Object mContent;
         private String mPathData;
+        private String mDetail;
 
         public String Name {
             get { return mName;}
             set { mName = value;}
+        }
+
+        public String Detail
+        {
+            get { return mDetail; }
+            set { mDetail = value; }
         }
 
         public Object Content

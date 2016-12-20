@@ -97,6 +97,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Household.cs" />
+    <Compile Include="ViewModels\QuanlyHokhauViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="Models\ManagementItem.cs" />
     <Compile Include="UserControls\ChangePassword.xaml.cs">

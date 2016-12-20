@@ -29,5 +29,10 @@ namespace HouseholdManagement.UserControls
             InitializeComponent();
             DataContext = new HomeViewModel();
         }
+
+        private void Search_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

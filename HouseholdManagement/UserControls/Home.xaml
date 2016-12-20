@@ -184,8 +184,54 @@
             </DockPanel>
 
         </materialDesign:ColorZone>
-        <DockPanel Margin="16">
-            <ContentControl Content="{Binding ElementName=listbox_management,Path=SelectedItem.Content}"/>
+        <Grid Margin="16">
+            <DockPanel
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+                <Grid DockPanel.Dock="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" 
+                        VerticalAlignment="Center"
+                        Margin="16,12">
+                        <TextBlock Text="{Binding ElementName=listbox_management, Path=SelectedItem.Detail}"
+                               VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <Border Background="White" 
+                    Margin="16,12"
+                        MaxWidth="450"
+                        Grid.Column="1"
+                        BorderBrush="Silver"
+                        BorderThickness="1 1 1 1"
+                        MaxHeight="48" 
+                        CornerRadius="6"
+                        ToolTip="Enter to search, ignore case">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button Style="{DynamicResource MaterialDesignToolButton}" 
+                                Command="{Binding SearchCommand}" x:Name="SearchButton"
+                                CommandParameter="{Binding ElementName=SearchBox, Path=Text}"
+                                Height="24" Width="24">
+                                <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
+                            </Button>
+                            <TextBox Grid.Column="1" Margin="5 0 0 0" KeyDown="Search_OnKeyDown"
+                             FontSize="18"
+                             materialDesign:HintAssist.Hint="Search" x:Name="SearchBox"
+                             materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"
+                             MinWidth="200" VerticalAlignment="Center" />
+                        </Grid>
+                    </Border>
+                </Grid>
+                <Grid>
+                    <ContentControl Content="{Binding ElementName=listbox_management,Path=SelectedItem.Content}"/>
+                </Grid>
+            </DockPanel>
+            
             <materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
                                  HorizontalAlignment="Right" VerticalAlignment="Bottom"
                                      Background="{DynamicResource primary_color}"
@@ -214,6 +260,6 @@
                     </Button>
                 </StackPanel>
             </materialDesign:PopupBox>
-        </DockPanel>
+        </Grid>
     </DockPanel>
 </UserControl>
