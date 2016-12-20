@@ -44,7 +44,7 @@ namespace HouseholdManagement
             };
         }
 
-        public ManagementItem[] ManagementItems { get; }
-        public ManagementItem[] ProfileItems { get; }
+        public ManagementItem[] ManagementItems { get; set; }
+        public ManagementItem[] ProfileItems { get; set; }
     }
 }

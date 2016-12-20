@@ -13,7 +13,7 @@ namespace HouseholdManagement.Models
 
         private Action<PropertyChangedEventArgs> RaisePropertyChanged()
         {
-            return args => PropertyChanged?.Invoke(this, args);
+            return args => PropertyChanged.Invoke(this, args);
         }
 
         public ManagementItem()
