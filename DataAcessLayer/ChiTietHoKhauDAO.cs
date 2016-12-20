@@ -29,7 +29,7 @@ namespace DataAcessLayer
                 SqlParameter[] parameter;
                 parameter = new SqlParameter[4];
                 parameter[0] = new SqlParameter("@idHoKhau", dto.IdHoKhau);
-                parameter[1] = new SqlParameter("@idThanhVien", dto.IdThanhVien);
+                parameter[1] = new SqlParameter("@idThanhVien", dto.IdCDThanhVien);
                 parameter[2] = new SqlParameter("@idVaiTroSoHoKhau", dto.IdVaiTroSoHoKhau);
 
                 command.Parameters.AddRange(parameter);

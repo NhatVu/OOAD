@@ -13,14 +13,17 @@ namespace DTO
         public string Email { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-
+        public string GhiChu { get; set; }
+        public int Active { get; set; }
         public UserManagementDTO() { }
 
-        public UserManagementDTO(int idRole, string username, string password)
+        public UserManagementDTO(int idRole, string username, string password, string ghiChu, int active)
         {
             this.IdRole = idRole;
             this.Username = username;
             this.Password = password;
+            this.GhiChu = ghiChu;
+            this.Active = active;
         }
     }
 }

@@ -14,14 +14,18 @@ namespace DTO
         public string HinhPhat { get; set; }
         public DateTime NgayThang { get; set; }
         public string NoiTuyenAn { get; set; }
+        public string GhiChu { get; set; }
+        public int Active { get; set; }
         public TienAnDTO() { }
-        public TienAnDTO(int idCongDan, string toiDanh, string hinhPhat, DateTime ngayThang, string noiTuyenAn)
+        public TienAnDTO(int idCongDan, string toiDanh, string hinhPhat, DateTime ngayThang, string noiTuyenAn, string ghiChu, int active)
         {
             this.IdCongDan = idCongDan;
             this.ToiDanh = toiDanh;
             this.HinhPhat = hinhPhat;
             this.NgayThang = ngayThang;
             this.NoiTuyenAn = noiTuyenAn;
+            this.GhiChu = ghiChu;
+            this.Active = active;
         }
     }
 }
