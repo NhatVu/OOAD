@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO;
 using DataAcessLayer;
+using System.Data;
 
 namespace BusinessLogicLayer
 {
@@ -24,6 +25,15 @@ namespace BusinessLogicLayer
         public bool deleteUserManagement(int id)
         {
             return obj.deleteUserManagement(id);
+        }
+
+        public DataTable SelectAllUserManagement()
+        {
+            return obj.SelectAllUserManagement();
+        }
+        public DataTable SelectUserManagementById(int id)
+        {
+            return obj.SelectUserManagementById(id);
         }
     }
 }

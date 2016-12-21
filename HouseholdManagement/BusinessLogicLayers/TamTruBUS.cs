@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO;
 using DataAcessLayer;
+using System.Data;
 
 namespace BusinessLogicLayer
 {
@@ -24,6 +25,15 @@ namespace BusinessLogicLayer
         public bool deleteTamTru(int id)
         {
             return obj.deleteTamTru(id);
+        }
+
+        public DataTable SelectAllTamTru()
+        {
+            return obj.SelectAllTamTru();
+        }
+        public DataTable SelectTamTruById(int id)
+        {
+            return obj.SelectTamTruById(id);
         }
     }
 }

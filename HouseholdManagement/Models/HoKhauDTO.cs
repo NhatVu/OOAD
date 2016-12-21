@@ -11,6 +11,7 @@ namespace DTO
         private int mId;
         private int mIdCDTruongCongAn;
         private string mNoiCap;
+        private DateTime mNgayCap;
         private string mNoiDangKyThuongTru;
         private string mGhiChu;
         private int mActive;
@@ -38,6 +39,19 @@ namespace DTO
             set
             {
                 mNoiCap = value;
+            }
+        }
+
+        public DateTime NgayCap
+        {
+            get
+            {
+                return mNgayCap;
+            }
+
+            set
+            {
+                mNgayCap = value;
             }
         }
 

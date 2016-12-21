@@ -49,11 +49,14 @@ create table KhaiSinh(
 	active int,
 
 	constraint FK_KhaiSinh_DanToc foreign key(idDanToc) references DanToc(id)
+
 )
+
+
 
 create table CongDan (
 	id int IDENTITY(1,1) primary key,
-	idKhaiSinh int not null,
+	idKhaiSinh int,
 	cmnd int not null,
 	tonGiao nvarchar(50),
 	ngheNghiep nvarchar(100),
@@ -70,6 +73,11 @@ create table CongDan (
 	constraint FK_CongDan_KhaiSinh foreign key(idKhaiSinh) references KhaiSinh(id)
 )
 
+alter table KhaiSinh
+add constraint FK_CDCha_CongDan foreign key(idCDCha) references CongDan(id),
+	constraint FK_CDMe_CongDan foreign key(idCDMe) references CongDan(id),
+	constraint FK_CDNguoiLamDon_CongDan foreign key(idNguoiLamDon) references CongDan(id),
+	constraint FK_CDNguoiKy_CongDan foreign key(idCDNguoiKy) references CongDan(id)
 
 create table TomTatBanThan (
 	id int IDENTITY(1,1) primary key,
@@ -108,6 +116,7 @@ create table HoKhau (
 	id int identity(1,1) primary key,
 	idCDTruongCongAn int,
 	noiCap nvarchar(300),
+	ngayCap datetime,
 	noiDangKyThuongTru nvarchar(300),
 	ghiChu nvarchar(300),
 	active int

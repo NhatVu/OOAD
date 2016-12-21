@@ -31,7 +31,7 @@ GO
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[CongDan_Insert]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[CongDan_Insert]
 GO 
 CREATE PROCEDURE [dbo].[CongDan_Insert]
-@idKhaiSinh  int,@cmnd  int,@tonGiao  nvarchar=null,@ngheNghiep  nvarchar=null,@noiLamViec  nvarchar=null,@ngayCapCMND  datetime=null,@noiCap  nvarchar=null,@diaChiThuongTru  nvarchar=null,@trinhDoHocVan  nvarchar=null,@trinhDoChuyenMon  nvarchar=null,@trinhDoNgoaiNgu  nvarchar=null,@ghiChu  nvarchar=null,@active  int=null
+@idKhaiSinh  int=null,@cmnd  int,@tonGiao  nvarchar=null,@ngheNghiep  nvarchar=null,@noiLamViec  nvarchar=null,@ngayCapCMND  datetime=null,@noiCap  nvarchar=null,@diaChiThuongTru  nvarchar=null,@trinhDoHocVan  nvarchar=null,@trinhDoChuyenMon  nvarchar=null,@trinhDoNgoaiNgu  nvarchar=null,@ghiChu  nvarchar=null,@active  int=null
  AS 
  INSERT INTO CongDan([idKhaiSinh],[cmnd],[tonGiao],[ngheNghiep],[noiLamViec],[ngayCapCMND],[noiCap],[diaChiThuongTru],[trinhDoHocVan],[trinhDoChuyenMon],[trinhDoNgoaiNgu],[ghiChu],[active]) VALUES(@idKhaiSinh,@cmnd,@tonGiao,@ngheNghiep,@noiLamViec,@ngayCapCMND,@noiCap,@diaChiThuongTru,@trinhDoHocVan,@trinhDoChuyenMon,@trinhDoNgoaiNgu,@ghiChu,@active)
 GO 
@@ -59,9 +59,9 @@ GO
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[HoKhau_Insert]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[HoKhau_Insert]
 GO 
 CREATE PROCEDURE [dbo].[HoKhau_Insert]
-@idCDTruongCongAn  int=null,@noiCap  nvarchar=null,@noiDangKyThuongTru  nvarchar=null,@ghiChu  nvarchar=null,@active  int=null
+@idCDTruongCongAn  int=null,@noiCap  nvarchar=null,@ngayCap  datetime=null,@noiDangKyThuongTru  nvarchar=null,@ghiChu  nvarchar=null,@active  int=null
  AS 
- INSERT INTO HoKhau([idCDTruongCongAn],[noiCap],[noiDangKyThuongTru],[ghiChu],[active]) VALUES(@idCDTruongCongAn,@noiCap,@noiDangKyThuongTru,@ghiChu,@active)
+ INSERT INTO HoKhau([idCDTruongCongAn],[noiCap],[ngayCap],[noiDangKyThuongTru],[ghiChu],[active]) VALUES(@idCDTruongCongAn,@noiCap,@ngayCap,@noiDangKyThuongTru,@ghiChu,@active)
 GO 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[ChiTietHoKhau_Insert]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[ChiTietHoKhau_Insert]
 GO 
@@ -122,7 +122,7 @@ GO
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[CongDan_UpdateById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[CongDan_UpdateById]
 GO 
 CREATE PROCEDURE [dbo].[CongDan_UpdateById]
-@id  int,@idKhaiSinh  int,@cmnd  int,@tonGiao  nvarchar=null,@ngheNghiep  nvarchar=null,@noiLamViec  nvarchar=null,@ngayCapCMND  datetime=null,@noiCap  nvarchar=null,@diaChiThuongTru  nvarchar=null,@trinhDoHocVan  nvarchar=null,@trinhDoChuyenMon  nvarchar=null,@trinhDoNgoaiNgu  nvarchar=null,@ghiChu  nvarchar=null,@active  int=null
+@id  int,@idKhaiSinh  int=null,@cmnd  int,@tonGiao  nvarchar=null,@ngheNghiep  nvarchar=null,@noiLamViec  nvarchar=null,@ngayCapCMND  datetime=null,@noiCap  nvarchar=null,@diaChiThuongTru  nvarchar=null,@trinhDoHocVan  nvarchar=null,@trinhDoChuyenMon  nvarchar=null,@trinhDoNgoaiNgu  nvarchar=null,@ghiChu  nvarchar=null,@active  int=null
  AS 
  UPDATE CongDan SET [idKhaiSinh]=@idKhaiSinh,[cmnd]=@cmnd,[tonGiao]=@tonGiao,[ngheNghiep]=@ngheNghiep,[noiLamViec]=@noiLamViec,[ngayCapCMND]=@ngayCapCMND,[noiCap]=@noiCap,[diaChiThuongTru]=@diaChiThuongTru,[trinhDoHocVan]=@trinhDoHocVan,[trinhDoChuyenMon]=@trinhDoChuyenMon,[trinhDoNgoaiNgu]=@trinhDoNgoaiNgu,[ghiChu]=@ghiChu,[active]=@active WHERE [id]=@id
 GO 
@@ -150,9 +150,9 @@ GO
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[HoKhau_UpdateById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[HoKhau_UpdateById]
 GO 
 CREATE PROCEDURE [dbo].[HoKhau_UpdateById]
-@id  int,@idCDTruongCongAn  int=null,@noiCap  nvarchar=null,@noiDangKyThuongTru  nvarchar=null,@ghiChu  nvarchar=null,@active  int=null
+@id  int,@idCDTruongCongAn  int=null,@noiCap  nvarchar=null,@ngayCap  datetime=null,@noiDangKyThuongTru  nvarchar=null,@ghiChu  nvarchar=null,@active  int=null
  AS 
- UPDATE HoKhau SET [idCDTruongCongAn]=@idCDTruongCongAn,[noiCap]=@noiCap,[noiDangKyThuongTru]=@noiDangKyThuongTru,[ghiChu]=@ghiChu,[active]=@active WHERE [id]=@id
+ UPDATE HoKhau SET [idCDTruongCongAn]=@idCDTruongCongAn,[noiCap]=@noiCap,[ngayCap]=@ngayCap,[noiDangKyThuongTru]=@noiDangKyThuongTru,[ghiChu]=@ghiChu,[active]=@active WHERE [id]=@id
 GO 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[ChiTietHoKhau_UpdateById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[ChiTietHoKhau_UpdateById]
 GO 
@@ -285,4 +285,186 @@ CREATE PROCEDURE [dbo].[TamTru_DeleteById]
 
  AS 
  DELETE FROM TamTru WHERE [id]=@id
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Role_SelectAll]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[Role_SelectAll]
+GO 
+CREATE PROCEDURE [dbo].[Role_SelectAll]
+AS 
+ SELECT * FROM Role
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[Role_SelectById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[Role_SelectById]
+GO 
+CREATE PROCEDURE [dbo].[Role_SelectById]
+@id  int
+
+ AS 
+ SELECT * FROM Role WHERE [id]=@id
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[UserManagement_SelectAll]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[UserManagement_SelectAll]
+GO 
+CREATE PROCEDURE [dbo].[UserManagement_SelectAll]
+AS 
+ SELECT * FROM UserManagement
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[UserManagement_SelectById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[UserManagement_SelectById]
+GO 
+CREATE PROCEDURE [dbo].[UserManagement_SelectById]
+@id  int
+
+ AS 
+ SELECT * FROM UserManagement WHERE [id]=@id
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[DanToc_SelectAll]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[DanToc_SelectAll]
+GO 
+CREATE PROCEDURE [dbo].[DanToc_SelectAll]
+AS 
+ SELECT * FROM DanToc
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[DanToc_SelectById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[DanToc_SelectById]
+GO 
+CREATE PROCEDURE [dbo].[DanToc_SelectById]
+@id  int
+
+ AS 
+ SELECT * FROM DanToc WHERE [id]=@id
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[KhaiSinh_SelectAll]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[KhaiSinh_SelectAll]
+GO 
+CREATE PROCEDURE [dbo].[KhaiSinh_SelectAll]
+AS 
+ SELECT * FROM KhaiSinh
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[KhaiSinh_SelectById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[KhaiSinh_SelectById]
+GO 
+CREATE PROCEDURE [dbo].[KhaiSinh_SelectById]
+@id  int
+
+ AS 
+ SELECT * FROM KhaiSinh WHERE [id]=@id
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[CongDan_SelectAll]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[CongDan_SelectAll]
+GO 
+CREATE PROCEDURE [dbo].[CongDan_SelectAll]
+AS 
+ SELECT * FROM CongDan
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[CongDan_SelectById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[CongDan_SelectById]
+GO 
+CREATE PROCEDURE [dbo].[CongDan_SelectById]
+@id  int
+
+ AS 
+ SELECT * FROM CongDan WHERE [id]=@id
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TomTatBanThan_SelectAll]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[TomTatBanThan_SelectAll]
+GO 
+CREATE PROCEDURE [dbo].[TomTatBanThan_SelectAll]
+AS 
+ SELECT * FROM TomTatBanThan
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TomTatBanThan_SelectById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[TomTatBanThan_SelectById]
+GO 
+CREATE PROCEDURE [dbo].[TomTatBanThan_SelectById]
+@id  int
+
+ AS 
+ SELECT * FROM TomTatBanThan WHERE [id]=@id
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TienAn_SelectAll]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[TienAn_SelectAll]
+GO 
+CREATE PROCEDURE [dbo].[TienAn_SelectAll]
+AS 
+ SELECT * FROM TienAn
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TienAn_SelectById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[TienAn_SelectById]
+GO 
+CREATE PROCEDURE [dbo].[TienAn_SelectById]
+@id  int
+
+ AS 
+ SELECT * FROM TienAn WHERE [id]=@id
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[VaiTroSoHoKhau_SelectAll]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[VaiTroSoHoKhau_SelectAll]
+GO 
+CREATE PROCEDURE [dbo].[VaiTroSoHoKhau_SelectAll]
+AS 
+ SELECT * FROM VaiTroSoHoKhau
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[VaiTroSoHoKhau_SelectById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[VaiTroSoHoKhau_SelectById]
+GO 
+CREATE PROCEDURE [dbo].[VaiTroSoHoKhau_SelectById]
+@id  int
+
+ AS 
+ SELECT * FROM VaiTroSoHoKhau WHERE [id]=@id
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[HoKhau_SelectAll]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[HoKhau_SelectAll]
+GO 
+CREATE PROCEDURE [dbo].[HoKhau_SelectAll]
+AS 
+ SELECT * FROM HoKhau
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[HoKhau_SelectById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[HoKhau_SelectById]
+GO 
+CREATE PROCEDURE [dbo].[HoKhau_SelectById]
+@id  int
+
+ AS 
+ SELECT * FROM HoKhau WHERE [id]=@id
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[ChiTietHoKhau_SelectAll]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[ChiTietHoKhau_SelectAll]
+GO 
+CREATE PROCEDURE [dbo].[ChiTietHoKhau_SelectAll]
+AS 
+ SELECT * FROM ChiTietHoKhau
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[ChiTietHoKhau_SelectById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[ChiTietHoKhau_SelectById]
+GO 
+CREATE PROCEDURE [dbo].[ChiTietHoKhau_SelectById]
+@id  int
+
+ AS 
+ SELECT * FROM ChiTietHoKhau WHERE [id]=@id
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TamVang_SelectAll]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[TamVang_SelectAll]
+GO 
+CREATE PROCEDURE [dbo].[TamVang_SelectAll]
+AS 
+ SELECT * FROM TamVang
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TamVang_SelectById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[TamVang_SelectById]
+GO 
+CREATE PROCEDURE [dbo].[TamVang_SelectById]
+@id  int
+
+ AS 
+ SELECT * FROM TamVang WHERE [id]=@id
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[ChuyenKhau_SelectAll]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[ChuyenKhau_SelectAll]
+GO 
+CREATE PROCEDURE [dbo].[ChuyenKhau_SelectAll]
+AS 
+ SELECT * FROM ChuyenKhau
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[ChuyenKhau_SelectById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[ChuyenKhau_SelectById]
+GO 
+CREATE PROCEDURE [dbo].[ChuyenKhau_SelectById]
+@id  int
+
+ AS 
+ SELECT * FROM ChuyenKhau WHERE [id]=@id
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TamTru_SelectAll]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[TamTru_SelectAll]
+GO 
+CREATE PROCEDURE [dbo].[TamTru_SelectAll]
+AS 
+ SELECT * FROM TamTru
+GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TamTru_SelectById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[TamTru_SelectById]
+GO 
+CREATE PROCEDURE [dbo].[TamTru_SelectById]
+@id  int
+
+ AS 
+ SELECT * FROM TamTru WHERE [id]=@id
 GO 

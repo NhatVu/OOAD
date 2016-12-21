@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO;
 using DataAcessLayer;
+using System.Data;
 
 namespace BusinessLogicLayer
 {
@@ -24,6 +25,15 @@ namespace BusinessLogicLayer
         public bool deleteVaiTroSoHoKhau(int id)
         {
             return obj.deleteVaiTroSoHoKhau(id);
+        }
+
+        public DataTable SelectAllVaiTroSoHoKhau()
+        {
+            return obj.SelectAllVaiTroSoHoKhau();
+        }
+        public DataTable SelectVaiTroSoHoKhauById(int id)
+        {
+            return obj.SelectVaiTroSoHoKhauById(id);
         }
     }
 }

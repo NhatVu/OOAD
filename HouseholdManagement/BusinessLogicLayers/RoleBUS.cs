@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO;
 using DataAcessLayer;
+using System.Data;
 
 namespace BusinessLogicLayer
 {
@@ -24,6 +25,15 @@ namespace BusinessLogicLayer
         public bool deleteRole(int id)
         {
             return obj.deleteRole(id);
+        }
+
+        public DataTable SelectAllRole()
+        {
+            return obj.SelectAllRole();
+        }
+        public DataTable SelectRoleById(int id)
+        {
+            return obj.SelectRoleById(id);
         }
     }
 }

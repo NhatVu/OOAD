@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO;
 using DataAcessLayer;
+using System.Data;
 
 namespace BusinessLogicLayer
 {
@@ -25,5 +26,16 @@ namespace BusinessLogicLayer
         {
             return obj.deleteChiTietHoKhau(id);
         }
+
+        public DataTable SelectAllChiTietHoKhau()
+        {
+            return obj.SelectAllChiTietHoKhau();
+        }
+        public DataTable SelectChiTietHoKhauById(int id)
+        {
+            return obj.SelectChiTietHoKhauById(id);
+        }
+
+
     }
 }
