@@ -38,16 +38,16 @@ namespace HouseholdManagement
         {
             ManagementItems = new[]
             {
-                new ManagementItem(QLHK_STRING,QuanlyHokhau.createInstance(),QUANLY_HOKHAU_PATH_DATA,QLHK_STRING_DETAIL),
-                new ManagementItem(QLTT_STRING,QuanlyTamTru.createInstance(),QUANLY_TAMTRU_PATH_DATA, QLTT_STRING_DETAIL),
-                new ManagementItem(QLTV_STRING,QuanlyTamVang.createInstance(),QUANLY_TAMVANG_PATH_DATA, QLTV_STRING_DETAIL),
-                new ManagementItem(TK_STRING,Thongke.createInstance(),THONGKE_PATH_DATA, THONGKE_DETAIL)
+                new ManagementItem(QLHK_STRING,new QuanlyHokhau(),QUANLY_HOKHAU_PATH_DATA,QLHK_STRING_DETAIL),
+                new ManagementItem(QLTT_STRING,new QuanlyTamTru(),QUANLY_TAMTRU_PATH_DATA, QLTT_STRING_DETAIL),
+                new ManagementItem(QLTV_STRING,new QuanlyTamVang(),QUANLY_TAMVANG_PATH_DATA, QLTV_STRING_DETAIL),
+                new ManagementItem(TK_STRING,new Thongke(),THONGKE_PATH_DATA, THONGKE_DETAIL)
             };
 
             ProfileItems = new[]
             {
-                new ManagementItem(THONGTIN_STRING, ProfileOverview.createInstance(), THONGTIN_PATH_DATA, THONGTIN_STRING_DETAIL),
-                new ManagementItem(DOIMATKHAU_STRING, ChangePassword.createInstance(), THAY_MATKHAU_PATH_DATA, DOIMATKHAU_STRING_DETAIL),
+                new ManagementItem(THONGTIN_STRING, new ProfileOverview(), THONGTIN_PATH_DATA, THONGTIN_STRING_DETAIL),
+                new ManagementItem(DOIMATKHAU_STRING, new ChangePassword(), THAY_MATKHAU_PATH_DATA, DOIMATKHAU_STRING_DETAIL),
                 new ManagementItem(DANGXUAT_STRING, null, DANGXUAT_PATH_DATA,null)
             };
         }

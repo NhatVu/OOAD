@@ -19,7 +19,7 @@ namespace HouseholdManagement.UserControls
     /// <summary>
     /// Interaction logic for QuanlyHokhau.xaml
     /// </summary>
-    public partial class QuanlyHokhau : UserControl
+    public partial class QuanlyHokhau : UserControl,IInstance
     {
         public static QuanlyHokhau createInstance()
         {
@@ -29,10 +29,23 @@ namespace HouseholdManagement.UserControls
         public QuanlyHokhau()
         {
             InitializeComponent();
+            loadData();
+            handleEvent();
+        }
+
+        private void handleEvent()
+        {
+
+        }
+
+        private void loadData()
+        {
             DataContext = new QuanlyHokhauViewModel();
         }
 
-        
-
+        public object getInstance()
+        {
+            return QuanlyHokhau.createInstance();
+        }
     }
 }

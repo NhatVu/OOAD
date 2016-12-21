@@ -8,17 +8,17 @@ namespace DTO
 {
     public class TamVangDTO
     {
-        public int Id { get; set; }
-        public int IdCongDan { get; set; }
-        public int IdTruongCongAn { get; set; }
-        public DateTime NgayBatDau { get; set; }
-        public DateTime NgayKetThuc { get; set; }
-        public string LyDo { get; set; }
-        public string DiaChiDen { get; set; }
-        public DateTime NgayLamDon { get; set; }
+        private int Id { get; set; }
+        private int IdCongDan { get; set; }
+        private int IdTruongCongAn { get; set; }
+        private DateTime NgayBatDau { get; set; }
+        private DateTime NgayKetThuc { get; set; }
+        private string LyDo { get; set; }
+        private string DiaChiDen { get; set; }
+        private DateTime NgayLamDon { get; set; }
 
-        public string GhiChu { get; set; }
-        public int Active { get; set; }
+        private string GhiChu { get; set; }
+        private int Active { get; set; }
 
         public TamVangDTO() { }
         public TamVangDTO(int idCongDan, int idTruongCongAn, DateTime ngayBatDau, DateTime ngayKetThuc, string lyDo,

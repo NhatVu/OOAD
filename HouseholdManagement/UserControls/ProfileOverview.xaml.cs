@@ -18,12 +18,18 @@ namespace HouseholdManagement.UserControls
     /// <summary>
     /// Interaction logic for ProfileOverview.xaml
     /// </summary>
-    public partial class ProfileOverview : UserControl
+    public partial class ProfileOverview : UserControl,IInstance
     {
-        public static ProfileOverview createInstance()
+        private static ProfileOverview createInstance()
         {
             return new ProfileOverview();
         }
+
+        public object getInstance()
+        {
+            return ProfileOverview.createInstance();
+        }
+
         public ProfileOverview()
         {
             InitializeComponent();

@@ -18,13 +18,19 @@ namespace HouseholdManagement.UserControls
     /// <summary>
     /// Interaction logic for ChangePassword.xaml
     /// </summary>
-    public partial class ChangePassword : UserControl
+    public partial class ChangePassword : UserControl,IInstance
     {
 
-        public static ChangePassword createInstance()
+        private static ChangePassword createInstance()
         {
             return new ChangePassword();
         }
+
+        public object getInstance()
+        {
+            return ChangePassword.createInstance();
+        }
+
         public ChangePassword()
         {
             InitializeComponent();

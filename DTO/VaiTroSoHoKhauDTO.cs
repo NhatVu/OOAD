@@ -8,11 +8,11 @@ namespace DTO
 {
     public class VaiTroSoHoKhauDTO
     {
-        public int Id { get; set; }
-        public string TenVaiTro { get; set; }
-        public string GhiChu { get; set; }
-        public int Active { get; set; }
-        public VaiTroSoHoKhauDTO() { }
+        private int Id { get; set; }
+        private string TenVaiTro { get; set; }
+        private string GhiChu { get; set; }
+        private int Active { get; set; }
+        private VaiTroSoHoKhauDTO() { }
         public VaiTroSoHoKhauDTO(string tenVaiTro, string ghiChu, int active)
         {
             this.TenVaiTro = tenVaiTro;

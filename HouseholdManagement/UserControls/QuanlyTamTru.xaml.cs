@@ -18,15 +18,25 @@ namespace HouseholdManagement.UserControls
     /// <summary>
     /// Interaction logic for QuanlyTamTru.xaml
     /// </summary>
-    public partial class QuanlyTamTru : UserControl
+    public partial class QuanlyTamTru : UserControl,IInstance
     {
-        public static QuanlyTamTru createInstance()
+        private static QuanlyTamTru createInstance()
         {
             return new QuanlyTamTru();
         }
+
+        public object getInstance()
+        {
+            return createInstance();
+        }
+
         public QuanlyTamTru()
         {
             InitializeComponent();
         }
+
+        
+
+        
     }
 }

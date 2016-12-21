@@ -1,4 +1,5 @@
-﻿using HouseholdManagement.Models;
+﻿using DTO;
+using HouseholdManagement.Models;
 using HouseholdManagement.UserControls;
 using System;
 using System.Collections.Generic;
@@ -10,38 +11,19 @@ namespace HouseholdManagement
 {
     class QuanlyHokhauViewModel
     {
+
         public QuanlyHokhauViewModel()
         {
-            HouseholdItems = new Household[]
-            {
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124"),
-                new Household("123","Nguyen Hoang","140/39/7/1 Duong Tx22","12/12","12124")
-
-            };
+            HouseholdItems = new List<HoKhauDTO>();
+            HouseholdItems.Add(new HoKhauDTO());
+            HouseholdItems.Add(new HoKhauDTO());
+            HouseholdItems.Add(new HoKhauDTO());
+            HouseholdItems.Add(new HoKhauDTO());
+            HouseholdItems.Add(new HoKhauDTO());
+            HouseholdItems.Add(new HoKhauDTO());
+            HouseholdItems.Add(new HoKhauDTO());
         }
+        public List<HoKhauDTO> HouseholdItems { get; }
 
-        public Household[] HouseholdItems { get; }
     }
 }

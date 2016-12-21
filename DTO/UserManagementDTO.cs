@@ -8,13 +8,13 @@ namespace DTO
 {
     public class UserManagementDTO
     {
-        public int Id { get; set; }
-        public int IdRole { get; set; }
-        public string Email { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string GhiChu { get; set; }
-        public int Active { get; set; }
+        private int Id { get; set; }
+        private int IdRole { get; set; }
+        private string Email { get; set; }
+        private string Username { get; set; }
+        private string Password { get; set; }
+        private string GhiChu { get; set; }
+        private int Active { get; set; }
         public UserManagementDTO() { }
 
         public UserManagementDTO(int idRole, string username, string password, string ghiChu, int active)

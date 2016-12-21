@@ -8,17 +8,17 @@ namespace DTO
 {
     public class ChiTietHoKhauDTO
     {
-        public int Id { get; set; }
-        public int IdHoKhau { get; set; }
-        public int IdCDThanhVien { get; set; }
+        private int Id { get; set; }
+        private int IdHoKhau { get; set; }
+        private int IdCDThanhVien { get; set; }
 
-        public int IDKSThanhVien { get; set; }
-        public int IdVaiTroSoHoKhau { get; set; }
+        private int IDKSThanhVien { get; set; }
+        private int IdVaiTroSoHoKhau { get; set; }
 
-        public string GhiChu { get; set; }
-        public int Active { get; set; }
+        private string GhiChu { get; set; }
+        private int Active { get; set; }
 
-        public ChiTietHoKhauDTO() { }
+        private ChiTietHoKhauDTO() { }
 
         public ChiTietHoKhauDTO(int idHoKhau, int idCDThanhVien, int idKSThanhVien, int idVaiTroSoHoKhau, string ghiChu, int active)
         {

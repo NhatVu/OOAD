@@ -8,10 +8,10 @@ namespace DTO
 {
     public class DanTocDTO
     {
-        public int Id { get; set; }
-        public string TenDanToc { get; set; }
-        public string GhiChu { get; set; }
-        public int Active { get; set; }
+        private int Id { get; set; }
+        private string TenDanToc { get; set; }
+        private string GhiChu { get; set; }
+        private int Active { get; set; }
 
         public DanTocDTO() { }
         public DanTocDTO(string tenDanToc, string ghiChu, int active)

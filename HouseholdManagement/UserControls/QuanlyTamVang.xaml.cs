@@ -18,12 +18,18 @@ namespace HouseholdManagement.UserControls
     /// <summary>
     /// Interaction logic for QuanlyTamVang.xaml
     /// </summary>
-    public partial class QuanlyTamVang : UserControl
+    public partial class QuanlyTamVang : UserControl,IInstance
     {
-        public static QuanlyTamVang createInstance()
+        private static QuanlyTamVang createInstance()
         {
             return new QuanlyTamVang();
         }
+
+        public object getInstance()
+        {
+            return QuanlyTamVang.createInstance();
+        }
+
         public QuanlyTamVang()
         {
             InitializeComponent();

@@ -8,15 +8,15 @@ namespace DTO
 {
     public class TienAnDTO
     {
-        public int Id { get; set; }
-        public int IdCongDan { get; set; }
-        public string ToiDanh { get; set; }
-        public string HinhPhat { get; set; }
-        public DateTime NgayThang { get; set; }
-        public string NoiTuyenAn { get; set; }
-        public string GhiChu { get; set; }
-        public int Active { get; set; }
-        public TienAnDTO() { }
+        private int Id { get; set; }
+        private int IdCongDan { get; set; }
+        private string ToiDanh { get; set; }
+        private string HinhPhat { get; set; }
+        private DateTime NgayThang { get; set; }
+        private string NoiTuyenAn { get; set; }
+        private string GhiChu { get; set; }
+        private int Active { get; set; }
+        private TienAnDTO() { }
         public TienAnDTO(int idCongDan, string toiDanh, string hinhPhat, DateTime ngayThang, string noiTuyenAn, string ghiChu, int active)
         {
             this.IdCongDan = idCongDan;

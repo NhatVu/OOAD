@@ -8,14 +8,14 @@ namespace DTO
 {
     public class TomTatBanThanDTO
     {
-        public int Id { get; set; }
-        public int IdCongDan { get; set; }
-        public DateTime NgayBatDau { get; set; }
-        public DateTime NgayKetThuc { get; set; }
-        public string ChoO { get; set; } /*choox owr*/
-        public string NgheNghiep { get; set; }
-        public string GhiChu { get; set; }
-        public int Active { get; set; }
+        private int Id { get; set; }
+        private int IdCongDan { get; set; }
+        private DateTime NgayBatDau { get; set; }
+        private DateTime NgayKetThuc { get; set; }
+        private string ChoO { get; set; } /*choox owr*/
+        private string NgheNghiep { get; set; }
+        private string GhiChu { get; set; }
+        private int Active { get; set; }
         public TomTatBanThanDTO() { }
 
         public TomTatBanThanDTO(int idCongDan, DateTime ngayBatDau, DateTime ngayKetThuc, string choO, string ngheNghiep, string ghiChu, int active)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HouseholdManagement.UserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace HouseholdManagement.Models
 
         }
 
-        public ManagementItem(String name, Object content, String pathData, String detail)
+        public ManagementItem(String name, IInstance content, String pathData, String detail)
         {
             mName = name;
             mContent = content;
@@ -34,7 +35,7 @@ namespace HouseholdManagement.Models
         
 
         private String mName;
-        private Object mContent;
+        private IInstance mContent;
         private String mPathData;
         private String mDetail;
 
@@ -51,8 +52,12 @@ namespace HouseholdManagement.Models
 
         public Object Content
         {
-            get { return mContent; }
-            set { mContent = value; }
+            get
+            {
+                return mContent.getInstance();
+            }
+
+            set { mContent = (IInstance)value; }
         }
 
         public String Path

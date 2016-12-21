@@ -18,12 +18,18 @@ namespace HouseholdManagement.UserControls
     /// <summary>
     /// Interaction logic for Thongke.xaml
     /// </summary>
-    public partial class Thongke : UserControl
+    public partial class Thongke : UserControl,IInstance
     {
-        public static Thongke createInstance()
+        private static Thongke createInstance()
         {
             return new Thongke();
         }
+
+        public object getInstance()
+        {
+            return Thongke.createInstance();
+        }
+
         public Thongke()
         {
             InitializeComponent();

@@ -8,11 +8,11 @@ namespace DTO
 {
     public class RoleDTO
     {
-        public string Id { get; set; }
-        public string RoleName { get; set; }
-        public string GhiChu { get; set; }
-        public int Active { get; set; }
-        public RoleDTO() { }
+        private string Id { get; set; }
+        private string RoleName { get; set; }
+        private string GhiChu { get; set; }
+        private int Active { get; set; }
+        private RoleDTO() { }
 
         public RoleDTO(string roleName, string ghiChu, int active)
         {

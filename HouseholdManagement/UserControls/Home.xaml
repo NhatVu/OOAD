@@ -49,34 +49,24 @@
                         </Image>
 
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
-                           TextWrapping="Wrap"
-                           TextAlignment="Left"
+                            <TextBlock
                            FontSize="18"
-                           Foreground="Black"
                            Margin="12,2"
                            FontWeight="Light"
                            Text="{DynamicResource app_name}"/>
-                            <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
-                           TextWrapping="Wrap"
-                           TextAlignment="Left"
+                            <TextBlock 
                            FontSize="18"
-                           Foreground="Black"
                            Margin="12,2"
-                           FontWeight="Light"
                            Text="{DynamicResource version}"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth3"
                                               Background="{DynamicResource primary_color}">
-                            <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
-                           TextWrapping="Wrap"
-                           TextAlignment="Left"
+                            <TextBlock
                            FontSize="24"
                            Foreground="White"
                            Margin="12"
-                           FontWeight="Light"
                            Typography.Capitals="AllSmallCaps"        
                            Text="Tài khoản"/>
                         </materialDesign:ColorZone>
@@ -92,13 +82,10 @@
                                           Fill="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=Foreground}" />
                                             </Canvas>
                                         </Viewbox>
-                                        <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
-                                               TextWrapping="Wrap"
-                                               TextAlignment="Left"
+                                        <TextBlock
                                                FontSize="18"
                                                Foreground="Black"
                                                Margin="12,8"
-                                               FontWeight="Light" 
                                                Opacity="0.8"
                                                Text="{Binding Name}"/>
                                     </StackPanel>
@@ -109,13 +96,10 @@
                     <StackPanel Orientation="Vertical">
                         <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth3"
                                               Background="{DynamicResource primary_color}">
-                            <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
-                           TextWrapping="Wrap"
-                           TextAlignment="Left"
+                            <TextBlock
                            FontSize="24"
                            Foreground="White"
                            Margin="12"
-                           FontWeight="Light"
                            Typography.Capitals="AllSmallCaps"        
                            Text="Nghiệp vụ chính"/>
                         </materialDesign:ColorZone>
@@ -132,9 +116,7 @@
                                           Fill="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=Foreground}" />
                                             </Canvas>
                                         </Viewbox>
-                                        <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
-                                               TextWrapping="Wrap"
-                                               TextAlignment="Left"
+                                        <TextBlock
                                                FontSize="18"
                                                Foreground="Black"
                                                Margin="12,8"
@@ -151,27 +133,21 @@
                 <DockPanel DockPanel.Dock="Bottom" 
                            LastChildFill="True"
                            Margin="0 18">
-                    <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
-                                               TextWrapping="Wrap"
-                                               TextAlignment="Center"
+                    <TextBlock
                                                FontSize="18"
                                                Foreground="Black"
                                                Margin="24,0"
                                                FontWeight="Light"
                                                Text="Term" Opacity="0.8"
                                                DockPanel.Dock="Left"/>
-                    <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
-                                               TextWrapping="Wrap"
-                                               TextAlignment="Center"
+                    <TextBlock
                                                FontSize="18"
                                                Foreground="Black"
                                                Margin="24,0"
                                                FontWeight="Light"
                                                Text="About" Opacity="0.8"
                                                DockPanel.Dock="Right"/>
-                    <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
-                                               TextWrapping="Wrap"
-                                               TextAlignment="Center"
+                    <TextBlock
                                                FontSize="18"
                                                Foreground="Black"
                                                Margin="12,0"

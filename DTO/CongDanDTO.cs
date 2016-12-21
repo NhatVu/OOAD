@@ -8,26 +8,26 @@ namespace DTO
 {
     public class CongDanDTO
     {
-        public int Id { get; set; }
-        public int IdKhaiSinh { get; set; }
-        public int Cmnd { get; set; }
-        public string TonGiao { get; set; }
-        public string NgheNghiep { get; set; }
-        public string NoiLamViec { get; set; }
-        public DateTime NgayCapCMND { get; set; }
-        public string NoiCap { get; set; }
-        public string DiaChiThuongTru { get; set; }
-        public string TrinhDoHocVan { get; set; }
-        public string TrinhDoChuyenMon { get; set; }
-        public string TrinhDoNgoaiNgu { get; set; }
+        private int Id { get; set; }
+        private int IdKhaiSinh { get; set; }
+        private int Cmnd { get; set; }
+        private string TonGiao { get; set; }
+        private string NgheNghiep { get; set; }
+        private string NoiLamViec { get; set; }
+        private DateTime NgayCapCMND { get; set; }
+        private string NoiCap { get; set; }
+        private string DiaChiThuongTru { get; set; }
+        private string TrinhDoHocVan { get; set; }
+        private string TrinhDoChuyenMon { get; set; }
+        private string TrinhDoNgoaiNgu { get; set; }
 
-        public string GhiChu { get; set; }
-        public int Active { get; set; }
+        private string GhiChu { get; set; }
+        private int Active { get; set; }
 
         public CongDanDTO() { }
         public CongDanDTO(int idKhaiSinh, int cmnd, string tonGiao, string ngheNghiep, string noiLamViec, DateTime ngayCapCMND, string noiCap,
-            string diaChiThuongTru, string trinhDoHocVan, string trinhDoChuyenMon, string trinhDoNgoaiNgu, string ghiChu,
-            int active)
+                          string diaChiThuongTru, string trinhDoHocVan, string trinhDoChuyenMon, string trinhDoNgoaiNgu, string ghiChu,
+                          int active)
         {
             this.IdKhaiSinh = idKhaiSinh;
             this.Cmnd = cmnd;

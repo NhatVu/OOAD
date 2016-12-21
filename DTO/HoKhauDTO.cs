@@ -8,12 +8,12 @@ namespace DTO
 {
     public class HoKhauDTO
     {
-        public int Id { get; set; }
-        public int IdCDTruongCongAn { get; set; }
-        public string NoiCap { get; set; }
-        public string NoiDangKyThuongTru { get; set; }
-        public string GhiChu { get; set; }
-        public int Active { get; set; }
+        private int Id { get; set; }
+        private int IdCDTruongCongAn { get; set; }
+        private string NoiCap { get; set; }
+        private string NoiDangKyThuongTru { get; set; }
+        private string GhiChu { get; set; }
+        private int Active { get; set; }
         // 
         public HoKhauDTO(string noiCap, int idCDTruongCongAn, string noiDangKyThuongTru,string ghiChu, int active)
         {
