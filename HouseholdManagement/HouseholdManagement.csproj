@@ -98,19 +98,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BusinessLogicLayers\ChiTietHoKhauBUS.cs" />
-    <Compile Include="BusinessLogicLayers\ChuyenKhauBUS.cs" />
-    <Compile Include="BusinessLogicLayers\CongDanBUS.cs" />
-    <Compile Include="BusinessLogicLayers\DanTocBUS.cs" />
-    <Compile Include="BusinessLogicLayers\HoKhauBUS.cs" />
-    <Compile Include="BusinessLogicLayers\KhaiSinhBUS.cs" />
-    <Compile Include="BusinessLogicLayers\RoleBUS.cs" />
-    <Compile Include="BusinessLogicLayers\TamTruBUS.cs" />
-    <Compile Include="BusinessLogicLayers\TamVangBUS.cs" />
-    <Compile Include="BusinessLogicLayers\TienAnBUS.cs" />
-    <Compile Include="BusinessLogicLayers\TomTatBanThanBUS.cs" />
-    <Compile Include="BusinessLogicLayers\UserManagementBUS.cs" />
-    <Compile Include="BusinessLogicLayers\VaiTroSoHoKhauBUS.cs" />
     <Compile Include="DataAccessLayers\ChiTietHoKhauDAO.cs" />
     <Compile Include="DataAccessLayers\ChuyenKhauDAO.cs" />
     <Compile Include="DataAccessLayers\CongDanDAO.cs" />
@@ -139,6 +126,9 @@
     <Compile Include="Models\UserManagementDTO.cs" />
     <Compile Include="Models\VaiTroSoHoKhauDTO.cs" />
     <Compile Include="UserControls\IInstance.cs" />
+    <Compile Include="UserControls\ThemHoKhau.xaml.cs">
+      <DependentUpon>ThemHoKhau.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\QuanlyHokhauViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="Models\ManagementItem.cs" />
@@ -189,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\QuanlyTamVang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ThemHoKhau.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

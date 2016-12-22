@@ -38,10 +38,15 @@ INSERT [dbo].[CongDan] ([id], [idDanToc], [hoTen], [ngaySinh], [gioiTinh], [queQ
 INSERT [dbo].[CongDan] ([id], [idDanToc], [hoTen], [ngaySinh], [gioiTinh], [queQuan], [quocTich], [idCDCha], [idCDMe], [noiDangKyKS], [ngayDangKyKS], [idNguoiLamDonKS], [idCDNguoiKyKS], [cmnd], [tonGiao], [ngheNghiep], [noiLamViec], [ngayCapCMND], [noiCap], [diaChiThuongTru], [trinhDoHocVan], [trinhDoChuyenMon], [trinhDoNgoaiNgu], [ghiChu], [active]) VALUES (6, 2, N'Nguyễn Văn Cha', CAST(N'1970-05-01 00:00:00.000' AS DateTime), 1, N'Hà Tĩnh', N'Việt nam', NULL, NULL, N'Hà Tĩnh', CAST(N'1970-05-05 00:00:00.000' AS DateTime), NULL, NULL, 290495832, N'Phật giáo', N'Giáo viên', N'TP HCM', CAST(N'2015-01-01 00:00:00.000' AS DateTime), N' TP HCM', N'TP HCM', N'12/12', N'Giáo viên', N'Anh văn', NULL, 1)
 INSERT [dbo].[CongDan] ([id], [idDanToc], [hoTen], [ngaySinh], [gioiTinh], [queQuan], [quocTich], [idCDCha], [idCDMe], [noiDangKyKS], [ngayDangKyKS], [idNguoiLamDonKS], [idCDNguoiKyKS], [cmnd], [tonGiao], [ngheNghiep], [noiLamViec], [ngayCapCMND], [noiCap], [diaChiThuongTru], [trinhDoHocVan], [trinhDoChuyenMon], [trinhDoNgoaiNgu], [ghiChu], [active]) VALUES (7, 1, N'Nguyễn Văn Mẹ', CAST(N'1980-04-05 00:00:00.000' AS DateTime), 0, N'An Giang', N'Việt Nam', NULL, NULL, N'An Giang', CAST(N'1980-05-05 00:00:00.000' AS DateTime), NULL, NULL, 294805928, N'Không', N'Cán bộ', N'TP HCM', CAST(N'2016-11-28 00:00:00.000' AS DateTime), N'TP HCM', N'TP HCM', N'12/12', N'Quản lý hành chính', N'Tiếng Hoa', NULL, 1)
 INSERT [dbo].[CongDan] ([id], [idDanToc], [hoTen], [ngaySinh], [gioiTinh], [queQuan], [quocTich], [idCDCha], [idCDMe], [noiDangKyKS], [ngayDangKyKS], [idNguoiLamDonKS], [idCDNguoiKyKS], [cmnd], [tonGiao], [ngheNghiep], [noiLamViec], [ngayCapCMND], [noiCap], [diaChiThuongTru], [trinhDoHocVan], [trinhDoChuyenMon], [trinhDoNgoaiNgu], [ghiChu], [active]) VALUES (8, 1, N'Nguyễn Văn Con Trai', CAST(N'1990-05-05 00:00:00.000' AS DateTime), 1, N'An Giang', N'Việt Nam', 6, 7, N'An Giang', CAST(N'1990-06-15 00:00:00.000' AS DateTime), NULL, NULL, 294805929, N'Không', N'Sinh viên', N'TP HCM', CAST(N'2015-12-28 00:00:00.000' AS DateTime), N'TP HCM', N'TP HCM', N'11/12', NULL, N'Tiếng Hoa', NULL, 1)
-INSERT [dbo].[CongDan] ([id], [idDanToc], [hoTen], [ngaySinh], [gioiTinh], [queQuan], [quocTich], [idCDCha], [idCDMe], [noiDangKyKS], [ngayDangKyKS], [idNguoiLamDonKS], [idCDNguoiKyKS], [cmnd], [tonGiao], [ngheNghiep], [noiLamViec], [ngayCapCMND], [noiCap], [diaChiThuongTru], [trinhDoHocVan], [trinhDoChuyenMon], [trinhDoNgoaiNgu], [ghiChu], [active]) VALUES (9, 1, N'Nguyễn Văn Con Gái', CAST(N'1999-10-21 00:00:00.000' AS DateTime), 0, N'TP HCM', N'Việt Nam', NULL, NULL, N'An Giang', CAST(N'1999-10-25 00:00:00.000' AS DateTime), NULL, NULL, NULL, N'Không', N'Học Sinh', N'TP HCM', CAST(N'2016-11-28 00:00:00.000' AS DateTime), N'TP HCM', N'TP HCM', N'10/12', N'Học Sinh', N'Tiếng Hoa', NULL, 1)
+INSERT [dbo].[CongDan] ([id], [idDanToc], [hoTen], [ngaySinh], [gioiTinh], [queQuan], [quocTich], [idCDCha], [idCDMe], [noiDangKyKS], [ngayDangKyKS], [idNguoiLamDonKS], [idCDNguoiKyKS], [cmnd], [tonGiao], [ngheNghiep], [noiLamViec], [ngayCapCMND], [noiCap], [diaChiThuongTru], [trinhDoHocVan], [trinhDoChuyenMon], [trinhDoNgoaiNgu], [ghiChu], [active]) VALUES (9, 1, N'Nguyễn Văn Con Gái', CAST(N'1999-10-21 00:00:00.000' AS DateTime), 0, N'TP HCM', N'Việt Nam', 6, 7, N'An Giang', CAST(N'1999-10-25 00:00:00.000' AS DateTime), NULL, NULL, NULL, N'Không', N'Học Sinh', N'TP HCM', CAST(N'2016-11-28 00:00:00.000' AS DateTime), N'TP HCM', N'TP HCM', N'10/12', N'Học Sinh', N'Tiếng Hoa', NULL, 1)
 INSERT [dbo].[CongDan] ([id], [idDanToc], [hoTen], [ngaySinh], [gioiTinh], [queQuan], [quocTich], [idCDCha], [idCDMe], [noiDangKyKS], [ngayDangKyKS], [idNguoiLamDonKS], [idCDNguoiKyKS], [cmnd], [tonGiao], [ngheNghiep], [noiLamViec], [ngayCapCMND], [noiCap], [diaChiThuongTru], [trinhDoHocVan], [trinhDoChuyenMon], [trinhDoNgoaiNgu], [ghiChu], [active]) VALUES (10, 1, N'Nguyễn Trưởng Công An', CAST(N'1980-10-20 00:00:00.000' AS DateTime), 0, N'TP HCM', N'Việt Nam', NULL, NULL, N'An Giang', CAST(N'1970-10-25 00:00:00.000' AS DateTime), NULL, NULL, 236808328, N'Không', N'Trưởng Công An', N'TP HCM', CAST(N'2016-11-28 00:00:00.000' AS DateTime), N'TP HCM', N'TP HCM', N'12/12', N'Công An hành chính', N'Tiếng Hoa', NULL, 1)
 
 SET IDENTITY_INSERT [dbo].[CongDan] OFF
+
+
+INSERT INTO [dbo].[CongAn]([id], [email],[username],[password],[ghiChu],[active]) VALUES (3,NULL,NULL,NUll,NULL,1)
+INSERT INTO [dbo].[CongAn]([id], [email],[username],[password],[ghiChu],[active]) VALUES (10,NULL,NULL,NUll,NULL,1)
+
 
 SET IDENTITY_INSERT [dbo].[HoKhau] ON 
 
@@ -63,23 +68,20 @@ SET IDENTITY_INSERT [dbo].[ChiTietHoKhau] OFF
 
 
 
-SET IDENTITY_INSERT [dbo].[Role] ON 
 
-INSERT [dbo].[Role] ([id], [roleName], [ghiChu], [active]) VALUES (1, N'Công An', NULL, 1)
-SET IDENTITY_INSERT [dbo].[Role] OFF
 SET IDENTITY_INSERT [dbo].[TamTru] ON 
 
-INSERT [dbo].[TamTru] ([id], [idCongDan], [idTruongCongAn], [ngayBatDau], [ngayKetThuc], [lyDo], [diaChiDen], [ngayLamDon], [ghiChu], [active]) VALUES (1, 1, 7, CAST(N'2015-01-01 00:00:00.000' AS DateTime), CAST(N'2015-03-01 00:00:00.000' AS DateTime), N'Công tác tại Hà Nội', N'Hà Nội', CAST(N'2015-01-01 00:00:00.000' AS DateTime), NULL, 1)
-INSERT [dbo].[TamTru] ([id], [idCongDan], [idTruongCongAn], [ngayBatDau], [ngayKetThuc], [lyDo], [diaChiDen], [ngayLamDon], [ghiChu], [active]) VALUES (2, 4, 8, CAST(N'2016-04-05 00:00:00.000' AS DateTime), CAST(N'2016-06-07 00:00:00.000' AS DateTime), N'Về quê', N'Hà Tĩnh', CAST(N'2016-04-05 00:00:00.000' AS DateTime), NULL, 1)
+INSERT [dbo].[TamTru] ([id], [idCongDan], [idTruongCongAn], [ngayBatDau], [ngayKetThuc], [lyDo], [diaChiDen], [ngayLamDon], [ghiChu], [active]) VALUES (1, 1, 3, CAST(N'2015-01-01 00:00:00.000' AS DateTime), CAST(N'2015-03-01 00:00:00.000' AS DateTime), N'Công tác tại Hà Nội', N'Hà Nội', CAST(N'2015-01-01 00:00:00.000' AS DateTime), NULL, 1)
+INSERT [dbo].[TamTru] ([id], [idCongDan], [idTruongCongAn], [ngayBatDau], [ngayKetThuc], [lyDo], [diaChiDen], [ngayLamDon], [ghiChu], [active]) VALUES (2, 4, 10, CAST(N'2016-04-05 00:00:00.000' AS DateTime), CAST(N'2016-06-07 00:00:00.000' AS DateTime), N'Về quê', N'Hà Tĩnh', CAST(N'2016-04-05 00:00:00.000' AS DateTime), NULL, 1)
 SET IDENTITY_INSERT [dbo].[TamTru] OFF
 SET IDENTITY_INSERT [dbo].[TamVang] ON 
 
-INSERT [dbo].[TamVang] ([id], [idCongDan], [idTruongCongAn], [ngayBatDau], [ngayKetThuc], [lyDo], [diaChiDen], [ngayLamDon], [ghiChu], [active]) VALUES (1, 2, 7, CAST(N'2016-01-01 00:00:00.000' AS DateTime), CAST(N'2106-03-01 00:00:00.000' AS DateTime), N'Về quê', N'An Giang', CAST(N'2016-01-01 00:00:00.000' AS DateTime), NULL, 1)
-INSERT [dbo].[TamVang] ([id], [idCongDan], [idTruongCongAn], [ngayBatDau], [ngayKetThuc], [lyDo], [diaChiDen], [ngayLamDon], [ghiChu], [active]) VALUES (2, 8, 8, CAST(N'2016-03-02 00:00:00.000' AS DateTime), CAST(N'2016-04-05 00:00:00.000' AS DateTime), N'Lên nhà bạn', N'TP HCM', CAST(N'2016-03-02 00:00:00.000' AS DateTime), NULL, 1)
+INSERT [dbo].[TamVang] ([id], [idCongDan], [idTruongCongAn], [ngayBatDau], [ngayKetThuc], [lyDo], [diaChiDen], [ngayLamDon], [ghiChu], [active]) VALUES (1, 2, 3, CAST(N'2016-01-01 00:00:00.000' AS DateTime), CAST(N'2106-03-01 00:00:00.000' AS DateTime), N'Về quê', N'An Giang', CAST(N'2016-01-01 00:00:00.000' AS DateTime), NULL, 1)
+INSERT [dbo].[TamVang] ([id], [idCongDan], [idTruongCongAn], [ngayBatDau], [ngayKetThuc], [lyDo], [diaChiDen], [ngayLamDon], [ghiChu], [active]) VALUES (2, 8, 10, CAST(N'2016-03-02 00:00:00.000' AS DateTime), CAST(N'2016-04-05 00:00:00.000' AS DateTime), N'Lên nhà bạn', N'TP HCM', CAST(N'2016-03-02 00:00:00.000' AS DateTime), NULL, 1)
 SET IDENTITY_INSERT [dbo].[TamVang] OFF
 SET IDENTITY_INSERT [dbo].[TienAn] ON 
 
-INSERT [dbo].[TienAn] ([id], [idCongDan], [toiDanh], [hinhPhat], [ngayThang], [noiTuyenAn], [ghiChu], [active]) VALUES (1, 7, N'Đánh nhau', N'Quản chế tại nahf 3 tuần', CAST(N'1995-01-01 00:00:00.000' AS DateTime), N'Hải phòng', NULL, 1)
+INSERT [dbo].[TienAn] ([id], [idCongDan], [toiDanh], [hinhPhat], [ngayThang], [noiTuyenAn], [ghiChu], [active]) VALUES (1, 7, N'Đánh nhau', N'Quản chế tại nhà 3 tuần', CAST(N'1995-01-01 00:00:00.000' AS DateTime), N'Hải phòng', NULL, 1)
 INSERT [dbo].[TienAn] ([id], [idCongDan], [toiDanh], [hinhPhat], [ngayThang], [noiTuyenAn], [ghiChu], [active]) VALUES (2, 6, N'Cướp tài sản', N'Tù 2 tháng', CAST(N'2000-04-05 00:00:00.000' AS DateTime), N'Đồng Nai', NULL, 1)
 INSERT [dbo].[TienAn] ([id], [idCongDan], [toiDanh], [hinhPhat], [ngayThang], [noiTuyenAn], [ghiChu], [active]) VALUES (3, 7, N'Đánh bạc', N'Tù 1 tháng', CAST(N'2000-01-12 00:00:00.000' AS DateTime), N'Đồng Nai', NULL, 1)
 SET IDENTITY_INSERT [dbo].[TienAn] OFF

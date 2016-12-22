@@ -33,7 +33,11 @@
                 <Setter Property="Foreground" Value="Black"/>
                 <Setter Property="FontWeight" Value="Light" />
             </Style>
-            
+
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}">
+                
+            </Style>
+
             <!-- Color -->
             <SolidColorBrush x:Key="primary_color" Color="#235183"/>
             <SolidColorBrush x:Key="accent_color" Color="#FC5357"/>
