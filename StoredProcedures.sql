@@ -103,7 +103,7 @@ GO
 CREATE PROCEDURE [dbo].[CongAn_UpdateById]
 @id  int,@email  varchar=null,@username  varchar=null,@password  varchar=null,@ghiChu  nvarchar=null,@active  int=null
  AS 
- UPDATE CongAn SET [id]=@id,[email]=@email,[username]=@username,[password]=@password,[ghiChu]=@ghiChu,[active]=@active WHERE []=@
+ UPDATE CongAn SET [id]=@id,[email]=@email,[username]=@username,[password]=@password,[ghiChu]=@ghiChu,[active]=@active WHERE [id]=@id
 GO 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TomTatBanThan_UpdateById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[TomTatBanThan_UpdateById]
 GO 
@@ -187,9 +187,10 @@ GO
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[CongAn_DeleteById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[CongAn_DeleteById]
 GO 
 CREATE PROCEDURE [dbo].[CongAn_DeleteById]
+@id int
 
  AS 
- DELETE FROM CongAn WHERE []=@
+ DELETE FROM CongAn WHERE [id]=@id
 GO 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TomTatBanThan_DeleteById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[TomTatBanThan_DeleteById]
 GO 
@@ -300,9 +301,9 @@ GO
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[CongAn_SelectById]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[CongAn_SelectById]
 GO 
 CREATE PROCEDURE [dbo].[CongAn_SelectById]
-
+@id int
  AS 
- SELECT * FROM CongAn WHERE []=@
+ SELECT * FROM CongAn WHERE [id]=@id
 GO 
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[CongDan_SelectByNghenghiep]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[CongDan_SelectByNghenghiep]
 GO 
