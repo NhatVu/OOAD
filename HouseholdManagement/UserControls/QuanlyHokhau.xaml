@@ -11,7 +11,9 @@
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-             TextElement.FontSize="14">
+             TextElement.FontSize="14" 
+             Loaded="onLoaded"
+             Unloaded="onUnloaded">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -49,47 +51,49 @@
                        HorizontalAlignment="Center"></TextBlock>
         </Border>
         <DataGrid Grid.Row="1"
-                  ItemsSource="{Binding HouseholdItems,UpdateSourceTrigger=PropertyChanged}" 
-                  SelectedItem="{Binding Path=SelectedHoKhauDTO, Mode=TwoWay}"
+                  ItemsSource="{Binding Path=HoKhauList}"
                   CanUserSortColumns="True" 
                   CanUserAddRows="False" 
                   AutoGenerateColumns="False"
                   x:Name="table_household"
                   materialDesign:DataGridAssist.CellPadding="16 12">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding NoiCap}"
-                                        Header="Số hộ khẩu"
-                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                <materialDesign:MaterialDataGridTextColumn Binding="{Binding NoiCap}"
-                                                           Header="Người ký"                                                        
-                                                           EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" 
-                                                           MinWidth="150"
-                                                           MaxLength="50"
+                <materialDesign:MaterialDataGridTextColumn Header="Số hộ khẩu"
+                                    Binding="{Binding Id}"
+                                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                <materialDesign:MaterialDataGridComboBoxColumn Header="Công an"
+                                                               SelectedItemBinding="{Binding HoTen}"
+                                                               ItemsSourceBinding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path= DataContext.CongAnList}"
                                                                />
                 
                 <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
-                <materialDesign:MaterialDataGridTextColumn Binding="{Binding NoiCap}"
-                                                           Header="Tên chủ hộ"                                                        
+                <materialDesign:MaterialDataGridTextColumn Header="Tên chủ hộ"   
+                                                           Binding="{Binding ChuHo}"
                                                            EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" 
                                                            MinWidth="150"
                                                            MaxLength="50"
                                                                />
                 <!-- set a max length to get an indicator in the editor -->
+                <materialDesign:MaterialDataGridTextColumn Header="Địa chỉ thường chú"  
+                                                           Binding="{Binding NoiDangKyThuongTru}"
+                                                           MinWidth="250"
+                                                           MaxLength="300" 
+                                                           EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"  />
                 <materialDesign:MaterialDataGridTextColumn Binding="{Binding NoiCap}"
-                                                           Header="Địa chỉ thường chú"  
+                                                           Header="Nơi cấp"  
                                                            MinWidth="250"
                                                            MaxLength="300" 
                                                            EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"  />
                 <DataGridTemplateColumn Header="Thời gian">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding NoiCap}" />
+                            <TextBlock Text="{Binding NgayCap, StringFormat=dd/mm/yyyy}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <DatePicker SelectedDate="{Binding NoiCap, StringFormat=dd/MM/yyyy}"
-                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+                            <DatePicker SelectedDate="{Binding NgayCap, StringFormat=dd/mm/yyyy}"
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>

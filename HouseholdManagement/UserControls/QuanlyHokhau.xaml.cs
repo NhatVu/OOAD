@@ -28,9 +28,7 @@ namespace HouseholdManagement.UserControls
 
         public QuanlyHokhau()
         {
-            InitializeComponent();
-            loadData();
-            handleEvent();
+            InitializeComponent();  
         }
 
         private void handleEvent()
@@ -41,11 +39,25 @@ namespace HouseholdManagement.UserControls
         private void loadData()
         {
             DataContext = new QuanlyHokhauViewModel();
+            
         }
 
         public object getInstance()
         {
             return QuanlyHokhau.createInstance();
+        }
+
+        private void onLoaded(object sender, RoutedEventArgs e)
+        {
+            loadData();
+            handleEvent();
+        }
+
+        private void onUnloaded(object sender, RoutedEventArgs e)
+        {
+            //save data to database
+            //do anything before close the door
+        
         }
     }
 }

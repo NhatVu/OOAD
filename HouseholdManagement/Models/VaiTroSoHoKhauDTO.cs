@@ -13,6 +13,18 @@ namespace DTO
         private string mGhichu;
         private int mActive;
 
+        public VaiTroSoHoKhauDTO()
+        {
+
+        }
+
+        public VaiTroSoHoKhauDTO(string mTenVaitro, string mGhichu, int mActive)
+        {
+            this.mTenVaitro = mTenVaitro;
+            this.mGhichu = mGhichu;
+            this.mActive = mActive;
+        }
+
         public int Id
         {
             get
@@ -65,13 +77,6 @@ namespace DTO
             }
         }
 
-        private VaiTroSoHoKhauDTO() { }
 
-        public VaiTroSoHoKhauDTO(string mTenVaitro, string mGhichu, int mActive)
-        {
-            this.mTenVaitro = mTenVaitro;
-            this.mGhichu = mGhichu;
-            this.mActive = mActive;
-        }
     }
 }

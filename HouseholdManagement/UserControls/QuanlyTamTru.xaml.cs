@@ -35,8 +35,30 @@ namespace HouseholdManagement.UserControls
             InitializeComponent();
         }
 
-        
+        private void onLoaded(object sender, RoutedEventArgs e)
+        {
+            loadData();
+            handleEvent();
+        }
 
-        
+        private void handleEvent()
+        {
+            
+        }
+
+        private void loadData()
+        {
+            
+        }
+
+        private void onUnloaded(object sender, RoutedEventArgs e)
+        {
+            //save data to database
+            //do anything before close the door
+
+        }
+
+
+
     }
 }

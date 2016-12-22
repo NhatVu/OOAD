@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HouseholdManagement.UserControls"
              mc:Ignorable="d" 
+             Loaded="onLoaded"
+             Unloaded="onUnloaded"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
             

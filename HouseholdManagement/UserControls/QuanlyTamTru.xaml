@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HouseholdManagement.UserControls"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             Loaded="onLoaded"
+             Unloaded="onUnloaded"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="41,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
