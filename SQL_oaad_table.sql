@@ -134,9 +134,8 @@ create table ChiTietHoKhau(
 	active int,
 
 	constraint FK_ChiTietHoKhau_HoKhau foreign key (idHoKhau) references HoKhau(id),
-	constraint FK_ChiTietHoKhau_VaiTroSoHoKhau foreign key (idVaiTroSoHoKhau) references VaiTroSoHoKhau(id)
+	constraint FK_ChiTietHoKhau_VaiTroSoHoKhau foreign key (idVaiTroSoHoKhau) references VaiTroSoHoKhau(id),
 )
-
 
 create table TamVang (
 	id int identity(1,1) primary key,

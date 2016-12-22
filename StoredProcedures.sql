@@ -356,6 +356,14 @@ CREATE PROCEDURE [dbo].[CongDan_SelectById]
  AS 
  SELECT * FROM CongDan WHERE [id]=@id
 GO 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[CongDan_SelectByNghenghiep]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[CongDan_SelectByNghenghiep]
+GO 
+CREATE PROCEDURE [dbo].[CongDan_SelectByNghenghiep]
+@nghe  nvarchar(100)
+ AS 
+ SELECT * FROM CongDan WHERE [ngheNghiep]=@nghe 
+GO 
+
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TomTatBanThan_SelectAll]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[TomTatBanThan_SelectAll]
 GO 
 CREATE PROCEDURE [dbo].[TomTatBanThan_SelectAll]
