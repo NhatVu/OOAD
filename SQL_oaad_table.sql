@@ -4,26 +4,6 @@ create database QuanLyHoKhau;
 go
 use QuanLyHoKhau;
 
-create table Role (
-	id int IDENTITY(1,1) primary key,
-	roleName nvarchar(50) not null,
-	ghiChu nvarchar(300),
-	active int,
-)
-
-create table UserManagement (
-	id int identity(1,1) primary key,
-	idRole int,
-	email varchar(50) not null,
-	username varchar(20) not null,
-	password varchar(500) not null,
-	ghiChu nvarchar(300),
-	active int
-	constraint FK_UserManagement_Role foreign key (idRole) references Role(id)
-)
-
-
-
 create table DanToc (
 	id int identity(1,1) primary key,
 	tenDanToc nvarchar(50),
@@ -31,7 +11,8 @@ create table DanToc (
 	active int
 )
 
-create table KhaiSinh(
+
+create table CongDan (
 	id int IDENTITY(1,1) primary key,
 	idDanToc int,
 	hoTen nvarchar(50),
@@ -41,22 +22,10 @@ create table KhaiSinh(
 	quocTich nvarchar(100),
 	idCDCha int,
 	idCDMe int,
-	noiDangKy nvarchar(100),
-	ngayDangKy datetime,
-	idNguoiLamDon int,
-	idCDNguoiKy int,
-	ghiChu nvarchar(300),
-	active int,
-
-	constraint FK_KhaiSinh_DanToc foreign key(idDanToc) references DanToc(id)
-
-)
-
-
-
-create table CongDan (
-	id int IDENTITY(1,1) primary key,
-	idKhaiSinh int,
+	noiDangKyKS nvarchar(100),
+	ngayDangKyKS datetime,
+	idNguoiLamDonKS int,
+	idCDNguoiKyKS int,
 	cmnd int not null,
 	tonGiao nvarchar(50),
 	ngheNghiep nvarchar(100),
@@ -70,14 +39,14 @@ create table CongDan (
 	ghiChu nvarchar(300),
 	active int,
 
-	constraint FK_CongDan_KhaiSinh foreign key(idKhaiSinh) references KhaiSinh(id)
+
+	constraint FK_CDCha_CongDan foreign key(idCDCha) references CongDan(id),
+	constraint FK_CDMe_CongDan foreign key(idCDMe) references CongDan(id),
+	constraint FK_CDNguoiLamDon_CongDan foreign key(idNguoiLamDonKS) references CongDan(id),
+	constraint FK_CDNguoiKy_CongDan foreign key(idCDNguoiKyKS) references CongDan(id),
+	constraint FK_CongDan_DanToc foreign key(idDanToc) references DanToc(id)
 )
 
-alter table KhaiSinh
-add constraint FK_CDCha_CongDan foreign key(idCDCha) references CongDan(id),
-	constraint FK_CDMe_CongDan foreign key(idCDMe) references CongDan(id),
-	constraint FK_CDNguoiLamDon_CongDan foreign key(idNguoiLamDon) references CongDan(id),
-	constraint FK_CDNguoiKy_CongDan foreign key(idCDNguoiKy) references CongDan(id)
 
 create table TomTatBanThan (
 	id int IDENTITY(1,1) primary key,
@@ -128,7 +97,6 @@ create table ChiTietHoKhau(
 	id int identity(1,1) primary key,
 	idHoKhau int,
 	idCDThanhVien int,
-	idKSThanhVien int,
 	idVaiTroSoHoKhau int,
 	ghiChu nvarchar(300),
 	active int,
@@ -183,6 +151,35 @@ create table TamTru (
 
 	constraint FK_TamTru_CongDan foreign key (idCongDan) references CongDan(id),
 	constraint FK_TamTru_TruongCongAn foreign key (idTruongCongAn) references CongDan(id)
+)
+
+create table Role (
+	id int IDENTITY(1,1) primary key,
+	roleName nvarchar(50) not null,
+	ghiChu nvarchar(300),
+	active int,
+)
+
+create table UserManagement (
+	id int identity(1,1) primary key,
+	idCongAn int,
+	idRole int,
+	email varchar(50) not null,
+	username varchar(20) not null,
+	password varchar(500) not null,
+	ghiChu nvarchar(300),
+	active int
+	constraint FK_UserManagement_Role foreign key (idRole) references Role(id),
+	constraint FK_UserManagement_CongDan foreign key (idCongAn) references CongDan(id)
+)
+
+create table LichSuHoKhau (
+	id int identity(1,1) primary key,
+	originalId int,
+	hoTenTruongCongAn nvarchar(100),
+	hoTenThanhVien nvarchar(100),
+	vaiTro nvarchar(100),
+	thoiGianThayDoi datetime,
 )
 
 
