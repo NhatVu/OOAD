@@ -53,8 +53,8 @@
                            Margin="0,16,0,0"
                            FontWeight="Light"
                            Text="{DynamicResource app_name}"/>
-                        <TextBox x:Name="textbox_name"
-                         materialDesign:HintAssist.Hint="{DynamicResource name_hint}"
+                        <TextBox x:Name="textbox_email"
+                         materialDesign:HintAssist.Hint="{DynamicResource email_hint}"
                          materialDesign:ColorZoneAssist.Mode="Dark"/>
                         <PasswordBox x:Name="textbox_password"
                              materialDesign:HintAssist.Hint="{DynamicResource password_hint}"/>

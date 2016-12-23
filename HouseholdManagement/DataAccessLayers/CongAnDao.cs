@@ -11,9 +11,12 @@ using System.Windows.Forms;
 
 namespace DataAcessLayer
 {
-    public class CongAnDAO : DBConnection
+    public class CongAnDAO 
     {
-        public CongAnDAO() : base() { }
+        SqlConnection connection;
+        public CongAnDAO() {
+            connection = DBConnection.getInstance().getConnection();
+        }
 
         public bool insertCongAn(CongAnDTO dto)
         {
@@ -153,6 +156,38 @@ namespace DataAcessLayer
                 SqlParameter[] parameter;
                 parameter = new SqlParameter[1];
                 parameter[0] = new SqlParameter("@id", id);
+
+
+                command.Parameters.AddRange(parameter);
+                adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+                connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                connection.Close();
+                return null;
+            }
+        }
+
+        public DataTable SelectCongAnByEmail(string email)
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand command = new SqlCommand();
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapter;
+                command.Connection = connection;
+                command.CommandText = "CongAn_SelectByEmail";
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter[] parameter;
+                parameter = new SqlParameter[1];
+                parameter[0] = new SqlParameter("@email", email);
 
 
                 command.Parameters.AddRange(parameter);

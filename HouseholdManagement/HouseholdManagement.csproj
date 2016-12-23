@@ -36,6 +36,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.1.3\lib\net45\MaterialDesignColors.dll</HintPath>
       <Private>True</Private>
@@ -131,6 +135,7 @@
       <DependentUpon>ThemHoKhauPage2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\IInstance.cs" />
+    <Compile Include="Utilities\CheckInput.cs" />
     <Compile Include="Utilities\PasswordHash.cs" />
     <Compile Include="ViewModels\QuanlyHokhauViewModel.cs" />
     <Compile Include="Pages\ThayDoiMatKhau.xaml.cs">

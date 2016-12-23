@@ -44,7 +44,7 @@ INSERT [dbo].[CongDan] ([id], [idDanToc], [hoTen], [ngaySinh], [gioiTinh], [queQ
 SET IDENTITY_INSERT [dbo].[CongDan] OFF
 
 
-INSERT INTO [dbo].[CongAn]([id], [email],[username],[password],[ghiChu],[active]) VALUES (3,NULL,NULL,NUll,NULL,1)
+INSERT INTO [dbo].[CongAn]([id], [email],[username],[password],[ghiChu],[active]) VALUES (3,'minhnhatse.uit@gmail.com','Minh Nhat','1000:kjbqpHIycbERodQ2j9mRwqdarkR8hRd2:Avu5OFviUOXMQZR1GK8SqFe0ONI=',NULL,1)
 INSERT INTO [dbo].[CongAn]([id], [email],[username],[password],[ghiChu],[active]) VALUES (10,NULL,NULL,NUll,NULL,1)
 
 

@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using HouseholdManagement.Utilities;
 using DataAcessLayer;
 using DTO;
+using System.Data;
+using AutoMapper;
 
 namespace HouseholdManagement.Pages
 {
@@ -26,12 +28,15 @@ namespace HouseholdManagement.Pages
     
     public partial class Login : Page
     {
+        CongAnDAO congDanDAO = null;
         public static Login createInstance()
         {
+            
             return new Login();
         }
         public Login()
         {
+            congDanDAO = new CongAnDAO();
             InitializeComponent();
             handleEvents();       
         }
@@ -43,13 +48,32 @@ namespace HouseholdManagement.Pages
 
         private void onLoginButtonClicked(object sender, RoutedEventArgs e)
         {
-            // When login button click
-            CongAnDTO congAnDTO = new CongAnDTO(3, "minhnhatse.uit@gmail.com", "Minh Nhat", null, null, 1);
-            congAnDTO.Password = PasswordHash.HashPassword("123456");
+           // init password
+            //CongAnDTO congAnDTO = new CongAnDTO(3, "minhnhatse.uit@gmail.com", "Minh Nhat", null, null, 1);
+            //congAnDTO.Password = PasswordHash.HashPassword("123456");
 
-            CongAnDAO dao = new CongAnDAO();
-            dao.updateCongAn(congAnDTO);
-            this.NavigationService.Navigate(Home.createInstance());
+            // When login button click
+            // valid email
+            if(CheckInput.IsEmail(textbox_email.Text)){
+                DataTable congAnSource = congDanDAO.SelectCongAnByEmail(textbox_email.Text);
+                
+                string password = congAnSource.Rows[0]["password"].ToString();
+
+                if (PasswordHash.ValidatePassword(textbox_password.Password.ToString(), password))
+                    // if login success
+                    this.NavigationService.Navigate(Home.createInstance());
+                else
+                    MessageBox.Show("Password is incorrect");
+            }
+            else
+            {
+                MessageBox.Show("Please enter valid email");
+            }
+        
+            
+
+
+            
         }
     }
 }

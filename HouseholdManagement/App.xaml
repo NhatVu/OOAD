@@ -15,7 +15,7 @@
             <!-- String -->
             <System:String x:Key="login_screen">Đăng nhập</System:String>
             <System:String x:Key="app_name">Quản lý hộ khẩu</System:String>
-            <System:String x:Key="name_hint">Tên</System:String>
+            <System:String x:Key="email_hint">Email</System:String>
             <System:String x:Key="password_hint">Mật khẩu</System:String>
             <System:String x:Key="version">Version: 1.0</System:String>
             <System:String x:Key="add_hokhau">Thêm hộ khẩu</System:String>
