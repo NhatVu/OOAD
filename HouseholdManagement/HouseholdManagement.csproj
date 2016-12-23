@@ -131,6 +131,7 @@
       <DependentUpon>ThemHoKhauPage2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\IInstance.cs" />
+    <Compile Include="Utilities\PasswordHash.cs" />
     <Compile Include="ViewModels\QuanlyHokhauViewModel.cs" />
     <Compile Include="Pages\ThayDoiMatKhau.xaml.cs">
       <DependentUpon>ThayDoiMatKhau.xaml</DependentUpon>

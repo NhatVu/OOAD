@@ -15,7 +15,7 @@ namespace DataAcessLayer
     {
         public CongAnDAO() : base() { }
 
-        public bool insertUserManagement(CongAnDTO dto)
+        public bool insertCongAn(CongAnDTO dto)
         {
             try
             {
@@ -23,7 +23,7 @@ namespace DataAcessLayer
                     connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = "UserManagement_Insert";
+                command.CommandText = "CongAn_Insert";
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter[] parameter;
@@ -48,7 +48,7 @@ namespace DataAcessLayer
             }
         }
 
-        public bool updateUserManagement(CongAnDTO dto)
+        public bool updateCongAn(CongAnDTO dto)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace DataAcessLayer
                     connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = "UserManagement_UpdateById";
+                command.CommandText = "CongAn_UpdateById";
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter[] parameter;
@@ -81,7 +81,7 @@ namespace DataAcessLayer
             }
         }
 
-        public bool deleteUserManagement(int id)
+        public bool deleteCongAn(int id)
         {
             try
             {
@@ -89,7 +89,7 @@ namespace DataAcessLayer
                     connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = "UserManagement_DeleteById";
+                command.CommandText = "CongAn_DeleteById";
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter[] parameter;
@@ -110,7 +110,7 @@ namespace DataAcessLayer
             }
         }
 
-        public DataTable SelectAllUserManagement()
+        public DataTable SelectAllCongAn()
         {
             try
             {
@@ -120,7 +120,7 @@ namespace DataAcessLayer
                 DataTable dt = new DataTable();
                 SqlDataAdapter adapter;
                 command.Connection = connection;
-                command.CommandText = "UserManagement_SelectAll";
+                command.CommandText = "CongAn_SelectAll";
                 command.CommandType = CommandType.StoredProcedure;
 
                 //command.ExecuteNonQuery();
@@ -137,7 +137,7 @@ namespace DataAcessLayer
             }
         }
 
-        public DataTable SelectUserManagementById(int id)
+        public DataTable SelectCongAnById(int id)
         {
             try
             {
@@ -147,7 +147,7 @@ namespace DataAcessLayer
                 DataTable dt = new DataTable();
                 SqlDataAdapter adapter;
                 command.Connection = connection;
-                command.CommandText = "UserManagement_SelectById";
+                command.CommandText = "CongAn_SelectById";
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter[] parameter;

@@ -13,7 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using HouseholdManagement.Utilities;
+using DataAcessLayer;
+using DTO;
 
 namespace HouseholdManagement.Pages
 {
@@ -41,6 +43,12 @@ namespace HouseholdManagement.Pages
 
         private void onLoginButtonClicked(object sender, RoutedEventArgs e)
         {
+            // When login button click
+            CongAnDTO congAnDTO = new CongAnDTO(3, "minhnhatse.uit@gmail.com", "Minh Nhat", null, null, 1);
+            congAnDTO.Password = PasswordHash.HashPassword("123456");
+
+            CongAnDAO dao = new CongAnDAO();
+            dao.updateCongAn(congAnDTO);
             this.NavigationService.Navigate(Home.createInstance());
         }
     }
