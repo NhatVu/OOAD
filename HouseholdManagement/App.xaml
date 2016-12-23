@@ -37,6 +37,17 @@
             <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}">
                 
             </Style>
+            
+
+            <Style TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource MaterialDesignPasswordBox}">
+
+            </Style>
+
+            <Style x:Key="MaterialDesignEditText" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                
+            </Style>
+
+
 
             <!-- Color -->
             <SolidColorBrush x:Key="primary_color" Color="#235183"/>

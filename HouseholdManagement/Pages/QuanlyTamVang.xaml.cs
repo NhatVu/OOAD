@@ -13,24 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HouseholdManagement.UserControls
+namespace HouseholdManagement.Pages
 {
     /// <summary>
-    /// Interaction logic for QuanlyTamTru.xaml
+    /// Interaction logic for QuanlyTamVang.xaml
     /// </summary>
-    public partial class QuanlyTamTru : UserControl,IInstance
+    public partial class QuanlyTamVang : Page
     {
-        private static QuanlyTamTru createInstance()
+        public static QuanlyTamVang createInstance()
         {
-            return new QuanlyTamTru();
+            return new QuanlyTamVang();
         }
 
-        public object getInstance()
-        {
-            return createInstance();
-        }
 
-        public QuanlyTamTru()
+
+        public QuanlyTamVang()
         {
             InitializeComponent();
         }
@@ -57,8 +54,5 @@ namespace HouseholdManagement.UserControls
             //do anything before close the door
 
         }
-
-
-
     }
 }

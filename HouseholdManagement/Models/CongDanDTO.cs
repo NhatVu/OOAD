@@ -9,19 +9,63 @@ namespace DTO
     public class CongDanDTO
     {
         private int mId;
-        private int mIdKhaisinh;
+        private int mIdDantoc;
+        private string mHoTen;
+        private DateTime mNgaySinh;
+        private int mGioiTinh;
+        private string mQuequan;
+        private string mQuoctich;
+        private int mIdCDCha;
+        private int mIdCDMe;
+        private string mNoiDangkyKS;
+        private DateTime mNgayDangkyKS;
+        private int mNguoiLamDonKS;
+        private int mNguoiKyKS;
         private int mCmnd;
         private string mTongiao;
         private string mNghenghiep;
-        private string mNoiLamviec;
+        private string mNoiLamViec;
         private DateTime mNgayCapCMND;
         private string mNoiCap;
         private string mDiachiThuongtru;
-        private string mTrinhdoHocvan;
+        private string mTrinhDoHocVan;
         private string mTrinhdoChuyenmon;
         private string mTrinhdoNgoaingu;
         private string mGhichu;
         private int mActive;
+
+        public CongDanDTO()
+        {
+                
+        }
+
+        public CongDanDTO(int mIdDantoc, string mHoTen, DateTime mNgaySinh, int mGioiTinh, string mQuequan, string mQuoctich, int mIdCDCha, int mIdCDMe, string mNoiDangkyKS, DateTime mNgayDangkyKS, int mNguoiLamDonKS, int mNguoiKyKS, int mCmnd, string mTongiao, string mNghenghiep, string mNoiLamViec, DateTime mNgayCapCMND, string mNoiCap, string mDiachiThuongtru, string mTrinhDoHocVan, string mTrinhdoChuyenmon, string mTrinhdoNgoaingu, string mGhichu, int mActive)
+        {
+            this.mIdDantoc = mIdDantoc;
+            this.mHoTen = mHoTen;
+            this.mNgaySinh = mNgaySinh;
+            this.mGioiTinh = mGioiTinh;
+            this.mQuequan = mQuequan;
+            this.mQuoctich = mQuoctich;
+            this.mIdCDCha = mIdCDCha;
+            this.mIdCDMe = mIdCDMe;
+            this.mNoiDangkyKS = mNoiDangkyKS;
+            this.mNgayDangkyKS = mNgayDangkyKS;
+            this.mNguoiLamDonKS = mNguoiLamDonKS;
+            this.mNguoiKyKS = mNguoiKyKS;
+            this.mCmnd = mCmnd;
+            this.mTongiao = mTongiao;
+            this.mNghenghiep = mNghenghiep;
+            this.mNoiLamViec = mNoiLamViec;
+            this.mNgayCapCMND = mNgayCapCMND;
+            this.mNoiCap = mNoiCap;
+            this.mDiachiThuongtru = mDiachiThuongtru;
+            this.mTrinhDoHocVan = mTrinhDoHocVan;
+            this.mTrinhdoChuyenmon = mTrinhdoChuyenmon;
+            this.mTrinhdoNgoaingu = mTrinhdoNgoaingu;
+            this.mGhichu = mGhichu;
+            this.mActive = mActive;
+        }
 
         public int Id
         {
@@ -36,16 +80,159 @@ namespace DTO
             }
         }
 
-        public int IdKhaisinh
+        public int IdDantoc
         {
             get
             {
-                return mIdKhaisinh;
+                return mIdDantoc;
             }
 
             set
             {
-                mIdKhaisinh = value;
+                mIdDantoc = value;
+            }
+        }
+
+        public string HoTen
+        {
+            get
+            {
+                return mHoTen;
+            }
+
+            set
+            {
+                mHoTen = value;
+            }
+        }
+
+        public DateTime NgaySinh
+        {
+            get
+            {
+                return mNgaySinh;
+            }
+
+            set
+            {
+                mNgaySinh = value;
+            }
+        }
+
+        public int GioiTinh
+        {
+            get
+            {
+                return mGioiTinh;
+            }
+
+            set
+            {
+                mGioiTinh = value;
+            }
+        }
+
+        public string Quequan
+        {
+            get
+            {
+                return mQuequan;
+            }
+
+            set
+            {
+                mQuequan = value;
+            }
+        }
+
+        public string Quoctich
+        {
+            get
+            {
+                return mQuoctich;
+            }
+
+            set
+            {
+                mQuoctich = value;
+            }
+        }
+
+        public int IdCDCha
+        {
+            get
+            {
+                return mIdCDCha;
+            }
+
+            set
+            {
+                mIdCDCha = value;
+            }
+        }
+
+        public int IdCDMe
+        {
+            get
+            {
+                return mIdCDMe;
+            }
+
+            set
+            {
+                mIdCDMe = value;
+            }
+        }
+
+        public string NoiDangkyKS
+        {
+            get
+            {
+                return mNoiDangkyKS;
+            }
+
+            set
+            {
+                mNoiDangkyKS = value;
+            }
+        }
+
+        public DateTime NgayDangkyKS
+        {
+            get
+            {
+                return mNgayDangkyKS;
+            }
+
+            set
+            {
+                mNgayDangkyKS = value;
+            }
+        }
+
+        public int NguoiLamDonKS
+        {
+            get
+            {
+                return mNguoiLamDonKS;
+            }
+
+            set
+            {
+                mNguoiLamDonKS = value;
+            }
+        }
+
+        public int NguoiKyKS
+        {
+            get
+            {
+                return mNguoiKyKS;
+            }
+
+            set
+            {
+                mNguoiKyKS = value;
             }
         }
 
@@ -88,16 +275,16 @@ namespace DTO
             }
         }
 
-        public string NoiLamviec
+        public string NoiLamViec
         {
             get
             {
-                return mNoiLamviec;
+                return mNoiLamViec;
             }
 
             set
             {
-                mNoiLamviec = value;
+                mNoiLamViec = value;
             }
         }
 
@@ -140,16 +327,16 @@ namespace DTO
             }
         }
 
-        public string TrinhdoHocvan
+        public string TrinhDoHocVan
         {
             get
             {
-                return mTrinhdoHocvan;
+                return mTrinhDoHocVan;
             }
 
             set
             {
-                mTrinhdoHocvan = value;
+                mTrinhDoHocVan = value;
             }
         }
 
@@ -203,25 +390,6 @@ namespace DTO
             {
                 mActive = value;
             }
-        }
-
-        public CongDanDTO() { }
-
-        public CongDanDTO(int mIdKhaisinh, int mCmnd, string mTongiao, string mNghenghiep, string mNoiLamviec, DateTime mNgayCapCMND, string mNoiCap, string mDiachiThuongtru, string mTrinhdoHocvan, string mTrinhdoChuyenmon, string mTrinhdoNgoaingu, string mGhichu, int mActive)
-        {
-            this.mIdKhaisinh = mIdKhaisinh;
-            this.mCmnd = mCmnd;
-            this.mTongiao = mTongiao;
-            this.mNghenghiep = mNghenghiep;
-            this.mNoiLamviec = mNoiLamviec;
-            this.mNgayCapCMND = mNgayCapCMND;
-            this.mNoiCap = mNoiCap;
-            this.mDiachiThuongtru = mDiachiThuongtru;
-            this.mTrinhdoHocvan = mTrinhdoHocvan;
-            this.mTrinhdoChuyenmon = mTrinhdoChuyenmon;
-            this.mTrinhdoNgoaingu = mTrinhdoNgoaingu;
-            this.mGhichu = mGhichu;
-            this.mActive = mActive;
         }
     }
 }

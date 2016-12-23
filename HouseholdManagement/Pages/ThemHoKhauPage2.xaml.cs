@@ -13,27 +13,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HouseholdManagement.UserControls
+namespace HouseholdManagement.Pages
 {
     /// <summary>
-    /// Interaction logic for ChangePassword.xaml
+    /// Interaction logic for ThemHoKhauPage2.xaml
     /// </summary>
-    public partial class ChangePassword : UserControl,IInstance
+    public partial class ThemHoKhauPage2 : Page
     {
-
-        private static ChangePassword createInstance()
+        public static ThemHoKhauPage2 createInstance()
         {
-            return new ChangePassword();
+            return new ThemHoKhauPage2();
         }
-
-        public object getInstance()
-        {
-            return ChangePassword.createInstance();
-        }
-
-        public ChangePassword()
+        public ThemHoKhauPage2()
         {
             InitializeComponent();
+        }
+
+        private void button_back_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
         }
     }
 }

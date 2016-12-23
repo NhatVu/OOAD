@@ -13,24 +13,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HouseholdManagement.UserControls
+namespace HouseholdManagement.Pages
 {
     /// <summary>
-    /// Interaction logic for ProfileOverview.xaml
+    /// Interaction logic for ChangePassword.xaml
     /// </summary>
-    public partial class ProfileOverview : UserControl,IInstance
+    public partial class ThayDoiMatKhau : Page
     {
-        private static ProfileOverview createInstance()
+
+        public static ThayDoiMatKhau createInstance()
         {
-            return new ProfileOverview();
+            return new ThayDoiMatKhau();
         }
 
-        public object getInstance()
-        {
-            return ProfileOverview.createInstance();
-        }
-
-        public ProfileOverview()
+        public ThayDoiMatKhau()
         {
             InitializeComponent();
         }

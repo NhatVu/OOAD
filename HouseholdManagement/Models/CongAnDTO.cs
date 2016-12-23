@@ -6,15 +6,38 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class UserManagementDTO
+    public class CongAnDTO
     {
         private int mId;
-        private int mIdRole;
         private string mEmail;
         private string mUsername;
         private string mPassword;
         private string mGhichu;
         private int mActive;
+
+        public CongAnDTO()
+        {
+                
+        }
+
+        public CongAnDTO(int mId, string mEmail, string mUsername, string mPassword, string mGhichu, int mActive)
+        {
+            this.mId = mId;
+            this.mEmail = mEmail;
+            this.mUsername = mUsername;
+            this.mPassword = mPassword;
+            this.mGhichu = mGhichu;
+            this.mActive = mActive;
+        }
+
+        public CongAnDTO(string mEmail, string mUsername, string mPassword, string mGhichu, int mActive)
+        {
+            this.mEmail = mEmail;
+            this.mUsername = mUsername;
+            this.mPassword = mPassword;
+            this.mGhichu = mGhichu;
+            this.mActive = mActive;
+        }
 
         public int Id
         {
@@ -26,19 +49,6 @@ namespace DTO
             set
             {
                 mId = value;
-            }
-        }
-
-        public int IdRole
-        {
-            get
-            {
-                return mIdRole;
-            }
-
-            set
-            {
-                mIdRole = value;
             }
         }
 
@@ -105,18 +115,6 @@ namespace DTO
             {
                 mActive = value;
             }
-        }
-
-        public UserManagementDTO() { }
-
-        public UserManagementDTO(int mIdRole, string mEmail, string mUsername, string mPassword, string mGhichu, int mActive)
-        {
-            this.mIdRole = mIdRole;
-            this.mEmail = mEmail;
-            this.mUsername = mUsername;
-            this.mPassword = mPassword;
-            this.mGhichu = mGhichu;
-            this.mActive = mActive;
         }
     }
 }

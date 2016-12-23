@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="HouseholdManagement.UserControls.QuanlyHokhau"
+﻿<Page x:Class="HouseholdManagement.Pages.QuanlyHokhau"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:HouseholdManagement.UserControls"
+             xmlns:local="clr-namespace:HouseholdManagement.Pages"
              mc:Ignorable="d" 
              d:DesignHeight="800"
              d:DesignWidth="1100"
@@ -14,7 +14,7 @@
              TextElement.FontSize="14" 
              Loaded="onLoaded"
              Unloaded="onUnloaded">
-    <UserControl.Resources>
+    <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
@@ -22,25 +22,54 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}">
-                <Setter Property="Margin" Value="56,40,56,0" />
-                <Setter Property="FontSize" Value="20" />
-            </Style>
-            <Style TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource MaterialDesignPasswordBox}">
-                <Setter Property="Margin" Value="56,40,56,0" />
-                <Setter Property="FontSize" Value="20" />
-            </Style>
-
-
         </ResourceDictionary>
-    </UserControl.Resources>
+    </Page.Resources>
     <Grid Margin="16">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
-        <Border Grid.Row="0"
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" 
+                        VerticalAlignment="Center"
+                        Margin="16,12">
+                <TextBlock Text="{Binding ElementName=listbox_management, Path=SelectedItem.Detail}"
+                               VerticalAlignment="Center"></TextBlock>
+            </StackPanel>
+            <Border Background="White" 
+                    Margin="16,12"
+                        MaxWidth="450"
+                        Grid.Column="1"
+                        BorderBrush="Silver"
+                        BorderThickness="1 1 1 1"
+                        MaxHeight="48" 
+                        CornerRadius="6"
+                        ToolTip="Enter to search, ignore case">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Style="{DynamicResource MaterialDesignToolButton}" 
+                                Command="{Binding SearchCommand}" x:Name="SearchButton"
+                                CommandParameter="{Binding ElementName=SearchBox, Path=Text}"
+                                Height="24" Width="24">
+                        <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
+                    </Button>
+                    <TextBox Grid.Column="1" Margin="5 0 0 0" KeyDown="Search_OnKeyDown"
+                             FontSize="18"
+                             materialDesign:HintAssist.Hint="Search" x:Name="SearchBox"
+                             materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"
+                             MinWidth="200" VerticalAlignment="Center" />
+                </Grid>
+            </Border>
+        </Grid>
+        <Border Grid.Row="1"
                 CornerRadius="6"
                 Background="#F7F9FA"
                 Padding="0,16"
@@ -50,7 +79,7 @@
                        FontWeight="Medium"
                        HorizontalAlignment="Center"></TextBlock>
         </Border>
-        <DataGrid Grid.Row="1"
+        <DataGrid Grid.Row="2"
                   ItemsSource="{Binding Path=HoKhauList}"
                   CanUserSortColumns="True" 
                   CanUserAddRows="False" 
@@ -102,4 +131,4 @@
 
     </Grid>
 
-</UserControl>
+</Page>

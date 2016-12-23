@@ -1,4 +1,4 @@
-﻿using HouseholdManagement.Models;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,37 +14,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HouseholdManagement.UserControls
+namespace HouseholdManagement.Pages
 {
     /// <summary>
-    /// Interaction logic for QuanlyHokhau.xaml
+    /// Interaction logic for QuanlyTamTru.xaml
     /// </summary>
-    public partial class QuanlyHokhau : UserControl,IInstance
+    public partial class QuanlyTamTru : Page
     {
-        public static QuanlyHokhau createInstance()
+        public static QuanlyTamTru createInstance()
         {
-            return new QuanlyHokhau();
+            return new QuanlyTamTru();
         }
 
-        public QuanlyHokhau()
+        public QuanlyTamTru()
         {
-            InitializeComponent();  
-        }
-
-        private void handleEvent()
-        {
-
-        }
-
-        private void loadData()
-        {
-            DataContext = new QuanlyHokhauViewModel();
-            
-        }
-
-        public object getInstance()
-        {
-            return QuanlyHokhau.createInstance();
+            InitializeComponent();
         }
 
         private void onLoaded(object sender, RoutedEventArgs e)
@@ -53,11 +37,24 @@ namespace HouseholdManagement.UserControls
             handleEvent();
         }
 
+        private void handleEvent()
+        {
+            
+        }
+
+        private void loadData()
+        {
+            
+        }
+
         private void onUnloaded(object sender, RoutedEventArgs e)
         {
             //save data to database
             //do anything before close the door
-        
+
         }
+
+
+
     }
 }

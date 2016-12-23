@@ -104,89 +104,97 @@
     <Compile Include="DataAccessLayers\DanTocDAO.cs" />
     <Compile Include="DataAccessLayers\DBConnection.cs" />
     <Compile Include="DataAccessLayers\HoKhauDAO.cs" />
-    <Compile Include="DataAccessLayers\KhaiSinhDAO.cs" />
-    <Compile Include="DataAccessLayers\RoleDAO.cs" />
     <Compile Include="DataAccessLayers\TamTruDAO.cs" />
     <Compile Include="DataAccessLayers\TamVangDAO.cs" />
     <Compile Include="DataAccessLayers\TienAnDAO.cs" />
     <Compile Include="DataAccessLayers\TomTatBanThan.cs" />
-    <Compile Include="DataAccessLayers\UserManagementDAO.cs" />
+    <Compile Include="DataAccessLayers\CongAnDao.cs" />
     <Compile Include="DataAccessLayers\VaoTroSoHoKhauDAO.cs" />
     <Compile Include="Models\ChiTietHoKhauDTO.cs" />
     <Compile Include="Models\ChuyenKhauDTO.cs" />
     <Compile Include="Models\CongDanDTO.cs" />
     <Compile Include="Models\DanTocDTO.cs" />
     <Compile Include="Models\HoKhauDTO.cs" />
-    <Compile Include="Models\KhaiSinhDTO.cs" />
-    <Compile Include="Models\RoleDTO.cs" />
     <Compile Include="Models\TamTruDTO.cs" />
     <Compile Include="Models\TamVangDTO.cs" />
     <Compile Include="Models\TienAnDTO.cs" />
     <Compile Include="Models\TomTatBanThanDTO.cs" />
-    <Compile Include="Models\UserManagementDTO.cs" />
+    <Compile Include="Models\CongAnDTO.cs" />
     <Compile Include="Models\VaiTroSoHoKhauDTO.cs" />
-    <Compile Include="UserControls\IInstance.cs" />
-    <Compile Include="UserControls\ThemHoKhau.xaml.cs">
-      <DependentUpon>ThemHoKhau.xaml</DependentUpon>
+    <Compile Include="Pages\SplashScreen.xaml.cs">
+      <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ThemHoKhauPage1.xaml.cs">
+      <DependentUpon>ThemHoKhauPage1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ThemHoKhauPage2.xaml.cs">
+      <DependentUpon>ThemHoKhauPage2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\IInstance.cs" />
     <Compile Include="ViewModels\QuanlyHokhauViewModel.cs" />
-    <Compile Include="ViewModels\HomeViewModel.cs" />
-    <Compile Include="Models\ManagementItem.cs" />
-    <Compile Include="UserControls\ChangePassword.xaml.cs">
-      <DependentUpon>ChangePassword.xaml</DependentUpon>
+    <Compile Include="Pages\ThayDoiMatKhau.xaml.cs">
+      <DependentUpon>ThayDoiMatKhau.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Home.xaml.cs">
+    <Compile Include="Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ProfileOverview.xaml.cs">
-      <DependentUpon>ProfileOverview.xaml</DependentUpon>
+    <Compile Include="Pages\ThongTinTaiKhoan.xaml.cs">
+      <DependentUpon>ThongTinTaiKhoan.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\QuanlyHokhau.xaml.cs">
+    <Compile Include="Pages\QuanlyHokhau.xaml.cs">
       <DependentUpon>QuanlyHokhau.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\QuanlyTamTru.xaml.cs">
+    <Compile Include="Pages\QuanlyTamTru.xaml.cs">
       <DependentUpon>QuanlyTamTru.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\QuanlyTamVang.xaml.cs">
+    <Compile Include="Pages\QuanlyTamVang.xaml.cs">
       <DependentUpon>QuanlyTamVang.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Thongke.xaml.cs">
+    <Compile Include="Pages\Thongke.xaml.cs">
       <DependentUpon>Thongke.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Constant.cs" />
-    <Page Include="UserControls\ChangePassword.xaml">
+    <Page Include="Pages\SplashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\Home.xaml">
+    <Page Include="Pages\ThemHoKhauPage1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\Login.xaml">
+    <Page Include="Pages\ThemHoKhauPage2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\ProfileOverview.xaml">
+    <Page Include="Pages\ThayDoiMatKhau.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\QuanlyHokhau.xaml">
+    <Page Include="Pages\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\QuanlyTamTru.xaml">
+    <Page Include="Pages\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\QuanlyTamVang.xaml">
+    <Page Include="Pages\ThongTinTaiKhoan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\ThemHoKhau.xaml">
+    <Page Include="Pages\QuanlyHokhau.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\Thongke.xaml">
+    <Page Include="Pages\QuanlyTamTru.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\QuanlyTamVang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Thongke.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -198,7 +206,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UserControls\Login.xaml.cs">
+    <Compile Include="Pages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\MainWindow.xaml.cs">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,27 +14,35 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HouseholdManagement.UserControls
+namespace HouseholdManagement.Pages
 {
     /// <summary>
-    /// Interaction logic for Thongke.xaml
+    /// Interaction logic for QuanlyHokhau.xaml
     /// </summary>
-    public partial class Thongke : UserControl,IInstance
+    public partial class QuanlyHokhau : Page
     {
-        private static Thongke createInstance()
+        public static QuanlyHokhau createInstance()
         {
-            return new Thongke();
+            return new QuanlyHokhau();
         }
 
-        public object getInstance()
+        public QuanlyHokhau()
         {
-            return Thongke.createInstance();
+            InitializeComponent();  
         }
 
-        public Thongke()
+        private void handleEvent()
         {
-            InitializeComponent();
+
         }
+
+        private void loadData()
+        {
+            DataContext = new QuanlyHokhauViewModel();
+            
+        }
+
+
 
         private void onLoaded(object sender, RoutedEventArgs e)
         {
@@ -41,20 +50,15 @@ namespace HouseholdManagement.UserControls
             handleEvent();
         }
 
-        private void handleEvent()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void loadData()
-        {
-            throw new NotImplementedException();
-        }
-
         private void onUnloaded(object sender, RoutedEventArgs e)
         {
             //save data to database
             //do anything before close the door
+        
+        }
+
+        private void Search_OnKeyDown(object sender, KeyEventArgs e)
+        {
 
         }
     }

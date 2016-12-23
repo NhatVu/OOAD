@@ -1,0 +1,89 @@
+﻿<Page xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
+        x:Class="HouseholdManagement.Pages.SplashScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HouseholdManagement.Pages"
+        mc:Ignorable="d" 
+        Height="800" 
+        Width="1100" 
+        Title="{DynamicResource login_screen}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        TextElement.FontSize="14"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto" >
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}">
+                <Setter Property="Margin" Value="56,40,56,0" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+            <Style TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource MaterialDesignPasswordBox}">
+                <Setter Property="Margin" Value="56,40,56,0" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+
+
+    <DockPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ContentControl x:Name="main_window_content" Grid.Row="0">
+                <ItemsControl VerticalAlignment="Center">
+                    <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn,Duration=0:0:1}">
+                        <Button Width="200" Height="200" Background="Transparent" BorderBrush="Transparent">
+                            <Rectangle Width="160" Height="160">
+                                <Rectangle.Fill>
+                                    <DrawingBrush>
+                                        <DrawingBrush.Drawing>
+                                            <DrawingGroup xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                                                <DrawingGroup x:Name="DrawingLayer">
+                                                    <DrawingGroup.ClipGeometry>
+                                                        <RectangleGeometry Rect="0,0,40,40" />
+                                                    </DrawingGroup.ClipGeometry>
+                                                    <DrawingGroup x:Name="Page_1">
+                                                        <DrawingGroup x:Name="home_icon">
+                                                            <GeometryDrawing x:Name="Oval" Brush="#FFF44336">
+                                                                <GeometryDrawing.Geometry>
+                                                                    <EllipseGeometry RadiusX="20" RadiusY="20" Center="20,20" />
+                                                                </GeometryDrawing.Geometry>
+                                                            </GeometryDrawing>
+                                                            <DrawingGroup x:Name="path" Transform="1,0,0,1,10,7">
+                                                                <GeometryDrawing x:Name="Rectangle" Brush="#FFFFFFFF">
+                                                                    <GeometryDrawing.Geometry>
+                                                                        <PathGeometry FillRule="EvenOdd" Figures="M10.5024,0L10.5024,0 20.0024,8 20.0024,24 0,24 0,8z" />
+                                                                    </GeometryDrawing.Geometry>
+                                                                </GeometryDrawing>
+                                                                <GeometryDrawing Brush="#FFF44336">
+                                                                    <GeometryDrawing.Geometry>
+                                                                        <PathGeometry FillRule="EvenOdd" Figures="M10.2506,7L10.2506,7 15,10.9995 15,18.9986 5,18.9986 5,10.9995z" />
+                                                                    </GeometryDrawing.Geometry>
+                                                                </GeometryDrawing>
+                                                            </DrawingGroup>
+                                                        </DrawingGroup>
+                                                    </DrawingGroup>
+                                                </DrawingGroup>
+                                            </DrawingGroup>
+                                        </DrawingBrush.Drawing>
+                                    </DrawingBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </Button>
+                    </materialDesign:TransitioningContent>
+                </ItemsControl>
+            </ContentControl>
+        </Grid>
+    </DockPanel>
+</Page>

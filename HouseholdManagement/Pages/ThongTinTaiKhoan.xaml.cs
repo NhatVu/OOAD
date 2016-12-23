@@ -13,26 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HouseholdManagement.UserControls
+namespace HouseholdManagement.Pages
 {
     /// <summary>
-    /// Interaction logic for Home.xaml
+    /// Interaction logic for ProfileOverview.xaml
     /// </summary>
-    public partial class Home : UserControl
+    public partial class ThongTinTaiKhoan : Page
     {
-        public static Home newInstance()
+        public static ThongTinTaiKhoan createInstance()
         {
-            return new Home();
-        }
-        public Home()
-        {
-            InitializeComponent();
-            DataContext = new HomeViewModel();
+            return new ThongTinTaiKhoan();
         }
 
-        private void Search_OnKeyDown(object sender, KeyEventArgs e)
+        public ThongTinTaiKhoan()
         {
-            throw new NotImplementedException();
+            InitializeComponent();
         }
     }
 }

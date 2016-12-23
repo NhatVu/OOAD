@@ -1,12 +1,14 @@
-﻿<UserControl x:Class="HouseholdManagement.UserControls.ChangePassword"
+﻿<Page x:Class="HouseholdManagement.Pages.QuanlyTamVang"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:HouseholdManagement.UserControls"
+             xmlns:local="clr-namespace:HouseholdManagement.Pages"
              mc:Ignorable="d" 
+             Loaded="onLoaded"
+             Unloaded="onUnloaded"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
             
     </Grid>
-</UserControl>
+</Page>

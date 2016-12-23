@@ -13,24 +13,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HouseholdManagement.UserControls
+namespace HouseholdManagement.Pages
 {
     /// <summary>
-    /// Interaction logic for QuanlyTamVang.xaml
+    /// Interaction logic for Thongke.xaml
     /// </summary>
-    public partial class QuanlyTamVang : UserControl,IInstance
+    public partial class Thongke : Page
     {
-        private static QuanlyTamVang createInstance()
+        public static Thongke createInstance()
         {
-            return new QuanlyTamVang();
+            return new Thongke();
         }
 
-        public object getInstance()
-        {
-            return QuanlyTamVang.createInstance();
-        }
 
-        public QuanlyTamVang()
+        public Thongke()
         {
             InitializeComponent();
         }
@@ -43,12 +39,12 @@ namespace HouseholdManagement.UserControls
 
         private void handleEvent()
         {
-            
+   
         }
 
         private void loadData()
         {
-            
+
         }
 
         private void onUnloaded(object sender, RoutedEventArgs e)

@@ -15,14 +15,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 
-namespace HouseholdManagement
+namespace HouseholdManagement.Pages
 {
     /// <summary>
     /// Interaction logic for Login.xaml
     /// </summary>
     /// 
     
-    public partial class Login : UserControl
+    public partial class Login : Page
     {
         public static Login createInstance()
         {
@@ -41,13 +41,7 @@ namespace HouseholdManagement
 
         private void onLoginButtonClicked(object sender, RoutedEventArgs e)
         {
-            OnAuthenticatedSubmit mCallBack = (OnAuthenticatedSubmit)Window.GetWindow(this);
-            mCallBack.onAuthenticateSubmited(true);
-        }
-
-        public interface OnAuthenticatedSubmit
-        {
-            void onAuthenticateSubmited(bool isRight);
+            this.NavigationService.Navigate(Home.createInstance());
         }
     }
 }
