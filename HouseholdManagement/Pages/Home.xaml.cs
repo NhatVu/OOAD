@@ -99,5 +99,15 @@ namespace HouseholdManagement.Pages
         {
 
         }
+
+        private void thayDoiMatKhau_click(object sender, MouseButtonEventArgs e)
+        {
+            replace(ThayDoiMatKhau.createInstance());
+        }
+
+        private void dangXuat_click(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Dang Xuat");
+        }
     }
 }

@@ -59,9 +59,11 @@ namespace HouseholdManagement.Pages
                 
                 string password = congAnSource.Rows[0]["password"].ToString();
 
-                if (PasswordHash.ValidatePassword(textbox_password.Password.ToString(), password))
-                    // if login success
+                if (PasswordHash.ValidatePassword(textbox_password.Password.ToString(), password)){
+                    GlobalVariable.CurrentCongAnId = Int32.Parse(congAnSource.Rows[0]["id"].ToString());
                     this.NavigationService.Navigate(Home.createInstance());
+                }
+                    // if login success
                 else
                     MessageBox.Show("Password is incorrect");
             }

@@ -5,8 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HouseholdManagement.Pages"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
+            >
+    <Grid Width="389" Height="290">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="151*"/>
+            <RowDefinition Height="149*"/>
+        </Grid.RowDefinitions>
+        <PasswordBox x:Name="oldPassword" HorizontalAlignment="Left" Margin="179,71,0,0" VerticalAlignment="Top" Width="174"
+                     />
+        <PasswordBox x:Name="newPassword" HorizontalAlignment="Left" Margin="179,0,0,0" VerticalAlignment="Top" Width="174" Grid.Row="1"/>
+        
+        <Label Content="Old password" HorizontalAlignment="Left" Margin="39,71,0,0" VerticalAlignment="Top"/>
+        <Label Content="New password" HorizontalAlignment="Left" Margin="39,145,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
+        <Button Content="OK" HorizontalAlignment="Left" Margin="103,76,0,0" VerticalAlignment="Top" Width="152" Grid.Row="1" Click="ok_Click"/>
     </Grid>
 </Page>
