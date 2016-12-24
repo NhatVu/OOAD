@@ -63,6 +63,12 @@
                           Style="{StaticResource MaterialDesignCheckBox}" Margin="56,20,56,0" 
                           FontSize="18"
                           Content="Ghi nhớ tài khoản"/>
+                        <Button 
+                        	x:Name="quenMatKhau"
+                            Margin="56,20,56,0" 
+                        	FontSize="18"
+                        	Content="Quên mật khẩu ?"
+                            Click="quenMatKhau_click"/>
                         <Button x:Name="button_login"
                         Style="{StaticResource MaterialDesignRaisedButton}"
                         Margin="56,40,56,32"

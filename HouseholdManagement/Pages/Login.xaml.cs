@@ -77,5 +77,10 @@ namespace HouseholdManagement.Pages
 
             
         }
+
+        private void quenMatKhau_click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(QuenMatKhau.createInstance());
+        }
     }
 }
