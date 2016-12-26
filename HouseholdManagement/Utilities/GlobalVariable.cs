@@ -8,7 +8,7 @@ namespace HouseholdManagement.Utilities
 {
     static class GlobalVariable
     {
-        private static int mCurrentCongAnId;
+        private static int mCurrentCongAnId = 0;
 
         public static int CurrentCongAnId
         {

@@ -29,6 +29,8 @@ namespace HouseholdManagement.Utilities
 
         public static bool IsEmail(string emailaddress)
         {
+            if (emailaddress.Length == 0)
+                return false;
             try
             {
                 MailAddress m = new MailAddress(emailaddress);

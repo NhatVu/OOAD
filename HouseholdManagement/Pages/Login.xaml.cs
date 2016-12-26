@@ -54,11 +54,15 @@ namespace HouseholdManagement.Pages
 
             // When login button click
             // valid email
-            textbox_email.Text = "minhnhatse.uit@gmail.com";
-            textbox_password.Password = "123456";
+            //textbox_email.Text = "minhnhatse.uit@gmail.com";
+            //textbox_password.Password = "123456";
             if(CheckInput.IsEmail(textbox_email.Text)){
                 DataTable congAnSource = congDanDAO.SelectCongAnByEmail(textbox_email.Text);
-                
+                if (congAnSource.Rows.Count == 0)
+                {
+                    MessageBox.Show("Email không tồn tại trong hệ thống. Vui lòng liên hệ với Admin để được cấp tài khoản");
+                    return;
+                }
                 string password = congAnSource.Rows[0]["password"].ToString();
 
                 if (PasswordHash.ValidatePassword(textbox_password.Password.ToString(), password)){
@@ -67,11 +71,11 @@ namespace HouseholdManagement.Pages
                 }
                     // if login success
                 else
-                    MessageBox.Show("Password is incorrect");
+                    MessageBox.Show("Password không đúng. Vui lòng nhập lại.");
             }
             else
             {
-                MessageBox.Show("Please enter valid email");
+                MessageBox.Show("Xin hãy nhập địa chỉ email hợp lệ.");
             }
         
             

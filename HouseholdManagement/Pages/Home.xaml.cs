@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HouseholdManagement.Utilities;
 
 namespace HouseholdManagement.Pages
 {
@@ -72,21 +73,25 @@ namespace HouseholdManagement.Pages
 
         private void item_quanlyhokhau_Selected(object sender, RoutedEventArgs e)
         {
+            notLogin();
             replace(QuanlyHokhau.createInstance());
         }
 
         private void item_quanlytamtru_Selected(object sender, RoutedEventArgs e)
         {
+            notLogin();
             replace(QuanlyTamTru.createInstance());
         }
 
         private void item_quanlytamvang_Selected(object sender, RoutedEventArgs e)
         {
+            notLogin();
             replace(QuanlyTamVang.createInstance());
         }
 
         private void item_thongke_Selected(object sender, RoutedEventArgs e)
         {
+            notLogin();
             replace(Thongke.createInstance());
         }
 
@@ -102,12 +107,20 @@ namespace HouseholdManagement.Pages
 
         private void thayDoiMatKhau_click(object sender, MouseButtonEventArgs e)
         {
+            notLogin();
             replace(ThayDoiMatKhau.createInstance());
         }
 
         private void dangXuat_click(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Dang Xuat");
+            GlobalVariable.CurrentCongAnId = 0;
+            this.NavigationService.Navigate(Login.createInstance());
+        }
+
+        private void notLogin()
+        {
+            if(GlobalVariable.CurrentCongAnId == 0)
+                this.NavigationService.Navigate(Login.createInstance());
         }
     }
 }
