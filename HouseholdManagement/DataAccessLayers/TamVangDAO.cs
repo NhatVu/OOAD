@@ -175,5 +175,32 @@ namespace DataAcessLayer
                 return null;
             }
         }
+
+        public DataTable GetAllInfo()
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand command = new SqlCommand();
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapter;
+                command.Connection = connection;
+                command.CommandText = "TamVang_GetAllInfo";
+                command.CommandType = CommandType.StoredProcedure;
+
+                //command.ExecuteNonQuery();
+                adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+                connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                connection.Close();
+                return null;
+            }
+        }
     }
 }

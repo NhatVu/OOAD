@@ -5,10 +5,158 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HouseholdManagement.Pages"
              mc:Ignorable="d" 
+             d:DesignHeight="800"
+             d:DesignWidth="1100"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+             TextElement.FontSize="14" 
              Loaded="onLoaded"
-             Unloaded="onUnloaded"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
+             Unloaded="onUnloaded">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" 
+                        VerticalAlignment="Center"
+                        Margin="16,12">
+                <TextBlock Text="{Binding ElementName=listbox_management, Path=SelectedItem.Detail}"
+                               VerticalAlignment="Center"></TextBlock>
+            </StackPanel>
+            <Border Background="White" 
+                    Margin="16,12"
+                        MaxWidth="450"
+                        Grid.Column="1"
+                        BorderBrush="Silver"
+                        BorderThickness="1 1 1 1"
+                        MaxHeight="48" 
+                        CornerRadius="6"
+                        ToolTip="Enter to search, ignore case">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Style="{DynamicResource MaterialDesignToolButton}" 
+                                Command="{Binding SearchCommand}" x:Name="SearchButton"
+                                CommandParameter="{Binding ElementName=SearchBox, Path=Text}"
+                                Height="24" Width="24">
+                        <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
+                    </Button>
+                    <TextBox Grid.Column="1" Margin="5 0 0 0" KeyDown="Search_OnKeyDown"
+                             FontSize="18"
+                             materialDesign:HintAssist.Hint="Search" x:Name="SearchBox"
+                             materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"
+                             MinWidth="200" VerticalAlignment="Center" />
+                </Grid>
+            </Border>
+        </Grid>
+        <Border Grid.Row="1"
+                CornerRadius="6"
+                Background="#F7F9FA"
+                Padding="0,16"
+                BorderBrush="Silver" 
+                BorderThickness="0.5 0.5 0.5 0.5 ">
+            <TextBlock Text="{Binding ElementName=table_household, Path=SelectedItem.Name}"
+                       FontWeight="Medium"
+                       HorizontalAlignment="Center"></TextBlock>
+        </Border>
+        <DataGrid Grid.Row="2"
+                  
+                  CanUserSortColumns="True" 
+                  CanUserAddRows="False" 
+                  AutoGenerateColumns="False"
+                  x:Name="dataGird_QuanLyTamVang"
+                  materialDesign:DataGridAssist.CellPadding="16 12">
+            <DataGrid.Columns>
+                <materialDesign:MaterialDataGridTextColumn Header="Số thứ tự"
+                                    Binding="{Binding STT}"
+                                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                <materialDesign:MaterialDataGridTextColumn Header="Họ tên"
+                                                               Binding="{Binding HoTen}"
+                            EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"                                    
+                                                               />
+
+                <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
+                <materialDesign:MaterialDataGridTextColumn Header="Ngày sinh"   
+                                                           Binding="{Binding NgaySinh}"
+                                                           EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" 
+                                                           MinWidth="50"
+                                                           MaxLength="50"
+                                                               />
+                <materialDesign:MaterialDataGridTextColumn Header="Giới tính"   
+                                                           Binding="{Binding GioiTinh}"
+                                                           EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" 
+                                                           MinWidth="30"
+                                                           MaxLength="50"
+                                                               />
+                <!-- set a max length to get an indicator in the editor -->
+                <materialDesign:MaterialDataGridTextColumn Header="Địa chỉ thường chú"  
+                                                           Binding="{Binding DiaChiThuongTru}"
+                                                           MinWidth="100"
+                                                           MaxLength="300" 
+                                                           EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"  />
+                <materialDesign:MaterialDataGridTextColumn Header="CMND"   
+                                                           Binding="{Binding CMND}"
+                                                           EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" 
+                                                           MinWidth="100"
+                                                           MaxLength="50"
+                                                               />
+                <DataGridTemplateColumn Header="Ngày bắt đầu">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding NgayBatDau, StringFormat=dd/mm/yyyy}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding NgayBatDau, StringFormat=dd/mm/yyyy}"
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Ngày kết thúc">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding NgayKetThuc, StringFormat=dd/mm/yyyy}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding NgayKetThuc, StringFormat=dd/mm/yyyy}"
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <materialDesign:MaterialDataGridTextColumn Header="Ghi chú"   
+                                                           Binding="{Binding GhiChu}"
+                                                           EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" 
+                                                           MinWidth="150"
+                                                           MaxLength="50"
+                                                               />
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
+
 </Page>
