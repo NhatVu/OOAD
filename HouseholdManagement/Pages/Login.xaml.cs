@@ -54,6 +54,8 @@ namespace HouseholdManagement.Pages
 
             // When login button click
             // valid email
+            textbox_email.Text = "minhnhatse.uit@gmail.com";
+            textbox_password.Password = "123456";
             if(CheckInput.IsEmail(textbox_email.Text)){
                 DataTable congAnSource = congDanDAO.SelectCongAnByEmail(textbox_email.Text);
                 

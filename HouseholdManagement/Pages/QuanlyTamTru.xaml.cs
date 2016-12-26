@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HouseholdManagement.ViewModels;
 
 namespace HouseholdManagement.Pages
 {
@@ -21,6 +22,7 @@ namespace HouseholdManagement.Pages
     /// </summary>
     public partial class QuanlyTamTru : Page
     {
+        QuanLyTamTruViewModel viewMobel = null;
         public static QuanlyTamTru createInstance()
         {
             return new QuanlyTamTru();
@@ -29,6 +31,7 @@ namespace HouseholdManagement.Pages
         public QuanlyTamTru()
         {
             InitializeComponent();
+            viewMobel = QuanLyTamTruViewModel.createInstace();
         }
 
         private void onLoaded(object sender, RoutedEventArgs e)
@@ -44,6 +47,7 @@ namespace HouseholdManagement.Pages
 
         private void loadData()
         {
+            this.dataGird_QuanLyTamTru.ItemsSource = viewMobel.getTamTruAllInfo();
             
         }
 
@@ -51,6 +55,11 @@ namespace HouseholdManagement.Pages
         {
             //save data to database
             //do anything before close the door
+
+        }
+
+        private void Search_OnKeyDown(object sender, KeyEventArgs e)
+        {
 
         }
 

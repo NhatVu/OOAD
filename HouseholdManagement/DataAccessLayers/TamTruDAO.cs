@@ -11,9 +11,13 @@ using System.Windows.Forms;
 
 namespace DataAcessLayer
 {
-    public class TamTruDAO : DBConnection
+    public class TamTruDAO
     {
-        public TamTruDAO() : base() { }
+        SqlConnection connection = null;
+        public TamTruDAO()
+        {
+            connection = DBConnection.getInstance().getConnection();
+        }
 
         public bool insertTamTru(TamTruDTO dto)
         {
@@ -163,6 +167,33 @@ namespace DataAcessLayer
 
 
                 command.Parameters.AddRange(parameter);
+                adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+                connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                connection.Close();
+                return null;
+            }
+        }
+
+        public DataTable GetAllInfo()
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand command = new SqlCommand();
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapter;
+                command.Connection = connection;
+                command.CommandText = "TamTru_GetAllInfo";
+                command.CommandType = CommandType.StoredProcedure;
+
+                //command.ExecuteNonQuery();
                 adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
                 connection.Close();
