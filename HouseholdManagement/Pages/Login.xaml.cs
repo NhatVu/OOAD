@@ -18,6 +18,7 @@ using DataAcessLayer;
 using DTO;
 using System.Data;
 using AutoMapper;
+using HouseholdManagement.DataAccessLayers;
 
 namespace HouseholdManagement.Pages
 {
@@ -67,6 +68,16 @@ namespace HouseholdManagement.Pages
 
                 if (PasswordHash.ValidatePassword(textbox_password.Password.ToString(), password)){
                     GlobalVariable.CurrentCongAnId = Int32.Parse(congAnSource.Rows[0]["id"].ToString());
+                    //save if rememeber checkbox checked
+                    if(checkbox_remember_password.IsChecked == true)
+                    {
+                        Constant.storeAccount(textbox_email.Text,textbox_password.Password);
+                    }
+                    else
+                    {
+                        Constant.storeAccount("","");
+                    }
+
                     this.NavigationService.Navigate(Home.createInstance());
                 }
                     // if login success
@@ -76,17 +87,23 @@ namespace HouseholdManagement.Pages
             else
             {
                 MessageBox.Show("Xin hãy nhập địa chỉ email hợp lệ.");
-            }
-        
-            
-
-
-            
+            }  
         }
 
-        private void quenMatKhau_click(object sender, RoutedEventArgs e)
+
+        private void onForgotPassword(object sender, MouseButtonEventArgs e)
         {
             this.NavigationService.Navigate(QuenMatKhau.createInstance());
+        }
+
+        private void onLoaded(object sender, RoutedEventArgs e)
+        {
+            Account acc = Constant.getAccount();
+            if (acc != null && acc.UserName.Length != 0 && acc.Password.Length != 0)
+            {
+                textbox_email.Text = acc.UserName;
+                textbox_password.Password = acc.Password;
+            }
         }
     }
 }

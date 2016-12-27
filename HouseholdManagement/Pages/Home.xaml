@@ -239,6 +239,7 @@
                         VerticalAlignment="Stretch">
 
                 <Frame x:Name="main_frame" 
+                       NavigationUIVisibility="Hidden"
                     Content="{Binding Content}">
 
                 </Frame>

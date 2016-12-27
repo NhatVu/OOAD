@@ -37,7 +37,7 @@
     </Window.Resources>
 
 
-    <Frame x:Name="frame_main_window">
+    <Frame x:Name="frame_main_window" NavigationUIVisibility="Hidden">
         
     </Frame>
 </Window>

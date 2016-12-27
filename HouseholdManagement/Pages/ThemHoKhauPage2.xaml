@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="800"
              d:DesignWidth="1100"
+             Loaded="onLoaded"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              Background="{DynamicResource MaterialDesignPaper}"
@@ -22,40 +23,126 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" 
-                        Width="Auto"
-                        Orientation="Horizontal"
-                        Margin="16,12">
-                <Button x:Name="button_back"
-                        Style="{StaticResource MaterialDesignFloatingActionButton}"
-                        HorizontalAlignment="Left"
+    <materialDesign:DialogHost Identifier="RootDialog">
+        <DockPanel>
+            <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
+                <Border Grid.Row="0"
+                    BorderBrush="Silver"
+                    BorderThickness="0 0 0 1">
+                    <Grid>
+                        <Button Grid.Column="0"
+                            x:Name="button_back"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                            HorizontalAlignment="Left"
+                            Opacity="0.54"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                            BorderBrush="Transparent"
+                            Background="Transparent"
+                            Margin="16 0" 
+                            Click="onButtonBackClicked">
+                            <materialDesign:PackIcon Kind="KeyboardBackspace" Height="24" Width="24" />
+                        </Button>
+                        <TextBlock VerticalAlignment="Center"
+                               Grid.Column="1"
+                               Text="Thông tin chi tiết"
+                               FontWeight="Medium"
+                               FontSize="24"
+                               Typography.Capitals="AllSmallCaps"
+                               HorizontalAlignment="Center"/>
+                        <Button HorizontalAlignment="Right"
+                            Style="{StaticResource MaterialDesignFlatButton}" 
+                            Click="onButtonSaveClicked" 
+                            Margin="16 0"
+                            FontSize="16">Save</Button>
+                    </Grid>
+                </Border>
+                <StackPanel Orientation="Horizontal"
+                        Margin="0 16">
+                    <Button HorizontalAlignment="Right"
                         Opacity="0.54"
-                        materialDesign:ShadowAssist.ShadowDepth="Depth3"
-                        BorderBrush="White"
-                        Background="White"
-                        Margin="16 0"
-                        ToolTip="MaterialDesignFloatingActionButton" Click="button_back_Click">
-                    <materialDesign:PackIcon Kind="KeyboardBackspace" Height="24" Width="24" />
-                </Button>
-                <TextBlock Text="Thêm hộ khẩu"
-                           FontSize="24"
-                           VerticalAlignment="Center" />
-            </StackPanel>
+                        x:Name="button_search"
+                        FontWeight="Light"
+                        Foreground="Black"
+                        Style="{StaticResource MaterialDesignFlatButton}" 
+                        Margin="16 0 0 0"
+                        FontSize="16" Click="onButtonSearchClicked">Tìm kiếm</Button>
+                    <Button HorizontalAlignment="Right"
+                        x:Name="button_remove"
+                        FontWeight="Light"
+                        Opacity="0.54"
+                        Foreground="Black"
+                            Style="{StaticResource MaterialDesignFlatButton}" 
+                            Margin="16 0 0 0"
+                            FontSize="16" Click="onButtonRemoveClicked">Xoá dòng</Button>
+                    <Button HorizontalAlignment="Right"
+                        x:Name="button_add"
+                        FontWeight="Light"
+                        Opacity="0.54"
+                        Foreground="Black"
+                            Style="{StaticResource MaterialDesignFlatButton}" 
+                            Margin="16 0 0 0"
+                            FontSize="16" Click="onButtonAddClicked">Thêm dòng</Button>
+                </StackPanel>
+                <DataGrid Grid.Row="2"
+                      CanUserAddRows="False"
+                      Margin="16"
+                      ItemsSource="{Binding ListHoKhau}"
+                      CanUserSortColumns="True"
+                      AutoGenerateColumns="False"
+                      x:Name="table_household"
+                  materialDesign:DataGridAssist.CellPadding="16 12" SelectionChanged="table_household_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Id Công dân">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox IsEditable="True" 
+                                          SelectionChanged="id_SelectionChanged"
+                                          Text="{Binding Id}" 
+                              ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.ListIdCongDan}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
 
-            
-        </Grid>
-        <Grid Grid.Row="1">
-            <TextBlock Text="2"/>
-        </Grid>
-    </Grid>
+                        <DataGridTemplateColumn Header="Số CMND">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox IsEditable="True" 
+                                          SelectionChanged="cmnd_SelectionChanged"
+                                          Text="{Binding Cmnd}" 
+                              ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.ListCmndCongDan}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="Họ và tên">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox IsEditable="True" 
+                                          SelectionChanged="ten_SelectionChanged"
+                                          Text="{Binding Name}" 
+                              ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.ListHoTenCongDan}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <materialDesign:MaterialDataGridTextColumn Header="Gioitinh"
+                                                               Binding="{Binding Gioitinh}"
+                                                               IsReadOnly="True"
+                                                               MinWidth="100"/>
+                        <materialDesign:MaterialDataGridTextColumn Header="Ngaysinh"
+                                                               Binding="{Binding Ngaysinh}"
+                                                               IsReadOnly="True"
+                                                               MinWidth="100"/>
+                        <materialDesign:MaterialDataGridComboBoxColumn Header="Quan hệ"        
+                                                                   SelectedValueBinding="{Binding Quanhe}"                                                            
+                                                                   ItemsSourceBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.ListQuanhe}" />
+                        <materialDesign:MaterialDataGridTextColumn Header="Ghi chú"
+                                                               Binding="{Binding GhiChu}"
+                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" 
+                                                               MinWidth="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </StackPanel>
+        </DockPanel>
+    </materialDesign:DialogHost>
 </Page>

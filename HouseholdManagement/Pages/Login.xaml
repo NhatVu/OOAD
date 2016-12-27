@@ -10,6 +10,7 @@
              d:DesignWidth="1100" 
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              Background="{DynamicResource MaterialDesignPaper}"
+             Loaded="onLoaded"
              FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
              TextElement.FontSize="14">
     <Page.Resources>
@@ -58,17 +59,20 @@
                          materialDesign:ColorZoneAssist.Mode="Dark"/>
                         <PasswordBox x:Name="textbox_password"
                              materialDesign:HintAssist.Hint="{DynamicResource password_hint}"/>
-                        <CheckBox 
+                        <DockPanel>
+                            <CheckBox 
+                                DockPanel.Dock="Left"
+                                IsChecked="True"
                           x:Name="checkbox_remember_password"
                           Style="{StaticResource MaterialDesignCheckBox}" Margin="56,20,56,0" 
                           FontSize="18"
                           Content="Ghi nhớ tài khoản"/>
-                        <Button 
-                        	x:Name="quenMatKhau"
-                            Margin="56,20,56,0" 
-                        	FontSize="18"
-                        	Content="Quên mật khẩu ?"
-                            Click="quenMatKhau_click"/>
+                            <TextBlock DockPanel.Dock="Right" 
+                                       HorizontalAlignment="Right"
+                                       Text="Quên mật khẩu?"
+                                        Margin="56,20,56,0" PreviewMouseDown="onForgotPassword">
+                            </TextBlock>
+                        </DockPanel>
                         <Button x:Name="button_login"
                         Style="{StaticResource MaterialDesignRaisedButton}"
                         Margin="56,40,56,32"

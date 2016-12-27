@@ -35,7 +35,7 @@ namespace HouseholdManagement.Pages
             this.NavigationService.Navigate(ThemHoKhauPage2.createInstance());
         }
 
-        private void button_return_Click(object sender, RoutedEventArgs e)
+        private void onButtonCancelClicked(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(QuanlyHokhau.createInstance());
         }
