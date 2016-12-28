@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace HouseholdManagement.ViewModels
 {
-    class ThemHoKhauViewModel :INotifyPropertyChanged
+    class ThemHoKhauPage2ViewModel :INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private ObservableCollection<SelectableViewModel> listHoKhau;
@@ -76,7 +76,7 @@ namespace HouseholdManagement.ViewModels
             //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public ThemHoKhauViewModel()
+        public ThemHoKhauPage2ViewModel()
         {
             listHoKhau = new ObservableCollection<SelectableViewModel>();
             listHoKhau.Add(new SelectableViewModel());
@@ -97,12 +97,7 @@ namespace HouseholdManagement.ViewModels
             {
                 listQuanhe.Add(vt.TenVaitro);
             }
-
-
-
-            
         }
-
     }
 
     
@@ -122,7 +117,7 @@ namespace HouseholdManagement.ViewModels
     
         }
 
-        private int id;
+        private string  id;
         private string cmnd;
         private string name;
         private string gioitinh;
@@ -130,7 +125,7 @@ namespace HouseholdManagement.ViewModels
         private string quanhe;
         private string ghiChu;
 
-        public int Id
+        public string Id
         {
             get
             {

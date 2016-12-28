@@ -10,6 +10,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              Background="{DynamicResource MaterialDesignPaper}"
+             Loaded="onLoaded"
              FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
              TextElement.FontSize="14" >
     <Page.Resources>
@@ -22,13 +23,15 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
+
+ 
     <DockPanel>
-        <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
-            <Border Grid.Row="0"
+            <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
+                <Border Grid.Row="0"
                     BorderBrush="Silver"
                     BorderThickness="0 0 0 1">
-                <Grid>
-                    <Button
+                    <Grid>
+                        <Button
                         Grid.Column="0"
                         x:Name="button_close"
                         Style="{StaticResource MaterialDesignFloatingActionButton}"
@@ -38,9 +41,9 @@
                         BorderBrush="Transparent"
                         Background="Transparent"
                         Margin="16 0" Click="onButtonCancelClicked">
-                        <materialDesign:PackIcon Kind="Close" Height="24" Width="24" />
-                    </Button>
-                    <TextBlock 
+                            <materialDesign:PackIcon Kind="Close" Height="24" Width="24" />
+                        </Button>
+                        <TextBlock 
                         VerticalAlignment="Center"
                         Grid.Column="1"
                                Text="Thông tin sơ bộ"
@@ -48,7 +51,7 @@
                                FontSize="24"
                                Typography.Capitals="AllSmallCaps"
                                HorizontalAlignment="Center"/>
-                    <Button 
+                        <Button 
                         HorizontalAlignment="Right"
                         Grid.Column="2"
                         Style="{StaticResource MaterialDesignFlatButton}" 
@@ -56,102 +59,105 @@
                     ToolTip="MaterialDesignFlatButton" 
                         Margin="16 0"
                     FontSize="16">Next</Button>
-                </Grid>
+                    </Grid>
 
-            </Border>
-            <StackPanel Orientation="Vertical" Margin="100 32">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                </Border>
+                <StackPanel Orientation="Vertical" Margin="100 32">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                    <StackPanel Orientation="Vertical" Grid.Row="0">
-                        <TextBlock Text="Họ tên công an"
+                        <StackPanel Orientation="Vertical" Grid.Row="0">
+                            <TextBlock Text="Họ tên công an"
                                        HorizontalAlignment="Left"
                                        FontWeight="Light"
                                        Width="Auto"
                                        FontSize="20"
                                        Typography.Capitals="AllSmallCaps"/>
-                        <Border Padding="16" 
+                            <Border Padding="16" 
                                 Margin="0 16"
                                 BorderBrush="Silver" 
                                 BorderThickness="0.5 0.5 0.5 0.5"
                                 CornerRadius="2">
-                            <TextBlock Text="Nguyen Van A"></TextBlock>
-                        </Border>
-                    </StackPanel>
+                                <TextBlock Text="{Binding TenCongAn}" x:Name="textbox_tencongan"></TextBlock>
+                            </Border>
+                        </StackPanel>
 
-                    <StackPanel Orientation="Vertical" Grid.Row="1">
-                        <TextBlock Text="Nơi cấp"
+                        <StackPanel Orientation="Vertical" Grid.Row="1">
+                            <TextBlock Text="Nơi cấp"
                                        HorizontalAlignment="Left"
                                        FontWeight="Light"
                                        Width="Auto"
                                        FontSize="20"
                                        Typography.Capitals="AllSmallCaps"/>
-                        <Border Padding="16" 
+                            <Border Padding="16" 
                                 Margin="0 16"
                                 BorderBrush="Silver" 
                                 BorderThickness="0.5 0.5 0.5 0.5"
                                 CornerRadius="2">
-                            <TextBlock Text="Kien Giang"></TextBlock>
-                        </Border>
-                    </StackPanel>
+                                <TextBlock Text="{Binding NoiLamViec}" x:Name="textbox_noicap"></TextBlock>
+                            </Border>
+                        </StackPanel>
 
-                    <StackPanel Orientation="Vertical" Grid.Row="2">
-                        <TextBlock Text="Ngày cấp"
+                        <StackPanel Orientation="Vertical" Grid.Row="2">
+                            <TextBlock Text="Ngày cấp"
                                        HorizontalAlignment="Left"
                                        FontWeight="Light"
                                        Width="Auto"
                                        FontSize="20"
                                        Typography.Capitals="AllSmallCaps"/>
-                        <Border Padding="16" 
+                            <Border Padding="16" 
                                 Margin="0 16"
                                 BorderBrush="Silver" 
                                 BorderThickness="0.5 0.5 0.5 0.5"
                                 CornerRadius="2">
-                            <TextBlock Text="24/24"></TextBlock>
-                        </Border>
-                    </StackPanel>
+                                <TextBlock Text="{Binding NgayCap}" x:Name="textbox_ngaycap"></TextBlock>
+                            </Border>
+                        </StackPanel>
 
 
-                    <StackPanel Orientation="Vertical" Grid.Row="3">
-                        <TextBlock Text="Nơi đăng ký thường chú"
+                        <StackPanel Orientation="Vertical" Grid.Row="3">
+                            <TextBlock Text="Nơi đăng ký thường chú (Bắt buộc)"
                                        HorizontalAlignment="Left"
                                        FontWeight="Light"
                                        Width="Auto"
                                        FontSize="20"
                                        Typography.Capitals="AllSmallCaps"/>
-                        <Border Padding="16" 
+                            <Border Padding="16" 
                                 Margin="0 16"
                                 BorderBrush="Silver" 
                                 BorderThickness="0.5 0.5 0.5 0.5"
                                 CornerRadius="2">
-                            <TextBox ></TextBox>
-                        </Border>
-                    </StackPanel>
+                                <TextBox x:Name="textbox_thuongchu"></TextBox>
+                            </Border>
+                        </StackPanel>
 
-                    <StackPanel Orientation="Vertical" Grid.Row="4">
-                        <TextBlock Text="Ghi chú"
+                        <StackPanel Orientation="Vertical" Grid.Row="4">
+                            <TextBlock Text="Ghi chú (Không bắt buộc)"
                                        HorizontalAlignment="Left"
                                        FontWeight="Light"
                                        Width="Auto"
                                        FontSize="20"
                                        Typography.Capitals="AllSmallCaps"/>
-                        <Border Padding="16" 
+                            <Border Padding="16" 
                                 Margin="0 16"
                                 BorderBrush="Silver" 
                                 BorderThickness="0.5 0.5 0.5 0.5"
                                 CornerRadius="2">
-                            <TextBox></TextBox>
-                        </Border>
-                    </StackPanel>
-                </Grid>
+                                <TextBox x:Name="textbox_ghichu"></TextBox>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+
             </StackPanel>
+        </DockPanel>
 
-        </StackPanel>
-    </DockPanel>
+    
+   
 </Page>

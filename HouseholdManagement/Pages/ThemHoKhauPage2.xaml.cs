@@ -26,19 +26,18 @@ namespace HouseholdManagement.Pages
     /// </summary>
     public partial class ThemHoKhauPage2 : Page
     {
-        private static readonly int ID = 0;
-        private static readonly int CMND = 1;
-        private static readonly int HOTEN = 2;
+        private HoKhauDTO mHoKhau;
 
-        private ThemHoKhauViewModel mViewModel;
+        private ThemHoKhauPage2ViewModel mViewModel;
 
-        public static ThemHoKhauPage2 createInstance()
+        public static ThemHoKhauPage2 createInstance(HoKhauDTO hokhau)
         {
-            return new ThemHoKhauPage2();
+            return new ThemHoKhauPage2(hokhau);
         }
-        public ThemHoKhauPage2()
+        public ThemHoKhauPage2(HoKhauDTO hokhau)
         {
             InitializeComponent();
+            this.mHoKhau = hokhau;
         }
 
         private void onButtonBackClicked(object sender, RoutedEventArgs e)
@@ -46,12 +45,52 @@ namespace HouseholdManagement.Pages
             this.NavigationService.GoBack();
         }
 
-        private void onButtonSaveClicked(object sender, RoutedEventArgs e)
+        private async void onButtonSaveClicked(object sender, RoutedEventArgs e)
         {
-            foreach(SelectableViewModel s in mViewModel.ListHoKhau)
+            List<string> ids = new List<string>();
+            ids.Clear();
+            foreach (SelectableViewModel row in mViewModel.ListHoKhau)
             {
-                MessageBox.Show(s.Id + s.Name + s.Ngaysinh + s.Cmnd + s.Gioitinh+s.GhiChu);
+                //MessageBox.Show(row.Id + row.Cmnd + row.Name + row.Quanhe + row.GhiChu);
+                ids.Add(row.Id);
+                if (row.Quanhe == null)
+                {
+                    Constant.showDialog("Tất cả quan hệ phải được điền");
+                    return;
+                }
             }
+            bool isUnique = ids.Distinct().Count() == ids.Count();
+
+            if (isUnique)
+            {
+                progressbar.Visibility = System.Windows.Visibility.Visible;
+                await Task.Delay(500);
+                await Task.Run(() => insertToDataBase());
+                progressbar.Visibility = System.Windows.Visibility.Hidden;
+            }
+            else
+            {
+                Constant.showDialog("Tất cả các thành viên phải khác nhau");
+            }
+
+        }
+
+        private void insertToDataBase()
+        {
+            
+            new HoKhauDAO().insertHoKhau(mHoKhau);
+            List<VaiTroSoHoKhauDTO> vaitro = Constant.DataTableToList<VaiTroSoHoKhauDTO>(new VaiTroSoHoKhauDAO().SelectAllVaiTroSoHoKhau());
+            int idHoKhau = mHoKhau.Id;
+            foreach (SelectableViewModel row in mViewModel.ListHoKhau)
+            {
+                ChiTietHoKhauDTO chitietHoKhau = new ChiTietHoKhauDTO(idHoKhau,
+                    int.Parse(row.Id),
+                    vaitro.Find(x => x.TenVaitro == row.Quanhe).Id,
+                    row.GhiChu,
+                    1);
+                new ChiTietHoKhauDAO().insertChiTietHoKhau(chitietHoKhau);
+            }
+
         }
 
         private void table_household_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -66,67 +105,157 @@ namespace HouseholdManagement.Pages
 
         private void onButtonRemoveClicked(object sender, RoutedEventArgs e)
         {
-            mViewModel.ListHoKhau.RemoveAt(table_household.SelectedIndex);
+            if (table_household.SelectedIndex > -1)
+                mViewModel.ListHoKhau.RemoveAt(table_household.SelectedIndex);
         }
 
-        private void onButtonSearchClicked(object sender, RoutedEventArgs e)
+        private void onButtonResetClicked(object sender, RoutedEventArgs e)
         {
-
+            mViewModel.ListHoKhau.Clear();
+            mViewModel.ListHoKhau[0] = new SelectableViewModel();
         }
 
-        private void onLoaded(object sender, RoutedEventArgs e)
+        private async void onLoaded(object sender, RoutedEventArgs e)
         {
-            mViewModel = new ThemHoKhauViewModel();
+            mViewModel = new ThemHoKhauPage2ViewModel();
+            progressbar.Visibility = System.Windows.Visibility.Visible;
+            await Task.Delay(500);
             DataContext = mViewModel;
+            progressbar.Visibility = System.Windows.Visibility.Hidden;
         }
 
-        private async void id_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void id_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var box = sender as ComboBox;
             int row = table_household.SelectedIndex;
-            MessageBox.Show(box.Text);
-
-            try
+            if (box.SelectedValue != null && box.SelectedValue.ToString().Count() > 0)
             {
-                int value = int.Parse(box.SelectedValue + "");
-                CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanById(value))[0];
-
-                string cmnd = (congdan.Cmnd != 0) ? (congdan.Cmnd + "") : "Chưa có";
-                string hoten = congdan.HoTen;
-                string ngaysinh = congdan.NgaySinh.ToString();
-                string gioitinh = (congdan.GioiTinh == 0) ? "Nữ" : "Nam";
-
-                mViewModel.ListHoKhau[row].Cmnd = cmnd;
-                mViewModel.ListHoKhau[row].Gioitinh = gioitinh;
-                mViewModel.ListHoKhau[row].Name = hoten;
-                mViewModel.ListHoKhau[row].Ngaysinh = ngaysinh;
-            }
-            catch (FormatException ex)
-            {
-                var sampleMessageDialog = new SampleMessageDialog
+                try
                 {
-                    Message = { Text = "Mã số bạn nhập không tồn tại" }
-                };
 
-                await DialogHost.Show(sampleMessageDialog, "RootDialog");
+                    int value = int.Parse(box.SelectedValue + "");
+                    CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanById(value))[0];
+                    updateTableRow(congdan, row);
+                }
+                catch (Exception ex)
+                {
+                    Constant.showDialog("Id bạn nhập không tồn tại");
+                }
             }
-
-
-
-
 
         }
 
         private void cmnd_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            var box = sender as ComboBox;
+            int row = table_household.SelectedIndex;
+            if (box.SelectedValue != null && box.SelectedValue.ToString().Count() > 0)
+            {
+                try
+                {
+                    int value = int.Parse(box.SelectedValue + "");
+                    CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanByCmnd(value))[0];
+                    int id = congdan.Id;
+                    mViewModel.ListHoKhau[row].Id = id + "";
+                }
+                catch (Exception ex)
+                {
+                    Constant.showDialog("Cmnd bạn nhập không tồn tại");
+                }
+            }
 
         }
 
         private void ten_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            var box = sender as ComboBox;
+            int row = table_household.SelectedIndex;
+            if (box.SelectedValue != null && box.SelectedValue.ToString().Count() > 0)
+            {
+                try
+                {
+                    string value = (box.SelectedValue + "");
+                    CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanByName(value))[0];
+                    int id = congdan.Id;
+                    mViewModel.ListHoKhau[row].Id = id + "";
+                }
+                catch (Exception ex)
+                {
+                    Constant.showDialog("Tên bạn nhập không tồn tại");
+                }
+            }
+        }
+
+        private void updateTableRow(CongDanDTO congdan, int row)
+        {
+            string cmnd = (congdan.Cmnd != 0) ? (congdan.Cmnd + "") : "Chưa có";
+            string hoten = congdan.HoTen;
+            string ngaysinh = congdan.NgaySinh.ToString("dd/MM/yyyy");
+            string gioitinh = (congdan.GioiTinh == 0) ? "Nữ" : "Nam";
+
+            mViewModel.ListHoKhau[row].Cmnd = cmnd;
+            mViewModel.ListHoKhau[row].Gioitinh = gioitinh;
+            mViewModel.ListHoKhau[row].Name = hoten;
+            mViewModel.ListHoKhau[row].Ngaysinh = ngaysinh;
+        }
 
 
+
+        private async void id_KeyDown(object sender, KeyEventArgs e)
+        {
+            ComboBox box = sender as ComboBox;
+            if (e.Key == Key.Enter)
+            {
+                try
+                {
+                    int value = int.Parse(box.Text);
+                    CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanById(value))[0];
+                }
+                catch (Exception ex)
+                {
+                    Constant.showDialog("Dữ liệu nhập vào không tồn tại");
+                    mViewModel.ListHoKhau[table_household.SelectedIndex] = new SelectableViewModel();
+                }
+
+            }
+        }
+
+        private async void cmnd_KeyDown(object sender, KeyEventArgs e)
+        {
+            ComboBox box = sender as ComboBox;
+            if (e.Key == Key.Enter)
+            {
+                try
+                {
+                    int value = int.Parse(box.Text);
+                    CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanByCmnd(value))[0];
+                }
+                catch (Exception ex)
+                {
+                    Constant.showDialog("Dữ liệu nhập vào không tồn tại");
+                    mViewModel.ListHoKhau[table_household.SelectedIndex] = new SelectableViewModel();
+                }
+
+            }
+        }
+
+        private async void ten_KeyDown(object sender, KeyEventArgs e)
+        {
+            ComboBox box = sender as ComboBox;
+            if (e.Key == Key.Enter)
+            {
+                try
+                {
+                    string value = (box.Text);
+                    CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanByName(value))[0];
+                }
+                catch (Exception ex)
+                {
+                    Constant.showDialog("Dữ liệu nhập vào không tồn tại");
+                    mViewModel.ListHoKhau[table_household.SelectedIndex] = new SelectableViewModel();
+                }
+
+            }
         }
     }
 }

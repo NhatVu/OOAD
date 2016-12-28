@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HouseholdManagement.Utilities;
+using DTO;
 
 namespace HouseholdManagement.Pages
 {
@@ -22,19 +23,23 @@ namespace HouseholdManagement.Pages
     /// </summary>
     public partial class Home : Page
     {
-        public static Home createInstance()
+        private CongAnDTO mCongAn;
+
+        public static Home createInstance(CongAnDTO congAn)
         {
-            return new Home();
+            return new Home(congAn);
         }
-        public Home()
+
+        public Home(CongAnDTO congan)
         {
             InitializeComponent();
+            this.mCongAn = congan;
         }
 
 
         private void onButtonThemHoKhauClicked(object sender, RoutedEventArgs e)
         {
-            replace(ThemHoKhauPage1.createInstance());
+            replace(ThemHoKhauPage1.createInstance(mCongAn));
         }
 
         private void onButtonThemTamVangClicked(object sender, RoutedEventArgs e)

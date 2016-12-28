@@ -115,10 +115,11 @@ namespace DTO
 
         }
 
-        public HoKhauDTO(int mIdCDTruongCongAn, string mNoiCap, string mNoiDangKyThuongTru, string mGhiChu, int mActive)
+        public HoKhauDTO(int mIdCDTruongCongAn, string mNoiCap, DateTime mNgayCap, string mNoiDangKyThuongTru, string mGhiChu, int mActive)
         {
             this.mIdCDTruongCongAn = mIdCDTruongCongAn;
             this.mNoiCap = mNoiCap;
+            this.mNgayCap = mNgayCap;
             this.mNoiDangKyThuongTru = mNoiDangKyThuongTru;
             this.mGhiChu = mGhiChu;
             this.mActive = mActive;

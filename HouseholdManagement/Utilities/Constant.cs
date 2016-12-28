@@ -1,4 +1,6 @@
 ﻿using HouseholdManagement.DataAccessLayers;
+using HouseholdManagement.UserControls;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -97,5 +99,26 @@ namespace HouseholdManagement.Utilities
                 return null;
             }
         }
+
+        public async static void showDialog(string message)
+        {
+            var sampleMessageDialog = new SampleMessageDialog
+            {
+                Message = { Text = message }
+            };
+            
+            try
+            {
+                await DialogHost.Show(sampleMessageDialog, "RootDialog");
+            }catch
+            {
+                //                
+            }
+            
+        }
+
+
     }
+
+    
 }

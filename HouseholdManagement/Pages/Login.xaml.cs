@@ -59,15 +59,16 @@ namespace HouseholdManagement.Pages
             //textbox_password.Password = "123456";
             if(CheckInput.IsEmail(textbox_email.Text)){
                 DataTable congAnSource = congDanDAO.SelectCongAnByEmail(textbox_email.Text);
-                if (congAnSource.Rows.Count == 0)
+                List<CongAnDTO> congan = Constant.DataTableToList<CongAnDTO>(congAnSource);
+                if (congan.Count == 0)
                 {
                     MessageBox.Show("Email không tồn tại trong hệ thống. Vui lòng liên hệ với Admin để được cấp tài khoản");
                     return;
                 }
-                string password = congAnSource.Rows[0]["password"].ToString();
+                string password = congan[0].Password.ToString();
 
                 if (PasswordHash.ValidatePassword(textbox_password.Password.ToString(), password)){
-                    GlobalVariable.CurrentCongAnId = Int32.Parse(congAnSource.Rows[0]["id"].ToString());
+                    GlobalVariable.CurrentCongAnId = Int32.Parse(congan[0].Id.ToString());
                     //save if rememeber checkbox checked
                     if(checkbox_remember_password.IsChecked == true)
                     {
@@ -78,7 +79,7 @@ namespace HouseholdManagement.Pages
                         Constant.storeAccount("","");
                     }
 
-                    this.NavigationService.Navigate(Home.createInstance());
+                    this.NavigationService.Navigate(Home.createInstance(congan[0]));
                 }
                     // if login success
                 else

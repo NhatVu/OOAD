@@ -32,195 +32,196 @@
             </Style>
         </ResourceDictionary>
     </Page.Resources>
-    <DockPanel LastChildFill="True">
-        <materialDesign:ColorZone Width="{DynamicResource drawer_left_width}"
+    <materialDesign:DialogHost Identifier="RootDialog" IsOpen="False">
+        <DockPanel LastChildFill="True">
+            <materialDesign:ColorZone Width="{DynamicResource drawer_left_width}"
                                   VerticalAlignment="Stretch"
                                   materialDesign:ShadowAssist.ShadowDepth="Depth4" 
                                   Mode="Light"
                                   DockPanel.Dock="Left">
-            <DockPanel LastChildFill="False">
-                <StackPanel Orientation="Vertical"
+                <DockPanel LastChildFill="False">
+                    <StackPanel Orientation="Vertical"
                             DockPanel.Dock="Top">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Width="56" 
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="56" 
                            Height="56"
                            Margin="16,16,0,16"
                            Source="/HouseholdManagement;component/Resource/home_icon.png">
-                        </Image>
+                            </Image>
 
-                        <StackPanel VerticalAlignment="Center">
-                            <TextBlock
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock
                            FontSize="18"
                            Margin="12,2"
                            FontWeight="Light"
                            Text="{DynamicResource app_name}"/>
-                            <TextBlock 
+                                <TextBlock 
                            FontSize="18"
                            Margin="12,2"
                            Text="{DynamicResource version}"/>
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical">
-                        <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                        <StackPanel Orientation="Vertical">
+                            <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth3"
                                               Background="{DynamicResource primary_color}">
-                            <TextBlock
+                                <TextBlock
                            FontSize="24"
                            Foreground="White"
                            Margin="12"
                            Typography.Capitals="AllSmallCaps"        
                            Text="Tài khoản"/>
-                        </materialDesign:ColorZone>
-                        <ListBox 
+                            </materialDesign:ColorZone>
+                            <ListBox 
                              Margin="0,8">
-                            <ListBoxItem x:Name="item_thongtintaikhoan" Selected="item_thongtintaikhoan_Selected">
-                                <StackPanel Orientation="Horizontal">
-                                    <Viewbox Width="24" Height="24" Margin="12,0">
-                                        <Canvas Width="24" Height="24" Opacity="0.54">
-                                            <Path Data="M12,13C9.33,13 4,14.33 4,17V20H20V17C20,14.33 14.67,13 12,13M12,4A4,4 0 0,0 8,8A4,4 0 0,0 12,12A4,4 0 0,0 16,8A4,4 0 0,0 12,4M12,14.9C14.97,14.9 18.1,16.36 18.1,17V18.1H5.9V17C5.9,16.36 9,14.9 12,14.9M12,5.9A2.1,2.1 0 0,1 14.1,8A2.1,2.1 0 0,1 12,10.1A2.1,2.1 0 0,1 9.9,8A2.1,2.1 0 0,1 12,5.9Z"
+                                <ListBoxItem x:Name="item_thongtintaikhoan" Selected="item_thongtintaikhoan_Selected">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Viewbox Width="24" Height="24" Margin="12,0">
+                                            <Canvas Width="24" Height="24" Opacity="0.54">
+                                                <Path Data="M12,13C9.33,13 4,14.33 4,17V20H20V17C20,14.33 14.67,13 12,13M12,4A4,4 0 0,0 8,8A4,4 0 0,0 12,12A4,4 0 0,0 16,8A4,4 0 0,0 12,4M12,14.9C14.97,14.9 18.1,16.36 18.1,17V18.1H5.9V17C5.9,16.36 9,14.9 12,14.9M12,5.9A2.1,2.1 0 0,1 14.1,8A2.1,2.1 0 0,1 12,10.1A2.1,2.1 0 0,1 9.9,8A2.1,2.1 0 0,1 12,5.9Z"
                                                   Fill="Black" />
-                                        </Canvas>
-                                    </Viewbox>
-                                    <TextBlock
+                                            </Canvas>
+                                        </Viewbox>
+                                        <TextBlock
                                                FontSize="18"
                                                Foreground="Black"
                                                Margin="12,8"
                                                Opacity="0.8"
                                                Text="Thông tin tài khoản"/>
-                                </StackPanel>
-                            </ListBoxItem>
-                            <ListBoxItem x:Name="item_thaydoimatkhau" Selected="item_thaydoimatkhau_Selected"
+                                    </StackPanel>
+                                </ListBoxItem>
+                                <ListBoxItem x:Name="item_thaydoimatkhau" Selected="item_thaydoimatkhau_Selected"
                                          PreviewMouseDown="thayDoiMatKhau_click">
-                                <StackPanel Orientation="Horizontal">
-                                    <Viewbox Width="24" Height="24" Margin="12,0">
-                                        <Canvas Width="24" Height="24" Opacity="0.54">
-                                            <Path Data="M7,14A2,2 0 0,1 5,12A2,2 0 0,1 7,10A2,2 0 0,1 9,12A2,2 0 0,1 7,14M12.65,10C11.83,7.67 9.61,6 7,6A6,6 0 0,0 1,12A6,6 0 0,0 7,18C9.61,18 11.83,16.33 12.65,14H17V18H21V14H23V10H12.65Z"
+                                    <StackPanel Orientation="Horizontal">
+                                        <Viewbox Width="24" Height="24" Margin="12,0">
+                                            <Canvas Width="24" Height="24" Opacity="0.54">
+                                                <Path Data="M7,14A2,2 0 0,1 5,12A2,2 0 0,1 7,10A2,2 0 0,1 9,12A2,2 0 0,1 7,14M12.65,10C11.83,7.67 9.61,6 7,6A6,6 0 0,0 1,12A6,6 0 0,0 7,18C9.61,18 11.83,16.33 12.65,14H17V18H21V14H23V10H12.65Z"
                                                   Fill="Black" />
-                                        </Canvas>
-                                    </Viewbox>
-                                    <TextBlock
+                                            </Canvas>
+                                        </Viewbox>
+                                        <TextBlock
                                                FontSize="18"
                                                Foreground="Black"
                                                Margin="12,8"
                                                Opacity="0.8"
                                                Text="Thay đổi mật khẩu"/>
-                                </StackPanel>
-                            </ListBoxItem>
-                            <ListBoxItem x:Name="item_dangxuat" Selected="item_dangxuat_Selected" PreviewMouseDown="dangXuat_click">
-                                <StackPanel Orientation="Horizontal">
-                                    <Viewbox Width="24" Height="24" Margin="12,0">
-                                        <Canvas Width="24" Height="24" Opacity="0.54">
-                                            <Path Data="M7,12L12,7V10H16V14H12V17L7,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12Z"
+                                    </StackPanel>
+                                </ListBoxItem>
+                                <ListBoxItem x:Name="item_dangxuat" Selected="item_dangxuat_Selected" PreviewMouseDown="dangXuat_click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Viewbox Width="24" Height="24" Margin="12,0">
+                                            <Canvas Width="24" Height="24" Opacity="0.54">
+                                                <Path Data="M7,12L12,7V10H16V14H12V17L7,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12Z"
                                                   Fill="Black" />
-                                        </Canvas>
-                                    </Viewbox>
-                                    <TextBlock
+                                            </Canvas>
+                                        </Viewbox>
+                                        <TextBlock
                                                FontSize="18"
                                                Foreground="Black"
                                                Margin="12,8"
                                                Opacity="0.8"
                                                Text="Đăng xuất"/>
-                                </StackPanel>
-                            </ListBoxItem>
-                        </ListBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical">
-                        <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                                    </StackPanel>
+                                </ListBoxItem>
+                            </ListBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth3"
                                               Background="{DynamicResource primary_color}">
-                            <TextBlock
+                                <TextBlock
                            FontSize="24"
                            Foreground="White"
                            Margin="12"
                            Typography.Capitals="AllSmallCaps"        
                            Text="Tài khoản"/>
-                        </materialDesign:ColorZone>
-                        <ListBox 
+                            </materialDesign:ColorZone>
+                            <ListBox 
                             x:Name="listbox_main_menu"
                              Margin="0,8">
-                            <ListBoxItem x:Name="item_quanlyhokhau" Selected="item_quanlyhokhau_Selected">
-                                <StackPanel Orientation="Horizontal">
-                                    <Viewbox Width="24" Height="24" Margin="12,0">
-                                        <Canvas Width="24" Height="24" Opacity="0.54">
-                                            <Path Data="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"
+                                <ListBoxItem x:Name="item_quanlyhokhau" Selected="item_quanlyhokhau_Selected">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Viewbox Width="24" Height="24" Margin="12,0">
+                                            <Canvas Width="24" Height="24" Opacity="0.54">
+                                                <Path Data="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"
                                                   Fill="Black" />
-                                        </Canvas>
-                                    </Viewbox>
-                                    <TextBlock
+                                            </Canvas>
+                                        </Viewbox>
+                                        <TextBlock
                                                FontSize="18"
                                                Foreground="Black"
                                                Margin="12,8"
                                                Opacity="0.8"
                                                Text="Quản lý hộ khẩu"/>
-                                </StackPanel>
-                            </ListBoxItem>
-                            <ListBoxItem x:Name="item_quanlytamtru" Selected="item_quanlytamtru_Selected">
-                                <StackPanel Orientation="Horizontal">
-                                    <Viewbox Width="24" Height="24" Margin="12,0">
-                                        <Canvas Width="24" Height="24" Opacity="0.54">
-                                            <Path Data="M13,12H20V13.5H13M13,9.5H20V11H13M13,14.5H20V16H13M21,4H3A2,2 0 0,0 1,6V19A2,2 0 0,0 3,21H21A2,2 0 0,0 23,19V6A2,2 0 0,0 21,4M21,19H12V6H21"
+                                    </StackPanel>
+                                </ListBoxItem>
+                                <ListBoxItem x:Name="item_quanlytamtru" Selected="item_quanlytamtru_Selected">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Viewbox Width="24" Height="24" Margin="12,0">
+                                            <Canvas Width="24" Height="24" Opacity="0.54">
+                                                <Path Data="M13,12H20V13.5H13M13,9.5H20V11H13M13,14.5H20V16H13M21,4H3A2,2 0 0,0 1,6V19A2,2 0 0,0 3,21H21A2,2 0 0,0 23,19V6A2,2 0 0,0 21,4M21,19H12V6H21"
                                                   Fill="Black" />
-                                        </Canvas>
-                                    </Viewbox>
-                                    <TextBlock
+                                            </Canvas>
+                                        </Viewbox>
+                                        <TextBlock
                                                FontSize="18"
                                                Foreground="Black"
                                                Margin="12,8"
                                                Opacity="0.8"
                                                Text="Quản lý tạm trú"/>
-                                </StackPanel>
-                            </ListBoxItem>
-                            <ListBoxItem x:Name="item_quanlytamvang" Selected="item_quanlytamvang_Selected">
-                                <StackPanel Orientation="Horizontal">
-                                    <Viewbox Width="24" Height="24" Margin="12,0">
-                                        <Canvas Width="24" Height="24" Opacity="0.54">
-                                            <Path Data="M17.12,10L16.04,8.18L15.31,11.05L17.8,15.59V22H16V17L13.67,13.89L12.07,18.4L7.25,20.5L6.2,19L10.39,16.53L12.91,6.67L10.8,7.33V11H9V5.8L14.42,4.11L14.92,4.03C15.54,4.03 16.08,4.37 16.38,4.87L18.38,8.2H22V10H17.12M17,3.8C16,3.8 15.2,3 15.2,2C15.2,1 16,0.2 17,0.2C18,0.2 18.8,1 18.8,2C18.8,3 18,3.8 17,3.8M7,9V11H4A1,1 0 0,1 3,10A1,1 0 0,1 4,9H7M9.25,13L8.75,15H5A1,1 0 0,1 4,14A1,1 0 0,1 5,13H9.25M7,5V7H3A1,1 0 0,1 2,6A1,1 0 0,1 3,5H7Z"
+                                    </StackPanel>
+                                </ListBoxItem>
+                                <ListBoxItem x:Name="item_quanlytamvang" Selected="item_quanlytamvang_Selected">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Viewbox Width="24" Height="24" Margin="12,0">
+                                            <Canvas Width="24" Height="24" Opacity="0.54">
+                                                <Path Data="M17.12,10L16.04,8.18L15.31,11.05L17.8,15.59V22H16V17L13.67,13.89L12.07,18.4L7.25,20.5L6.2,19L10.39,16.53L12.91,6.67L10.8,7.33V11H9V5.8L14.42,4.11L14.92,4.03C15.54,4.03 16.08,4.37 16.38,4.87L18.38,8.2H22V10H17.12M17,3.8C16,3.8 15.2,3 15.2,2C15.2,1 16,0.2 17,0.2C18,0.2 18.8,1 18.8,2C18.8,3 18,3.8 17,3.8M7,9V11H4A1,1 0 0,1 3,10A1,1 0 0,1 4,9H7M9.25,13L8.75,15H5A1,1 0 0,1 4,14A1,1 0 0,1 5,13H9.25M7,5V7H3A1,1 0 0,1 2,6A1,1 0 0,1 3,5H7Z"
                                                   Fill="Black" />
-                                        </Canvas>
-                                    </Viewbox>
-                                    <TextBlock
+                                            </Canvas>
+                                        </Viewbox>
+                                        <TextBlock
                                                FontSize="18"
                                                Foreground="Black"
                                                Margin="12,8"
                                                Opacity="0.8"
                                                Text="Quản lý tạm vắng"/>
-                                </StackPanel>
-                            </ListBoxItem>
-                            <ListBoxItem x:Name="item_thongke" Selected="item_thongke_Selected">
-                                <StackPanel Orientation="Horizontal">
-                                    <Viewbox Width="24" Height="24" Margin="12,0">
-                                        <Canvas Width="24" Height="24" Opacity="0.54">
-                                            <Path Data="M5,4H19A2,2 0 0,1 21,6V18A2,2 0 0,1 19,20H5A2,2 0 0,1 3,18V6A2,2 0 0,1 5,4M5,8V12H11V8H5M13,8V12H19V8H13M5,14V18H11V14H5M13,14V18H19V14H13Z"
+                                    </StackPanel>
+                                </ListBoxItem>
+                                <ListBoxItem x:Name="item_thongke" Selected="item_thongke_Selected">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Viewbox Width="24" Height="24" Margin="12,0">
+                                            <Canvas Width="24" Height="24" Opacity="0.54">
+                                                <Path Data="M5,4H19A2,2 0 0,1 21,6V18A2,2 0 0,1 19,20H5A2,2 0 0,1 3,18V6A2,2 0 0,1 5,4M5,8V12H11V8H5M13,8V12H19V8H13M5,14V18H11V14H5M13,14V18H19V14H13Z"
                                                   Fill="Black" />
-                                        </Canvas>
-                                    </Viewbox>
-                                    <TextBlock
+                                            </Canvas>
+                                        </Viewbox>
+                                        <TextBlock
                                                FontSize="18"
                                                Foreground="Black"
                                                Margin="12,8"
                                                Opacity="0.8"
                                                Text="Thống kê"/>
-                                </StackPanel>
-                            </ListBoxItem>
-                        </ListBox>
+                                    </StackPanel>
+                                </ListBoxItem>
+                            </ListBox>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-                <DockPanel DockPanel.Dock="Bottom" 
+                    <DockPanel DockPanel.Dock="Bottom" 
                            LastChildFill="True"
                            Margin="0 18">
-                    <TextBlock
+                        <TextBlock
                                                FontSize="18"
                                                Foreground="Black"
                                                Margin="24,0"
                                                FontWeight="Light"
                                                Text="Term" Opacity="0.8"
                                                DockPanel.Dock="Left"/>
-                    <TextBlock
+                        <TextBlock
                                                FontSize="18"
                                                Foreground="Black"
                                                Margin="24,0"
                                                FontWeight="Light"
                                                Text="About" Opacity="0.8"
                                                DockPanel.Dock="Right"/>
-                    <TextBlock
+                        <TextBlock
                                                FontSize="18"
                                                Foreground="Black"
                                                Margin="12,0"
@@ -229,54 +230,56 @@
                                                />
 
 
+                    </DockPanel>
                 </DockPanel>
-            </DockPanel>
 
-        </materialDesign:ColorZone>
-        <Grid Margin="16">
-            <DockPanel
+            </materialDesign:ColorZone>
+            <Grid Margin="16">
+                <DockPanel
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch">
 
-                <Frame x:Name="main_frame" 
+                    <Frame x:Name="main_frame" 
                        NavigationUIVisibility="Hidden"
                     Content="{Binding Content}">
 
-                </Frame>
-            </DockPanel>
+                    </Frame>
+                </DockPanel>
 
-            <materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
+                <materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
                                  HorizontalAlignment="Right" VerticalAlignment="Bottom"
                                      Background="{DynamicResource primary_color}"
                                      Foreground="White"
                                  Margin="16">
-                <StackPanel>
-                    <Button ToolTip="{DynamicResource add_tamtru_nganhan}"
+                    <StackPanel>
+                        <Button ToolTip="{DynamicResource add_tamtru_nganhan}"
                         Background="white"
                         Foreground="{DynamicResource primary_color}"
                             Click="onButtonThemTamTruNganHanClicked">
-                        <materialDesign:PackIcon Kind="Store" />
-                    </Button>
-                    <Button ToolTip="{DynamicResource add_tamtru_daihan}"
+                            <materialDesign:PackIcon Kind="Store" />
+                        </Button>
+                        <Button ToolTip="{DynamicResource add_tamtru_daihan}"
                         Background="white"
                             Click="onButtonThemTamTruDaiHanClicked"
                         Foreground="{DynamicResource primary_color}">
-                        <materialDesign:PackIcon Kind="Book" />
-                    </Button>
-                    <Button ToolTip="{DynamicResource add_tamvang}"
+                            <materialDesign:PackIcon Kind="Book" />
+                        </Button>
+                        <Button ToolTip="{DynamicResource add_tamvang}"
                         Background="white"
                         Foreground="{DynamicResource primary_color}"
                             Click="onButtonThemTamVangClicked">
-                        <materialDesign:PackIcon Kind="Run" />
-                    </Button>
-                    <Button ToolTip="{DynamicResource add_hokhau}"
+                            <materialDesign:PackIcon Kind="Run" />
+                        </Button>
+                        <Button ToolTip="{DynamicResource add_hokhau}"
                         Background="white"
                         Foreground="{DynamicResource primary_color}" 
                         Click="onButtonThemHoKhauClicked">
-                        <materialDesign:PackIcon Kind="Home" />
-                    </Button>
-                </StackPanel>
-            </materialDesign:PopupBox>
-        </Grid>
-    </DockPanel>
+                            <materialDesign:PackIcon Kind="Home" />
+                        </Button>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+            </Grid>
+        </DockPanel>
+    </materialDesign:DialogHost>
+    
 </Page>
