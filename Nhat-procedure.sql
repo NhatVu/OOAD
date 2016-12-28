@@ -31,3 +31,13 @@ from TamVang as t inner join CongDan as c
 	on t.idCongDan = c.id
 where t.active = 1 and c.active = 1
 go
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[CongDan_SelectIdNotInHoKhau]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[CongDan_SelectIdNotInHoKhau] 
+GO
+create procedure [dbo].[CongDan_SelectIdNotInHoKhau] 
+as
+select *
+from CongDan 
+where id not in (select idCDThanhVien from ChiTietHoKhau)
+go

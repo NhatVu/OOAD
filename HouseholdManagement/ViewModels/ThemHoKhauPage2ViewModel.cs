@@ -84,7 +84,7 @@ namespace HouseholdManagement.ViewModels
             listCmndCongDan = new List<int>();
             listHoTenCongDan = new List<string>();
             listQuanhe = new List<string>();
-            List<CongDanDTO> congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectAllCongDan());
+            List<CongDanDTO> congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanIdNotInHoKhau());
             List<VaiTroSoHoKhauDTO> quanhe = Constant.DataTableToList<VaiTroSoHoKhauDTO>(new VaiTroSoHoKhauDAO().SelectAllVaiTroSoHoKhau());
             foreach (CongDanDTO cd in congdan)
             {

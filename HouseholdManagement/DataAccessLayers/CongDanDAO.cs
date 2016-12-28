@@ -296,5 +296,33 @@ namespace DataAcessLayer
                 return null;
             }
         }
+
+        public DataTable SelectCongDanIdNotInHoKhau()
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                List<int> listId = new List<int>();
+                SqlCommand command = new SqlCommand();
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapter;
+                command.Connection = connection;
+                command.CommandText = "CongDan_SelectIdNotInHoKhau";
+                command.CommandType = CommandType.StoredProcedure;
+
+                adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+                connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                connection.Close();
+                return null;
+            }
+        }
+
     }
 }
