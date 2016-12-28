@@ -19,8 +19,6 @@ create table CongDan (
 	gioiTinh int,
 	queQuan nvarchar(100),
 	quocTich nvarchar(100),
-	idCDCha int,
-	idCDMe int,
 	noiDangKyKS nvarchar(100),
 	ngayDangKyKS datetime,
 	idNguoiLamDonKS int,
@@ -38,9 +36,6 @@ create table CongDan (
 	ghiChu nvarchar(300),
 	active int,
 
-
-	constraint FK_CDCha_CongDan foreign key(idCDCha) references CongDan(id),
-	constraint FK_CDMe_CongDan foreign key(idCDMe) references CongDan(id),
 	constraint FK_CDNguoiLamDon_CongDan foreign key(idNguoiLamDonKS) references CongDan(id),
 	constraint FK_CDNguoiKy_CongDan foreign key(idCDNguoiKyKS) references CongDan(id),
 	constraint FK_CongDan_DanToc foreign key(idDanToc) references DanToc(id)

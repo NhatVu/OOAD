@@ -14,7 +14,7 @@ namespace DataAcessLayer
     {
         public HoKhauDAO() : base() { }
 
-        public bool insertHoKhau(HoKhauDTO dto)
+        public int insertHoKhau(HoKhauDTO dto)
         {
             try
             {
@@ -36,15 +36,15 @@ namespace DataAcessLayer
              
 
                 command.Parameters.AddRange(parameter);
-                command.ExecuteNonQuery();
+                int id = (int)command.ExecuteScalar();
                 connection.Close();
-                return true;
+                return id;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 connection.Close();
-                return false;
+                return 0;
             }
         }
 
