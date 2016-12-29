@@ -80,24 +80,23 @@
                        HorizontalAlignment="Center"></TextBlock>
         </Border>
         <DataGrid Grid.Row="2"
-                  ItemsSource="{Binding Path=HoKhauList}"
                   CanUserSortColumns="True" 
                   CanUserAddRows="False" 
                   AutoGenerateColumns="False"
-                  x:Name="table_household"
+                  x:Name="dataGrid_QuanLyHoKhau"
                   materialDesign:DataGridAssist.CellPadding="16 12">
             <DataGrid.Columns>
                 <materialDesign:MaterialDataGridTextColumn Header="Số hộ khẩu"
                                     Binding="{Binding Id}"
                                     EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                <materialDesign:MaterialDataGridComboBoxColumn Header="Công an"
-                                                               SelectedItemBinding="{Binding HoTen}"
-                                                               ItemsSourceBinding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid},Path= DataContext.CongAnList}"
+                <materialDesign:MaterialDataGridTextColumn Header="Công an" Binding="{Binding TenCongAn}"
+                                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
+                                                               
                                                                />
                 
                 <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
                 <materialDesign:MaterialDataGridTextColumn Header="Tên chủ hộ"   
-                                                           Binding="{Binding ChuHo}"
+                                                           Binding="{Binding TenChuHo}"
                                                            EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" 
                                                            MinWidth="150"
                                                            MaxLength="50"

@@ -32,7 +32,7 @@ from TamVang as t inner join CongDan as c
 where t.active = 1 and c.active = 1
 go
 
-
+-- select CongDan Id that not in HoKhau
 if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[CongDan_SelectIdNotInHoKhau]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[CongDan_SelectIdNotInHoKhau] 
 GO
 create procedure [dbo].[CongDan_SelectIdNotInHoKhau] 
@@ -41,3 +41,17 @@ select *
 from CongDan 
 where id not in (select idCDThanhVien from ChiTietHoKhau)
 go
+
+-- select HoKhau info
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[HoKhau_GetAllInfo]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[HoKhau_GetAllInfo] 
+GO
+create procedure [dbo].[HoKhau_GetAllInfo] 
+as
+select h.id,  ca.hoTen as congAn, cd.hoTen as chuHo, h.noiDangKyThuongTru, h.noiCap,  h.ngayCap
+from (HoKhau as h inner join ChiTietHoKhau as c
+on h.id = c.idHoKhau) inner join CongDan as cd
+on (cd.id = c.idCDThanhVien) inner join CongDan as ca
+on ca.id = h.idCDTruongCongAn
+where c.idVaiTroSoHoKhau = 1 and h.active = 1 and c.active = 1 and cd.active = 1 and ca.active = 1;
+go
+

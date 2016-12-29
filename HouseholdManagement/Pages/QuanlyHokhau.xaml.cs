@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HouseholdManagement.ViewModels;
 
 namespace HouseholdManagement.Pages
 {
@@ -38,7 +39,7 @@ namespace HouseholdManagement.Pages
 
         private void loadData()
         {
-            DataContext = new QuanlyHokhauViewModel();
+            this.dataGrid_QuanLyHoKhau.ItemsSource = QuanlyHokhauViewModel.createInstance().getHoKhauAllInfo();
             
         }
 
