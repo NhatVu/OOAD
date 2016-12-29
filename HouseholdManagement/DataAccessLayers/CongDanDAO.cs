@@ -26,31 +26,29 @@ namespace DataAcessLayer
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter[] parameter;
-                parameter = new SqlParameter[24];
+                parameter = new SqlParameter[22];
                 parameter[0] = new SqlParameter("@idDanToc", dto.IdDantoc);
                 parameter[1] = new SqlParameter("@hoTen", dto.HoTen);
                 parameter[2] = new SqlParameter("@ngaySinh", dto.HoTen);
                 parameter[3] = new SqlParameter("@gioiTinh", dto.GioiTinh);
                 parameter[4] = new SqlParameter("@queQuan", dto.Quequan);
                 parameter[5] = new SqlParameter("@quocTich", dto.Quoctich);
-                parameter[6] = new SqlParameter("@idCDCha", dto.IdCDCha);
-                parameter[7] = new SqlParameter("@idCDMe", dto.IdCDMe);
-                parameter[8] = new SqlParameter("@noiDangKyKS", dto.NoiDangkyKS);
-                parameter[9] = new SqlParameter("@ngayDangKyKS", dto.NgayDangkyKS);
-                parameter[10] = new SqlParameter("@idNguoiLamDonKS", dto.NguoiLamDonKS);
-                parameter[11] = new SqlParameter("@idCDNguoiKyKS", dto.NguoiKyKS);
-                parameter[12] = new SqlParameter("@cmnd", dto.Cmnd);
-                parameter[13] = new SqlParameter("@tonGiao", dto.Tongiao);
-                parameter[14] = new SqlParameter("@ngheNghiep", dto.Nghenghiep);
-                parameter[15] = new SqlParameter("@noiLamViec", dto.NoiLamViec);
-                parameter[16] = new SqlParameter("@ngayCapCMND", dto.NgayCapCMND);
-                parameter[17] = new SqlParameter("@noiCap", dto.NoiCap);
-                parameter[18] = new SqlParameter("@diaChiThuongTru", dto.DiachiThuongtru);
-                parameter[19] = new SqlParameter("@trinhDoHocVan", dto.TrinhDoHocVan);
-                parameter[20] = new SqlParameter("@trinhDoChuyenMon", dto.TrinhdoChuyenmon);
-                parameter[21] = new SqlParameter("@trinhDoNgoaiNgu", dto.TrinhdoNgoaingu);
-                parameter[22] = new SqlParameter("@ghiChu", dto.Ghichu);
-                parameter[23] = new SqlParameter("@active", dto.Active);
+                parameter[6] = new SqlParameter("@noiDangKyKS", dto.NoiDangkyKS);
+                parameter[7] = new SqlParameter("@ngayDangKyKS", dto.NgayDangkyKS);
+                parameter[8] = new SqlParameter("@idNguoiLamDonKS", dto.NguoiLamDonKS);
+                parameter[9] = new SqlParameter("@idCDNguoiKyKS", dto.NguoiKyKS);
+                parameter[10] = new SqlParameter("@cmnd", dto.Cmnd);
+                parameter[11] = new SqlParameter("@tonGiao", dto.Tongiao);
+                parameter[12] = new SqlParameter("@ngheNghiep", dto.Nghenghiep);
+                parameter[13] = new SqlParameter("@noiLamViec", dto.NoiLamViec);
+                parameter[14] = new SqlParameter("@ngayCapCMND", dto.NgayCapCMND);
+                parameter[15] = new SqlParameter("@noiCap", dto.NoiCap);
+                parameter[16] = new SqlParameter("@diaChiThuongTru", dto.DiachiThuongtru);
+                parameter[17] = new SqlParameter("@trinhDoHocVan", dto.TrinhDoHocVan);
+                parameter[18] = new SqlParameter("@trinhDoChuyenMon", dto.TrinhdoChuyenmon);
+                parameter[19] = new SqlParameter("@trinhDoNgoaiNgu", dto.TrinhdoNgoaingu);
+                parameter[20] = new SqlParameter("@ghiChu", dto.Ghichu);
+                parameter[21] = new SqlParameter("@active", dto.Active);
 
                 command.Parameters.AddRange(parameter);
                 command.ExecuteNonQuery();
@@ -77,7 +75,7 @@ namespace DataAcessLayer
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter[] parameter;
-                parameter = new SqlParameter[25];
+                parameter = new SqlParameter[23];
                 parameter[0] = new SqlParameter("@idDanToc", dto.Id);
                 parameter[1] = new SqlParameter("@idDanToc", dto.IdDantoc);
                 parameter[2] = new SqlParameter("@hoTen", dto.HoTen);
@@ -85,24 +83,22 @@ namespace DataAcessLayer
                 parameter[4] = new SqlParameter("@gioiTinh", dto.GioiTinh);
                 parameter[5] = new SqlParameter("@queQuan", dto.Quequan);
                 parameter[6] = new SqlParameter("@quocTich", dto.Quoctich);
-                parameter[7] = new SqlParameter("@idCDCha", dto.IdCDCha);
-                parameter[8] = new SqlParameter("@idCDMe", dto.IdCDMe);
-                parameter[9] = new SqlParameter("@noiDangKyKS", dto.NoiDangkyKS);
-                parameter[10] = new SqlParameter("@ngayDangKyKS", dto.NgayDangkyKS);
-                parameter[11] = new SqlParameter("@idNguoiLamDonKS", dto.NguoiLamDonKS);
-                parameter[12] = new SqlParameter("@idCDNguoiKyKS", dto.NguoiKyKS);
-                parameter[13] = new SqlParameter("@cmnd", dto.Cmnd);
-                parameter[14] = new SqlParameter("@tonGiao", dto.Tongiao);
-                parameter[15] = new SqlParameter("@ngheNghiep", dto.Nghenghiep);
-                parameter[16] = new SqlParameter("@noiLamViec", dto.NoiLamViec);
-                parameter[17] = new SqlParameter("@ngayCapCMND", dto.NgayCapCMND);
-                parameter[18] = new SqlParameter("@noiCap", dto.NoiCap);
-                parameter[19] = new SqlParameter("@diaChiThuongTru", dto.DiachiThuongtru);
-                parameter[20] = new SqlParameter("@trinhDoHocVan", dto.TrinhDoHocVan);
-                parameter[21] = new SqlParameter("@trinhDoChuyenMon", dto.TrinhdoChuyenmon);
-                parameter[22] = new SqlParameter("@trinhDoNgoaiNgu", dto.TrinhdoNgoaingu);
-                parameter[23] = new SqlParameter("@ghiChu", dto.Ghichu);
-                parameter[24] = new SqlParameter("@active", dto.Active);
+                parameter[7] = new SqlParameter("@noiDangKyKS", dto.NoiDangkyKS);
+                parameter[8] = new SqlParameter("@ngayDangKyKS", dto.NgayDangkyKS);
+                parameter[9] = new SqlParameter("@idNguoiLamDonKS", dto.NguoiLamDonKS);
+                parameter[10] = new SqlParameter("@idCDNguoiKyKS", dto.NguoiKyKS);
+                parameter[11] = new SqlParameter("@cmnd", dto.Cmnd);
+                parameter[12] = new SqlParameter("@tonGiao", dto.Tongiao);
+                parameter[13] = new SqlParameter("@ngheNghiep", dto.Nghenghiep);
+                parameter[14] = new SqlParameter("@noiLamViec", dto.NoiLamViec);
+                parameter[15] = new SqlParameter("@ngayCapCMND", dto.NgayCapCMND);
+                parameter[16] = new SqlParameter("@noiCap", dto.NoiCap);
+                parameter[17] = new SqlParameter("@diaChiThuongTru", dto.DiachiThuongtru);
+                parameter[18] = new SqlParameter("@trinhDoHocVan", dto.TrinhDoHocVan);
+                parameter[19] = new SqlParameter("@trinhDoChuyenMon", dto.TrinhdoChuyenmon);
+                parameter[20] = new SqlParameter("@trinhDoNgoaiNgu", dto.TrinhdoNgoaingu);
+                parameter[21] = new SqlParameter("@ghiChu", dto.Ghichu);
+                parameter[22] = new SqlParameter("@active", dto.Active);
 
                 command.Parameters.AddRange(parameter);
                 command.ExecuteNonQuery();
@@ -300,5 +296,33 @@ namespace DataAcessLayer
                 return null;
             }
         }
+
+        public DataTable SelectCongDanIdNotInHoKhau()
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                List<int> listId = new List<int>();
+                SqlCommand command = new SqlCommand();
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapter;
+                command.Connection = connection;
+                command.CommandText = "CongDan_SelectIdNotInHoKhau";
+                command.CommandType = CommandType.StoredProcedure;
+
+                adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+                connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                connection.Close();
+                return null;
+            }
+        }
+
     }
 }

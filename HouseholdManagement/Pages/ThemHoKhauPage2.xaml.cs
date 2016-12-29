@@ -67,6 +67,10 @@ namespace HouseholdManagement.Pages
                 await Task.Delay(500);
                 await Task.Run(() => insertToDataBase());
                 progressbar.Visibility = System.Windows.Visibility.Hidden;
+
+                //
+                
+                this.NavigationService.Navigate(QuanlyHokhau.createInstance());
             }
             else
             {
@@ -77,19 +81,24 @@ namespace HouseholdManagement.Pages
 
         private void insertToDataBase()
         {
-            new HoKhauDAO().insertHoKhau(mHoKhau);
-            List<VaiTroSoHoKhauDTO> vaitro = Constant.DataTableToList<VaiTroSoHoKhauDTO>(new VaiTroSoHoKhauDAO().SelectAllVaiTroSoHoKhau());
-            int idHoKhau = mHoKhau.Id;
-            foreach (SelectableViewModel row in mViewModel.ListHoKhau)
+            try
             {
-                ChiTietHoKhauDTO chitietHoKhau = new ChiTietHoKhauDTO(idHoKhau,
-                    int.Parse(row.Id),
-                    vaitro.Find(x => x.TenVaitro == row.Quanhe).Id,
-                    row.GhiChu,
-                    1);
-                new ChiTietHoKhauDAO().insertChiTietHoKhau(chitietHoKhau);
+                int idHoKhau = new HoKhauDAO().insertHoKhau(mHoKhau);
+                List<VaiTroSoHoKhauDTO> vaitro = Constant.DataTableToList<VaiTroSoHoKhauDTO>(new VaiTroSoHoKhauDAO().SelectAllVaiTroSoHoKhau());
+                //int idHoKhau = mHoKhau.Id;
+                foreach (SelectableViewModel row in mViewModel.ListHoKhau)
+                {
+                    ChiTietHoKhauDTO chitietHoKhau = new ChiTietHoKhauDTO(idHoKhau,
+                        int.Parse(row.Id),
+                        vaitro.Find(x => x.TenVaitro == row.Quanhe).Id,
+                        row.GhiChu,
+                        1);
+                    new ChiTietHoKhauDAO().insertChiTietHoKhau(chitietHoKhau);
+                }
+            }finally
+            {
+                MessageBox.Show("Thêm hộ khẩu thành công");
             }
-
         }
 
         private void table_household_SelectionChanged(object sender, SelectionChangedEventArgs e)
