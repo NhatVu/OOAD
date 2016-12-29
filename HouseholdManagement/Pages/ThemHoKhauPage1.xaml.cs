@@ -23,6 +23,7 @@ namespace HouseholdManagement.Pages
     /// </summary>
     public partial class ThemHoKhauPage1 : Page
     {
+        private static readonly string NAME = "ThemHoKhauPage2";
         private CongAnDTO mCongan;
         private ThemHoKhauPage1ViewModel mViewModel;
          

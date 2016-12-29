@@ -100,20 +100,9 @@ namespace HouseholdManagement.Utilities
             }
         }
 
-        public async static void showDialog(string message)
+        public static void showDialog(string message)
         {
-            var sampleMessageDialog = new SampleMessageDialog
-            {
-                Message = { Text = message }
-            };
-            
-            try
-            {
-                await DialogHost.Show(sampleMessageDialog, "RootDialog");
-            }catch
-            {
-                //                
-            }
+            MessageBox.Show(message);
             
         }
 

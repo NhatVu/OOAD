@@ -77,7 +77,6 @@ namespace HouseholdManagement.Pages
 
         private void insertToDataBase()
         {
-            
             new HoKhauDAO().insertHoKhau(mHoKhau);
             List<VaiTroSoHoKhauDTO> vaitro = Constant.DataTableToList<VaiTroSoHoKhauDTO>(new VaiTroSoHoKhauDAO().SelectAllVaiTroSoHoKhau());
             int idHoKhau = mHoKhau.Id;
@@ -128,14 +127,15 @@ namespace HouseholdManagement.Pages
         {
             var box = sender as ComboBox;
             int row = table_household.SelectedIndex;
-            if (box.SelectedValue != null && box.SelectedValue.ToString().Count() > 0)
+            if (true)
             {
                 try
                 {
 
                     int value = int.Parse(box.SelectedValue + "");
                     CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanById(value))[0];
-                    updateTableRow(congdan, row);
+                    if (congdan != null)
+                        updateTableRow(congdan, row);
                 }
                 catch (Exception ex)
                 {
@@ -201,7 +201,7 @@ namespace HouseholdManagement.Pages
 
 
 
-        private async void id_KeyDown(object sender, KeyEventArgs e)
+        private void id_KeyDown(object sender, KeyEventArgs e)
         {
             ComboBox box = sender as ComboBox;
             if (e.Key == Key.Enter)
@@ -220,7 +220,7 @@ namespace HouseholdManagement.Pages
             }
         }
 
-        private async void cmnd_KeyDown(object sender, KeyEventArgs e)
+        private  void cmnd_KeyDown(object sender, KeyEventArgs e)
         {
             ComboBox box = sender as ComboBox;
             if (e.Key == Key.Enter)
@@ -239,7 +239,7 @@ namespace HouseholdManagement.Pages
             }
         }
 
-        private async void ten_KeyDown(object sender, KeyEventArgs e)
+        private  void ten_KeyDown(object sender, KeyEventArgs e)
         {
             ComboBox box = sender as ComboBox;
             if (e.Key == Key.Enter)

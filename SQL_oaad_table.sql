@@ -112,7 +112,6 @@ create table ChiTietHoKhau(
 	constraint FK_ChiTietHoKhau_HoKhau foreign key (idHoKhau) references HoKhau(id),
 	constraint FK_ChiTietHoKhau_VaiTroSoHoKhau foreign key (idVaiTroSoHoKhau) references VaiTroSoHoKhau(id),
 	constraint FK_ChiTietHoKhau_CongDan foreign key (idCDThanhVien) references CongDan(id)
-
 )
 
 create table TamVang (
