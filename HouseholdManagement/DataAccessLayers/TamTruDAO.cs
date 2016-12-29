@@ -7,7 +7,7 @@ using DTO;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-
+using HouseholdManagement.Utilities;
 
 namespace DataAcessLayer
 {
@@ -194,6 +194,40 @@ namespace DataAcessLayer
                 command.CommandType = CommandType.StoredProcedure;
 
                 //command.ExecuteNonQuery();
+                adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+                connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                connection.Close();
+                return null;
+            }
+        }
+
+        public DataTable TamTruSearch(string query)
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand command = new SqlCommand();
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapter;
+                command.Connection = connection;
+                command.CommandText = "TamTru_Search";
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter[] parameter;
+                parameter = new SqlParameter[3];
+                parameter[0] = new SqlParameter("@idCD", UserConvert.convertInt(query));
+                parameter[1] = new SqlParameter("@cmnd", UserConvert.convertInt(query));
+                parameter[2] = new SqlParameter("@hoTen", query);
+
+
+                command.Parameters.AddRange(parameter);
                 adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
                 connection.Close();

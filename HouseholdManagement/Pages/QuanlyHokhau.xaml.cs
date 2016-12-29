@@ -62,5 +62,15 @@ namespace HouseholdManagement.Pages
         {
 
         }
+
+        private void Search_TextChange(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            string query = textBox.Text;
+            if(query.Equals(""))
+                this.dataGrid_QuanLyHoKhau.ItemsSource = QuanlyHokhauViewModel.createInstance().getHoKhauAllInfo();
+            else
+                this.dataGrid_QuanLyHoKhau.ItemsSource = QuanlyHokhauViewModel.createInstance().search(query);
+        }
     }
 }

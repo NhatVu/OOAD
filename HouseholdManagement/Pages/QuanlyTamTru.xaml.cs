@@ -63,6 +63,15 @@ namespace HouseholdManagement.Pages
 
         }
 
+        private void Search_TextChange(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            string query = textBox.Text;
+            if(query.Equals(""))
+                this.dataGird_QuanLyTamTru.ItemsSource = viewMobel.getTamTruAllInfo();
+            else
+                this.dataGird_QuanLyTamTru.ItemsSource = viewMobel.search(query);
+        }
 
 
     }
