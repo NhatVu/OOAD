@@ -20,6 +20,9 @@ namespace HouseholdManagement.Utilities
         public static readonly int SPLASH_SCREEN_DURATION = 1000;
         public static readonly int LOGIN_DURATION = 500;
 
+        public static readonly int TYPE_THEM_TAM_TRU = 999;
+        public static readonly int TYPE_THEM_TAM_VANG = 998;
+
         private static readonly string FILE_NAME = "account.txt";
 
         public static void storeAccount(string username, string password)

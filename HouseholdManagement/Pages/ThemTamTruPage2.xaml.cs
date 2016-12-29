@@ -26,6 +26,7 @@ namespace HouseholdManagement.Pages
     /// </summary>
     public partial class ThemTamTruPage2 : Page
     {
+        private int mType;
         private int mIdCongAn;
         private string mLydo;
         private string mDiachi;
@@ -35,13 +36,14 @@ namespace HouseholdManagement.Pages
 
         private ThemTamTruPage2ViewModel mViewModel;
 
-        public static ThemTamTruPage2 createInstance(int idCongAn, string lydo, string diachi, string ghichu, DateTime ngaybatdau, DateTime ngayketthuc)
+        public static ThemTamTruPage2 createInstance(int type, int idCongAn, string lydo, string diachi, string ghichu, DateTime ngaybatdau, DateTime ngayketthuc)
         {
-            return new ThemTamTruPage2(idCongAn,lydo,diachi,ghichu,ngaybatdau,ngayketthuc);
+            return new ThemTamTruPage2(type, idCongAn,lydo,diachi,ghichu,ngaybatdau,ngayketthuc);
         }
-        public ThemTamTruPage2(int idCongAn, string lydo, string diachi, string ghichu, DateTime ngaybatdau, DateTime ngayketthuc)
+        public ThemTamTruPage2(int type, int idCongAn, string lydo, string diachi, string ghichu, DateTime ngaybatdau, DateTime ngayketthuc)
         {
             InitializeComponent();
+            this.mType = type;
             this.mIdCongAn = idCongAn;
             this.mLydo = lydo;
             this.mDiachi = diachi;
@@ -57,6 +59,14 @@ namespace HouseholdManagement.Pages
 
         private async void onButtonSaveClicked(object sender, RoutedEventArgs e)
         {
+            if(mType == Constant.TYPE_THEM_TAM_TRU)
+            {
+                //save tam tru
+            }else if(mType == Constant.TYPE_THEM_TAM_VANG)
+            {
+                //save tam vang
+            }
+
             //List<string> ids = new List<string>();
             //ids.Clear();
             //foreach (SelectTamTruViewlModel row in mViewModel.ListTamTru)

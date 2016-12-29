@@ -25,18 +25,20 @@ namespace HouseholdManagement.Pages
     {
         private CongAnDTO mCongan;
         private ThemTamTruPage1ViewModel mViewModel;
+        private int mType;//Them tam vang hay them tam tru
 
-        public static ThemTamTruPage1 createInstance(CongAnDTO congan)
+        public static ThemTamTruPage1 createInstance(int type,CongAnDTO congan)
         {
-            return new ThemTamTruPage1(congan);
+            return new ThemTamTruPage1(type,congan);
         }
 
 
-        public ThemTamTruPage1(CongAnDTO congan)
+        public ThemTamTruPage1(int type,CongAnDTO congan)
         {
 
             InitializeComponent();
             this.mCongan = congan;
+            this.mType = type;
 
         }
 
@@ -76,7 +78,7 @@ namespace HouseholdManagement.Pages
             string diachi = textbox_diachi.Text.Trim();
             string ghichu = textbox_ghichu.Text.Trim();
             
-            this.NavigationService.Navigate(ThemTamTruPage2.createInstance(idCongAn,lydo,diachi,ghichu,ngaybatdau,ngayketthuc));
+            this.NavigationService.Navigate(ThemTamTruPage2.createInstance(mType,idCongAn,lydo,diachi,ghichu,ngaybatdau,ngayketthuc));
         }
 
         private void onButtonCancelClicked(object sender, RoutedEventArgs e)
