@@ -149,6 +149,7 @@
       <DependentUpon>SampleMessageDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\CheckInput.cs" />
+    <Compile Include="Utilities\Convert.cs" />
     <Compile Include="Utilities\GlobalVariable.cs" />
     <Compile Include="Utilities\PasswordHash.cs" />
     <Compile Include="ViewModels\QuanlyHokhauViewModel.cs" />

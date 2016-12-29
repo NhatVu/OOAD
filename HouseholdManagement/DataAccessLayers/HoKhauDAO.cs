@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HouseholdManagement.Utilities;
 
 namespace DataAcessLayer
 {
@@ -159,6 +160,71 @@ namespace DataAcessLayer
 
 
                 command.Parameters.AddRange(parameter);
+                adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+                connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                connection.Close();
+                return null;
+            }
+        }
+
+        public DataTable GetAllInfo()
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand command = new SqlCommand();
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapter;
+                command.Connection = connection;
+                command.CommandText = "HoKhau_GetAllInfo";
+                command.CommandType = CommandType.StoredProcedure;
+
+                //command.ExecuteNonQuery();
+                adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+                connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                connection.Close();
+                return null;
+            }
+        }
+
+        public DataTable HoKhauSearch(string query)
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand command = new SqlCommand();
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapter;
+                command.Connection = connection;
+                command.CommandText = "HoKhau_Search";
+                command.CommandType = CommandType.StoredProcedure;
+                // @idCD int=null, @cmnd int=null, @hoTenChuHo nvarchar(50)=null, @cmndCA int=null,@hoTenCongAn nvarchar(50)=null, @noiCap nvarchar(300) =null
+
+                SqlParameter[] parameter;
+                parameter = new SqlParameter[6];
+                parameter[0] = new SqlParameter("@idCD", UserConvert.convertInt(query));
+                parameter[1] = new SqlParameter("@cmnd", UserConvert.convertInt(query));
+                parameter[2] = new SqlParameter("@hoTenChuHo", query);
+                parameter[3] = new SqlParameter("@cmndCA", UserConvert.convertInt(query));
+                parameter[4] = new SqlParameter("@hoTenCongAn", query);
+                parameter[5] = new SqlParameter("@noiCap", query);
+
+                command.Parameters.AddRange(parameter);
+                //command.ExecuteNonQuery();
                 adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
                 connection.Close();

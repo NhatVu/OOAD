@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HouseholdManagement.ViewModels;
+using HouseholdManagement.Utilities;
 namespace HouseholdManagement.Pages
 {
     /// <summary>
@@ -59,7 +60,16 @@ namespace HouseholdManagement.Pages
 
         private void Search_OnKeyDown(object sender, KeyEventArgs e)
         {
+        }
 
+        private void Search_TextChange(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            string query = textBox.Text;
+            if(textBox.Equals(""))
+                this.dataGird_QuanLyTamVang.ItemsSource = viewMobel.getTamVangAllInfo();
+            else
+                this.dataGird_QuanLyTamVang.ItemsSource = viewMobel.search(query);
         }
     }
 }

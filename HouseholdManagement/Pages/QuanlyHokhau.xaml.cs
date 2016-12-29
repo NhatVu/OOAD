@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HouseholdManagement.ViewModels;
 
 namespace HouseholdManagement.Pages
 {
@@ -38,7 +39,7 @@ namespace HouseholdManagement.Pages
 
         private void loadData()
         {
-            DataContext = new QuanlyHokhauViewModel();
+            this.dataGrid_QuanLyHoKhau.ItemsSource = QuanlyHokhauViewModel.createInstance().getHoKhauAllInfo();
             
         }
 
@@ -60,6 +61,16 @@ namespace HouseholdManagement.Pages
         private void Search_OnKeyDown(object sender, KeyEventArgs e)
         {
 
+        }
+
+        private void Search_TextChange(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            string query = textBox.Text;
+            if(query.Equals(""))
+                this.dataGrid_QuanLyHoKhau.ItemsSource = QuanlyHokhauViewModel.createInstance().getHoKhauAllInfo();
+            else
+                this.dataGrid_QuanLyHoKhau.ItemsSource = QuanlyHokhauViewModel.createInstance().search(query);
         }
     }
 }

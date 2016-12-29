@@ -10,7 +10,7 @@
         Height="800" 
         Width="1100" 
         WindowStartupLocation="CenterScreen" 
-        Title="{DynamicResource login_screen}"
+        Title="Quản lý hộ khẩu"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"

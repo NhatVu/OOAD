@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HouseholdManagement.Utilities
 {
-    class CheckInput
+    static class CheckInput
     {
         public static bool isInt(string a)
         {

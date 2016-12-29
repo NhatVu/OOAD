@@ -69,5 +69,38 @@ namespace HouseholdManagement.ViewModels
             }
             return listTamTru;
         }
+
+        public List<QuanLyTamTruViewModel> search(string query)
+        {
+            List<QuanLyTamTruViewModel> listTamTru = new List<QuanLyTamTruViewModel>();
+
+            DataTable tamTruInfoSource = tamTruDAO.TamTruSearch(query);
+            int stt = 0;
+            QuanLyTamTruViewModel tamTruViewModelDTO = null;
+            DataRow currentRow = null;
+            for (int i = 0; i < tamTruInfoSource.Rows.Count; i++)
+            {
+                stt++;
+                currentRow = tamTruInfoSource.Rows[i];
+                tamTruViewModelDTO = new QuanLyTamTruViewModel();
+                tamTruViewModelDTO.STT = stt;
+                tamTruViewModelDTO.HoTen = currentRow["hoTen"].ToString();
+                tamTruViewModelDTO.NgaySinh = currentRow["ngaySinh"].ToString();
+
+                if (Int32.Parse(currentRow["gioiTinh"].ToString()) == 1)
+                    tamTruViewModelDTO.GioiTinh = "Nam";
+                else
+                    tamTruViewModelDTO.GioiTinh = "Nữ";
+
+                tamTruViewModelDTO.DiaChiThuongTru = currentRow["diaChiThuongTru"].ToString();
+                tamTruViewModelDTO.CMND = currentRow["cmnd"].ToString();
+                tamTruViewModelDTO.NgayBatDau = (DateTime)currentRow["ngayBatDau"];
+                tamTruViewModelDTO.NgayKetThuc = (DateTime)currentRow["ngayKetThuc"];
+                tamTruViewModelDTO.GhiChu = currentRow["ghiChu"].ToString();
+
+                listTamTru.Add(tamTruViewModelDTO);
+            }
+            return listTamTru;
+        }
     }
 }
