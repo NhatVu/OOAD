@@ -47,13 +47,9 @@ namespace HouseholdManagement.Pages
 
         }
 
-        private void onButtonThemTamTruNganHanClicked(object sender, RoutedEventArgs e)
+        private void onButtonThemTamTruClicked(object sender, RoutedEventArgs e)
         {
-
-        }
-        private void onButtonThemTamTruDaiHanClicked(object sender, RoutedEventArgs e)
-        {
-
+            replace(ThemTamTruPage1.createInstance(mCongAn));
         }
 
         private void replace(Page page)

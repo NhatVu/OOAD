@@ -19,8 +19,7 @@
             <System:String x:Key="password_hint">Mật khẩu</System:String>
             <System:String x:Key="version">Version: 1.0</System:String>
             <System:String x:Key="add_hokhau">Thêm hộ khẩu</System:String>
-            <System:String x:Key="add_tamtru_nganhan">Thêm giấy tạm trú ngắn hạn</System:String>
-            <System:String x:Key="add_tamtru_daihan">Thêm giấy tạm trú dài hạn</System:String>
+            <System:String x:Key="add_tamtru">Thêm giấy tạm trú</System:String>
             <System:String x:Key="add_tamvang">Thêm giấy tạm vắng</System:String>
             <System:String x:Key="user_control_qlhk">Danh sách hộ khẩu</System:String>
             <System:String x:Key="user_control_qltv">Danh sách giấy tạm vắng</System:String>

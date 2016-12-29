@@ -12,26 +12,25 @@ using System.Threading.Tasks;
 
 namespace HouseholdManagement.ViewModels
 {
-    class ThemHoKhauPage2ViewModel :INotifyPropertyChanged
+    class ThemTamTruPage2ViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private ObservableCollection<SelectHoKhauViewlModel> listHoKhau;
+        private ObservableCollection<SelectTamTruViewlModel> listTamTru;
         private readonly List<int> listIdCongDan;
         private readonly List<int> listCmndCongDan;
         private readonly List<string> listHoTenCongDan;
-        private readonly List<string> listQuanhe;
 
 
-        public ObservableCollection<SelectHoKhauViewlModel> ListHoKhau
+        public ObservableCollection<SelectTamTruViewlModel> ListTamTru
         {
             get
             {
-                return listHoKhau;
+                return listTamTru;
             }
 
             set
             {
-                listHoKhau = value;
+                listTamTru = value;
             }
         }
 
@@ -59,13 +58,7 @@ namespace HouseholdManagement.ViewModels
             }
         }
 
-        public List<string> ListQuanhe
-        {
-            get
-            {
-                return listQuanhe;
-            }
-        }
+
 
         
 
@@ -76,33 +69,27 @@ namespace HouseholdManagement.ViewModels
             //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public ThemHoKhauPage2ViewModel()
+        public ThemTamTruPage2ViewModel()
         {
-            listHoKhau = new ObservableCollection<SelectHoKhauViewlModel>();
-            listHoKhau.Add(new SelectHoKhauViewlModel());
+            listTamTru = new ObservableCollection<SelectTamTruViewlModel>();
+            listTamTru.Add(new SelectTamTruViewlModel());
             listIdCongDan = new List<int>();
             listCmndCongDan = new List<int>();
             listHoTenCongDan = new List<string>();
-            listQuanhe = new List<string>();
-            List<CongDanDTO> congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanIdNotInHoKhau());
-            List<VaiTroSoHoKhauDTO> quanhe = Constant.DataTableToList<VaiTroSoHoKhauDTO>(new VaiTroSoHoKhauDAO().SelectAllVaiTroSoHoKhau());
+           
+            List<CongDanDTO> congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectAllCongDan());
             foreach (CongDanDTO cd in congdan)
             {
                 listIdCongDan.Add(cd.Id);
                 if (cd.Cmnd != 0) listCmndCongDan.Add(cd.Cmnd);
                 ListHoTenCongDan.Add(cd.HoTen);  
             }
-
-            foreach (VaiTroSoHoKhauDTO vt in quanhe)
-            {
-                listQuanhe.Add(vt.TenVaitro);
-            }
         }
     }
 
     
 
-    public class SelectHoKhauViewlModel : INotifyPropertyChanged
+    public class SelectTamTruViewlModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -112,17 +99,17 @@ namespace HouseholdManagement.ViewModels
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public SelectHoKhauViewlModel()
+        public SelectTamTruViewlModel()
         {
     
         }
 
-        private string  id;
+        private string id;
         private string cmnd;
         private string name;
         private string gioitinh;
         private string ngaysinh;
-        private string quanhe;
+        private string quequan;
         private string ghiChu;
 
         public string Id
@@ -194,16 +181,16 @@ namespace HouseholdManagement.ViewModels
             }
         }
 
-        public string Quanhe
+        public string QueQuan
         {
             get
             {
-                return quanhe;
+                return quequan;
             }
 
             set
             {
-                quanhe = value;
+                quequan = value;
                 OnPropertyChanged();
             }
         }

@@ -1,0 +1,215 @@
+﻿<Page x:Class="HouseholdManagement.Pages.ThemTamTruPage1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HouseholdManagement.Pages"
+             mc:Ignorable="d" 
+             d:DesignHeight="800"
+             d:DesignWidth="1100"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             Background="{DynamicResource MaterialDesignPaper}"
+             Loaded="onLoaded"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+             TextElement.FontSize="14" >
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+ 
+    <DockPanel>
+            <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
+                <Border Grid.Row="0"
+                    BorderBrush="Silver"
+                    BorderThickness="0 0 0 1">
+                    <Grid>
+                        <Button
+                        Grid.Column="0"
+                        x:Name="button_close"
+                        Style="{StaticResource MaterialDesignFloatingActionButton}"
+                        HorizontalAlignment="Left"
+                        Opacity="0.54"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                        BorderBrush="Transparent"
+                        Background="Transparent"
+                        Margin="16 0" Click="onButtonCancelClicked">
+                            <materialDesign:PackIcon Kind="Close" Height="24" Width="24" />
+                        </Button>
+                        <TextBlock 
+                        VerticalAlignment="Center"
+                        Grid.Column="1"
+                               Text="Thông tin sơ bộ"
+                               FontWeight="Medium"
+                               FontSize="24"
+                               Typography.Capitals="AllSmallCaps"
+                               HorizontalAlignment="Center"/>
+                        <Button 
+                        HorizontalAlignment="Right"
+                        Grid.Column="2"
+                        Style="{StaticResource MaterialDesignFlatButton}" 
+                    Click="onButtonNextClicked" 
+                    ToolTip="MaterialDesignFlatButton" 
+                        Margin="16 0"
+                    FontSize="16">Next</Button>
+                    </Grid>
+
+                </Border>
+                <StackPanel Orientation="Vertical" Margin="100 32">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Vertical" Grid.Row="0">
+                            <TextBlock Text="Họ tên công an"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="20"
+                                       Typography.Capitals="AllSmallCaps"/>
+                            <Border Padding="16" 
+                                Margin="0 16"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                <TextBlock Text="{Binding TenCongAn}" x:Name="textbox_tencongan"></TextBlock>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Grid.Row="1">
+                            <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Ngày làm đơn"
+                                           HorizontalAlignment="Left"
+                                           FontWeight="Light"
+                                           Width="Auto"
+                                           FontSize="20"
+                                           Typography.Capitals="AllSmallCaps"/>
+                                <Border Padding="18" 
+                                        VerticalAlignment="Stretch"
+                                        Margin="0 16"
+                                        BorderBrush="Silver" 
+                                        BorderThickness="0.5 0.5 0.5 0.5"
+                                        CornerRadius="2">
+                                    <DatePicker HorizontalAlignment="Left" 
+                                                x:Name="datepicker_ngaylamdon"
+                                                materialDesign:HintAssist.Hint="Ngày làm đơn"
+                                                IsEnabled="False"
+                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="Ngày bắt đầu"
+                                           HorizontalAlignment="Left"
+                                           FontWeight="Light"
+                                           Width="Auto"
+                                           FontSize="20"
+                                           Typography.Capitals="AllSmallCaps"/>
+                                <Border Padding="16" 
+                                        Margin="0 16"
+                                        BorderBrush="Silver" 
+                                        BorderThickness="0.5 0.5 0.5 0.5"
+                                        CornerRadius="2">
+                                    <DatePicker HorizontalAlignment="Left" 
+                                                x:Name="datepicker_ngaybatdau"
+                                                materialDesign:HintAssist.Hint="Ngày bắt đầu" 
+                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="Ngày kết thúc"
+                                           HorizontalAlignment="Left"
+                                           FontWeight="Light"
+                                           Width="Auto"
+                                           FontSize="20"
+                                           Typography.Capitals="AllSmallCaps"/>
+                                <Border Padding="16" 
+                                        Margin="0 16"
+                                        BorderBrush="Silver" 
+                                        BorderThickness="0.5 0.5 0.5 0.5"
+                                        CornerRadius="2">
+                                    <DatePicker HorizontalAlignment="Left"  
+                                                x:Name="datepicker_ngayketthuc"
+                                                materialDesign:HintAssist.Hint="Ngày kết thúc" 
+                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Grid.Row="2">
+                            <TextBlock Text="Lý do (Bắt buộc)"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="20"
+                                       Typography.Capitals="AllSmallCaps"/>
+                            <Border Padding="16" 
+                                Margin="0 16"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                <TextBox MaxLength="300" x:Name="textbox_lydo"></TextBox>
+                            </Border>
+                        </StackPanel>
+
+
+                        <StackPanel Orientation="Vertical" Grid.Row="3">
+                            <TextBlock Text="Địa chỉ đăng ký (Bắt buộc)"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="20"
+                                       Typography.Capitals="AllSmallCaps"/>
+                            <Border Padding="16" 
+                                Margin="0 16"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                <TextBox x:Name="textbox_diachi" MaxLength="300"></TextBox>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Grid.Row="4">
+                            <TextBlock Text="Ghi chú (Không bắt buộc)"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="20"
+                                       Typography.Capitals="AllSmallCaps"/>
+                            <Border Padding="16" 
+                                Margin="0 16"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                <TextBox x:Name="textbox_ghichu" MaxLength="300"></TextBox>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+
+            </StackPanel>
+        </DockPanel>
+
+    
+   
+</Page>

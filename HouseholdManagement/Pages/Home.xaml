@@ -252,15 +252,10 @@
                                      Foreground="White"
                                  Margin="16">
                     <StackPanel>
-                        <Button ToolTip="{DynamicResource add_tamtru_nganhan}"
+                        
+                        <Button ToolTip="{DynamicResource add_tamtru}"
                         Background="white"
-                        Foreground="{DynamicResource primary_color}"
-                            Click="onButtonThemTamTruNganHanClicked">
-                            <materialDesign:PackIcon Kind="Store" />
-                        </Button>
-                        <Button ToolTip="{DynamicResource add_tamtru_daihan}"
-                        Background="white"
-                            Click="onButtonThemTamTruDaiHanClicked"
+                            Click="onButtonThemTamTruClicked"
                         Foreground="{DynamicResource primary_color}">
                             <materialDesign:PackIcon Kind="Book" />
                         </Button>

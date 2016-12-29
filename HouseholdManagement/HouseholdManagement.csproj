@@ -132,6 +132,12 @@
     <Compile Include="Pages\SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ThemTamTruPage2.xaml.cs">
+      <DependentUpon>ThemTamTruPage2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ThemTamTruPage1.xaml.cs">
+      <DependentUpon>ThemTamTruPage1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ThemHoKhauPage1.xaml.cs">
       <DependentUpon>ThemHoKhauPage1.xaml</DependentUpon>
     </Compile>
@@ -175,6 +181,14 @@
     <Page Include="Pages\SplashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ThemTamTruPage2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ThemTamTruPage1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\ThemHoKhauPage1.xaml">
       <SubType>Designer</SubType>
@@ -233,6 +247,8 @@
     </Compile>
     <Compile Include="ViewModels\QuanLyTamTruViewModel.cs" />
     <Compile Include="ViewModels\QuanLyTamVangViewModel.cs" />
+    <Compile Include="ViewModels\ThemTamTruPage2ViewModel.cs" />
+    <Compile Include="ViewModels\ThemTamTruPage1ViewModel.cs" />
     <Compile Include="ViewModels\ThemHoKhauPage1ViewModel.cs" />
     <Compile Include="ViewModels\ThemHoKhauPage2ViewModel.cs" />
     <Compile Include="Windows\MainWindow.xaml.cs">
