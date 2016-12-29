@@ -65,6 +65,26 @@ namespace HouseholdManagement.Pages
             if(mType == Constant.TYPE_THEM_TAM_TRU)
             {
                 //save tam tru
+                TamTruDAO tamTruDAO = new TamTruDAO();
+                TamTruDTO dto = new TamTruDTO();
+                foreach (SelectTamTruViewlModel current in mViewModel.ListTamTru)
+                {
+                    dto.Active = 1;
+                    dto.IdCongdan = UserConvert.convertInt(current.Id);
+                    dto.DiachiDen = this.mDiachi;
+                    dto.Ghichu = "";
+                    dto.IdTruongCongan = GlobalVariable.CurrentCongAnId;
+                    dto.Lydo = this.mLydo;
+                    dto.NgayBatdau = this.mNgayBatdau;
+                    dto.NgayKetthuc = this.mNgayKetthuc;
+                    dto.NgayLamDon = this.mNgayLamDon;
+
+
+                    tamTruDAO.insertTamTru(dto);
+                }
+                //save tam vang
+                Constant.showDialog("Thêm tạm trú thành công");
+                this.NavigationService.Navigate(QuanlyTamTru.createInstance());
             }else if(mType == Constant.TYPE_THEM_TAM_VANG)
             {
                 TamVangDAO tamVangDAO = new TamVangDAO();
