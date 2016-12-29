@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HouseholdManagement.Utilities;
 
 namespace HouseholdManagement.Pages
 {
@@ -52,9 +53,21 @@ namespace HouseholdManagement.Pages
                 return;
             }
 
+            if (!CheckInput.isMax300(textbox_diachi.Text.Trim().ToString()))
+            {
+                Constant.showDialog("Xin nhập nhỏ hơn 300 ký tự");
+                return;
+            }
+
             if (textbox_lydo.Text.Trim().ToString().Count() == 0)
             {
                 Constant.showDialog("Xin vui lòng nhập lý do tạm trú");
+                return;
+            }
+
+            if (!CheckInput.isMax300(textbox_lydo.Text.Trim().ToString()))
+            {
+                Constant.showDialog("Xin nhập nhỏ hơn 300 ký tự");
                 return;
             }
 
@@ -66,6 +79,7 @@ namespace HouseholdManagement.Pages
 
             DateTime ngaybatdau = DateTime.Parse(datepicker_ngaybatdau.SelectedDate.ToString());
             DateTime ngayketthuc = DateTime.Parse(datepicker_ngayketthuc.SelectedDate.ToString());
+            DateTime ngayLamDon = DateTime.Parse(datepicker_ngaylamdon.SelectedDate.ToString());
 
             if (ngayketthuc.Date < ngaybatdau.Date)
             {
@@ -78,7 +92,8 @@ namespace HouseholdManagement.Pages
             string diachi = textbox_diachi.Text.Trim();
             string ghichu = textbox_ghichu.Text.Trim();
             
-            this.NavigationService.Navigate(ThemTamTruPage2.createInstance(mType,idCongAn,lydo,diachi,ghichu,ngaybatdau,ngayketthuc));
+            
+            this.NavigationService.Navigate(ThemTamTruPage2.createInstance(mType,idCongAn,lydo,diachi,ghichu,ngaybatdau,ngayketthuc, ngayLamDon));
         }
 
         private void onButtonCancelClicked(object sender, RoutedEventArgs e)

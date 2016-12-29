@@ -27,6 +27,11 @@ namespace HouseholdManagement.Utilities
             return a.Length < 100;
         }
 
+        public static bool isMax300(string a)
+        {
+            return a.Length < 300;
+        }
+
         public static bool IsEmail(string emailaddress)
         {
             if (emailaddress.Length == 0)
