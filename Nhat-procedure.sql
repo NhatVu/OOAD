@@ -13,7 +13,7 @@ if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TamTru_Get
 GO 
 create procedure [dbo].[TamTru_GetAllInfo]
 as
-select c.hoTen, c.ngaySinh, c.gioiTinh, c.diaChiThuongTru, c.cmnd,
+select t.id, c.hoTen, c.ngaySinh, c.gioiTinh, c.diaChiThuongTru, c.cmnd,
 t.ngayBatDau, t.ngayKetThuc, t.ghiChu
 from TamTru as t inner join CongDan as c
 	on t.idCongDan = c.id
@@ -25,7 +25,7 @@ if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TamVang_Ge
 GO 
 create procedure [dbo].[TamVang_GetAllInfo]
 as
-select c.hoTen, c.ngaySinh, c.gioiTinh, c.diaChiThuongTru, c.cmnd,
+select t.id, c.hoTen, c.ngaySinh, c.gioiTinh, c.diaChiThuongTru, c.cmnd,
 t.ngayBatDau, t.ngayKetThuc, t.ghiChu
 from TamVang as t inner join CongDan as c
 	on t.idCongDan = c.id

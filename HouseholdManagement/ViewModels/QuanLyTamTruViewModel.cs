@@ -24,6 +24,7 @@ namespace HouseholdManagement.ViewModels
         public DateTime NgayBatDau { get; set; }
         public DateTime NgayKetThuc { get; set; }
         public string GhiChu { get; set; }
+        public int Id { get; set; }
 
         public QuanLyTamTruViewModel()
         {
@@ -51,8 +52,9 @@ namespace HouseholdManagement.ViewModels
                 currentRow = tamTruInfoSource.Rows[i];
                 tamTruViewModelDTO = new QuanLyTamTruViewModel();
                 tamTruViewModelDTO.STT = stt;
+                tamTruViewModelDTO.Id = Int32.Parse(currentRow["id"].ToString());
                 tamTruViewModelDTO.HoTen = currentRow["hoTen"].ToString();
-                tamTruViewModelDTO.NgaySinh = currentRow["ngaySinh"].ToString();
+                tamTruViewModelDTO.NgaySinh = ((DateTime)currentRow["ngaySinh"]).ToString("dd/MM/yyyy");
 
                 if (Int32.Parse(currentRow["gioiTinh"].ToString()) == 1)
                     tamTruViewModelDTO.GioiTinh = "Nam";
@@ -84,8 +86,9 @@ namespace HouseholdManagement.ViewModels
                 currentRow = tamTruInfoSource.Rows[i];
                 tamTruViewModelDTO = new QuanLyTamTruViewModel();
                 tamTruViewModelDTO.STT = stt;
+                tamTruViewModelDTO.Id = Int32.Parse(currentRow["id"].ToString());
                 tamTruViewModelDTO.HoTen = currentRow["hoTen"].ToString();
-                tamTruViewModelDTO.NgaySinh = currentRow["ngaySinh"].ToString();
+                tamTruViewModelDTO.NgaySinh = ((DateTime)currentRow["ngaySinh"]).ToString("dd/MM/yyyy");
 
                 if (Int32.Parse(currentRow["gioiTinh"].ToString()) == 1)
                     tamTruViewModelDTO.GioiTinh = "Nam";

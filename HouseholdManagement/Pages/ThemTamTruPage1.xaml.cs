@@ -53,11 +53,6 @@ namespace HouseholdManagement.Pages
                 return;
             }
 
-            if (!CheckInput.isMax300(textbox_diachi.Text.Trim().ToString()))
-            {
-                Constant.showDialog("Xin nhập nhỏ hơn 300 ký tự");
-                return;
-            }
 
             if (textbox_lydo.Text.Trim().ToString().Count() == 0)
             {
@@ -65,11 +60,7 @@ namespace HouseholdManagement.Pages
                 return;
             }
 
-            if (!CheckInput.isMax300(textbox_lydo.Text.Trim().ToString()))
-            {
-                Constant.showDialog("Xin nhập nhỏ hơn 300 ký tự");
-                return;
-            }
+           
 
             if (datepicker_ngaybatdau.SelectedDate == null || datepicker_ngayketthuc.SelectedDate == null)
             {

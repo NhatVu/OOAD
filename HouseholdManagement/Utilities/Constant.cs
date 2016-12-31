@@ -22,6 +22,8 @@ namespace HouseholdManagement.Utilities
 
         public static readonly int TYPE_THEM_TAM_TRU = 999;
         public static readonly int TYPE_THEM_TAM_VANG = 998;
+        public const  int TYPE_CHINH_SUA_TAM_TRU = 997;
+        public const int TYPE_CHINH_SUA_TAM_VANG = 996;
 
         private static readonly string FILE_NAME = "account.txt";
 

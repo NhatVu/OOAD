@@ -126,6 +126,9 @@
     <Compile Include="Models\TomTatBanThanDTO.cs" />
     <Compile Include="Models\CongAnDTO.cs" />
     <Compile Include="Models\VaiTroSoHoKhauDTO.cs" />
+    <Compile Include="Pages\ChinhSuaTamVangTamTru.xaml.cs">
+      <DependentUpon>ChinhSuaTamVangTamTru.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\QuenMatKhau.xaml.cs">
       <DependentUpon>QuenMatKhau.xaml</DependentUpon>
     </Compile>
@@ -175,6 +178,10 @@
       <DependentUpon>Thongke.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Constant.cs" />
+    <Page Include="Pages\ChinhSuaTamVangTamTru.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\QuenMatKhau.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

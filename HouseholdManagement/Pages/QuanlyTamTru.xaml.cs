@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HouseholdManagement.ViewModels;
+using HouseholdManagement.Utilities;
 
 namespace HouseholdManagement.Pages
 {
@@ -71,6 +72,12 @@ namespace HouseholdManagement.Pages
                 this.dataGird_QuanLyTamTru.ItemsSource = viewMobel.getTamTruAllInfo();
             else
                 this.dataGird_QuanLyTamTru.ItemsSource = viewMobel.search(query);
+        }
+
+        private void mouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            QuanLyTamTruViewModel data = this.dataGird_QuanLyTamTru.SelectedItem as QuanLyTamTruViewModel;
+            this.NavigationService.Navigate(ChinhSuaTamVangTamTru.createInstace(Constant.TYPE_CHINH_SUA_TAM_TRU, data));
         }
 
 
