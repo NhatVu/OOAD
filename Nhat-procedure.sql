@@ -98,4 +98,104 @@ where t.active = 1 and c.active = 1
 and (t.idCongDan = @idCD or t.idCongDan in (select id from CongDan as c where c.cmnd = @cmnd or c.hoTen like '%'+ isNull(@hoTen,'') +'%')) 
 go
 
+-- tổng số nhân khẩu, tổng hộ khẩu, số nữ, và trên 14 tuổi
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[HoKhau_ThongKe]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[HoKhau_ThongKe]
+GO 
+create procedure [dbo].[HoKhau_ThongKe] 
+@thang int=null,
+@nam int=null,
+@tongNhanKhau int out,
+@tongHoKhau int out,
+@tongNuGioi int out,
+@tongTrenMuoiBonTuoi int out
+as
+begin 
 
+select @tongNhanKhau=count(*)
+from CongDan as c 
+where c.active = 1
+
+select @tongHoKhau=count(*)
+from HoKhau as h
+where h.active = 1
+
+select @tongNuGioi=count(*)
+from CongDan as c
+where c.active = 1 and c.gioiTinh = 0
+
+select @tongTrenMuoiBonTuoi = count(*)
+from CongDan as c 
+where c.active = 1 and (@nam - YEAR(c.ngaySinh) > 13)
+end
+go
+
+/*declare @tongNhanKhau int;
+declare @tongHoKhau int;
+declare @tongNuGioi int;
+declare @tongTrenMuoiBonTuoi int;
+exec HoKhau_ThongKe 12,2016,@tongNhanKhau output, @tongHoKhau output, @tongNuGioi output, @tongTrenMuoiBonTuoi output
+select @tongNhanKhau as TongNhanKhau, @tongHoKhau, @tongNuGioi, @tongTrenMuoiBonTuoi*/
+
+-- thống kê tạm trú
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TamTru_ThongKe]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[TamTru_ThongKe]
+GO
+create procedure [dbo].[TamTru_ThongKe]
+@thang int,
+@nam int,
+@tong int out,
+@tongNu int out,
+@tongTrenMuoiBonTuoi int out
+as
+begin 
+select @tong = count(*) 
+from TamTru as t
+where t.active = 1 and year(t.ngayLamDon) = @nam and MONTH(t.ngayLamDon) = @thang
+
+select @tongNu = count(*) 
+from TamTru as t inner join CongDan as c
+on c.id = t.idCongDan
+where t.active = 1 and year(t.ngayLamDon) = @nam and MONTH(t.ngayLamDon) = @thang and c.gioiTinh = 0
+
+select @tongTrenMuoiBonTuoi = count(*) 
+from TamTru as t inner join CongDan as c
+on c.id = t.idCongDan
+where t.active = 1 and year(t.ngayLamDon) = @nam and MONTH(t.ngayLamDon) = @thang and (@nam - year(c.ngaySinh) > 13)
+end
+go 
+
+--declare @tong int;
+--declare @tongNu int;
+--declare @tongTrenMuoiBonTuoi int;
+--exec TamVang_ThongKe 12, 2016, @tong output, @tongNu output, @tongTrenMuoiBonTuoi output
+--select @tong, @tongNu, @tongTrenMuoiBonTuoi
+
+
+
+-- thống kê tạm trú
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TamVang_ThongKe]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[TamVang_ThongKe]
+GO
+create procedure [dbo].[TamVang_ThongKe]
+@thang int,
+@nam int,
+@tong int out,
+@tongNu int out,
+@tongTrenMuoiBonTuoi int out
+as
+begin 
+select @tong = count(*) 
+from TamVang as t
+where t.active = 1 and year(t.ngayLamDon) = @nam and MONTH(t.ngayLamDon) = @thang
+
+select @tongNu = count(*) 
+from TamVang as t inner join CongDan as c
+on c.id = t.idCongDan
+where t.active = 1 and year(t.ngayLamDon) = @nam and MONTH(t.ngayLamDon) = @thang and c.gioiTinh = 0
+
+select @tongTrenMuoiBonTuoi = count(*) 
+from TamVang as t inner join CongDan as c
+on c.id = t.idCongDan
+where t.active = 1 and year(t.ngayLamDon) = @nam and MONTH(t.ngayLamDon) = @thang and (@nam - year(c.ngaySinh) > 13)
+end
+go 

@@ -236,5 +236,48 @@ namespace DataAcessLayer
                 return null;
             }
         }
+
+        public Dictionary<string, string> TamVangThongKe(int thang, int nam)
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand command = new SqlCommand();
+                DataTable dt = new DataTable();
+                command.Connection = connection;
+                command.CommandText = "TamVang_ThongKe";
+                command.CommandType = CommandType.StoredProcedure;
+                // @idCD int=null, @cmnd int=null, @hoTenChuHo nvarchar(50)=null, @cmndCA int=null,@hoTenCongAn nvarchar(50)=null, @noiCap nvarchar(300) =null
+
+                SqlParameter[] parameter;
+                parameter = new SqlParameter[5];
+                parameter[0] = new SqlParameter("@thang", thang);
+                parameter[1] = new SqlParameter("@nam", nam);
+                parameter[2] = new SqlParameter("@tong", SqlDbType.Int);
+                parameter[2].Direction = ParameterDirection.Output;
+                parameter[3] = new SqlParameter("@tongNu", SqlDbType.Int);
+                parameter[3].Direction = ParameterDirection.Output;
+                parameter[4] = new SqlParameter("@tongTrenMuoiBonTuoi", SqlDbType.Int);
+                parameter[4].Direction = ParameterDirection.Output;
+
+                command.Parameters.AddRange(parameter);
+                command.ExecuteNonQuery();
+                Dictionary<string, string> map = new Dictionary<string, string>();
+                map.Add("tong", parameter[2].Value.ToString());
+                map.Add("tongNu", parameter[3].Value.ToString());
+                map.Add("tongTrenMuoiBonTuoi", parameter[4].Value.ToString());
+
+
+                connection.Close();
+                return map;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                connection.Close();
+                return null;
+            }
+        }
     }
 }
