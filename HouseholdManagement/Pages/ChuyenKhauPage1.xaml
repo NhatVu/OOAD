@@ -61,7 +61,7 @@
                             Style="{StaticResource MaterialDesignFlatButton}" 
                             Click="onButtonNextClicked" 
                             Margin="16 0"
-                            FontSize="16">Next</Button>
+                            FontSize="16">Tiếp tục</Button>
                     </Grid>
                 </Border>
 

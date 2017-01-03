@@ -51,7 +51,7 @@
                         </Button>
                         <TextBlock VerticalAlignment="Center"
                                Grid.Column="1"
-                               Text="Thông tin chi tiết"
+                               Text="Thông tin chi tiết hộ khẩu"
                                FontWeight="Medium"
                                FontSize="24"
                                Typography.Capitals="AllSmallCaps"
@@ -60,7 +60,7 @@
                             Style="{StaticResource MaterialDesignFlatButton}" 
                             Click="onButtonSaveClicked" 
                             Margin="16 0"
-                            FontSize="16">Save</Button>
+                            FontSize="16">Lưu</Button>
                     </Grid>
                 </Border>
                 <!--<StackPanel Orientation="Horizontal"

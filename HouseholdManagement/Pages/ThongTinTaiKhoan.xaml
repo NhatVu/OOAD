@@ -27,37 +27,16 @@
 
     <DockPanel>
         <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
-            <Border Grid.Row="0"
-                    BorderBrush="Silver"
-                    BorderThickness="0 0 0 1">
-                <Grid>
-                    <!--<Button
-                        Grid.Column="0"
-                        x:Name="button_close"
-                        Style="{StaticResource MaterialDesignFloatingActionButton}"
-                        HorizontalAlignment="Left"
-                        Opacity="0.54"
-                        materialDesign:ShadowAssist.ShadowDepth="Depth3"
-                        BorderBrush="Transparent"
-                        Background="Transparent"
-                        Margin="16 0" Click="onButtonCancelClicked">
-                        <materialDesign:PackIcon Kind="Close" Height="24" Width="24" />
-                    </Button>-->
-                    <TextBlock 
-                        VerticalAlignment="Center"
-                        Grid.Column="1"
-                               Text="Thông tin chi tiết"
-                               FontWeight="Medium"
-                               FontSize="24"
-                               Typography.Capitals="AllSmallCaps"
-                               HorizontalAlignment="Center"/>
-                    <!--<Button HorizontalAlignment="Right"
-                            Style="{StaticResource MaterialDesignFlatButton}" 
-                            Click="onButtonSaveClicked" 
-                            Margin="16 0"
-                            FontSize="16">Lưu</Button>-->
-                </Grid>
-
+            <Border Grid.Row="1"
+                CornerRadius="6"
+                Background="#F7F9FA"
+                Padding="0,16"
+                BorderBrush="Silver" 
+                BorderThickness="0.5 0.5 0.5 0.5 ">
+                <TextBlock FontWeight="Medium" 
+                           FontSize="24"
+                           Typography.Capitals="AllSmallCaps"
+                           HorizontalAlignment="Center">Thông tin tài khoản</TextBlock>
             </Border>
             <StackPanel Orientation="Vertical" Margin="100 32">
                 <Grid>

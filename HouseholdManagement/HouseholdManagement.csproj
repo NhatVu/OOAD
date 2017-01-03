@@ -156,7 +156,6 @@
     <Compile Include="Pages\ThemHoKhauPage2.xaml.cs">
       <DependentUpon>ThemHoKhauPage2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\IInstance.cs" />
     <Compile Include="UserControls\SampleMessageDialog.xaml.cs">
       <DependentUpon>SampleMessageDialog.xaml</DependentUpon>
     </Compile>

@@ -275,7 +275,7 @@
                         Background="white"
                         Foreground="{DynamicResource primary_color}" 
                         Click="onButtonChuyenKhauClicked">
-                            <materialDesign:PackIcon Kind="Home" />
+                            <materialDesign:PackIcon Kind="Rotate3d" />
                         </Button>
                     </StackPanel>
                 </materialDesign:PopupBox>

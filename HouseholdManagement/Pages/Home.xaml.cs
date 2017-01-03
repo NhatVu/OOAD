@@ -74,7 +74,7 @@ namespace HouseholdManagement.Pages
 
         private void item_dangxuat_Selected(object sender, RoutedEventArgs e)
         {
-            //dang xuat
+            
         }
 
         private void item_quanlyhokhau_Selected(object sender, RoutedEventArgs e)
@@ -120,7 +120,11 @@ namespace HouseholdManagement.Pages
         private void dangXuat_click(object sender, MouseButtonEventArgs e)
         {
             GlobalVariable.CurrentCongAnId = 0;
-            this.NavigationService.Navigate(Login.createInstance());
+            MessageBoxResult result = MessageBox.Show("Bạn có thực sự muốn đăng xuất không?", "Đăng xuất", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                this.NavigationService.Navigate(Login.createInstance());
+            }
         }
 
         private void notLogin()

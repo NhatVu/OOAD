@@ -7,39 +7,280 @@
              mc:Ignorable="d" 
              Loaded="onLoaded"
              Unloaded="onUnloaded"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Margin="0,0,-327,-196">
-        <Label Content="Thống kê" HorizontalAlignment="Left" Margin="226,10,0,0" VerticalAlignment="Top" Height="37"/>
-        <Label Content="Tháng" HorizontalAlignment="Left" Margin="80,61,0,0" VerticalAlignment="Top"/>
-        <Label Content="Năm" HorizontalAlignment="Left" Margin="347,61,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="combobox_thang" HorizontalAlignment="Left" Margin="174,61,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="namThang_change"/>
-        <ComboBox x:Name="comboxbox_nam" HorizontalAlignment="Left" Margin="417,61,0,0" VerticalAlignment="Top" Width="120"  SelectionChanged="namThang_change"/>
-        <Label Content="Thống kê Hộ khẩu" HorizontalAlignment="Left" Margin="34,106,0,0" VerticalAlignment="Top"/>
-        <Label Content="Tổng nhân khẩu" HorizontalAlignment="Left" Margin="34,147,0,0" VerticalAlignment="Top"/>
-        <Label Content="Tổng hộ khẩu" HorizontalAlignment="Left" Margin="34,192,0,0" VerticalAlignment="Top" Width="96"/>
-        <TextBlock x:Name="txt_tongNhanKhau" HorizontalAlignment="Left" Margin="174,147,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="txt_tongHoKhau" HorizontalAlignment="Left" Margin="174,201,0,0" VerticalAlignment="Top"/>
-        <Label Content="Tổng công dân nữ" HorizontalAlignment="Left" Margin="336,150,0,0" VerticalAlignment="Top"/>
-        <Label Content="tổng công dân > 14 tuổi" HorizontalAlignment="Left" Margin="347,201,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="txt_tongNuGioi" HorizontalAlignment="Left" Margin="537,150,0,0"  VerticalAlignment="Top"/>
-        <TextBlock x:Name="txt_tongTrenMuoiBonBuoi" HorizontalAlignment="Left" Margin="537,206,0,0"  VerticalAlignment="Top"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="164" Margin="11,99,0,0" VerticalAlignment="Top" Width="597"/>
-        <Label Content="Thống kê tạm trú" HorizontalAlignment="Left" Margin="48,292,0,0" VerticalAlignment="Top"/>
-        <Label Content="Tổng" HorizontalAlignment="Left" Margin="34,330,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="txt_tamTruTong" HorizontalAlignment="Left" Height="23" Margin="120,330,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <Label Content="Nữ" HorizontalAlignment="Left" Margin="34,372,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="txt_tamTruNu" HorizontalAlignment="Left" Margin="95,372,0,0"  VerticalAlignment="Top"/>
-        <Label Content="Tổng > 14 tuổi" HorizontalAlignment="Left" Margin="33,423,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.013,0.393"/>
-        <TextBlock x:Name="txt_tamTruTrenMuoiBonTuoi" HorizontalAlignment="Left" Margin="155,423,0,0"  VerticalAlignment="Top"/>
-        <Label Content="Thống kê tạm vắng" HorizontalAlignment="Left" Margin="417,292,0,0" VerticalAlignment="Top"/>
-        <Label Content="Tổng" HorizontalAlignment="Left" Margin="382,330,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="txt_tamVangTong" HorizontalAlignment="Left" Margin="487,331,0,0"  VerticalAlignment="Top"/>
-        <Label Content="Nữ" HorizontalAlignment="Left" Margin="386,374,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="txt_tamVangNu" HorizontalAlignment="Left" Margin="487,374,0,0"  VerticalAlignment="Top"/>
-        <Label Content=">14 tuổi" HorizontalAlignment="Left" Margin="382,423,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="txt_tamVangTrenMuoiBonTuoi" HorizontalAlignment="Left" Margin="487,424,0,0" VerticalAlignment="Top"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="178" Margin="7,288,0,0" VerticalAlignment="Top" Width="308"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="180" Margin="336,286,0,0" VerticalAlignment="Top" Width="272"/>
+             d:DesignHeight="800" d:DesignWidth="1100"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+             TextElement.FontSize="14">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
 
-    </Grid>
+    <StackPanel>
+        <Border Grid.Row="0"
+                    BorderBrush="Silver"
+                    BorderThickness="0 0 0 1">
+            <Border Grid.Row="1"
+                CornerRadius="6"
+                Background="#F7F9FA"
+                Padding="0,16"
+                BorderBrush="Silver" 
+                BorderThickness="0.5 0.5 0.5 0.5 ">
+                <TextBlock FontWeight="Medium" 
+                           FontSize="24"
+                           Typography.Capitals="AllSmallCaps"
+                           HorizontalAlignment="Center">Thống kê</TextBlock>
+            </Border>
+
+        </Border>
+        <StackPanel Orientation="Vertical" Margin="100 16">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Vertical" Grid.Row="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="Tháng"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="16"
+                                       Typography.Capitals="AllSmallCaps"/>
+                            <Border Padding="8" 
+                                Margin="0 8"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                <ComboBox x:Name="combobox_thang" SelectionChanged="namThang_change"/>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="1">
+                            <TextBlock Text="Năm" Grid.Row="1"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="16"
+                                       Typography.Capitals="AllSmallCaps"/>
+                            <Border Padding="8" 
+                                Margin="0 8"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                <ComboBox x:Name="comboxbox_nam" SelectionChanged="namThang_change"/>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Grid.Row="1">
+                    <Label Content="Thống kê hộ khẩu" Margin="0 8" HorizontalAlignment="Center"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Column="0" Grid.Row="0">
+                            <TextBlock Text="Tổng nhân khẩu"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="16"
+                                       Typography.Capitals="AllSmallCaps"/>
+                            <Border Padding="8" 
+                                Margin="0 8"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                <TextBlock x:Name="txt_tongNhanKhau"/>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
+                            <TextBlock Text="Tổng hộ khẩu"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="16"
+                                       Typography.Capitals="AllSmallCaps"/>
+                            <Border Padding="8" 
+                                Margin="0 8"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                <TextBlock x:Name="txt_tongHoKhau"/>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Column="0" Grid.Row="1">
+                            <TextBlock Text="Tổng công dân nữ"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="16"
+                                       Typography.Capitals="AllSmallCaps"/>
+                            <Border Padding="8" 
+                                Margin="0 8"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                <TextBlock x:Name="txt_tongNuGioi"/>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1">
+                            <TextBlock Text="Tổng công dân trên 14 tuổi"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="16"
+                                       Typography.Capitals="AllSmallCaps"/>
+                            <Border Padding="8" 
+                                Margin="0 8"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                <TextBlock x:Name="txt_tongTrenMuoiBonBuoi"/>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Grid.Row="2">
+                    <Label Content="Thống kê tạm trú" Margin="0 8" HorizontalAlignment="Center"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Column="0" Grid.Row="0">
+                            <TextBlock Text="Tổng cộng"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="16"
+                                       Typography.Capitals="AllSmallCaps"/>
+                            <Border Padding="8" 
+                                Margin="0 8"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                <TextBlock x:Name="txt_tamTruTong"/>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
+                            <TextBlock Text="Tổng tạm trú nữ"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="16"
+                                       Typography.Capitals="AllSmallCaps"/>
+                            <Border Padding="8" 
+                                Margin="0 8"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                <TextBlock x:Name="txt_tamTruNu"/>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Column="0" Grid.Row="1">
+                            <TextBlock Text="Tổng tạm trú trên 14 tuổi"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="16"
+                                       Typography.Capitals="AllSmallCaps"/>
+                            <Border Padding="8" 
+                                Margin="0 8"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                <TextBlock x:Name="txt_tamTruTrenMuoiBonTuoi"/>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Grid.Row="3">
+                    <Label Content="Thống kê tạm vắng" Margin="0 8" HorizontalAlignment="Center"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Column="0" Grid.Row="0">
+                            <TextBlock Text="Tổng cộng"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="16"
+                                       Typography.Capitals="AllSmallCaps"/>
+                            <Border Padding="8" 
+                                Margin="0 8"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                <TextBlock x:Name="txt_tamVangTong"/>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
+                            <TextBlock Text="Tổng tạm vắng nữ"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="16"
+                                       Typography.Capitals="AllSmallCaps"/>
+                            <Border Padding="8" 
+                                Margin="0 8"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                <TextBlock x:Name="txt_tamVangNu"/>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Column="0" Grid.Row="1">
+                            <TextBlock Text="Tổng tạm vắng trên 14 tuổi"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="16"
+                                       Typography.Capitals="AllSmallCaps"/>
+                            <Border Padding="8" 
+                                Margin="0 8"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                <TextBlock x:Name="txt_tamVangTrenMuoiBonTuoi"/>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </StackPanel>
 </Page>

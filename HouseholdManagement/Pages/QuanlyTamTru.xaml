@@ -28,9 +28,16 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <ProgressBar HorizontalAlignment="Stretch" 
+                     Grid.Row="0"
+                         Height="4" 
+                         IsIndeterminate="True" 
+                         Visibility="Hidden"
+                         x:Name="progressbar"/>
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
@@ -70,17 +77,16 @@
                 </Grid>
             </Border>
         </Grid>
-        <Border Grid.Row="1"
+        <Border Grid.Row="2"
                 CornerRadius="6"
                 Background="#F7F9FA"
                 Padding="0,16"
                 BorderBrush="Silver" 
                 BorderThickness="0.5 0.5 0.5 0.5 ">
-            <TextBlock Text="{Binding ElementName=table_household, Path=SelectedItem.Name}"
-                       FontWeight="Medium"
-                       HorizontalAlignment="Center"></TextBlock>
+            <TextBlock FontWeight="Medium"
+                       HorizontalAlignment="Center">Quản lý tạm trú</TextBlock>
         </Border>
-        <DataGrid Grid.Row="2"
+        <DataGrid Grid.Row="3"
                   
                   CanUserSortColumns="True" 
                   CanUserAddRows="False" 

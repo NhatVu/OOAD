@@ -46,7 +46,7 @@
                     <TextBlock 
                         VerticalAlignment="Center"
                         Grid.Column="1"
-                               Text="Thông tin chi tiết"
+                               Text="Thông tin chỉnh sửa tạm vắng"
                                FontWeight="Medium"
                                FontSize="24"
                                Typography.Capitals="AllSmallCaps"

@@ -83,9 +83,9 @@
                 Padding="0,16"
                 BorderBrush="Silver" 
                 BorderThickness="0.5 0.5 0.5 0.5 ">
-                <TextBlock Text="{Binding ElementName=table_household, Path=SelectedItem.Name}"
+                <TextBlock 
                        FontWeight="Medium"
-                       HorizontalAlignment="Center"></TextBlock>
+                       HorizontalAlignment="Center">Quản lý hộ khẩu</TextBlock>
             </Border>
             <DataGrid Grid.Row="2"
                   CanUserSortColumns="True" 

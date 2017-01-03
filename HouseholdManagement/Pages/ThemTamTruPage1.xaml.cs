@@ -49,14 +49,14 @@ namespace HouseholdManagement.Pages
             
             if (textbox_diachi.Text.Trim().ToString().Count() == 0)
             {
-                Constant.showDialog("Xin vui lòng nhập địa chỉ tạm trú");
+                Constant.showDialog("Xin vui lòng nhập địa chỉ");
                 return;
             }
 
 
             if (textbox_lydo.Text.Trim().ToString().Count() == 0)
             {
-                Constant.showDialog("Xin vui lòng nhập lý do tạm trú");
+                Constant.showDialog("Xin vui lòng nhập lý do");
                 return;
             }
 
