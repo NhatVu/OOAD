@@ -271,6 +271,12 @@
                         Click="onButtonThemHoKhauClicked">
                             <materialDesign:PackIcon Kind="Home" />
                         </Button>
+                        <Button ToolTip="{DynamicResource chuyenkhau}"
+                        Background="white"
+                        Foreground="{DynamicResource primary_color}" 
+                        Click="onButtonChuyenKhauClicked">
+                            <materialDesign:PackIcon Kind="Home" />
+                        </Button>
                     </StackPanel>
                 </materialDesign:PopupBox>
             </Grid>

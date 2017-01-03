@@ -52,6 +52,11 @@ namespace HouseholdManagement.Pages
             replace(ThemTamTruPage1.createInstance(Constant.TYPE_THEM_TAM_TRU,mCongAn));
         }
 
+        private void onButtonChuyenKhauClicked(object sender, RoutedEventArgs e)
+        {
+            replace(ChuyenKhauPage1.createInstance());
+        }
+
         private void replace(Page page)
         {
             main_frame.Content = page;
