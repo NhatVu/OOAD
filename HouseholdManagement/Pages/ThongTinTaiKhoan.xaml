@@ -5,8 +5,229 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HouseholdManagement.Pages"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="800"
+             d:DesignWidth="1100"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             Background="{DynamicResource MaterialDesignPaper}"
+             Loaded="onLoaded"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+             TextElement.FontSize="14" >
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+
+    <DockPanel>
+        <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
+            <Border Grid.Row="0"
+                    BorderBrush="Silver"
+                    BorderThickness="0 0 0 1">
+                <Grid>
+                    <!--<Button
+                        Grid.Column="0"
+                        x:Name="button_close"
+                        Style="{StaticResource MaterialDesignFloatingActionButton}"
+                        HorizontalAlignment="Left"
+                        Opacity="0.54"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                        BorderBrush="Transparent"
+                        Background="Transparent"
+                        Margin="16 0" Click="onButtonCancelClicked">
+                        <materialDesign:PackIcon Kind="Close" Height="24" Width="24" />
+                    </Button>-->
+                    <TextBlock 
+                        VerticalAlignment="Center"
+                        Grid.Column="1"
+                               Text="Thông tin chi tiết"
+                               FontWeight="Medium"
+                               FontSize="24"
+                               Typography.Capitals="AllSmallCaps"
+                               HorizontalAlignment="Center"/>
+                    <!--<Button HorizontalAlignment="Right"
+                            Style="{StaticResource MaterialDesignFlatButton}" 
+                            Click="onButtonSaveClicked" 
+                            Margin="16 0"
+                            FontSize="16">Lưu</Button>-->
+                </Grid>
+
+            </Border>
+            <StackPanel Orientation="Vertical" Margin="100 32">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Vertical" Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Họ tên"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="20"
+                                       Typography.Capitals="AllSmallCaps"/>
+                                <Border Padding="16" 
+                                Margin="0 16"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                    <TextBlock Text="{Binding HoTen}" x:Name="textbox_hoTen"></TextBlock>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Grid.Column="1">
+                                <TextBlock Text="Chứng minh nhân dân" Grid.Row="1"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="20"
+                                       Typography.Capitals="AllSmallCaps"/>
+                                <Border Padding="16" 
+                                Margin="0 16"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                    <TextBlock Text="{Binding Cmnd}" x:Name="textblock_cmnd"></TextBlock>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Dân tộc"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="20"
+                                       Typography.Capitals="AllSmallCaps"/>
+                                <Border Padding="16" 
+                                Margin="0 16"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                    <TextBlock Text="{Binding DanToc}" x:Name="textbox_danToc"></TextBlock>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Grid.Column="1">
+                                <TextBlock Text="Tôn giáo" Grid.Row="1"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="20"
+                                       Typography.Capitals="AllSmallCaps"/>
+                                <Border Padding="16" 
+                                Margin="0 16"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                    <TextBlock Text="{Binding Tongiao}" x:Name="textblock_tonGiao"></TextBlock>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Grid.Row="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Giới tính"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="20"
+                                       Typography.Capitals="AllSmallCaps"/>
+                                <Border Padding="16" 
+                                Margin="0 16"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                    <TextBlock x:Name="gioiTinh"/>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Grid.Column="1">
+                                <TextBlock Text="Quê quán" Grid.Row="1"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="20"
+                                       Typography.Capitals="AllSmallCaps"/>
+                                <Border Padding="16" 
+                                Margin="0 16"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                                    <TextBlock Text="{Binding Quequan}" x:Name="textblock_queQuan"></TextBlock>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+
+
+                    <StackPanel Orientation="Vertical" Grid.Row="3">
+                        <TextBlock Text="Địa chỉ thường trú"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="20"
+                                       Typography.Capitals="AllSmallCaps"/>
+                        <Border Padding="16" 
+                                Margin="0 16"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                            <TextBlock Text="{Binding DiachiThuongtru}" x:Name="textbox_DiaChiThuongTru"></TextBlock>
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Grid.Row="4">
+                        <TextBlock Text="Ghi chú"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="20"
+                                       Typography.Capitals="AllSmallCaps"
+                                  />
+                        <Border Padding="16" 
+                                Margin="0 16"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                            <TextBlock x:Name="textbox_ghichu"  Text="{Binding GhiChu}"></TextBlock>
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Grid.Row="5"/>
+                </Grid>
+            </StackPanel>
+
+        </StackPanel>
+    </DockPanel>
+
+
+
 </Page>
