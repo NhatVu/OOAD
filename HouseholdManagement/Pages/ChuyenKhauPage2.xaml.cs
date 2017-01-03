@@ -20,6 +20,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HouseholdManagement.ViewModels;
+using HouseholdManagement.Utilities;
+using DTO;
+using DataAcessLayer;
 
 namespace HouseholdManagement.Pages
 {
@@ -52,11 +56,40 @@ namespace HouseholdManagement.Pages
             this.NavigationService.GoBack();
         }
 
-        private void onButtonNextClicked(object sender, RoutedEventArgs e)
+        private async void onButtonSaveClicked(object sender, RoutedEventArgs e)
         {
             // save to database
-
+            int idHoKhauMoi = Int32.Parse(combobox_idHoKhau.SelectedValue.ToString());
             //kiểm tra xem chỉ có 1 chủ hộ đúng hok?
+            List<string> ids = new List<string>();
+            ids.Clear();
+            foreach (SelectCongDanViewModel row in mViewModel.ListCongDan)
+            {
+                //MessageBox.Show(row.Id + row.Cmnd + row.Name + row.Quanhe + row.GhiChu);
+                ids.Add(row.Id);
+                if (row.Quanhe == null)
+                {
+                    Constant.showDialog("Tất cả quan hệ phải được điền");
+                    return;
+                }
+            }
+            bool isUnique = ids.Distinct().Count() == ids.Count();
+
+            if (isUnique)
+            {
+                progressbar.Visibility = System.Windows.Visibility.Visible;
+                await Task.Delay(500);
+                await Task.Run(() => insertDatabase(idHoKhauMoi));
+                progressbar.Visibility = System.Windows.Visibility.Hidden;
+
+                //
+
+                this.NavigationService.Navigate(QuanlyHokhau.createInstance());
+            }
+            else
+            {
+                Constant.showDialog("Tất cả các thành viên phải khác nhau");
+            }
 
             // kiểm tra xem người dùng có chọn hộ khẩu nào không
 
@@ -69,6 +102,29 @@ namespace HouseholdManagement.Pages
             //mIdHoKhauCu ở trên
 
             //mIDHoKhauMoi = combobox_idHoKhau.SelectedValue
+        }
+
+        private void insertDatabase( int idHoKhauMoi)
+        {
+            ChuyenKhauDAO chuyenKhauDAO = new ChuyenKhauDAO();
+            ChiTietHoKhauDAO chiTietHoKhauDAO = new ChiTietHoKhauDAO();
+            
+            foreach (SelectCongDanViewModel current in mSelectedCongDan)
+            {
+                if(current.IsSelected == false)
+                    continue;
+                int currentCongDanId = Int32.Parse(current.Id);
+                int idVaiTroSoHoKhau = mViewModel.ListVaitro.FirstOrDefault(x => current.Quanhe.Equals(x.TenVaitro) == true).Id;
+            // deactive công dân tại hộ khẩu cũ
+                chiTietHoKhauDAO.DeactiveByCongDanIdAndHoKhauId(currentCongDanId, idHoKhauCu);
+            // thêm công dân vào chi tiết hộ khẩu mới
+                ChiTietHoKhauDTO chiTietHoKhauDTO = new ChiTietHoKhauDTO(idHoKhauMoi,currentCongDanId,idVaiTroSoHoKhau,ghichu,1);
+                chiTietHoKhauDAO.insertChiTietHoKhau(chiTietHoKhauDTO);
+            // thêm vào bảng chuyển khẩu
+                ChuyenKhauDTO chuyenKhauDTO = new ChuyenKhauDTO(currentCongDanId, idHoKhauCu, idHoKhauMoi, lydo, idVaiTroSoHoKhau, ghichu, 1);
+                chuyenKhauDAO.insertChuyenKhau(chuyenKhauDTO);
+            }
+           
         }
 
         private async void onLoaded(object sender, RoutedEventArgs e)

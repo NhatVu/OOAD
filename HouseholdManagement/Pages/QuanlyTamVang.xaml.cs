@@ -46,9 +46,12 @@ namespace HouseholdManagement.Pages
             
         }
 
-        private void loadData()
+        private async void loadData()
         {
+            progressbar.Visibility = System.Windows.Visibility.Visible;
+            await Task.Delay(1000);
             this.dataGird_QuanLyTamVang.ItemsSource = viewMobel.getTamVangAllInfo();
+            progressbar.Visibility = System.Windows.Visibility.Hidden;
         }
 
         private void onUnloaded(object sender, RoutedEventArgs e)

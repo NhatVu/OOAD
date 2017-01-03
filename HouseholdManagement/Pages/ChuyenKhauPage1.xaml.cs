@@ -67,8 +67,8 @@ namespace HouseholdManagement.Pages
 
             this.NavigationService.Navigate(ChuyenKhauPage2.createInstance(mViewModel.ListCongDan,
                 int.Parse(combobox_idHoKhau.SelectedValue+""),
-                textbox_lydo.ToString().Trim(),
-                textbox_ghichu.ToString().Trim()));
+                textbox_lydo.Text.ToString().Trim(),
+                textbox_ghichu.Text.ToString().Trim()));
 
 
 
