@@ -75,5 +75,11 @@ namespace HouseholdManagement.Pages
             else
                 this.dataGrid_QuanLyHoKhau.ItemsSource = QuanlyHokhauViewModel.createInstance().search(query);
         }
+
+        private void mouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            int hoKhauId = (this.dataGrid_QuanLyHoKhau.SelectedValue as QuanlyHokhauViewModel).Id;
+            this.NavigationService.Navigate(ChiTietHoKhau.createInstance(hoKhauId));     
+        }
     }
 }

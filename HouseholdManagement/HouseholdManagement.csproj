@@ -129,6 +129,9 @@
     <Compile Include="Pages\ChinhSuaTamVangTamTru.xaml.cs">
       <DependentUpon>ChinhSuaTamVangTamTru.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ChiTietHoKhau.xaml.cs">
+      <DependentUpon>ChiTietHoKhau.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\QuenMatKhau.xaml.cs">
       <DependentUpon>QuenMatKhau.xaml</DependentUpon>
     </Compile>
@@ -158,6 +161,7 @@
     <Compile Include="Utilities\Convert.cs" />
     <Compile Include="Utilities\GlobalVariable.cs" />
     <Compile Include="Utilities\PasswordHash.cs" />
+    <Compile Include="ViewModels\ChiTietHoKhauViewModel.cs" />
     <Compile Include="ViewModels\QuanlyHokhauViewModel.cs" />
     <Compile Include="Pages\ThayDoiMatKhau.xaml.cs">
       <DependentUpon>ThayDoiMatKhau.xaml</DependentUpon>
@@ -182,6 +186,10 @@
     </Compile>
     <Compile Include="Utilities\Constant.cs" />
     <Page Include="Pages\ChinhSuaTamVangTamTru.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ChiTietHoKhau.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
