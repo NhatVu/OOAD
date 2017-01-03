@@ -30,7 +30,7 @@ namespace DataAcessLayer
                 parameter = new SqlParameter[5];
                 parameter[0] = new SqlParameter("@idHoKhau", dto.IdHoKhau);
                 parameter[1] = new SqlParameter("@idCDThanhVien", dto.IdCDThanhVien);
-                parameter[2] = new SqlParameter("@idVaiTroSoHoKhau", dto.IdVaitroHokhau);
+                parameter[2] = new SqlParameter("@idVaiTroSoHoKhau", dto.IdVaiTroSoHoKhau);
                 parameter[3] = new SqlParameter("@ghiChu", dto.Ghichu);
                 parameter[4] = new SqlParameter("@active", dto.Active);
 
@@ -63,7 +63,7 @@ namespace DataAcessLayer
                 parameter[0] = new SqlParameter("@id", dto.Id);
                 parameter[1] = new SqlParameter("@idHoKhau", dto.IdHoKhau);
                 parameter[2] = new SqlParameter("@idCDThanhVien", dto.IdCDThanhVien);
-                parameter[3] = new SqlParameter("@idVaiTroSoHoKhau", dto.IdVaitroHokhau);
+                parameter[3] = new SqlParameter("@idVaiTroSoHoKhau", dto.IdVaiTroSoHoKhau);
                 parameter[4] = new SqlParameter("@ghiChu", dto.Ghichu);
                 parameter[5] = new SqlParameter("@active", dto.Active);
 
@@ -215,7 +215,7 @@ namespace DataAcessLayer
 
                 SqlParameter[] parameter;
                 parameter = new SqlParameter[1];
-                parameter[0] = new SqlParameter("@HoKhauId", id);
+                parameter[0] = new SqlParameter("@hoKhauId", id);
 
 
                 command.Parameters.AddRange(parameter);

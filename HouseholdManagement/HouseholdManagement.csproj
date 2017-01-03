@@ -132,6 +132,9 @@
     <Compile Include="Pages\ChiTietHoKhau.xaml.cs">
       <DependentUpon>ChiTietHoKhau.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ChuyenKhauPage2.xaml.cs">
+      <DependentUpon>ChuyenKhauPage2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\QuenMatKhau.xaml.cs">
       <DependentUpon>QuenMatKhau.xaml</DependentUpon>
     </Compile>
@@ -162,6 +165,7 @@
     <Compile Include="Utilities\GlobalVariable.cs" />
     <Compile Include="Utilities\PasswordHash.cs" />
     <Compile Include="ViewModels\ChiTietHoKhauViewModel.cs" />
+    <Compile Include="ViewModels\ChuyenKhauPage2ViewModel.cs" />
     <Compile Include="ViewModels\QuanlyHokhauViewModel.cs" />
     <Compile Include="Pages\ThayDoiMatKhau.xaml.cs">
       <DependentUpon>ThayDoiMatKhau.xaml</DependentUpon>
@@ -192,6 +196,10 @@
     <Page Include="Pages\ChiTietHoKhau.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ChuyenKhauPage2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\QuenMatKhau.xaml">
       <SubType>Designer</SubType>

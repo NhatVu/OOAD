@@ -11,7 +11,7 @@ namespace DTO
         private int mId;
         private int mIdHoKhau;
         private int mIdCDThanhVien;
-        private int mIdVaitroHokhau;
+        private int mIdVaitroSoHoKhau;
         private string mGhichu;
         private int mActive;
         public ChiTietHoKhauDTO()
@@ -19,11 +19,11 @@ namespace DTO
                 
         }
 
-        public ChiTietHoKhauDTO(int mIdHoKhau, int mIdCDThanhVien, int mIdVaitroHokhau, string mGhichu, int mActive)
+        public ChiTietHoKhauDTO(int mIdHoKhau, int mIdCDThanhVien, int mIdVaitroSoHokhau, string mGhichu, int mActive)
         {
             this.mIdHoKhau = mIdHoKhau;
             this.mIdCDThanhVien = mIdCDThanhVien;
-            this.mIdVaitroHokhau = mIdVaitroHokhau;
+            this.mIdVaitroSoHoKhau = mIdVaitroSoHokhau;
             this.mGhichu = mGhichu;
             this.mActive = mActive;
         }
@@ -67,16 +67,16 @@ namespace DTO
             }
         }
 
-        public int IdVaitroHokhau
+        public int IdVaiTroSoHoKhau
         {
             get
             {
-                return mIdVaitroHokhau;
+                return mIdVaitroSoHoKhau;
             }
 
             set
             {
-                mIdVaitroHokhau = value;
+                mIdVaitroSoHoKhau = value;
             }
         }
 

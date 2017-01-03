@@ -26,17 +26,25 @@ namespace HouseholdManagement.Pages
     /// <summary>
     /// Interaction logic for ThemHoKhauPage2.xaml
     /// </summary>
-    public partial class ChuyenKhauPage1 : Page
+    public partial class ChuyenKhauPage2 : Page
     {
-        private ChuyenKhauPage1ViewModel mViewModel;
+        private ChuyenKhauPage2ViewModel mViewModel;
+        private ObservableCollection<SelectCongDanViewModel> mSelectedCongDan;
+        private string lydo;
+        private string ghichu;
+        private int idHoKhauCu;
 
-        public static ChuyenKhauPage1 createInstance()
+        public static ChuyenKhauPage2 createInstance(ObservableCollection<SelectCongDanViewModel> mSelectedCongDan, int idHoKhauCu,string lydo, string ghichu)
         {
-            return new ChuyenKhauPage1();
+            return new ChuyenKhauPage2(mSelectedCongDan, idHoKhauCu,lydo, ghichu);
         }
-        public ChuyenKhauPage1()
+        public ChuyenKhauPage2(ObservableCollection<SelectCongDanViewModel> mSelectedCongDan, int idHoKhauCu,string lydo, string ghichu)
         {
             InitializeComponent();
+            this.mSelectedCongDan = mSelectedCongDan;
+            this.lydo = lydo;
+            this.ghichu = ghichu;
+            this.idHoKhauCu = idHoKhauCu;
         }
 
         private void onButtonBackClicked(object sender, RoutedEventArgs e)
@@ -46,42 +54,34 @@ namespace HouseholdManagement.Pages
 
         private void onButtonNextClicked(object sender, RoutedEventArgs e)
         {
-            if (textbox_lydo.Text.Trim().Count() == 0)
-            {
-                Constant.showDialog("Bạn phải điền lý do");
-                return;
-            }
+            // save to database
 
-            int sum = 0;
-        
-            foreach(SelectCongDanViewModel view in mViewModel.ListCongDan)
-            {
-                if (view.IsSelected == true)
-                    sum++;
-            }
-            if(sum == 0)
-            {
-                Constant.showDialog("Bạn phải chọn ít nhất một người để chuyển sang hộ khẩu mới");
-                return;
-            }
+            //kiểm tra xem chỉ có 1 chủ hộ đúng hok?
 
-            this.NavigationService.Navigate(ChuyenKhauPage2.createInstance(mViewModel.ListCongDan,
-                int.Parse(combobox_idHoKhau.SelectedValue+""),
-                textbox_lydo.ToString().Trim(),
-                textbox_ghichu.ToString().Trim()));
+            // kiểm tra xem người dùng có chọn hộ khẩu nào không
 
+            
+            
+            //mSelectedCongdan là TOÀN BỘ danh sách của page trước -> Kiểm tra xem cái nào .isSelected = true thì lấy ra
 
+            //mViewModel.ListCongDan là listCongdan mới
 
+            //mIdHoKhauCu ở trên
+
+            //mIDHoKhauMoi = combobox_idHoKhau.SelectedValue
         }
 
         private async void onLoaded(object sender, RoutedEventArgs e)
         {
             progressbar.Visibility = System.Windows.Visibility.Visible;
             await Task.Delay(1000);
-            mViewModel = new ChuyenKhauPage1ViewModel();
+            mViewModel = new ChuyenKhauPage2ViewModel();
             DataContext = mViewModel;
+            mViewModel.ListIdHoKhau.Remove(idHoKhauCu);
             progressbar.Visibility = System.Windows.Visibility.Hidden;
         }
+
+
 
         private void idHoKhau_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -91,7 +91,6 @@ namespace HouseholdManagement.Pages
             {
                 try
                 {
-
                     int value = int.Parse(box.SelectedValue + "");
                     List<ChiTietHoKhauDTO> chitiet = Constant.DataTableToList<ChiTietHoKhauDTO>(new ChiTietHoKhauDAO().SelectAllChiTietHoKhauByIdHoKhau(value));
 
@@ -100,13 +99,13 @@ namespace HouseholdManagement.Pages
                         if (mViewModel.ListCongDan.Count > 0)
                             mViewModel.ListCongDan = new ObservableCollection<SelectCongDanViewModel>();
                         mViewModel.IsAllItemSelected = false;
-                    
+
                         for (int i = 0; i < chitiet.Count; i++)
                         {
                             ChiTietHoKhauDTO ct = chitiet[i];
                             if (ct.IdVaiTroSoHoKhau != 1)
                             {
-                                string quanhe = mViewModel.ListQuanhe.FirstOrDefault(x => x.Id == ct.IdVaiTroSoHoKhau).TenVaitro;
+                                string quanhe = mViewModel.ListVaitro.FirstOrDefault(x => x.Id == ct.IdVaiTroSoHoKhau).TenVaitro;
 
                                 CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanById(ct.IdCDThanhVien))[0];
                                 string id = congdan.Id + "";
@@ -127,6 +126,12 @@ namespace HouseholdManagement.Pages
                                 mViewModel.ListCongDan[max].Quanhe = quanhe;
                             }
                         }
+
+                        foreach(SelectCongDanViewModel view in mSelectedCongDan)
+                        {
+                            if (view.IsSelected == true)
+                                mViewModel.ListCongDan.Add(view);
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -134,16 +139,6 @@ namespace HouseholdManagement.Pages
                     Constant.showDialog("Bạn đã nhập số hộ khẩu sai");
                 }
             }
-        }
-
-
-        private void updateTableRow(List<ChiTietHoKhauDTO> chitiet, int row)
-        {
-
-
-
-
-
         }
 
         private void idHoKhau_KeyDown(object sender, KeyEventArgs e)

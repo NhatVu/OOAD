@@ -19,6 +19,41 @@ namespace HouseholdManagement.ViewModels
         private ObservableCollection<SelectCongDanViewModel> listCongDan;
         private readonly List<VaiTroSoHoKhauDTO> listQuanhe;
         private readonly List<int> listIdHoKhau;
+        private bool? isAllItemSelected;
+
+        public bool? IsAllItemSelected
+        {
+            get
+            {
+                if (listCongDan != null && listCongDan.Count == 0)
+                    return false;
+
+
+
+                return isAllItemSelected;
+            }
+
+            set
+            {
+                if (isAllItemSelected == value) return;
+               
+                isAllItemSelected = value;
+                
+                if (isAllItemSelected.HasValue)
+                    SelectAll(isAllItemSelected.Value, listCongDan);
+
+                OnPropertyChanged();
+            }
+        }
+
+        private void SelectAll(bool select, IEnumerable<SelectCongDanViewModel> models)
+        {
+            
+            foreach (var model in models)
+            {
+                model.IsSelected = select;
+            }
+        }
 
 
         public ObservableCollection<SelectCongDanViewModel> ListCongDan
@@ -72,6 +107,8 @@ namespace HouseholdManagement.ViewModels
             }
 
         }
+
+
     }
 
     
@@ -98,6 +135,7 @@ namespace HouseholdManagement.ViewModels
         private string ngaysinh;
         private string quanhe;
         private string ghiChu;
+        private bool isSelected;
 
         public string Id
         {
@@ -192,6 +230,20 @@ namespace HouseholdManagement.ViewModels
             set
             {
                 ghiChu = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool IsSelected
+        {
+            get
+            {
+                return isSelected;
+            }
+
+            set
+            {
+                isSelected = value;
                 OnPropertyChanged();
             }
         }
