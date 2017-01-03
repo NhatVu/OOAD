@@ -211,6 +211,19 @@ select cd.id, cd.cmnd, cd.hoTen as name, cd.gioiTinh, cd.ngaySinh, vt.tenVaiTro 
 from (ChiTietHoKhau as c inner join CongDan as cd
 on c.idCDThanhVien = cd.id) inner join VaiTroSoHoKhau as vt
 on vt.id = c.idVaiTroSoHoKhau
-where c.idHoKhau = @hoKhauId;
+where c.idHoKhau = @hoKhauId and c.active = 1;
+end
+go
+
+-- select chitiethokhau by hokhauid
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[ChiTietHoKhau_SelectAllChiTietHoKhauByIdHoKhau]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[ChiTietHoKhau_SelectAllChiTietHoKhauByIdHoKhau]
+GO
+create procedure [dbo].[ChiTietHoKhau_SelectAllChiTietHoKhauByIdHoKhau]
+@hoKhauId int=null
+as
+begin
+select * 
+from ChiTietHoKhau as c
+where c.idHoKhau = @hoKhauId and c.active = 1;
 end
 go

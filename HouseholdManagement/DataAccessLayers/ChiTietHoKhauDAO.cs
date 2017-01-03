@@ -199,5 +199,37 @@ namespace DataAcessLayer
                 return null;
             }
         }
+
+        public DataTable SelectAllChiTietHoKhauByIdHoKhau(int id)
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand command = new SqlCommand();
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapter;
+                command.Connection = connection;
+                command.CommandText = "ChiTietHoKhau_SelectAllChiTietHoKhauByIdHoKhau";
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter[] parameter;
+                parameter = new SqlParameter[1];
+                parameter[0] = new SqlParameter("@HoKhauId", id);
+
+
+                command.Parameters.AddRange(parameter);
+                adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+                connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                connection.Close();
+                return null;
+            }
+        }
     }
 }
