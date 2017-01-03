@@ -71,5 +71,11 @@ namespace HouseholdManagement.Pages
             else
                 this.dataGird_QuanLyTamVang.ItemsSource = viewMobel.search(query);
         }
+
+        private void mouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            QuanLyTamVangViewModel data = this.dataGird_QuanLyTamVang.SelectedItem as QuanLyTamVangViewModel;
+            this.NavigationService.Navigate(ChinhSuaTamVangTamTru.createInstace(Constant.TYPE_CHINH_SUA_TAM_VANG, data));
+        }
     }
 }

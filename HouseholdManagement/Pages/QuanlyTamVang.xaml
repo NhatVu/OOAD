@@ -86,7 +86,8 @@
                   CanUserAddRows="False" 
                   AutoGenerateColumns="False"
                   x:Name="dataGird_QuanLyTamVang"
-                  materialDesign:DataGridAssist.CellPadding="16 12">
+                  materialDesign:DataGridAssist.CellPadding="16 12"
+                  MouseDoubleClick="mouseDoubleClick">
             <DataGrid.Columns>
                 <materialDesign:MaterialDataGridTextColumn Header="Số thứ tự"
                                     Binding="{Binding STT}"
@@ -98,7 +99,7 @@
 
                 <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
                 <materialDesign:MaterialDataGridTextColumn Header="Ngày sinh"   
-                                                           Binding="{Binding NgaySinh}"
+                                                           Binding="{Binding NgaySinh, StringFormat=dd/MM/yyyy}"
                                                            EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" 
                                                            MinWidth="50"
                                                            MaxLength="50"
@@ -124,12 +125,12 @@
                 <DataGridTemplateColumn Header="Ngày bắt đầu">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding NgayBatDau, StringFormat=dd/mm/yyyy}"/>
+                            <TextBlock Text="{Binding NgayBatDau, StringFormat=dd/MM/yyyy}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <DatePicker SelectedDate="{Binding NgayBatDau, StringFormat=dd/mm/yyyy}"
+                            <DatePicker SelectedDate="{Binding NgayBatDau, StringFormat=dd/MM/yyyy}"
                                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
@@ -138,12 +139,12 @@
                 <DataGridTemplateColumn Header="Ngày kết thúc">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding NgayKetThuc, StringFormat=dd/mm/yyyy}"/>
+                            <TextBlock Text="{Binding NgayKetThuc, StringFormat=dd/MM/yyyy}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <DatePicker SelectedDate="{Binding NgayKetThuc, StringFormat=dd/mm/yyyy}"
+                            <DatePicker SelectedDate="{Binding NgayKetThuc, StringFormat=dd/MM/yyyy}"
                                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
@@ -155,6 +156,7 @@
                                                            MinWidth="150"
                                                            MaxLength="50"
                                                                />
+                
             </DataGrid.Columns>
         </DataGrid>
 

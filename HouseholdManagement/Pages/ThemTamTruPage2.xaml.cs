@@ -33,14 +33,15 @@ namespace HouseholdManagement.Pages
         private string mGhichu;
         private DateTime mNgayBatdau;
         private DateTime mNgayKetthuc;
+        private DateTime mNgayLamDon;
 
         private ThemTamTruPage2ViewModel mViewModel;
 
-        public static ThemTamTruPage2 createInstance(int type, int idCongAn, string lydo, string diachi, string ghichu, DateTime ngaybatdau, DateTime ngayketthuc)
+        public static ThemTamTruPage2 createInstance(int type, int idCongAn, string lydo, string diachi, string ghichu, DateTime ngaybatdau, DateTime ngayketthuc, DateTime ngayLamDon)
         {
-            return new ThemTamTruPage2(type, idCongAn, lydo, diachi, ghichu, ngaybatdau, ngayketthuc);
+            return new ThemTamTruPage2(type, idCongAn,lydo,diachi,ghichu,ngaybatdau,ngayketthuc, ngayLamDon);
         }
-        public ThemTamTruPage2(int type, int idCongAn, string lydo, string diachi, string ghichu, DateTime ngaybatdau, DateTime ngayketthuc)
+        public ThemTamTruPage2(int type, int idCongAn, string lydo, string diachi, string ghichu, DateTime ngaybatdau, DateTime ngayketthuc, DateTime ngayLamDon)
         {
             InitializeComponent();
             this.mType = type;
@@ -50,6 +51,7 @@ namespace HouseholdManagement.Pages
             this.mGhichu = ghichu;
             this.mNgayBatdau = ngaybatdau;
             this.mNgayKetthuc = ngayketthuc;
+            this.mNgayLamDon = ngayLamDon;
         }
 
         private void onButtonBackClicked(object sender, RoutedEventArgs e)
@@ -58,14 +60,52 @@ namespace HouseholdManagement.Pages
         }
 
         private async void onButtonSaveClicked(object sender, RoutedEventArgs e)
-        {
-            if (mType == Constant.TYPE_THEM_TAM_TRU)
+        {    
+            if(mType == Constant.TYPE_THEM_TAM_TRU)
             {
                 //save tam tru
-            }
-            else if (mType == Constant.TYPE_THEM_TAM_VANG)
-            {
+                TamTruDAO tamTruDAO = new TamTruDAO();
+                TamTruDTO dto = new TamTruDTO();
+                foreach (SelectTamTruViewlModel current in mViewModel.ListTamTru)
+                {
+                    dto.Active = 1;
+                    dto.IdCongdan = UserConvert.convertInt(current.Id);
+                    dto.DiachiDen = this.mDiachi;
+                    dto.Ghichu = "";
+                    dto.IdTruongCongan = GlobalVariable.CurrentCongAnId;
+                    dto.Lydo = this.mLydo;
+                    dto.NgayBatdau = this.mNgayBatdau;
+                    dto.NgayKetthuc = this.mNgayKetthuc;
+                    dto.NgayLamDon = this.mNgayLamDon;
+
+
+                    tamTruDAO.insertTamTru(dto);
+                }
                 //save tam vang
+                Constant.showDialog("Thêm tạm trú thành công");
+                this.NavigationService.Navigate(QuanlyTamTru.createInstance());
+            }else if(mType == Constant.TYPE_THEM_TAM_VANG)
+            {
+                TamVangDAO tamVangDAO = new TamVangDAO();
+                TamVangDTO dto = new TamVangDTO();
+                foreach (SelectTamTruViewlModel current in mViewModel.ListTamTru)
+                {
+                    dto.Active = 1;
+                    dto.IdCongdan = UserConvert.convertInt(current.Id);
+                    dto.DiaChiDen = this.mDiachi;
+                    dto.GhiChu = "";
+                    dto.IdTruongCongAn = GlobalVariable.CurrentCongAnId;
+                    dto.LyDo = this.mLydo;
+                    dto.NgayBatDau = this.mNgayBatdau;
+                    dto.NgayKetThuc = this.mNgayKetthuc;
+                    dto.NgayLamDon = this.mNgayLamDon;
+
+
+                    tamVangDAO.insertTamVang(dto);
+                }
+                //save tam vang
+                Constant.showDialog("Thêm tạm vắng thành công");
+                this.NavigationService.Navigate(QuanlyTamVang.createInstance());
             }
 
             //List<string> ids = new List<string>();

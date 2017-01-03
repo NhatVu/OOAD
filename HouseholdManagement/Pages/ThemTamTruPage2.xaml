@@ -60,7 +60,7 @@
                             Style="{StaticResource MaterialDesignFlatButton}" 
                             Click="onButtonSaveClicked" 
                             Margin="16 0"
-                            FontSize="16">Save</Button>
+                            FontSize="16">Lưu</Button>
                     </Grid>
                 </Border>
                 <StackPanel Orientation="Horizontal"

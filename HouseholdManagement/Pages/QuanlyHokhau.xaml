@@ -120,15 +120,16 @@
                                                            MinWidth="250"
                                                            MaxLength="300" 
                                                            EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"  />
-                    <DataGridTemplateColumn Header="Thời gian">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding NgayCap, StringFormat=dd/mm/yyyy}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                        <DataGridTemplateColumn.CellEditingTemplate>
-                            <DataTemplate>
-                                <DatePicker SelectedDate="{Binding NgayCap, StringFormat=dd/mm/yyyy}"
+
+                <DataGridTemplateColumn Header="Thời gian">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding NgayCap, StringFormat=dd/MM/yyyy}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding NgayCap, StringFormat=dd/MM/yyyy}"
                                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellEditingTemplate>
