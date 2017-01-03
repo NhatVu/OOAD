@@ -121,7 +121,7 @@ namespace DTO
             }
         }
 
-        private ChuyenKhauDTO() { }
+        public ChuyenKhauDTO() { }
 
         public ChuyenKhauDTO(int mIdCongdan, int mIdHokhauCu, int mIdHokhauMoi, string mLyDo, int mIdVaitroSoHokhau, string mGhichu, int mActive)
         {

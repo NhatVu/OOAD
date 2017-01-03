@@ -59,9 +59,9 @@
                                HorizontalAlignment="Center"/>
                         <Button HorizontalAlignment="Right"
                             Style="{StaticResource MaterialDesignFlatButton}" 
-                            Click="onButtonNextClicked" 
+                            Click="onButtonSaveClicked" 
                             Margin="16 0"
-                            FontSize="16">Next</Button>
+                            FontSize="16">Save</Button>
                     </Grid>
                 </Border>
 

@@ -231,5 +231,35 @@ namespace DataAcessLayer
                 return null;
             }
         }
+
+        public bool DeactiveByCongDanIdAndHoKhauId(int congDanId, int hoKhauId)
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = "ChiTietHoKhau_DeactiveByCongDanIdAndHoKhauId";
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter[] parameter;
+                parameter = new SqlParameter[2];
+                parameter[0] = new SqlParameter("@hoKhauId", hoKhauId);
+                parameter[1] = new SqlParameter("@congDanId", congDanId);
+          
+
+                command.Parameters.AddRange(parameter);
+                command.ExecuteNonQuery();
+                connection.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                connection.Close();
+                return false;
+            }
+        }
     }
 }
