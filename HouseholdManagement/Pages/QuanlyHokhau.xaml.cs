@@ -37,16 +37,19 @@ namespace HouseholdManagement.Pages
 
         }
 
-        private void loadData()
+        private async void loadData()
         {
+            progressbar.Visibility = System.Windows.Visibility.Visible;
+            await Task.Delay(1000);
             this.dataGrid_QuanLyHoKhau.ItemsSource = QuanlyHokhauViewModel.createInstance().getHoKhauAllInfo();
-            
+            progressbar.Visibility = System.Windows.Visibility.Hidden;
         }
 
 
 
         private void onLoaded(object sender, RoutedEventArgs e)
         {
+
             loadData();
             handleEvent();
         }

@@ -24,24 +24,31 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <Grid Margin="16">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" 
+
+    <StackPanel Orientation="Vertical">
+        <ProgressBar HorizontalAlignment="Stretch" 
+                         Height="4" 
+                         IsIndeterminate="True" 
+                         Visibility="Hidden"
+                         x:Name="progressbar"/>
+        <Grid Margin="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" 
                         VerticalAlignment="Center"
                         Margin="16,12">
-                <TextBlock Text="{Binding ElementName=listbox_management, Path=SelectedItem.Detail}"
+                    <TextBlock Text="{Binding ElementName=listbox_management, Path=SelectedItem.Detail}"
                                VerticalAlignment="Center"></TextBlock>
-            </StackPanel>
-            <Border Background="White" 
+                </StackPanel>
+                <Border Background="White" 
                     Margin="16,12"
                         MaxWidth="450"
                         Grid.Column="1"
@@ -50,37 +57,37 @@
                         MaxHeight="48" 
                         CornerRadius="6"
                         ToolTip="Enter to search, ignore case">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Button Style="{DynamicResource MaterialDesignToolButton}" 
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Style="{DynamicResource MaterialDesignToolButton}" 
                                 Command="{Binding SearchCommand}" x:Name="SearchButton"
                                 CommandParameter="{Binding ElementName=SearchBox, Path=Text}"
                                 Height="24" Width="24">
-                        <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
-                    </Button>
-                    <TextBox Grid.Column="1" Margin="5 0 0 0" KeyDown="Search_OnKeyDown"
+                            <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
+                        </Button>
+                        <TextBox Grid.Column="1" Margin="5 0 0 0" KeyDown="Search_OnKeyDown"
                              TextChanged="Search_TextChange"
                              FontSize="18"
                              materialDesign:HintAssist.Hint="Search" x:Name="SearchBox"
                              materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"
                              MinWidth="200" VerticalAlignment="Center" />
-                </Grid>
-            </Border>
-        </Grid>
-        <Border Grid.Row="1"
+                    </Grid>
+                </Border>
+            </Grid>
+            <Border Grid.Row="1"
                 CornerRadius="6"
                 Background="#F7F9FA"
                 Padding="0,16"
                 BorderBrush="Silver" 
                 BorderThickness="0.5 0.5 0.5 0.5 ">
-            <TextBlock Text="{Binding ElementName=table_household, Path=SelectedItem.Name}"
+                <TextBlock Text="{Binding ElementName=table_household, Path=SelectedItem.Name}"
                        FontWeight="Medium"
                        HorizontalAlignment="Center"></TextBlock>
-        </Border>
-        <DataGrid Grid.Row="2"
+            </Border>
+            <DataGrid Grid.Row="2"
                   CanUserSortColumns="True" 
                   CanUserAddRows="False" 
                   AutoGenerateColumns="False"
@@ -88,33 +95,36 @@
                   materialDesign:DataGridAssist.CellPadding="16 12"
                    MouseDoubleClick="mouseDoubleClick"
                   >
-            <DataGrid.Columns>
-                <materialDesign:MaterialDataGridTextColumn Header="Số hộ khẩu"
+         
+                <DataGrid.Columns>
+                    <materialDesign:MaterialDataGridTextColumn Header="Số hộ khẩu"
+
                                     Binding="{Binding Id}"
                                     EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                <materialDesign:MaterialDataGridTextColumn Header="Công an" Binding="{Binding TenCongAn}"
+                    <materialDesign:MaterialDataGridTextColumn Header="Công an" Binding="{Binding TenCongAn}"
                                     EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
                                                                
                                                                />
-                
-                <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
-                <materialDesign:MaterialDataGridTextColumn Header="Tên chủ hộ"   
+
+                    <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
+                    <materialDesign:MaterialDataGridTextColumn Header="Tên chủ hộ"   
                                                            Binding="{Binding TenChuHo}"
                                                            EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" 
                                                            MinWidth="150"
                                                            MaxLength="50"
                                                                />
-                <!-- set a max length to get an indicator in the editor -->
-                <materialDesign:MaterialDataGridTextColumn Header="Địa chỉ thường chú"  
+                    <!-- set a max length to get an indicator in the editor -->
+                    <materialDesign:MaterialDataGridTextColumn Header="Địa chỉ thường chú"  
                                                            Binding="{Binding NoiDangKyThuongTru}"
                                                            MinWidth="250"
                                                            MaxLength="300" 
                                                            EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"  />
-                <materialDesign:MaterialDataGridTextColumn Binding="{Binding NoiCap}"
+                    <materialDesign:MaterialDataGridTextColumn Binding="{Binding NoiCap}"
                                                            Header="Nơi cấp"  
                                                            MinWidth="250"
                                                            MaxLength="300" 
                                                            EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"  />
+
                 <DataGridTemplateColumn Header="Thời gian">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -125,12 +135,13 @@
                         <DataTemplate>
                             <DatePicker SelectedDate="{Binding NgayCap, StringFormat=dd/MM/yyyy}"
                                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
 
-    </Grid>
+        </Grid>
+    </StackPanel>
 
 </Page>

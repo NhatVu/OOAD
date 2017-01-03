@@ -32,6 +32,7 @@ namespace HouseholdManagement.ViewModels
             set
             {
                 listHoKhau = value;
+                OnPropertyChanged();
             }
         }
 

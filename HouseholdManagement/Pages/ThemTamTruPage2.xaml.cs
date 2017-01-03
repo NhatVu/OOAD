@@ -60,8 +60,7 @@ namespace HouseholdManagement.Pages
         }
 
         private async void onButtonSaveClicked(object sender, RoutedEventArgs e)
-        {
-            
+        {    
             if(mType == Constant.TYPE_THEM_TAM_TRU)
             {
                 //save tam tru
@@ -115,7 +114,7 @@ namespace HouseholdManagement.Pages
             //{
             //    //MessageBox.Show(row.Id + row.Cmnd + row.Name + row.Quanhe + row.GhiChu);
             //    ids.Add(row.Id);
-               
+
             //}
             //bool isUnique = ids.Distinct().Count() == ids.Count();
 
@@ -127,7 +126,7 @@ namespace HouseholdManagement.Pages
             //    progressbar.Visibility = System.Windows.Visibility.Hidden;
 
             //    //
-                
+
             //    this.NavigationService.Navigate(QuanlyHokhau.createInstance());
             //}
             //else
@@ -167,20 +166,26 @@ namespace HouseholdManagement.Pages
 
         private void onButtonAddClicked(object sender, RoutedEventArgs e)
         {
-            mViewModel.ListTamTru.Add(new SelectTamTruViewlModel());
+            if (mViewModel != null)
+                mViewModel.ListTamTru.Add(new SelectTamTruViewlModel());
         }
 
         private void onButtonRemoveClicked(object sender, RoutedEventArgs e)
         {
             if (table_household.SelectedIndex > -1)
-                mViewModel.ListTamTru.RemoveAt(table_household.SelectedIndex);
+            {
+                for (int i = table_household.SelectedItems.Count - 1; i >= 0; i--)
+                {
+                    mViewModel.ListTamTru.RemoveAt(i);
+                }
+            }
         }
 
         private void onButtonResetClicked(object sender, RoutedEventArgs e)
         {
-            if (mViewModel.ListTamTru.Count > 0)
+            if (mViewModel != null && mViewModel.ListTamTru.Count > 0)
             {
-                for(int i = mViewModel.ListTamTru.Count-1; i >= 0; i--)
+                for (int i = mViewModel.ListTamTru.Count - 1; i >= 0; i--)
                 {
                     mViewModel.ListTamTru.RemoveAt(i);
                 }
@@ -295,7 +300,7 @@ namespace HouseholdManagement.Pages
             }
         }
 
-        private  void cmnd_KeyDown(object sender, KeyEventArgs e)
+        private void cmnd_KeyDown(object sender, KeyEventArgs e)
         {
             ComboBox box = sender as ComboBox;
             if (e.Key == Key.Enter)
@@ -314,7 +319,7 @@ namespace HouseholdManagement.Pages
             }
         }
 
-        private  void ten_KeyDown(object sender, KeyEventArgs e)
+        private void ten_KeyDown(object sender, KeyEventArgs e)
         {
             ComboBox box = sender as ComboBox;
             if (e.Key == Key.Enter)
