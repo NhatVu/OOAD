@@ -108,18 +108,24 @@ namespace HouseholdManagement.Pages
 
         private void onButtonAddClicked(object sender, RoutedEventArgs e)
         {
-            mViewModel.ListHoKhau.Add(new SelectHoKhauViewlModel());
+            if(mViewModel != null)
+                mViewModel.ListHoKhau.Add(new SelectHoKhauViewlModel());
         }
 
         private void onButtonRemoveClicked(object sender, RoutedEventArgs e)
         {
             if (table_household.SelectedIndex > -1)
-                mViewModel.ListHoKhau.RemoveAt(table_household.SelectedIndex);
+            {
+                for (int i = table_household.SelectedItems.Count - 1; i >= 0; i--)
+                {
+                    mViewModel.ListHoKhau.RemoveAt(i);
+                }
+            }
         }
 
         private void onButtonResetClicked(object sender, RoutedEventArgs e)
         {
-            if (mViewModel.ListHoKhau.Count > 0)
+            if (mViewModel != null && mViewModel.ListHoKhau.Count > 0)
             {
                 for (int i = mViewModel.ListHoKhau.Count - 1; i >= 0; i--)
                 {
