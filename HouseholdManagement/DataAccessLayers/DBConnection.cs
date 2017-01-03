@@ -12,8 +12,8 @@ namespace DataAcessLayer
     {
         private static DBConnection mInstance = null;
         protected SqlConnection connection = null;
-        //public string m_ConnectionString = @"Data Source=DESKTOP-6BBHNRT;Initial Catalog=QuanLyHoKhau;Integrated Security=True";
-        private string m_ConnectionString = @"Data Source=DESKTOP-EK4JKJH;Initial Catalog=QuanLyHoKhau;Integrated Security=True";
+        public string m_ConnectionString = @"Data Source=DESKTOP-6BBHNRT;Initial Catalog=QuanLyHoKhau;Integrated Security=True";
+        //private string m_ConnectionString = @"Data Source=DESKTOP-EK4JKJH;Initial Catalog=QuanLyHoKhau;Integrated Security=True";
         public DBConnection()
         {
             try

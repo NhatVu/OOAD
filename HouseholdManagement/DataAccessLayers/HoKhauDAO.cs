@@ -246,7 +246,6 @@ namespace DataAcessLayer
                     connection.Open();
                 SqlCommand command = new SqlCommand();
                 DataTable dt = new DataTable();
-                SqlDataAdapter adapter;
                 command.Connection = connection;
                 command.CommandText = "HoKhau_ThongKe";
                 command.CommandType = CommandType.StoredProcedure;

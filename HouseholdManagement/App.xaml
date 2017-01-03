@@ -21,6 +21,7 @@
             <System:String x:Key="add_hokhau">Thêm hộ khẩu</System:String>
             <System:String x:Key="add_tamtru">Thêm giấy tạm trú</System:String>
             <System:String x:Key="add_tamvang">Thêm giấy tạm vắng</System:String>
+            <System:String x:Key="chuyenkhau">Chuyển khẩu</System:String>
             <System:String x:Key="user_control_qlhk">Danh sách hộ khẩu</System:String>
             <System:String x:Key="user_control_qltv">Danh sách giấy tạm vắng</System:String>
             <System:String x:Key="user_control_qltt">Danh sách giấy tạm trú</System:String>

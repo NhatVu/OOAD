@@ -59,7 +59,7 @@ namespace HouseholdManagement.Pages
             this.NavigationService.GoBack();
         }
 
-        private async void onButtonSaveClicked(object sender, RoutedEventArgs e)
+        private void onButtonSaveClicked(object sender, RoutedEventArgs e)
         {    
             if(mType == Constant.TYPE_THEM_TAM_TRU)
             {

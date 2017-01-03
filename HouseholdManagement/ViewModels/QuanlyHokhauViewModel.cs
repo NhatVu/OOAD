@@ -4,13 +4,6 @@ using DTO;
 using HouseholdManagement.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using DTO;
-using DataAcessLayer;
-using HouseholdManagement.Utilities;
 using System.Data;
 
 namespace HouseholdManagement

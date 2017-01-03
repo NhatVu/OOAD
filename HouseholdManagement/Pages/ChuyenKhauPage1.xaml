@@ -1,0 +1,182 @@
+﻿<Page x:Class="HouseholdManagement.Pages.ChuyenKhauPage1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HouseholdManagement.Pages"
+             mc:Ignorable="d" 
+             d:DesignHeight="800"
+             d:DesignWidth="1100"
+             Loaded="onLoaded"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+             TextElement.FontSize="14" >
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ProgressBar.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ComboBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <materialDesign:DialogHost Identifier="ThemHoKhauPage2" IsOpen="False">
+
+        <DockPanel>
+            <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
+                <ProgressBar HorizontalAlignment="Stretch" 
+                         Height="4" 
+                         IsIndeterminate="True" 
+                         Visibility="Hidden"
+                         x:Name="progressbar"/>
+                <Border Grid.Row="0"
+                    BorderBrush="Silver"
+                    BorderThickness="0 0 0 1">
+                    <Grid>
+                        <Button Grid.Column="0"
+                            x:Name="button_back"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                            HorizontalAlignment="Left"
+                            Opacity="0.54"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                            BorderBrush="Transparent"
+                            Background="Transparent"
+                            Margin="16 0" 
+                            Click="onButtonBackClicked">
+                            <materialDesign:PackIcon Kind="Close" Height="24" Width="24" />
+                        </Button>
+                        <TextBlock VerticalAlignment="Center"
+                               Grid.Column="1"
+                               Text="Thông tin hộ khẩu cũ"
+                               FontWeight="Medium"
+                               FontSize="24"
+                               Typography.Capitals="AllSmallCaps"
+                               HorizontalAlignment="Center"/>
+                        <Button HorizontalAlignment="Right"
+                            Style="{StaticResource MaterialDesignFlatButton}" 
+                            Click="onButtonNextClicked" 
+                            Margin="16 0"
+                            FontSize="16">Next</Button>
+                    </Grid>
+                </Border>
+
+                <StackPanel Margin="16 16 16 0">
+                    <StackPanel Orientation="Vertical" Grid.Row="3">
+                        <TextBlock Text="Lý do (Bắt buộc)"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="20"
+                                       Typography.Capitals="AllSmallCaps"/>
+                        <Border Padding="16" 
+                                Margin="0 16"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                            <TextBox x:Name="textbox_lydo"></TextBox>
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Grid.Row="3">
+                        <TextBlock Text="Ghi chú (Không bắt buộc)"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="20"
+                                       Typography.Capitals="AllSmallCaps"/>
+                        <Border Padding="16" 
+                                Margin="0 16"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                            <TextBox x:Name="textbox_ghichu"></TextBox>
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Grid.Row="3">
+                        <TextBlock Text="Chọn số hổ khẩu cũ"
+                                       HorizontalAlignment="Left"
+                                       FontWeight="Light"
+                                       Width="Auto"
+                                       FontSize="20"
+                                       Typography.Capitals="AllSmallCaps"/>
+                        <Border Padding="16" 
+                                Margin="0 16"
+                                BorderBrush="Silver" 
+                                BorderThickness="0.5 0.5 0.5 0.5"
+                                CornerRadius="2">
+                            <ComboBox IsEditable="True"
+                          KeyDown="idHoKhau_KeyDown"
+                          SelectionChanged="idHoKhau_SelectionChanged"
+                          ItemsSource="{Binding ListIdHoKhau}"/>
+                        </Border>
+                    </StackPanel>
+                    
+                </StackPanel>
+                
+
+                <DataGrid
+                      CanUserAddRows="False"
+                      Margin="16"
+                      ItemsSource="{Binding Lis}"
+                      CanUserSortColumns="False"
+                      AutoGenerateColumns="False"
+                      x:Name="table_household"
+                  materialDesign:DataGridAssist.CellPadding="16 12">
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn Binding="{Binding IsSelected}" 
+                                            ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+                                            EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}">
+                            <DataGridCheckBoxColumn.Header>
+                                <!--padding to allow hit test to pass thru for sorting -->
+                                <Border Background="Transparent" Padding="6 0 6 0" HorizontalAlignment="Center">
+                                    <CheckBox HorizontalAlignment="Center"                                               
+                                          DataContext="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext}"
+                                          IsChecked="{Binding IsAllItemSelected}" />
+                                </Border>
+                            </DataGridCheckBoxColumn.Header>
+                        </DataGridCheckBoxColumn>
+                        <materialDesign:MaterialDataGridTextColumn Header="IdCongDan"
+                                                               Binding="{Binding Id}"
+                                                               IsReadOnly="True"
+                                                               MinWidth="100"/>
+                        <materialDesign:MaterialDataGridTextColumn Header="Số Cmnd"
+                                                               Binding="{Binding Cmnd}"
+                                                               IsReadOnly="True"
+                                                               MinWidth="100"/>
+
+                        <materialDesign:MaterialDataGridTextColumn Header="Họ và tên"
+                                                               Binding="{Binding HoTen}"
+                                                               IsReadOnly="True"
+                                                               MinWidth="100"/>
+                        <materialDesign:MaterialDataGridTextColumn Header="Gioitinh"
+                                                               Binding="{Binding Gioitinh}"
+                                                               IsReadOnly="True"
+                                                               MinWidth="100"/>
+                        <materialDesign:MaterialDataGridTextColumn Header="Ngaysinh"
+                                                               Binding="{Binding Ngaysinh}"
+                                                               IsReadOnly="True"
+                                                               MinWidth="100"/>
+ 
+                        <materialDesign:MaterialDataGridTextColumn Header="Quan hệ"
+                                                               Binding="{Binding QuanHe}"
+                                                               IsReadOnly="True"
+                                                               MinWidth="100"/>
+                        <materialDesign:MaterialDataGridTextColumn Header="Ghi chú"
+                                                               MaxLength="100"
+                                                               Binding="{Binding GhiChu}"
+                                                               MinWidth="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </StackPanel>
+        </DockPanel>
+    </materialDesign:DialogHost>
+    
+
+</Page>
