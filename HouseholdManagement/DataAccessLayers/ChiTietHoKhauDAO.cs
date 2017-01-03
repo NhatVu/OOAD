@@ -64,8 +64,8 @@ namespace DataAcessLayer
                 parameter[1] = new SqlParameter("@idHoKhau", dto.IdHoKhau);
                 parameter[2] = new SqlParameter("@idCDThanhVien", dto.IdCDThanhVien);
                 parameter[3] = new SqlParameter("@idVaiTroSoHoKhau", dto.IdVaitroHokhau);
-                parameter[5] = new SqlParameter("@ghiChu", dto.Ghichu);
-                parameter[6] = new SqlParameter("@active", dto.Active);
+                parameter[4] = new SqlParameter("@ghiChu", dto.Ghichu);
+                parameter[5] = new SqlParameter("@active", dto.Active);
 
                 command.Parameters.AddRange(parameter);
                 command.ExecuteNonQuery();
@@ -152,6 +152,38 @@ namespace DataAcessLayer
                 SqlParameter[] parameter;
                 parameter = new SqlParameter[1];
                 parameter[0] = new SqlParameter("@id", id);
+
+
+                command.Parameters.AddRange(parameter);
+                adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+                connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                connection.Close();
+                return null;
+            }
+        }
+
+        public DataTable GetByHoKhauId(int id)
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand command = new SqlCommand();
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapter;
+                command.Connection = connection;
+                command.CommandText = "ChiTietHoKhau_GetByHoKhauId";
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter[] parameter;
+                parameter = new SqlParameter[1];
+                parameter[0] = new SqlParameter("@HoKhauId", id);
 
 
                 command.Parameters.AddRange(parameter);

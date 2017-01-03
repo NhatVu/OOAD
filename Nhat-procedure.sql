@@ -199,3 +199,18 @@ on c.id = t.idCongDan
 where t.active = 1 and year(t.ngayLamDon) = @nam and MONTH(t.ngayLamDon) = @thang and (@nam - year(c.ngaySinh) > 13)
 end
 go 
+
+-- select ChiTietHoKhau by HoKhauID
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[ChiTietHoKhau_GetByHoKhauId]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[ChiTietHoKhau_GetByHoKhauId]
+GO
+create procedure [dbo].[ChiTietHoKhau_GetByHoKhauId]
+@hoKhauId int=null
+as
+begin 
+select cd.id, cd.cmnd, cd.hoTen as name, cd.gioiTinh, cd.ngaySinh, vt.tenVaiTro as quanHe, c.ghiChu, c.id as chiTietHoKhauId
+from (ChiTietHoKhau as c inner join CongDan as cd
+on c.idCDThanhVien = cd.id) inner join VaiTroSoHoKhau as vt
+on vt.id = c.idVaiTroSoHoKhau
+where c.idHoKhau = @hoKhauId;
+end
+go

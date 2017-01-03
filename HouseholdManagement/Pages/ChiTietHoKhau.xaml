@@ -1,0 +1,142 @@
+﻿<Page x:Class="HouseholdManagement.Pages.ChiTietHoKhau"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HouseholdManagement.Pages"
+             mc:Ignorable="d" 
+             d:DesignHeight="800"
+             d:DesignWidth="1100"
+             Loaded="onLoaded"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+             TextElement.FontSize="14" >
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ProgressBar.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <materialDesign:DialogHost Identifier="ThemHoKhauPage2" IsOpen="False">
+
+        <DockPanel>
+            <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
+                <ProgressBar HorizontalAlignment="Stretch" 
+                         Height="4" 
+                         IsIndeterminate="True" 
+                         Visibility="Hidden"
+                         x:Name="progressbar"/>
+                <Border Grid.Row="0"
+                    BorderBrush="Silver"
+                    BorderThickness="0 0 0 1">
+                    <Grid>
+                        <Button Grid.Column="0"
+                            x:Name="button_back"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                            HorizontalAlignment="Left"
+                            Opacity="0.54"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                            BorderBrush="Transparent"
+                            Background="Transparent"
+                            Margin="16 0" 
+                            Click="onButtonBackClicked">
+                            <materialDesign:PackIcon Kind="KeyboardBackspace" Height="24" Width="24" />
+                        </Button>
+                        <TextBlock VerticalAlignment="Center"
+                               Grid.Column="1"
+                               Text="Thông tin chi tiết"
+                               FontWeight="Medium"
+                               FontSize="24"
+                               Typography.Capitals="AllSmallCaps"
+                               HorizontalAlignment="Center"/>
+                        <Button HorizontalAlignment="Right"
+                            Style="{StaticResource MaterialDesignFlatButton}" 
+                            Click="onButtonSaveClicked" 
+                            Margin="16 0"
+                            FontSize="16">Save</Button>
+                    </Grid>
+                </Border>
+                <!--<StackPanel Orientation="Horizontal"
+                        Margin="0 16">
+                    <Button HorizontalAlignment="Right"
+                        Opacity="0.54"
+                        x:Name="button_search"
+                        FontWeight="Light"
+                        Foreground="Black"
+                        Style="{StaticResource MaterialDesignFlatButton}" 
+                        Margin="16 0 0 0"
+                        FontSize="16" Click="onButtonResetClicked">Phục hồi</Button>
+                    <Button HorizontalAlignment="Right"
+                        x:Name="button_remove"
+                        FontWeight="Light"
+                        Opacity="0.54"
+                        Foreground="Black"
+                            Style="{StaticResource MaterialDesignFlatButton}" 
+                            Margin="16 0 0 0"
+                            FontSize="16" Click="onButtonRemoveClicked">Xoá dòng</Button>
+                    <Button HorizontalAlignment="Right"
+                        x:Name="button_add"
+                        FontWeight="Light"
+                        Opacity="0.54"
+                        Foreground="Black"
+                            Style="{StaticResource MaterialDesignFlatButton}" 
+                            Margin="16 0 0 0"
+                            FontSize="16" Click="onButtonAddClicked">Thêm dòng</Button>
+                </StackPanel>-->
+                <DataGrid Grid.Row="2"
+                      CanUserAddRows="False"
+                      Margin="16"
+                      ItemsSource="{Binding ListChiTietHoKhau}"
+                      CanUserSortColumns="False"
+                      AutoGenerateColumns="False"
+                      x:Name="table_household"
+                  materialDesign:DataGridAssist.CellPadding="16 12">
+                    <DataGrid.Columns>
+                        
+                        <materialDesign:MaterialDataGridTextColumn Header="Id Công dân"
+                                                               Binding="{Binding Id}"
+                                                               IsReadOnly="True"
+                                                               MinWidth="100"/>
+
+                        <materialDesign:MaterialDataGridTextColumn Header="CMND"
+                                                               Binding="{Binding Cmnd}"
+                                                               IsReadOnly="True"
+                                                               MinWidth="100"/>
+
+
+                        <materialDesign:MaterialDataGridTextColumn Header="Họ tên"
+                                                               Binding="{Binding Name}"
+                                                               IsReadOnly="True"
+                                                               MinWidth="140"/>
+                        <materialDesign:MaterialDataGridTextColumn Header="Giới tính"
+                                                               Binding="{Binding Gioitinh}"
+                                                               IsReadOnly="True"
+                                                               MinWidth="100"/>
+                        <materialDesign:MaterialDataGridTextColumn Header="Ngày sinh"
+                                                               Binding="{Binding Ngaysinh}"
+                                                               IsReadOnly="True"
+                                                               MinWidth="100"/>
+                        <materialDesign:MaterialDataGridComboBoxColumn Header="Quan hệ"        
+                                                                   SelectedValueBinding="{Binding Quanhe}"                                                            
+                                                                   ItemsSourceBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.ListQuanhe}" />
+                        <materialDesign:MaterialDataGridTextColumn Header="Ghi chú"
+                                                                   MaxLength="100"
+                                                               Binding="{Binding GhiChu}"
+                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" 
+                                                               MinWidth="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </StackPanel>
+        </DockPanel>
+    </materialDesign:DialogHost>
+
+
+</Page>

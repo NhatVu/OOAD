@@ -42,6 +42,11 @@ namespace HouseholdManagement.Pages
             {
                 DataTable congAnSource = congAnDAO.SelectCongAnByEmail(email);
                 CongAnDTO congAnDTO = new CongAnDTO();
+                if (congAnSource.Rows.Count == 0)
+                {
+                    MessageBox.Show("Email không tồn tại trong hệ thống, nhập lại email");
+                    return;
+                }
                 congAnDTO.Id = Int32.Parse(congAnSource.Rows[0]["Id"].ToString());
                 congAnDTO.Email = congAnSource.Rows[0]["email"].ToString();
                 congAnDTO.Password = congAnSource.Rows[0]["password"].ToString();
@@ -107,6 +112,11 @@ namespace HouseholdManagement.Pages
             {
                 throw ex;
             }
+        }
+
+        private void troLai_click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(Login.createInstance());
         }
     }
 }

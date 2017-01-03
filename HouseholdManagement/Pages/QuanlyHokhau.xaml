@@ -85,7 +85,9 @@
                   CanUserAddRows="False" 
                   AutoGenerateColumns="False"
                   x:Name="dataGrid_QuanLyHoKhau"
-                  materialDesign:DataGridAssist.CellPadding="16 12">
+                  materialDesign:DataGridAssist.CellPadding="16 12"
+                   MouseDoubleClick="mouseDoubleClick"
+                  >
             <DataGrid.Columns>
                 <materialDesign:MaterialDataGridTextColumn Header="Số hộ khẩu"
                                     Binding="{Binding Id}"
