@@ -57,51 +57,55 @@ namespace HouseholdManagement.Pages
             this.NavigationService.GoBack();
         }
 
-        private void onButtonSaveClicked(object sender, RoutedEventArgs e)
+        private async void onButtonSaveClicked(object sender, RoutedEventArgs e)
         {
-                TamVangDAO tamVangDAO = new TamVangDAO();
-                TamVangDTO dto = new TamVangDTO();
-                foreach (SelectTamVangViewlModel current in mViewModel.ListTamTru)
-                {
-                    dto.Active = 1;
-                    dto.IdCongdan = UserConvert.convertInt(current.Id);
-                    dto.DiaChiDen = this.mDiachi;
-                    dto.GhiChu = "";
-                    dto.IdTruongCongAn = GlobalVariable.CurrentCongAnId;
-                    dto.LyDo = this.mLydo;
-                    dto.NgayBatDau = this.mNgayBatdau;
-                    dto.NgayKetThuc = this.mNgayKetthuc;
-                    dto.NgayLamDon = this.mNgayLamDon;
+            List<string> ids = new List<string>();
+            ids.Clear();
+            foreach (SelectTamVangViewlModel row in mViewModel.ListTamTru)
+            {
+                //MessageBox.Show(row.Id + row.Cmnd + row.Name + row.Quanhe + row.GhiChu);
+                ids.Add(row.Id);
+            }
+            bool isUnique = ids.Distinct().Count() == ids.Count();
 
+            if (isUnique)
+            {
+                progressbar.Visibility = System.Windows.Visibility.Visible;
+                await Task.Delay(500);
+                await Task.Run(() => insertToDataBase());
+                progressbar.Visibility = System.Windows.Visibility.Hidden;
+                this.NavigationService.Navigate(QuanlyHokhau.createInstance());
+            }
+            else
+            {
+                Constant.showDialog("Tất cả các thành viên phải khác nhau");
+            }
 
-                    tamVangDAO.insertTamVang(dto);
-                }
-                //save tam vang
-                Constant.showDialog("Thêm tạm vắng thành công");
-                this.NavigationService.Navigate(QuanlyTamVang.createInstance());
+           
         }
 
         private void insertToDataBase()
         {
-            //try
-            //{
-            //    int idHoKhau = new HoKhauDAO().insertHoKhau(mHoKhau);
-            //    List<VaiTroSoHoKhauDTO> vaitro = Constant.DataTableToList<VaiTroSoHoKhauDTO>(new VaiTroSoHoKhauDAO().SelectAllVaiTroSoHoKhau());
-            //    int idHoKhau = mHoKhau.Id;
-            //    foreach (SelectTamTruViewlModel row in mViewModel.ListTamTru)
-            //    {
-            //        ChiTietHoKhauDTO chitietHoKhau = new ChiTietHoKhauDTO(idHoKhau,
-            //            int.Parse(row.Id),
-            //            vaitro.Find(x => x.TenVaitro == row.Quanhe).Id,
-            //            row.GhiChu,
-            //            1);
-            //        new ChiTietHoKhauDAO().insertChiTietHoKhau(chitietHoKhau);
-            //    }
-            //}
-            //finally
-            //{
-            //    MessageBox.Show("Thêm hộ khẩu thành công");
-            //}
+            TamVangDAO tamVangDAO = new TamVangDAO();
+            TamVangDTO dto = new TamVangDTO();
+            foreach (SelectTamVangViewlModel current in mViewModel.ListTamTru)
+            {
+                dto.Active = 1;
+                dto.IdCongdan = UserConvert.convertInt(current.Id);
+                dto.DiaChiDen = this.mDiachi;
+                dto.GhiChu = "";
+                dto.IdTruongCongAn = GlobalVariable.CurrentCongAnId;
+                dto.LyDo = this.mLydo;
+                dto.NgayBatDau = this.mNgayBatdau;
+                dto.NgayKetThuc = this.mNgayKetthuc;
+                dto.NgayLamDon = this.mNgayLamDon;
+
+
+                tamVangDAO.insertTamVang(dto);
+            }
+            //save tam vang
+            Constant.showDialog("Thêm tạm vắng thành công");
+            this.NavigationService.Navigate(QuanlyTamVang.createInstance());
         }
 
         private void table_household_SelectionChanged(object sender, SelectionChangedEventArgs e)
