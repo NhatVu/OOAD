@@ -108,7 +108,7 @@
                         <DataGridTemplateColumn Header="Ngày bắt đầu">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding NgayBatDau}" 
+                                    <TextBlock Text="{Binding NgayBatDau, StringFormat=dd/MM/yyyy}" 
                                                />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -122,13 +122,14 @@
                         <DataGridTemplateColumn Header="Ngày kết thúc">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding NgayKetThuc}" />
+                                    <TextBlock Text="{Binding NgayKetThuc, StringFormat=dd/MM/yyyy}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellEditingTemplate>
                                 <DataTemplate>
                                     <DatePicker SelectedDate="{Binding NgayKetThuc}"
-                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+                                                SelectedDateChanged="ngayKetThuc_SelectedDateChanged"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>

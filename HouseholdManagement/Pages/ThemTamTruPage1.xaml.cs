@@ -185,6 +185,9 @@ namespace HouseholdManagement.Pages
                 txt_cmnd.Text = (congdan.Cmnd != 0) ? (congdan.Cmnd + "") : "Chưa có";
                 txt_quequan.Text = congdan.Quequan;
 
+                this.combobox_tenCongdan.Text = congdan.HoTen;
+                this.combobox_idCongdan.Text = congdan.Id + "";
+                this.combobox_cmndCongdan.Text = congdan.Cmnd + "";
                 try
                 {
                     TienAnDTO tienan = Constant.DataTableToList<TienAnDTO>(new TienAnDAO().SelectTienAnByCongDanId(congdan.Id))[0];
