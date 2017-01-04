@@ -228,17 +228,3 @@ where c.idHoKhau = @hoKhauId and c.active = 1;
 end
 go
 
--- Deactive chi tiết hộ khẩu bằng idCD và idHoKhau
-if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[ChiTietHoKhau_DeactiveByCongDanIdAndHoKhauId]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[ChiTietHoKhau_DeactiveByCongDanIdAndHoKhauId]
-GO
-create procedure [dbo].[ChiTietHoKhau_DeactiveByCongDanIdAndHoKhauId]
-@hoKhauId int=null,
-@congDanId int=null
-as
-begin
-update ChiTietHoKhau 
-set active = 0
-where idHoKhau=@hoKhauId and idCDThanhVien=@congDanId and active = 1
-end
-go
-
