@@ -60,7 +60,7 @@
                             Style="{StaticResource MaterialDesignFlatButton}" 
                             Click="onButtonSaveClicked" 
                             Margin="16 0"
-                            FontSize="16">Lưu</Button>
+                            FontSize="16">Save</Button>
                     </Grid>
                 </Border>
                 <StackPanel Orientation="Horizontal"
@@ -97,49 +97,56 @@
                       CanUserSortColumns="False"
                       AutoGenerateColumns="False"
                       x:Name="table_household"
-                  materialDesign:DataGridAssist.CellPadding="16 12">
+                  materialDesign:DataGridAssist.CellPadding="16 12" SelectionChanged="table_household_SelectionChanged">
                     <DataGrid.Columns>
-                        <materialDesign:MaterialDataGridTextColumn Header="Id Công dân"
-                                                                   IsReadOnly="True"
-                                                                   MaxLength="100"
-                                                               Binding="{Binding IdCongDan}"
-                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" 
-                                                               MinWidth="100"/>
-                        <DataGridTemplateColumn Header="Ngày bắt đầu">
+                        <DataGridTemplateColumn Header="Id Công dân">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding NgayBatDau}" />
+                                    <ComboBox IsEditable="True"
+                                          KeyDown="id_KeyDown"
+                                          SelectionChanged="id_SelectionChanged"
+                                          Text="{Binding Id}" 
+                              ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.ListIdCongDan}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
-                            <DataGridTemplateColumn.CellEditingTemplate>
-                                <DataTemplate>
-                                    <DatePicker SelectedDate="{Binding NgayBatDau}"
-                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Ngày kết thúc">
+
+                        <DataGridTemplateColumn Header="Số CMND"
+                                                MinWidth="100">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding NgayKetThuc}" />
+                                    <ComboBox IsEditable="True" 
+                                              KeyDown="cmnd_KeyDown"
+                                          SelectionChanged="cmnd_SelectionChanged"
+                                          Text="{Binding Cmnd}" 
+                              ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.ListCmndCongDan}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
-                            <DataGridTemplateColumn.CellEditingTemplate>
-                                <DataTemplate>
-                                    <DatePicker SelectedDate="{Binding NgayKetThuc}"
-                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
-                        <materialDesign:MaterialDataGridTextColumn Header="Chỗ ở"
-                                                                   MaxLength="100"
-                                                               Binding="{Binding ChoO}"
-                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" 
+
+                        <DataGridTemplateColumn Header="Họ và tên"
+                                                MinWidth="140">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox IsEditable="True"
+                                              KeyDown="ten_KeyDown"
+                                          SelectionChanged="ten_SelectionChanged"
+                                          Text="{Binding Name}" 
+                              ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.ListHoTenCongDan}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <materialDesign:MaterialDataGridTextColumn Header="Gioitinh"
+                                                               Binding="{Binding Gioitinh}"
+                                                               IsReadOnly="True"
                                                                MinWidth="100"/>
-                        <materialDesign:MaterialDataGridTextColumn Header="Nghề nghiệp"
-                                                                   MaxLength="100"
-                                                               Binding="{Binding NgheNghiep}"
-                                                               EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" 
+                        <materialDesign:MaterialDataGridTextColumn Header="Ngaysinh"
+                                                               Binding="{Binding Ngaysinh}"
+                                                               IsReadOnly="True"
+                                                               MinWidth="100"/>
+                        <materialDesign:MaterialDataGridTextColumn Header="Quê quán"
+                                                               Binding="{Binding QueQuan}"
+                                                               IsReadOnly="True"
                                                                MinWidth="100"/>
                         <materialDesign:MaterialDataGridTextColumn Header="Ghi chú"
                                                                    MaxLength="100"
@@ -152,6 +159,6 @@
             </StackPanel>
         </DockPanel>
     </materialDesign:DialogHost>
-    
+
 
 </Page>

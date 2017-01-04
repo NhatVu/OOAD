@@ -36,7 +36,7 @@ namespace HouseholdManagement.Pages
         private CongAnDTO mCongan;
         private ThemTamVangPage1ViewModel mViewModel;
 
-        public static ThemTamVangPage1 createInstance( CongAnDTO congan)
+        public static ThemTamVangPage1 createInstance(CongAnDTO congan)
         {
             return new ThemTamVangPage1(congan);
         }
