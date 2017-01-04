@@ -106,7 +106,7 @@
                                                Text="Thay đổi mật khẩu"/>
                                     </StackPanel>
                                 </ListBoxItem>
-                                <ListBoxItem x:Name="item_dangxuat" Selected="item_dangxuat_Selected" PreviewMouseDown="dangXuat_click">
+                                <ListBoxItem x:Name="item_dangxuat"  PreviewMouseDown="dangXuat_click">
                                     <StackPanel Orientation="Horizontal">
                                         <Viewbox Width="24" Height="24" Margin="12,0">
                                             <Canvas Width="24" Height="24" Opacity="0.54">

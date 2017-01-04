@@ -29,7 +29,7 @@ namespace HouseholdManagement.Pages
 
         public QuanlyHokhau()
         {
-            InitializeComponent();  
+            InitializeComponent();
         }
 
         private void handleEvent()
@@ -58,7 +58,7 @@ namespace HouseholdManagement.Pages
         {
             //save data to database
             //do anything before close the door
-        
+
         }
 
         private void Search_OnKeyDown(object sender, KeyEventArgs e)
@@ -70,7 +70,7 @@ namespace HouseholdManagement.Pages
         {
             TextBox textBox = sender as TextBox;
             string query = textBox.Text;
-            if(query.Equals(""))
+            if (query.Equals(""))
                 this.dataGrid_QuanLyHoKhau.ItemsSource = QuanlyHokhauViewModel.createInstance().getHoKhauAllInfo();
             else
                 this.dataGrid_QuanLyHoKhau.ItemsSource = QuanlyHokhauViewModel.createInstance().search(query);
@@ -78,8 +78,21 @@ namespace HouseholdManagement.Pages
 
         private void mouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+
+        }
+
+        private void button_detail_Click(object sender, RoutedEventArgs e)
+        {
             int hoKhauId = (this.dataGrid_QuanLyHoKhau.SelectedValue as QuanlyHokhauViewModel).Id;
-            this.NavigationService.Navigate(ChiTietHoKhau.createInstance(hoKhauId));     
+            this.NavigationService.Navigate(ChiTietHoKhau.createInstance(hoKhauId));
+        }
+
+        private void row_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dataGrid_QuanLyHoKhau.SelectedItems.Count == 1 && dataGrid_QuanLyHoKhau.SelectedValue != null)
+                button_detail.Visibility = System.Windows.Visibility.Visible;
+            else
+                button_detail.Visibility = System.Windows.Visibility.Hidden;
         }
     }
 }

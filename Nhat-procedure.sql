@@ -78,7 +78,7 @@ GO
 create procedure [dbo].[TamTru_Search] 
 @idCD int =null, @cmnd int=null, @hoTen nvarchar(50)=null
 as
-select c.hoTen, c.ngaySinh, c.gioiTinh, c.diaChiThuongTru, c.cmnd,
+select c.id, c.hoTen, c.ngaySinh, c.gioiTinh, c.diaChiThuongTru, c.cmnd,
 t.ngayBatDau, t.ngayKetThuc, t.ghiChu
 from TamTru as t inner join CongDan as c
 	on t.idCongDan = c.id
@@ -90,7 +90,7 @@ GO
 create procedure [dbo].[TamVang_Search] 
 @idCD int =null, @cmnd int=null, @hoTen nvarchar(50)=null
 as
-select c.hoTen, c.ngaySinh, c.gioiTinh, c.diaChiThuongTru, c.cmnd,
+select c.id, c.hoTen, c.ngaySinh, c.gioiTinh, c.diaChiThuongTru, c.cmnd,
 t.ngayBatDau, t.ngayKetThuc, t.ghiChu
 from TamVang as t inner join CongDan as c
 	on t.idCongDan = c.id

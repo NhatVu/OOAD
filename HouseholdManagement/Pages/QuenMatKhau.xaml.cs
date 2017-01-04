@@ -63,6 +63,7 @@ namespace HouseholdManagement.Pages
                 congAnDTO.Password = PasswordHash.HashPassword(newPassword);
                 congAnDAO.updateCongAn(congAnDTO);
                 MessageBox.Show("Đã cấp lại mật khẩu. Vui lòng kiểm tra email.");
+                this.NavigationService.Navigate(Login.createInstance());
             }else
             MessageBox.Show("Email không chính xác, nhập lại email");
         }

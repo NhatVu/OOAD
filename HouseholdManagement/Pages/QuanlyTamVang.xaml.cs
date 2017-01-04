@@ -75,10 +75,18 @@ namespace HouseholdManagement.Pages
                 this.dataGird_QuanLyTamVang.ItemsSource = viewMobel.search(query);
         }
 
-        private void mouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void button_detail_Click(object sender, RoutedEventArgs e)
         {
             QuanLyTamVangViewModel data = this.dataGird_QuanLyTamVang.SelectedItem as QuanLyTamVangViewModel;
             this.NavigationService.Navigate(ChinhSuaTamVangTamTru.createInstace(Constant.TYPE_CHINH_SUA_TAM_VANG, data));
+        }
+
+        private void row_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dataGird_QuanLyTamVang.SelectedItems.Count == 1 && dataGird_QuanLyTamVang.SelectedValue != null)
+                button_detail.Visibility = System.Windows.Visibility.Visible;
+            else
+                button_detail.Visibility = System.Windows.Visibility.Hidden;
         }
     }
 }
