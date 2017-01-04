@@ -1,4 +1,4 @@
-﻿<Page x:Class="HouseholdManagement.Pages.ThemTamTruPage2"
+﻿<Page x:Class="HouseholdManagement.Pages.ThemTamVangPage2"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -108,8 +108,7 @@
                         <DataGridTemplateColumn Header="Ngày bắt đầu">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding NgayBatDau}" 
-                                               />
+                                    <TextBlock Text="{Binding NgayBatDau}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellEditingTemplate>

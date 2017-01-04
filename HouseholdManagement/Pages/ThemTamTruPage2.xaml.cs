@@ -34,14 +34,15 @@ namespace HouseholdManagement.Pages
         private DateTime mNgayBatdau;
         private DateTime mNgayKetthuc;
         private DateTime mNgayLamDon;
+        private int mIdCongDan;
 
         private ThemTamTruPage2ViewModel mViewModel;
 
-        public static ThemTamTruPage2 createInstance(int type, int idCongAn, string lydo, string diachi, string ghichu, DateTime ngaybatdau, DateTime ngayketthuc, DateTime ngayLamDon)
+        public static ThemTamTruPage2 createInstance(int type, int idCongAn, string lydo, string diachi, string ghichu, DateTime ngaybatdau, DateTime ngayketthuc, DateTime ngayLamDon, int idCongdan)
         {
-            return new ThemTamTruPage2(type, idCongAn,lydo,diachi,ghichu,ngaybatdau,ngayketthuc, ngayLamDon);
+            return new ThemTamTruPage2(type, idCongAn, lydo, diachi, ghichu, ngaybatdau, ngayketthuc, ngayLamDon, idCongdan);
         }
-        public ThemTamTruPage2(int type, int idCongAn, string lydo, string diachi, string ghichu, DateTime ngaybatdau, DateTime ngayketthuc, DateTime ngayLamDon)
+        public ThemTamTruPage2(int type, int idCongAn, string lydo, string diachi, string ghichu, DateTime ngaybatdau, DateTime ngayketthuc, DateTime ngayLamDon, int idCongdan)
         {
             InitializeComponent();
             this.mType = type;
@@ -52,6 +53,7 @@ namespace HouseholdManagement.Pages
             this.mNgayBatdau = ngaybatdau;
             this.mNgayKetthuc = ngayketthuc;
             this.mNgayLamDon = ngayLamDon;
+            this.mIdCongDan = idCongdan;
         }
 
         private void onButtonBackClicked(object sender, RoutedEventArgs e)
@@ -60,79 +62,55 @@ namespace HouseholdManagement.Pages
         }
 
         private void onButtonSaveClicked(object sender, RoutedEventArgs e)
-        {    
-            if(mType == Constant.TYPE_THEM_TAM_TRU)
-            {
-                //save tam tru
-                TamTruDAO tamTruDAO = new TamTruDAO();
-                TamTruDTO dto = new TamTruDTO();
-                foreach (SelectTamTruViewlModel current in mViewModel.ListTamTru)
-                {
-                    dto.Active = 1;
-                    dto.IdCongdan = UserConvert.convertInt(current.Id);
-                    dto.DiachiDen = this.mDiachi;
-                    dto.Ghichu = "";
-                    dto.IdTruongCongan = GlobalVariable.CurrentCongAnId;
-                    dto.Lydo = this.mLydo;
-                    dto.NgayBatdau = this.mNgayBatdau;
-                    dto.NgayKetthuc = this.mNgayKetthuc;
-                    dto.NgayLamDon = this.mNgayLamDon;
-
-
-                    tamTruDAO.insertTamTru(dto);
-                }
-                //save tam vang
-                Constant.showDialog("Thêm tạm trú thành công");
-                this.NavigationService.Navigate(QuanlyTamTru.createInstance());
-            }else if(mType == Constant.TYPE_THEM_TAM_VANG)
-            {
-                TamVangDAO tamVangDAO = new TamVangDAO();
-                TamVangDTO dto = new TamVangDTO();
-                foreach (SelectTamTruViewlModel current in mViewModel.ListTamTru)
-                {
-                    dto.Active = 1;
-                    dto.IdCongdan = UserConvert.convertInt(current.Id);
-                    dto.DiaChiDen = this.mDiachi;
-                    dto.GhiChu = "";
-                    dto.IdTruongCongAn = GlobalVariable.CurrentCongAnId;
-                    dto.LyDo = this.mLydo;
-                    dto.NgayBatDau = this.mNgayBatdau;
-                    dto.NgayKetThuc = this.mNgayKetthuc;
-                    dto.NgayLamDon = this.mNgayLamDon;
-
-
-                    tamVangDAO.insertTamVang(dto);
-                }
-                //save tam vang
-                Constant.showDialog("Thêm tạm vắng thành công");
-                this.NavigationService.Navigate(QuanlyTamVang.createInstance());
-            }
-
-            //List<string> ids = new List<string>();
-            //ids.Clear();
-            //foreach (SelectTamTruViewlModel row in mViewModel.ListTamTru)
+        {
+            //if(mType == Constant.TYPE_THEM_TAM_TRU)
             //{
-            //    //MessageBox.Show(row.Id + row.Cmnd + row.Name + row.Quanhe + row.GhiChu);
-            //    ids.Add(row.Id);
+            //    //save tam tru
+            //    TamTruDAO tamTruDAO = new TamTruDAO();
+            //    TamTruDTO dto = new TamTruDTO();
+            //    foreach (SelectTamTruViewlModel current in mViewModel.ListTamTru)
+            //    {
+            //        dto.Active = 1;
+            //        dto.IdCongdan = UserConvert.convertInt(current.Id);
+            //        dto.DiachiDen = this.mDiachi;
+            //        dto.Ghichu = "";
+            //        dto.IdTruongCongan = GlobalVariable.CurrentCongAnId;
+            //        dto.Lydo = this.mLydo;
+            //        dto.NgayBatdau = this.mNgayBatdau;
+            //        dto.NgayKetthuc = this.mNgayKetthuc;
+            //        dto.NgayLamDon = this.mNgayLamDon;
 
-            //}
-            //bool isUnique = ids.Distinct().Count() == ids.Count();
 
-            //if (isUnique)
+            //        tamTruDAO.insertTamTru(dto);
+            //    }
+            //    //save tam vang
+            //    Constant.showDialog("Thêm tạm trú thành công");
+            //    this.NavigationService.Navigate(QuanlyTamTru.createInstance());
+            //}else if(mType == Constant.TYPE_THEM_TAM_VANG)
             //{
-            //    progressbar.Visibility = System.Windows.Visibility.Visible;
-            //    await Task.Delay(500);
-            //    await Task.Run(() => insertToDataBase());
-            //    progressbar.Visibility = System.Windows.Visibility.Hidden;
+            //    TamVangDAO tamVangDAO = new TamVangDAO();
+            //    TamVangDTO dto = new TamVangDTO();
+            //    foreach (SelectTamTruViewlModel current in mViewModel.ListTamTru)
+            //    {
+            //        dto.Active = 1;
+            //        dto.IdCongdan = UserConvert.convertInt(current.Id);
+            //        dto.DiaChiDen = this.mDiachi;
+            //        dto.GhiChu = "";
+            //        dto.IdTruongCongAn = GlobalVariable.CurrentCongAnId;
+            //        dto.LyDo = this.mLydo;
+            //        dto.NgayBatDau = this.mNgayBatdau;
+            //        dto.NgayKetThuc = this.mNgayKetthuc;
+            //        dto.NgayLamDon = this.mNgayLamDon;
 
-            //    //
 
-            //    this.NavigationService.Navigate(QuanlyHokhau.createInstance());
+            //        tamVangDAO.insertTamVang(dto);
+            //    }
+            //    //save tam vang
+            //    Constant.showDialog("Thêm tạm vắng thành công");
+            //    this.NavigationService.Navigate(QuanlyTamVang.createInstance());
             //}
-            //else
-            //{
-            //    Constant.showDialog("Tất cả các thành viên phải khác nhau");
-            //}
+
+            
 
         }
 
@@ -159,15 +137,17 @@ namespace HouseholdManagement.Pages
             //}
         }
 
-        private void table_household_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
 
         private void onButtonAddClicked(object sender, RoutedEventArgs e)
         {
             if (mViewModel != null)
-                mViewModel.ListTamTru.Add(new SelectTamTruViewlModel());
+            {
+                SelectTamTruViewlModel model = new SelectTamTruViewlModel();
+                model.IdCongDan = mIdCongDan + "";
+                mViewModel.ListTamTru.Add(model);
+            }
+
         }
 
         private void onButtonRemoveClicked(object sender, RoutedEventArgs e)
@@ -181,161 +161,35 @@ namespace HouseholdManagement.Pages
             }
         }
 
-        private void onButtonResetClicked(object sender, RoutedEventArgs e)
+        private async void onButtonResetClicked(object sender, RoutedEventArgs e)
         {
-            if (mViewModel != null && mViewModel.ListTamTru.Count > 0)
-            {
-                for (int i = mViewModel.ListTamTru.Count - 1; i >= 0; i--)
-                {
-                    mViewModel.ListTamTru.RemoveAt(i);
-                }
-                mViewModel.ListTamTru.Add(new SelectTamTruViewlModel());
-            }
+            load();
         }
 
         private async void onLoaded(object sender, RoutedEventArgs e)
         {
+            load();
+        }
+
+        private async void load()
+        {
             progressbar.Visibility = System.Windows.Visibility.Visible;
             await Task.Delay(1000);
-            mViewModel = new ThemTamTruPage2ViewModel();
+            mViewModel = new ThemTamTruPage2ViewModel(mIdCongDan);
             DataContext = mViewModel;
             progressbar.Visibility = System.Windows.Visibility.Hidden;
         }
 
-        private void id_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var box = sender as ComboBox;
-            int row = table_household.SelectedIndex;
-            if (true)
-            {
-                try
-                {
-
-                    int value = int.Parse(box.SelectedValue + "");
-                    CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanById(value))[0];
-                    if (congdan != null)
-                        updateTableRow(congdan, row);
-                }
-                catch (Exception ex)
-                {
-                    Constant.showDialog("Id bạn nhập không tồn tại");
-                }
-            }
-        }
-
-        private void cmnd_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var box = sender as ComboBox;
-            int row = table_household.SelectedIndex;
-            if (box.SelectedValue != null && box.SelectedValue.ToString().Count() > 0)
-            {
-                try
-                {
-                    int value = int.Parse(box.SelectedValue + "");
-                    CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanByCmnd(value))[0];
-                    int id = congdan.Id;
-                    mViewModel.ListTamTru[row].Id = id + "";
-                }
-                catch (Exception ex)
-                {
-                    Constant.showDialog("Cmnd bạn nhập không tồn tại");
-                }
-            }
-
-        }
-
-        private void ten_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var box = sender as ComboBox;
-            int row = table_household.SelectedIndex;
-            if (box.SelectedValue != null && box.SelectedValue.ToString().Count() > 0)
-            {
-                try
-                {
-                    string value = (box.SelectedValue + "");
-                    CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanByName(value))[0];
-                    int id = congdan.Id;
-                    mViewModel.ListTamTru[row].Id = id + "";
-                }
-                catch (Exception ex)
-                {
-                    Constant.showDialog("Tên bạn nhập không tồn tại");
-                }
-            }
-        }
-
-        private void updateTableRow(CongDanDTO congdan, int row)
-        {
-            string cmnd = (congdan.Cmnd != 0) ? (congdan.Cmnd + "") : "Chưa có";
-            string hoten = congdan.HoTen;
-            string ngaysinh = congdan.NgaySinh.ToString("dd/MM/yyyy");
-            string gioitinh = (congdan.GioiTinh == 0) ? "Nữ" : "Nam";
-            string quequan = congdan.Quequan;
-
-            mViewModel.ListTamTru[row].Cmnd = cmnd;
-            mViewModel.ListTamTru[row].Gioitinh = gioitinh;
-            mViewModel.ListTamTru[row].Name = hoten;
-            mViewModel.ListTamTru[row].Ngaysinh = ngaysinh;
-            mViewModel.ListTamTru[row].QueQuan = quequan;
-        }
 
 
 
-        private void id_KeyDown(object sender, KeyEventArgs e)
-        {
-            ComboBox box = sender as ComboBox;
-            if (e.Key == Key.Enter)
-            {
-                try
-                {
-                    int value = int.Parse(box.Text);
-                    CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanById(value))[0];
-                }
-                catch (Exception ex)
-                {
-                    Constant.showDialog("Dữ liệu nhập vào không tồn tại");
-                    mViewModel.ListTamTru[table_household.SelectedIndex] = new SelectTamTruViewlModel();
-                }
 
-            }
-        }
 
-        private void cmnd_KeyDown(object sender, KeyEventArgs e)
-        {
-            ComboBox box = sender as ComboBox;
-            if (e.Key == Key.Enter)
-            {
-                try
-                {
-                    int value = int.Parse(box.Text);
-                    CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanByCmnd(value))[0];
-                }
-                catch (Exception ex)
-                {
-                    Constant.showDialog("Dữ liệu nhập vào không tồn tại");
-                    mViewModel.ListTamTru[table_household.SelectedIndex] = new SelectTamTruViewlModel();
-                }
 
-            }
-        }
 
-        private void ten_KeyDown(object sender, KeyEventArgs e)
-        {
-            ComboBox box = sender as ComboBox;
-            if (e.Key == Key.Enter)
-            {
-                try
-                {
-                    string value = (box.Text);
-                    CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanByName(value))[0];
-                }
-                catch (Exception ex)
-                {
-                    Constant.showDialog("Dữ liệu nhập vào không tồn tại");
-                    mViewModel.ListTamTru[table_household.SelectedIndex] = new SelectTamTruViewlModel();
-                }
 
-            }
-        }
+
+
+
     }
 }

@@ -144,6 +144,12 @@
     <Compile Include="Pages\ChuyenKhauPage1.xaml.cs">
       <DependentUpon>ChuyenKhauPage1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ThemTamVangPage2.xaml.cs">
+      <DependentUpon>ThemTamVangPage2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ThemTamVangPage1.xaml.cs">
+      <DependentUpon>ThemTamVangPage1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ThemTamTruPage2.xaml.cs">
       <DependentUpon>ThemTamTruPage2.xaml</DependentUpon>
     </Compile>
@@ -209,6 +215,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ChuyenKhauPage1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ThemTamVangPage2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ThemTamVangPage1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -278,6 +292,8 @@
     <Compile Include="ViewModels\QuanLyTamTruViewModel.cs" />
     <Compile Include="ViewModels\QuanLyTamVangViewModel.cs" />
     <Compile Include="ViewModels\ChuyenKhauPage1ViewModel.cs" />
+    <Compile Include="ViewModels\ThemTamVangPage2ViewModel.cs" />
+    <Compile Include="ViewModels\ThemTamVangPage1ViewModel.cs" />
     <Compile Include="ViewModels\ThemTamTruPage2ViewModel.cs" />
     <Compile Include="ViewModels\ThemTamTruPage1ViewModel.cs" />
     <Compile Include="ViewModels\ThemHoKhauPage1ViewModel.cs" />

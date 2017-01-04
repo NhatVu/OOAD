@@ -1,4 +1,5 @@
-﻿using DTO;
+﻿using DataAcessLayer;
+using DTO;
 using HouseholdManagement.Utilities;
 using HouseholdManagement.ViewModels;
 using System;
@@ -28,13 +29,13 @@ namespace HouseholdManagement.Pages
         private ThemTamTruPage1ViewModel mViewModel;
         private int mType;//Them tam vang hay them tam tru
 
-        public static ThemTamTruPage1 createInstance(int type,CongAnDTO congan)
+        public static ThemTamTruPage1 createInstance(int type, CongAnDTO congan)
         {
-            return new ThemTamTruPage1(type,congan);
+            return new ThemTamTruPage1(type, congan);
         }
 
 
-        public ThemTamTruPage1(int type,CongAnDTO congan)
+        public ThemTamTruPage1(int type, CongAnDTO congan)
         {
 
             InitializeComponent();
@@ -46,7 +47,7 @@ namespace HouseholdManagement.Pages
         private void onButtonNextClicked(object sender, RoutedEventArgs e)
         {
 
-            
+
             if (textbox_diachi.Text.Trim().ToString().Count() == 0)
             {
                 Constant.showDialog("Xin vui lòng nhập địa chỉ");
@@ -60,7 +61,7 @@ namespace HouseholdManagement.Pages
                 return;
             }
 
-           
+
 
             if (datepicker_ngaybatdau.SelectedDate == null || datepicker_ngayketthuc.SelectedDate == null)
             {
@@ -78,13 +79,19 @@ namespace HouseholdManagement.Pages
                 return;
             }
 
+            if(txt_id.Text.Trim().ToString().Count() == 0)
+            {
+                Constant.showDialog("Xin vui lòng chọn một công dân");
+                return;
+            }
+
             int idCongAn = mCongan.Id;
             string lydo = textbox_lydo.Text.Trim();
             string diachi = textbox_diachi.Text.Trim();
             string ghichu = textbox_ghichu.Text.Trim();
-            
-            
-            this.NavigationService.Navigate(ThemTamTruPage2.createInstance(mType,idCongAn,lydo,diachi,ghichu,ngaybatdau,ngayketthuc, ngayLamDon));
+
+
+            this.NavigationService.Navigate(ThemTamTruPage2.createInstance(mType, idCongAn, lydo, diachi, ghichu, ngaybatdau, ngayketthuc, ngayLamDon,int.Parse(txt_id.Text)));
         }
 
         private void onButtonCancelClicked(object sender, RoutedEventArgs e)
@@ -92,15 +99,170 @@ namespace HouseholdManagement.Pages
             this.NavigationService.Navigate(QuanlyTamTru.createInstance());
         }
 
-        private void onLoaded(object sender, RoutedEventArgs e)
+        private async void onLoaded(object sender, RoutedEventArgs e)
         {
+            
+
+            progressbar.Visibility = System.Windows.Visibility.Visible;
+            await Task.Delay(1000);
             mViewModel = new ThemTamTruPage1ViewModel(mCongan);
             DataContext = mViewModel;
             datepicker_ngaylamdon.SelectedDate = mViewModel.NgayLamDon;
             datepicker_ngaybatdau.BlackoutDates.AddDatesInPast();
             datepicker_ngayketthuc.BlackoutDates.AddDatesInPast();
+            progressbar.Visibility = System.Windows.Visibility.Hidden;
 
-            
+
+        }
+
+        private void combobox_idCongdan_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var box = sender as ComboBox;
+            if (box.SelectedValue != null && box.SelectedValue.ToString().Count() > 0)
+            {
+                try
+                {
+                    string value = (box.SelectedValue + "");
+                    CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanById(int.Parse(value)))[0];
+                    if (congdan != null)
+                        updateData(congdan);
+                }
+                catch (Exception ex)
+                {
+                    Constant.showDialog("Tên bạn nhập không tồn tại");
+                }
+            }
+        }
+
+
+        private void combobox_cmndCongdan_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var box = sender as ComboBox;
+            if (box.SelectedValue != null && box.SelectedValue.ToString().Count() > 0)
+            {
+                try
+                {
+                    int value = int.Parse(box.SelectedValue + "");
+                    CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanByCmnd(value))[0];
+                    if (congdan != null)
+                        updateData(congdan);
+                }
+                catch (Exception ex)
+                {
+                    Constant.showDialog("Cmnd bạn nhập không tồn tại");
+                }
+            }
+        }
+
+        private void combobox_tenCongdan_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var box = sender as ComboBox;
+            if (box.SelectedValue != null && box.SelectedValue.ToString().Count() > 0)
+            {
+                try
+                {
+                    string value = (box.SelectedValue + "");
+                    CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanByName(value))[0];
+                    if (congdan != null)
+                        updateData(congdan);
+                }
+                catch (Exception ex)
+                {
+                    Constant.showDialog("Cmnd bạn nhập không tồn tại");
+                }
+            }
+        }
+
+        private void updateData(CongDanDTO congdan)
+        {
+            if (congdan != null)
+            {
+                panel_thongtin.Visibility = Visibility.Visible;
+                txt_id.Text = congdan.Id + "";
+                txt_gioitinh.Text = congdan.GioiTinh == 1 ? "Nam" : "Nữ";
+                txt_hoten.Text = congdan.HoTen;
+                txt_ngaysinh.Text = congdan.NgaySinh.ToString("dd/MM/yyyy");
+                txt_cmnd.Text = (congdan.Cmnd != 0) ? (congdan.Cmnd + "") : "Chưa có";
+                txt_quequan.Text = congdan.Quequan;
+
+                try
+                {
+                    TienAnDTO tienan = Constant.DataTableToList<TienAnDTO>(new TienAnDAO().SelectTienAnByCongDanId(congdan.Id))[0];
+
+                    if (tienan != null)
+                    {
+                        panel_tienan.Visibility = Visibility.Visible;
+                        txt_toidanh.Text = tienan.Toidanh;
+                        txt_hinhphat.Text = tienan.Hinhphat;
+                        txt_noituyenan.Text = tienan.NoiTuyenAn;
+                        txt_thoigian.Text = tienan.NgayThang.ToString("dd/MM/yyyy"); ;
+                    }
+                }
+                catch
+                {
+                    panel_tienan.Visibility = Visibility.Collapsed;
+                }
+            }
+            else
+            {
+                panel_thongtin.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void combobox_idCongdan_KeyDown(object sender, KeyEventArgs e)
+        {
+            ComboBox box = sender as ComboBox;
+            if (e.Key == Key.Enter)
+            {
+                try
+                {
+                    int value = int.Parse(box.Text);
+                    CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanById(value))[0];
+                }
+                catch (Exception ex)
+                {
+                    Constant.showDialog("Dữ liệu nhập vào không tồn tại");
+                }
+
+            }
+        }
+
+        private void combobox_cmndCongdan_KeyDown(object sender, KeyEventArgs e)
+        {
+            ComboBox box = sender as ComboBox;
+            if (e.Key == Key.Enter)
+            {
+                try
+                {
+                    int value = int.Parse(box.Text);
+                    CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanByCmnd(value))[0];
+                }
+                catch (Exception ex)
+                {
+                    Constant.showDialog("Dữ liệu nhập vào không tồn tại");
+                }
+
+            }
+        }
+
+
+
+        private void combobox_tenCongdan_KeyDown(object sender, KeyEventArgs e)
+        {
+            ComboBox box = sender as ComboBox;
+            if (e.Key == Key.Enter)
+            {
+                try
+                {
+                    string value = (box.Text);
+                    CongDanDTO congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectCongDanByName(value))[0];
+                }
+                catch (Exception ex)
+                {
+                    Constant.showDialog("Dữ liệu nhập vào không tồn tại");
+                }
+
+            }
         }
     }
 }

@@ -4,14 +4,70 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
       d:DesignHeight="800" d:DesignWidth="1100"
+      
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+             TextElement.FontSize="14" 
 	Title="QuenMatKhau">
 
-    <Grid Margin="0,0,-195,0">
-        <Label Content="Hãy nhập email vàc chúng tôi sẽ gửi mật khẩu mới qua email cho bạn." HorizontalAlignment="Left" Margin="34,48,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textbox_email" HorizontalAlignment="Left" Height="23" Margin="48,122,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="362"/>
-        <Button Content="Lấy lại mật khẩu" HorizontalAlignment="Left" Margin="223,187,0,0" VerticalAlignment="Top" Width="192" Click="layLaiMatKhau_click"/>
-        <Button Content="Trở lại" HorizontalAlignment="Left" Margin="48,187,0,0" VerticalAlignment="Top" Width="101" Click="troLai_click"/>
+    <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <materialDesign:ColorZone DockPanel.Dock="Top"
+                                  Height="300"
+                                  materialDesign:ShadowAssist.ShadowDepth="Depth2" 
+                                  Background="{DynamicResource accent_color}"/>
+        <materialDesign:ColorZone DockPanel.Dock="Top"
+                                  Padding="0,0,0,0"
+                                  Margin="300,-150,300,0"
+                                  materialDesign:ShadowAssist.ShadowDepth="Depth3" 
+                                  Mode="Light">
+            <StackPanel Orientation="Vertical">
+              
+                <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" 
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"
+                           FontSize="24"
+                           Margin="16 24"
+                           FontWeight="Light"
+                           Text="Hãy nhập email vàc chúng tôi sẽ gửi mật khẩu mới qua email cho bạn."/>
+                <TextBox x:Name="textbox_email"
+                         FontSize="24"
+                         Margin="16 24"
+                         materialDesign:HintAssist.Hint="{DynamicResource email_hint}"
+                         materialDesign:ColorZoneAssist.Mode="Dark"/>
 
-    </Grid>
+                <Grid Margin="16 24">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Click="troLai_click"
+                            Grid.Column="0"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Background="{DynamicResource primary_color}"
+                        FontSize="24"
+                        Height="60"
+                            Margin="0 0 16 0"
+                        Foreground="White"
+                        FontWeight="Light"
+                        HorizontalAlignment="Stretch"
+                        Content="Trở lại"/>
+
+                    <Button Click="layLaiMatKhau_click"
+                            Margin="16 0 0 0"
+                            Grid.Column="1"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Background="{DynamicResource primary_color}"
+                        FontSize="24"
+                        Height="60"
+                        Foreground="White"
+                        FontWeight="Light"
+                        HorizontalAlignment="Stretch"
+                        Content="Đồng ý"/>
+                </Grid>
+            </StackPanel>
+        </materialDesign:ColorZone>
+    </DockPanel>
 </Page>

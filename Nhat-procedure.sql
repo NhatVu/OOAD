@@ -228,3 +228,28 @@ where c.idHoKhau = @hoKhauId and c.active = 1;
 end
 go
 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TienAn_SelectTienAnByCongDanId]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[TienAn_SelectTienAnByCongDanId]
+GO
+create procedure [dbo].[TienAn_SelectTienAnByCongDanId]
+@idCongDan int=null
+as
+begin
+select * 
+from TienAn as c
+where c.idCongDan = @idCongDan and c.active = 1;
+end
+go
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TomTatBanThan_SelectTomTatBanThanByCongDanId]') and OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE [dbo].[TomTatBanThan_SelectTomTatBanThanByCongDanId]
+GO
+create procedure [dbo].[TomTatBanThan_SelectTomTatBanThanByCongDanId]
+@idCongDan int=null
+as
+begin
+select * 
+from TomTatBanThan as c
+where c.idCongDan = @idCongDan and c.active = 1;
+end
+go
+
+

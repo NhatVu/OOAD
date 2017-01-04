@@ -44,7 +44,7 @@ namespace HouseholdManagement.Pages
 
         private void onButtonThemTamVangClicked(object sender, RoutedEventArgs e)
         {
-            replace(ThemTamTruPage1.createInstance(Constant.TYPE_THEM_TAM_VANG, mCongAn));
+            replace(ThemTamVangPage1.createInstance(mCongAn));
         }
 
         private void onButtonThemTamTruClicked(object sender, RoutedEventArgs e)

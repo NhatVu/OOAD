@@ -121,7 +121,7 @@ namespace DTO
             }
         }
 
-        private TienAnDTO() { }
+        public TienAnDTO() { }
 
         public TienAnDTO(int mIdCongdan, string mToidanh, string mHinhphat, DateTime mNgayThang, string mNoiTuyenAn, string mGhichu, int mActive)
         {

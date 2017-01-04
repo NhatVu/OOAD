@@ -170,5 +170,37 @@ namespace DataAcessLayer
                 return null;
             }
         }
+
+        public DataTable SelectTienAnByCongDanId(int id)
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand command = new SqlCommand();
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapter;
+                command.Connection = connection;
+                command.CommandText = "[TienAn_SelectTienAnByCongDanId]";
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter[] parameter;
+                parameter = new SqlParameter[1];
+                parameter[0] = new SqlParameter("@idCongDan", id);
+
+
+                command.Parameters.AddRange(parameter);
+                adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+                connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                connection.Close();
+                return null;
+            }
+        }
     }
 }

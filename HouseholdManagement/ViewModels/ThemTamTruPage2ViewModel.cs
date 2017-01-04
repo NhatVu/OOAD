@@ -16,11 +16,6 @@ namespace HouseholdManagement.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private ObservableCollection<SelectTamTruViewlModel> listTamTru;
-        private readonly List<int> listIdCongDan;
-        private readonly List<int> listCmndCongDan;
-        private readonly List<string> listHoTenCongDan;
-
-
         public ObservableCollection<SelectTamTruViewlModel> ListTamTru
         {
             get
@@ -34,34 +29,6 @@ namespace HouseholdManagement.ViewModels
             }
         }
 
-        public List<int> ListIdCongDan
-        {
-            get
-            {
-                return listIdCongDan;
-            }
-        }
-
-        public List<int> ListCmndCongDan
-        {
-            get
-            {
-                return listCmndCongDan;
-            }
-        }
-
-        public List<string> ListHoTenCongDan
-        {
-            get
-            {
-                return listHoTenCongDan;
-            }
-        }
-
-
-
-        
-
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             if (PropertyChanged != null)
@@ -69,25 +36,29 @@ namespace HouseholdManagement.ViewModels
             //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public ThemTamTruPage2ViewModel()
+        public ThemTamTruPage2ViewModel(int id)
         {
             listTamTru = new ObservableCollection<SelectTamTruViewlModel>();
-            listTamTru.Add(new SelectTamTruViewlModel());
-            listIdCongDan = new List<int>();
-            listCmndCongDan = new List<int>();
-            listHoTenCongDan = new List<string>();
-           
-            List<CongDanDTO> congdan = Constant.DataTableToList<CongDanDTO>(new CongDanDAO().SelectAllCongDan());
-            foreach (CongDanDTO cd in congdan)
-            {
-                listIdCongDan.Add(cd.Id);
-                if (cd.Cmnd != 0) listCmndCongDan.Add(cd.Cmnd);
-                ListHoTenCongDan.Add(cd.HoTen);  
-            }
+
+            List<TomTatBanThanDTO> tomtat = Constant.DataTableToList<TomTatBanThanDTO>(new TomTatBanThanDAO().SelectTomTatBanThanByCongDanId(id));
+            if (tomtat.Count > 0)
+                foreach (TomTatBanThanDTO tt in tomtat)
+                {
+                    SelectTamTruViewlModel model = new SelectTamTruViewlModel();
+                    model.IdCongDan = tt.IdCongdan+"";
+                    model.NgayBatDau = tt.NgayBatdau.ToString("dd/MM/yyyy");
+                    model.NgayKetThuc = tt.NgayKetthuc.ToString("dd/MM/yyyy");
+                    model.ChoO = tt.ChoO;
+                    model.GhiChu = tt.Ghichu;
+                    model.NgheNghiep = tt.Nghenghiep;
+                    listTamTru.Add(model);
+                }
+
+
         }
     }
 
-    
+
 
     public class SelectTamTruViewlModel : INotifyPropertyChanged
     {
@@ -101,96 +72,82 @@ namespace HouseholdManagement.ViewModels
 
         public SelectTamTruViewlModel()
         {
-    
-        }
 
-        private string id;
-        private string cmnd;
-        private string name;
-        private string gioitinh;
-        private string ngaysinh;
-        private string quequan;
+        }
+        private string idCongDan;
+        private string ngayBatDau;
+        private string ngayKetThuc;
+        private string choO;
+        private string ngheNghiep;
         private string ghiChu;
 
-        public string Id
+
+
+        public string IdCongDan
         {
             get
             {
-                return id;
+                return idCongDan;
             }
 
             set
             {
-                id = value;
-                OnPropertyChanged();
-            }
-        }
-        public string Cmnd
-        {
-            get
-            {
-                return cmnd;
-            }
-
-            set
-            {
-                cmnd = value;
-                OnPropertyChanged();
+                idCongDan = value;
             }
         }
 
-        public string Name
+        public string NgayBatDau
         {
             get
             {
-                return name;
+                return ngayBatDau.Substring(0,10);
             }
 
             set
             {
-                name = value;
+                ngayBatDau = value;
                 OnPropertyChanged();
             }
         }
 
-        public string Gioitinh
+        public string NgayKetThuc
         {
             get
             {
-                return gioitinh;
+                return ngayKetThuc.Substring(0, 10);
             }
 
             set
             {
-                gioitinh = value;
+                ngayKetThuc = value;
                 OnPropertyChanged();
             }
         }
 
-        public string Ngaysinh
+        public string ChoO
         {
             get
             {
-                return ngaysinh;
+                return choO;
             }
 
             set
             {
-                ngaysinh = value;
+                choO = value;
                 OnPropertyChanged();
             }
         }
 
-        public string QueQuan
+        public string NgheNghiep
         {
             get
             {
-                return quequan;
+                return ngheNghiep;
             }
 
             set
             {
-                quequan = value;
+                ngheNghiep = value;
                 OnPropertyChanged();
             }
         }
