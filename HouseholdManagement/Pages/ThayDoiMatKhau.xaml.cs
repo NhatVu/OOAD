@@ -55,6 +55,7 @@ namespace HouseholdManagement.Pages
                 congAnDTO.Password  = PasswordHash.HashPassword(mNewPassword);
                 congAnDAO.updateCongAn(congAnDTO);
                 MessageBox.Show("Thay đổi mật khẩu thành công");
+                this.NavigationService.Navigate(ThongTinTaiKhoan.createInstance());
                 
             }else{
                 MessageBox.Show("Mật khẩu cũ không đúng. Hãy nhập lại.");
