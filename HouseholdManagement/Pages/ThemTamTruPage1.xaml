@@ -24,7 +24,7 @@
         </ResourceDictionary>
     </Page.Resources>
 
-
+    <ScrollViewer HorizontalScrollBarVisibility="Auto">
     <StackPanel>
         <ProgressBar HorizontalAlignment="Stretch" 
                          Height="4" 
@@ -469,7 +469,7 @@
 
         </StackPanel>
     </StackPanel>
-
+    </ScrollViewer>
 
 
 </Page>

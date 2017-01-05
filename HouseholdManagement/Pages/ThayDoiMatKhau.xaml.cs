@@ -41,6 +41,11 @@ namespace HouseholdManagement.Pages
             string mOldPassword = this.oldPassword.Password.ToString();
             string mNewPassword = this.newPassword.Password.ToString();
 
+            if (mOldPassword.Length < 6 || mNewPassword.Length < 5)
+            {
+                MessageBox.Show("Độ dài mật khẩu phải hơn 5 ký tự");
+                return;
+            }
             DataTable congAnDT = congAnDAO.SelectCongAnById(GlobalVariable.CurrentCongAnId);
             CongAnDTO congAnDTO = new CongAnDTO();
             congAnDTO.Id = GlobalVariable.CurrentCongAnId;

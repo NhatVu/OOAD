@@ -51,7 +51,7 @@
                         </Button>
                         <TextBlock VerticalAlignment="Center"
                                Grid.Column="1"
-                               Text="Thông tin chi tiết"
+                               Text="Tóm tắt bản thân"
                                FontWeight="Medium"
                                FontSize="24"
                                Typography.Capitals="AllSmallCaps"
@@ -114,8 +114,9 @@
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellEditingTemplate>
                                 <DataTemplate>
-                                    <DatePicker SelectedDate="{Binding NgayBatDau}"
-                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                    <DatePicker  x:Name="datepicker_ngaybatdau" SelectedDate="{Binding NgayBatDau}"
+                                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+                                                 SelectedDateChanged="ngayBatDau_SelectedDateChanged"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
@@ -127,7 +128,7 @@
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellEditingTemplate>
                                 <DataTemplate>
-                                    <DatePicker SelectedDate="{Binding NgayKetThuc}"
+                                    <DatePicker x:Name="datePicker_ngayKetThuc" SelectedDate="{Binding NgayKetThuc}"
                                                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
                                                 SelectedDateChanged="ngayKetThuc_SelectedDateChanged"/>
                                 </DataTemplate>

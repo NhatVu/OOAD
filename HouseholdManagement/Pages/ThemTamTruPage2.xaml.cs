@@ -69,8 +69,6 @@ namespace HouseholdManagement.Pages
             await Task.Run(() => insertToDataBase());
             progressbar.Visibility = System.Windows.Visibility.Hidden;
 
-            //
-
             this.NavigationService.Navigate(QuanlyTamTru.createInstance());
 
         }
@@ -136,10 +134,7 @@ namespace HouseholdManagement.Pages
         {
             if (table_household.SelectedIndex > -1)
             {
-                for (int i = table_household.SelectedItems.Count - 1; i >= 0; i--)
-                {
-                    mViewModel.ListTamTru.RemoveAt(i);
-                }
+                mViewModel.ListTamTru.RemoveAt(table_household.SelectedIndex);
             }
         }
 
@@ -162,6 +157,10 @@ namespace HouseholdManagement.Pages
             progressbar.Visibility = System.Windows.Visibility.Hidden;
         }
 
+        private void ngayBatDau_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            (this.table_household.SelectedValue as SelectTamTruViewlModel).NgayBatDau = (sender as DatePicker).SelectedDate.Value;
+        }
         private void ngayKetThuc_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             DateTime ngayBatDau = (this.table_household.SelectedValue as SelectTamTruViewlModel).NgayBatDau;
@@ -173,17 +172,5 @@ namespace HouseholdManagement.Pages
                 (this.table_household.SelectedValue as SelectTamTruViewlModel).NgayKetThuc = ngayBatDau.AddDays(1);
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
