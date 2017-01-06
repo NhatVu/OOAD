@@ -45,9 +45,10 @@ namespace HouseholdManagement.ViewModels
                 foreach (TomTatBanThanDTO tt in tomtat)
                 {
                     SelectTamTruViewlModel model = new SelectTamTruViewlModel();
+                    model.Id = tt.Id + "";
                     model.IdCongDan = tt.IdCongdan+"";
-                    model.NgayBatDau = tt.NgayBatdau.ToString("dd/MM/yyyy");
-                    model.NgayKetThuc = tt.NgayKetthuc.ToString("dd/MM/yyyy");
+                    model.NgayBatDau = tt.NgayBatdau;
+                    model.NgayKetThuc = tt.NgayKetthuc;
                     model.ChoO = tt.ChoO;
                     model.GhiChu = tt.Ghichu;
                     model.NgheNghiep = tt.Nghenghiep;
@@ -74,9 +75,10 @@ namespace HouseholdManagement.ViewModels
         {
 
         }
+        public string Id { get; set; }
         private string idCongDan;
-        private string ngayBatDau;
-        private string ngayKetThuc;
+        private DateTime ngayBatDau;
+        private DateTime ngayKetThuc;
         private string choO;
         private string ngheNghiep;
         private string ghiChu;
@@ -96,11 +98,11 @@ namespace HouseholdManagement.ViewModels
             }
         }
 
-        public string NgayBatDau
+        public DateTime NgayBatDau
         {
             get
             {
-                return ngayBatDau.Substring(0,10);
+                return ngayBatDau;
             }
 
             set
@@ -110,11 +112,11 @@ namespace HouseholdManagement.ViewModels
             }
         }
 
-        public string NgayKetThuc
+        public DateTime NgayKetThuc
         {
             get
             {
-                return ngayKetThuc.Substring(0, 10);
+                return ngayKetThuc;
             }
 
             set

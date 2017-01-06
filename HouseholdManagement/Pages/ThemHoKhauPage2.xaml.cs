@@ -68,8 +68,6 @@ namespace HouseholdManagement.Pages
                 await Task.Run(() => insertToDataBase());
                 progressbar.Visibility = System.Windows.Visibility.Hidden;
 
-                //
-                
                 this.NavigationService.Navigate(QuanlyHokhau.createInstance());
             }
             else
@@ -97,7 +95,7 @@ namespace HouseholdManagement.Pages
                 }
             }finally
             {
-                MessageBox.Show("Thêm hộ khẩu thành công");
+               // MessageBox.Show("Thêm hộ khẩu thành công");
             }
         }
 
@@ -116,10 +114,7 @@ namespace HouseholdManagement.Pages
         {
             if (table_household.SelectedIndex > -1)
             {
-                for (int i = table_household.SelectedItems.Count - 1; i >= 0; i--)
-                {
-                    mViewModel.ListHoKhau.RemoveAt(i);
-                }
+                mViewModel.ListHoKhau.RemoveAt(table_household.SelectedIndex);
             }
         }
 
@@ -220,8 +215,6 @@ namespace HouseholdManagement.Pages
             mViewModel.ListHoKhau[row].Name = hoten;
             mViewModel.ListHoKhau[row].Ngaysinh = ngaysinh;
         }
-
-
 
         private void id_KeyDown(object sender, KeyEventArgs e)
         {

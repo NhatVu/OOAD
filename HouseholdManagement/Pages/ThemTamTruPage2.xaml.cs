@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HouseholdManagement.Utilities;
 
 namespace HouseholdManagement.Pages
 {
@@ -61,8 +62,9 @@ namespace HouseholdManagement.Pages
             this.NavigationService.GoBack();
         }
 
-        private void onButtonSaveClicked(object sender, RoutedEventArgs e)
+        private async void onButtonSaveClicked(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             //if(mType == Constant.TYPE_THEM_TAM_TRU)
             //{
             //    //save tam tru
@@ -111,30 +113,57 @@ namespace HouseholdManagement.Pages
             //}
 
 
+=======
+            progressbar.Visibility = System.Windows.Visibility.Visible;
+            await Task.Delay(500);
+            await Task.Run(() => insertToDataBase());
+            progressbar.Visibility = System.Windows.Visibility.Hidden;
+
+            this.NavigationService.Navigate(QuanlyTamTru.createInstance());
+>>>>>>> 66335c96dafe84bb49880aea9882ff27b7b01c13
 
         }
 
         private void insertToDataBase()
         {
-            //try
-            //{
-            //    int idHoKhau = new HoKhauDAO().insertHoKhau(mHoKhau);
-            //    List<VaiTroSoHoKhauDTO> vaitro = Constant.DataTableToList<VaiTroSoHoKhauDTO>(new VaiTroSoHoKhauDAO().SelectAllVaiTroSoHoKhau());
-            //    int idHoKhau = mHoKhau.Id;
-            //    foreach (SelectTamTruViewlModel row in mViewModel.ListTamTru)
-            //    {
-            //        ChiTietHoKhauDTO chitietHoKhau = new ChiTietHoKhauDTO(idHoKhau,
-            //            int.Parse(row.Id),
-            //            vaitro.Find(x => x.TenVaitro == row.Quanhe).Id,
-            //            row.GhiChu,
-            //            1);
-            //        new ChiTietHoKhauDAO().insertChiTietHoKhau(chitietHoKhau);
-            //    }
-            //}
-            //finally
-            //{
-            //    MessageBox.Show("Thêm hộ khẩu thành công");
-            //}
+            // save tam tru
+            TamTruDAO tamTruDAO = new TamTruDAO();
+            TamTruDTO dto = new TamTruDTO();
+            dto.Active = 1;
+            dto.IdCongdan = mIdCongDan;
+            dto.DiachiDen = this.mDiachi;
+            dto.Ghichu = "";
+            dto.IdTruongCongan = GlobalVariable.CurrentCongAnId;
+            dto.Lydo = this.mLydo;
+            dto.NgayBatdau = this.mNgayBatdau;
+            dto.NgayKetthuc = this.mNgayKetthuc;
+            dto.NgayLamDon = this.mNgayLamDon;
+
+
+            tamTruDAO.insertTamTru(dto);
+            // save tom tat ban than
+            TomTatBanThanDAO ttbtDAO = new TomTatBanThanDAO();
+            TomTatBanThanDTO ttbtDTO = new TomTatBanThanDTO();
+            foreach (SelectTamTruViewlModel current in mViewModel.ListTamTru)
+            {
+                ttbtDTO.Active = 1;
+                ttbtDTO.ChoO = current.ChoO;
+                ttbtDTO.Ghichu = current.GhiChu;
+                ttbtDTO.IdCongdan = mIdCongDan;
+                ttbtDTO.NgayBatdau = current.NgayBatDau;
+                ttbtDTO.NgayKetthuc = current.NgayKetThuc;
+                ttbtDTO.Nghenghiep = current.NgheNghiep;
+
+                if (current.Id == null)
+                {
+                    ttbtDAO.insertTomTatBanThan(ttbtDTO);
+                }
+                else
+                {
+                    ttbtDTO.IdCongdan = Int32.Parse(current.Id);
+                    ttbtDAO.updateTomTatBanThan(ttbtDTO);
+                }
+            }
         }
 
 
@@ -145,6 +174,8 @@ namespace HouseholdManagement.Pages
             {
                 SelectTamTruViewlModel model = new SelectTamTruViewlModel();
                 model.IdCongDan = mIdCongDan + "";
+                model.NgayBatDau = DateTime.Now;
+                model.NgayKetThuc = DateTime.Now.AddDays(1);
                 mViewModel.ListTamTru.Add(model);
             }
 
@@ -154,10 +185,7 @@ namespace HouseholdManagement.Pages
         {
             if (table_household.SelectedIndex > -1)
             {
-                for (int i = table_household.SelectedItems.Count - 1; i >= 0; i--)
-                {
-                    mViewModel.ListTamTru.RemoveAt(i);
-                }
+                mViewModel.ListTamTru.RemoveAt(table_household.SelectedIndex);
             }
         }
 
@@ -179,5 +207,24 @@ namespace HouseholdManagement.Pages
             DataContext = mViewModel;
             progressbar.Visibility = System.Windows.Visibility.Hidden;
         }
+<<<<<<< HEAD
+=======
+
+        private void ngayBatDau_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            (this.table_household.SelectedValue as SelectTamTruViewlModel).NgayBatDau = (sender as DatePicker).SelectedDate.Value;
+        }
+        private void ngayKetThuc_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DateTime ngayBatDau = (this.table_household.SelectedValue as SelectTamTruViewlModel).NgayBatDau;
+            DateTime ngayKetThuc = (sender as DatePicker).SelectedDate.Value;
+
+            if (ngayBatDau >= ngayKetThuc)
+            {
+                Constant.showDialog("Ngày kết thúc phải lơn hơn ngày bắt đầu.");
+                (this.table_household.SelectedValue as SelectTamTruViewlModel).NgayKetThuc = ngayBatDau.AddDays(1);
+            }
+        }
+>>>>>>> 66335c96dafe84bb49880aea9882ff27b7b01c13
     }
 }

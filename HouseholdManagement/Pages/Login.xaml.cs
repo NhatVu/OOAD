@@ -26,20 +26,20 @@ namespace HouseholdManagement.Pages
     /// Interaction logic for Login.xaml
     /// </summary>
     /// 
-    
+
     public partial class Login : Page
     {
         CongAnDAO congDanDAO = null;
         public static Login createInstance()
         {
-            
+
             return new Login();
         }
         public Login()
         {
             congDanDAO = new CongAnDAO();
             InitializeComponent();
-            handleEvents();       
+            handleEvents();
         }
 
         private void handleEvents()
@@ -49,7 +49,7 @@ namespace HouseholdManagement.Pages
 
         private void onLoginButtonClicked(object sender, RoutedEventArgs e)
         {
-           // init password
+            // init password
             //CongAnDTO congAnDTO = new CongAnDTO(3, "minhnhatse.uit@gmail.com", "Minh Nhat", null, null, 1);
             //congAnDTO.Password = PasswordHash.HashPassword("123456");
 
@@ -57,7 +57,8 @@ namespace HouseholdManagement.Pages
             // valid email
             //textbox_email.Text = "minhnhatse.uit@gmail.com";
             //textbox_password.Password = "123456";
-            if(CheckInput.IsEmail(textbox_email.Text)){
+            if (CheckInput.IsEmail(textbox_email.Text))
+            {
                 DataTable congAnSource = congDanDAO.SelectCongAnByEmail(textbox_email.Text);
                 List<CongAnDTO> congan = Constant.DataTableToList<CongAnDTO>(congAnSource);
                 if (congan.Count == 0)
@@ -66,29 +67,36 @@ namespace HouseholdManagement.Pages
                     return;
                 }
                 string password = congan[0].Password.ToString();
+                if (password.Length < 5)
+                {
+                    MessageBox.Show("Độ dài mật khẩu phải hơn 5 ký tự");
+                    return;
+                }
 
-                if (PasswordHash.ValidatePassword(textbox_password.Password.ToString(), password)){
+
+                if (PasswordHash.ValidatePassword(textbox_password.Password.ToString(), password))
+                {
                     GlobalVariable.CurrentCongAnId = Int32.Parse(congan[0].Id.ToString());
                     //save if rememeber checkbox checked
-                    if(checkbox_remember_password.IsChecked == true)
+                    if (checkbox_remember_password.IsChecked == true)
                     {
-                        Constant.storeAccount(textbox_email.Text,textbox_password.Password);
+                        Constant.storeAccount(textbox_email.Text, textbox_password.Password);
                     }
                     else
                     {
-                        Constant.storeAccount("","");
+                        Constant.storeAccount("", "");
                     }
 
                     this.NavigationService.Navigate(Home.createInstance(congan[0]));
                 }
-                    // if login success
+                // if login success
                 else
                     MessageBox.Show("Password không đúng. Vui lòng nhập lại.");
             }
             else
             {
                 MessageBox.Show("Xin hãy nhập địa chỉ email hợp lệ.");
-            }  
+            }
         }
 
 

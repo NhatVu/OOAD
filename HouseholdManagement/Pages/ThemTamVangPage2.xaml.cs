@@ -74,7 +74,7 @@ namespace HouseholdManagement.Pages
                 await Task.Delay(500);
                 await Task.Run(() => insertToDataBase());
                 progressbar.Visibility = System.Windows.Visibility.Hidden;
-                this.NavigationService.Navigate(QuanlyHokhau.createInstance());
+                this.NavigationService.Navigate(QuanlyTamVang.createInstance());
             }
             else
             {
@@ -104,8 +104,7 @@ namespace HouseholdManagement.Pages
                 tamVangDAO.insertTamVang(dto);
             }
             //save tam vang
-            Constant.showDialog("Thêm tạm vắng thành công");
-            this.NavigationService.Navigate(QuanlyTamVang.createInstance());
+            
         }
 
         private void table_household_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -123,10 +122,12 @@ namespace HouseholdManagement.Pages
         {
             if (table_household.SelectedIndex > -1)
             {
-                for (int i = table_household.SelectedItems.Count - 1; i >= 0; i--)
-                {
-                    mViewModel.ListTamTru.RemoveAt(i);
-                }
+                mViewModel.ListTamTru.RemoveAt(table_household.SelectedIndex);
+
+                //for (int i = table_household.SelectedItems.Count - 1; i >= 0; i--)
+                //{
+                //    mViewModel.ListTamTru.RemoveAt(i);
+                //}
             }
         }
 

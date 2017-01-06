@@ -100,7 +100,7 @@ namespace HouseholdManagement.Pages
             }
             finally
             {
-                MessageBox.Show("Cập nhật hộ khẩu thành công");
+             //   MessageBox.Show("Cập nhật hộ khẩu thành công");
             }
         }
 
