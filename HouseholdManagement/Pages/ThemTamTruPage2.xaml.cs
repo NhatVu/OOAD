@@ -64,63 +64,13 @@ namespace HouseholdManagement.Pages
 
         private async void onButtonSaveClicked(object sender, RoutedEventArgs e)
         {
-<<<<<<< HEAD
-            //if(mType == Constant.TYPE_THEM_TAM_TRU)
-            //{
-            //    //save tam tru
-            //    TamTruDAO tamTruDAO = new TamTruDAO();
-            //    TamTruDTO dto = new TamTruDTO();
-            //    foreach (SelectTamTruViewlModel current in mViewModel.ListTamTru)
-            //    {
-            //        dto.Active = 1;
-            //        dto.IdCongdan = UserConvert.convertInt(current.Id);
-            //        dto.DiachiDen = this.mDiachi;
-            //        dto.Ghichu = "";
-            //        dto.IdTruongCongan = GlobalVariable.CurrentCongAnId;
-            //        dto.Lydo = this.mLydo;
-            //        dto.NgayBatdau = this.mNgayBatdau;
-            //        dto.NgayKetthuc = this.mNgayKetthuc;
-            //        dto.NgayLamDon = this.mNgayLamDon;
 
-
-            //        tamTruDAO.insertTamTru(dto);
-            //    }
-            //    //save tam vang
-            //    Constant.showDialog("Thêm tạm trú thành công");
-            //    this.NavigationService.Navigate(QuanlyTamTru.createInstance());
-            //}else if(mType == Constant.TYPE_THEM_TAM_VANG)
-            //{
-            //    TamVangDAO tamVangDAO = new TamVangDAO();
-            //    TamVangDTO dto = new TamVangDTO();
-            //    foreach (SelectTamTruViewlModel current in mViewModel.ListTamTru)
-            //    {
-            //        dto.Active = 1;
-            //        dto.IdCongdan = UserConvert.convertInt(current.Id);
-            //        dto.DiaChiDen = this.mDiachi;
-            //        dto.GhiChu = "";
-            //        dto.IdTruongCongAn = GlobalVariable.CurrentCongAnId;
-            //        dto.LyDo = this.mLydo;
-            //        dto.NgayBatDau = this.mNgayBatdau;
-            //        dto.NgayKetThuc = this.mNgayKetthuc;
-            //        dto.NgayLamDon = this.mNgayLamDon;
-
-
-            //        tamVangDAO.insertTamVang(dto);
-            //    }
-            //    //save tam vang
-            //    Constant.showDialog("Thêm tạm vắng thành công");
-            //    this.NavigationService.Navigate(QuanlyTamVang.createInstance());
-            //}
-
-
-=======
             progressbar.Visibility = System.Windows.Visibility.Visible;
             await Task.Delay(500);
             await Task.Run(() => insertToDataBase());
             progressbar.Visibility = System.Windows.Visibility.Hidden;
 
             this.NavigationService.Navigate(QuanlyTamTru.createInstance());
->>>>>>> 66335c96dafe84bb49880aea9882ff27b7b01c13
 
         }
 
@@ -207,8 +157,6 @@ namespace HouseholdManagement.Pages
             DataContext = mViewModel;
             progressbar.Visibility = System.Windows.Visibility.Hidden;
         }
-<<<<<<< HEAD
-=======
 
         private void ngayBatDau_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -225,6 +173,5 @@ namespace HouseholdManagement.Pages
                 (this.table_household.SelectedValue as SelectTamTruViewlModel).NgayKetThuc = ngayBatDau.AddDays(1);
             }
         }
->>>>>>> 66335c96dafe84bb49880aea9882ff27b7b01c13
     }
 }
