@@ -132,7 +132,7 @@
                            Foreground="White"
                            Margin="12"
                            Typography.Capitals="AllSmallCaps"        
-                           Text="Tài khoản"/>
+                           Text="Nghiệp vụ"/>
                             </materialDesign:ColorZone>
                             <ListBox 
                             x:Name="listbox_main_menu"

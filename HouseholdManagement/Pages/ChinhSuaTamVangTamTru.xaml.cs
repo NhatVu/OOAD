@@ -51,6 +51,8 @@ namespace HouseholdManagement.Pages
                     tamTruDAO = new TamTruDAO();
                     DataTable tamTruSource = tamTruDAO.SelectTamTruById((this.data as QuanLyTamTruViewModel).Id);
                     List<TamTruDTO> tamTruList = Constant.DataTableToList<TamTruDTO>(tamTruSource);
+                    if (tamTruList.Count == 0)
+                        break;
                     tamTruDTO = tamTruList[0];
                     this.DataContext = this.data as QuanLyTamTruViewModel;
                     this.datepicker_ngaylamdon.SelectedDate = tamTruDTO.NgayLamDon;
@@ -61,6 +63,8 @@ namespace HouseholdManagement.Pages
                     tamVangDAO = new TamVangDAO();
                     DataTable tamVangSource = tamVangDAO.SelectTamVangById((this.data as QuanLyTamVangViewModel).Id);
                     List<TamVangDTO> tamVangList = Constant.DataTableToList<TamVangDTO>(tamVangSource);
+                    if (tamVangList.Count == 0)
+                        break;
                     tamVangDTO = tamVangList[0];
                     this.DataContext = this.data as QuanLyTamVangViewModel;
                     this.datepicker_ngaylamdon.SelectedDate = tamVangDTO.NgayLamDon;
