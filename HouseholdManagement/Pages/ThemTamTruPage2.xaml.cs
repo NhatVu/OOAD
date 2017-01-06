@@ -110,7 +110,7 @@ namespace HouseholdManagement.Pages
             //    this.NavigationService.Navigate(QuanlyTamVang.createInstance());
             //}
 
-            
+
 
         }
 
@@ -179,17 +179,5 @@ namespace HouseholdManagement.Pages
             DataContext = mViewModel;
             progressbar.Visibility = System.Windows.Visibility.Hidden;
         }
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
